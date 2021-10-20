@@ -43,6 +43,37 @@
       "assignedTo": {
         "name": "Laura"
       },
+      "creation_time": "2021-10-20T07:29:45.410Z",
+      "description": {
+        "content": "Es el menu que se mostrara cuando un editor inicie sesion",
+        "mime": "text/markdown"
+      },
+      "id": "10",
+      "references": [],
+      "title": "MenuEditor.html"
+    }
+  ],
+  "in-progress": [
+    {
+      "assignedTo": {
+        "name": "Laura"
+      },
+      "creation_time": "2021-10-20T07:27:30.049Z",
+      "description": {
+        "content": "Es el menu que tiene el usuario cuando inicia sesion",
+        "mime": "text/markdown"
+      },
+      "id": "6",
+      "references": [],
+      "title": "Menu.html"
+    }
+  ],
+  "testing": [],
+  "done": [
+    {
+      "assignedTo": {
+        "name": "Laura"
+      },
       "creation_time": "2021-10-20T07:27:06.073Z",
       "description": {
         "content": "Es la pagina que me mostrara que mi mensaje ha sido enviado y que me permitira volver",
@@ -56,27 +87,14 @@
       "assignedTo": {
         "name": "Laura"
       },
-      "creation_time": "2021-10-20T07:27:30.049Z",
+      "creation_time": "2021-10-20T07:23:44.698Z",
       "description": {
-        "content": "Es el menu que tiene el usuario cuando inicia sesion",
+        "content": "Es el login de mi pagina web\n",
         "mime": "text/markdown"
       },
-      "id": "6",
+      "id": "2",
       "references": [],
-      "title": "Menu.html"
-    },
-    {
-      "assignedTo": {
-        "name": "Laura"
-      },
-      "creation_time": "2021-10-20T07:29:45.410Z",
-      "description": {
-        "content": "Es el menu que se mostrara cuando un editor inicie sesion",
-        "mime": "text/markdown"
-      },
-      "id": "10",
-      "references": [],
-      "title": "MenuEditor.html"
+      "title": "index.html"
     },
     {
       "assignedTo": {
@@ -90,9 +108,7 @@
       "id": "4",
       "references": [],
       "title": "password.html"
-    }
-  ],
-  "in-progress": [
+    },
     {
       "assignedTo": {
         "name": "Laura"
@@ -105,22 +121,6 @@
       "id": "3",
       "references": [],
       "title": "Registro"
-    }
-  ],
-  "testing": [],
-  "done": [
-    {
-      "assignedTo": {
-        "name": "Laura"
-      },
-      "creation_time": "2021-10-20T07:23:44.698Z",
-      "description": {
-        "content": "Es el login de mi pagina web\n",
-        "mime": "text/markdown"
-      },
-      "id": "2",
-      "references": [],
-      "title": "index.html"
     }
   ]
 }

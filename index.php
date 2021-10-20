@@ -32,14 +32,14 @@
                 <div class="row">
                     <div class=" margen-5 l-col-3 m-col-3 s-col-3 separado">
                         <label>Email:</label>
-                        <input type="text" value="" name="Email" placeholder="Inserta tu Email">
+                        <input type="text" value="" name="Email" placeholder="Inserta tu Email" require>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="margen-5 l-col-3 m-col-3 s-col-3">
                         <label>Contraseña:</label>
-                        <input type="text" value="" name="Password" placeholder="Inserta tu Contraseña">
+                        <input type="text" value="" name="Password" placeholder="Inserta tu Contraseña" require>
                     </div>
                 </div>
 
@@ -52,7 +52,7 @@
                     </div>
 
                     <div class=" margen-8 l-col-3 m-col-3 s-col-3">
-                        <a  class='oriental' href="./semehaolvidado.html">Se me ha olvidado...</a>
+                        <a  class='oriental' href="./password.php">Se me ha olvidado...</a>
                     </div>
                 </div>
             </form>
