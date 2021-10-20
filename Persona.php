@@ -36,6 +36,15 @@ class Persona
         return $this->correo;
      }
 
+     public function getPrestigio(){
+        return $this->prestigio;
+     }
+     public function getAciertos(){
+        return $this->aciertos;
+     }
+     public function getVictorias(){
+        return $this->victorias;
+     }
 
      public function getFoto(){
         return $this->foto;

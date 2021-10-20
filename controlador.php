@@ -3,9 +3,10 @@ require_once './Persona.php';
 require_once './Conexion.php';
 session_start();
 
-if ($_REQUEST['Aceptar']) {
+if (isset($_REQUEST['Aceptar'])) {
     $email = $_REQUEST['Email'];
     $password = sha1($_REQUEST['Password']);
+    $roles = array();
 
     $usu = Conexion::buscarPersona($email, $password);
 
@@ -19,59 +20,58 @@ if ($_REQUEST['Aceptar']) {
                     header("Location:./fdg.php");
                 } else {
                     if ($roles[$i] == 2) {
-                        header("Location:./fdg.php");
+                        header("Location:./menu.php");
                     }
                 }
             }
         }
     }
 }
-
-if($_REQUEST['Registrarse']){
+if (isset($_REQUEST['Registrarse'])) {
     header("Location:./registro.php");
 }
 
-if($_REQUEST['Registrar']){
-    $nombre=$_REQUEST['Nombre'];
-    $email=$_REQUEST['Email'];
-    $passwrd=sha1($_REQUEST['Password']);
-    $passwrdConfirm=sha1($_REQUEST['PasswordRepeat']);
-    $url='./PERFILES/'.$nombre.'.jpg';
-    $foto=$_FILES['Foto'][$url];
+if (isset($_REQUEST['Registrar'])) {
+    $nombre = $_REQUEST['Nombre'];
+    $email = $_REQUEST['Email'];
+    $passwrd = sha1($_REQUEST['Password']);
+    $passwrdConfirm = sha1($_REQUEST['PasswordRepeat']);
+    $url = './PERFILES/' . $nombre . '.jpg';
+    //$foto=$_FILES['Foto'][$url];
 
-    if($passwrd==$passwrdConfirm){
-    if($foto!=null){
-        $persona= new Persona($nombre,$email,$passwrd);
+    if ($passwrd == $passwrdConfirm) {
+        //if($foto!=null){
+        $persona = new Persona($nombre, $email, $passwrd);
         //$persona->setFoto($url);
+        //}
+        //else{
+        //$persona= new Persona($nombre,$email,$passwrd);
+        Conexion::addPersona($persona, 2);
+        header("Location:./reformas.php");
+    } else {
+        $_SESSION['mensaje'] = 'Las constraseñas son distintas';
+        header("Location:./error.php");
     }
-else{
-    $persona= new Persona($nombre,$email,$passwrd);
-}
-    
-  Conexion::addPersona($persona); 
-  header("Location:./reformas.php");
-}
-else{
-    $_SESSION['mensaje']='Las constraseñas son distintas';
-    header("Location:./error.php");
-}  
 }
 
 
-if($_REQUEST['VolverIndex']){
+
+if (isset($_REQUEST['VolverIndex'])) {
     header("Location:./index.php");
 }
 
-if($_REQUEST['VolverPassword']){
+if (isset($_REQUEST['VolverPassword'])) {
     header("Location:./password.php");
 }
 
-if($_REQUEST['Enviar']){
-    $email=$_REQUEST['correoDest'];
-    $perAnt=Conexion::buscarPersonaPorCorreo($email);
+if (isset($_REQUEST['Enviar'])) {
+    $email = $_REQUEST['correoDest'];
+    $perAnt = Conexion::buscarPersonaPorCorreo($email);
+
     if ($perAnt != null) {
         $alea = rand(0, 3);
         $_SESSION['newPassword'] = '';
+        $_SESSION['correoDest'] = $email;
 
         switch ($alea) {
             case 0:
@@ -88,12 +88,12 @@ if($_REQUEST['Enviar']){
                 break;
         }
     }
-    $perNew = new Persona($perAnt->getNombre(),$perAnt->getEmail(),sha1($_SESSION['newPassword']));
+    $perNew = new Persona($perAnt->getNombre(), $perAnt->getEmail(), sha1($_SESSION['newPassword']));
     Conexion::editarPersona($perNew, $perAnt);
 
     header("Location:./enviar.php");
 }
 
-if($_REQUEST['CerrarSesion']){
+if (isset($_REQUEST['CerrarSesion'])) {
     header("Location:./index.php");
 }
