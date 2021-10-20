@@ -5,11 +5,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recupera tu cuenta</title>
+    <title>Menu Usuario</title>
     <link rel="stylesheet" type="text/css" href="./CSS/general.css">
 </head>
 
 <body class="oriental">
+
+<?php
+    session_start();
+    $_SESSION['url'] = 'ElegirRol.php';
+    ?>
+
     <main class="container oriental">
         <header class="oriental row centrado">
             <div class="row">
@@ -24,25 +30,30 @@
 
         <section class="row">
 
-            <div class=" margen-4 l-col-12 m-col-12 s-col-12 separado">
-                <h3>Recupera tu cuenta:</h3>
+            <div class=" margen-5 l-col-12 m-col-12 s-col-12 separado">
+                <h3>Menú:</h3>
             </div>
 
             <form action="controlador.php" method="POST" class="oriental">
-
                 <div class="row">
-                    <div class="margen-5 l-col-3 m-col-3 s-col-3 separadoPequeño">
-                        <label>Email:</label>
-                        <input type="text" value="" name="correoDest" placeholder="Inserta tu Email" require>
+                    <div class="margen-5 l-col-2 m-col-2 s-col-2 separado">
+                        <input type="submit" value="Administrador" name="Administrador">
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="margen-4 l-col-2 m-col-2 s-col-2 separado">
-                        <input type="submit" value="Enviar" name="Enviar">
+                    <div class=" margen-5 l-col-2 m-col-2 s-col-2 separadoPequeño">
+                        <input type="submit" value="Usuario" name="Usuario">
                     </div>
-                    <div class=" margen-6 l-col-2 m-col-2 s-col-2 ">
-                        <input type="submit" value="Volver" name="CerrarSesion">
+                </div>
+                <div class="row">
+                    <div class=" margen-5 l-col-2 m-col-2 s-col-2 separadoPequeño">
+                        <input type="submit" value="Editor" name="Editor">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class=" margen-5 l-col-2 m-col-2 s-col-2 separadoPequeño">
+                        <input type="submit" value="Volver" name="VolverIndex">
                     </div>
                 </div>
             </form>

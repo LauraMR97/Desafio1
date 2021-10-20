@@ -46,7 +46,7 @@
                 </div>
                 <div class="row">
                     <div class=" margen-5 l-col-2 m-col-2 s-col-2 separadoPequeño">
-                        <input type="submit" value="Volver" name="VolverIndex">
+                        <input type="submit" value="Volver" name="VolverAlternativo">
                     </div>
                 </div>
             </form>

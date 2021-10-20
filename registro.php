@@ -69,7 +69,7 @@
                         <input type="submit" value="Registrar" name="Registrar">
                     </div>
                     <div class=" margen-6 l-col-2 m-col-2 s-col-2 ">
-                        <input type="submit" value="Volver" name="VolverIndex">
+                        <input type="submit" value="Volver" name="CerrarSesion">
                     </div>
                 </div>
             </form>
