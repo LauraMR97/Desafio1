@@ -14,10 +14,10 @@ if (isset($_REQUEST['Aceptar'])) {
         $roles = Conexion::verRol($email);
         for ($i = 0; $i < count($roles); $i++) {
             if ($roles[$i] == 0) {
-                header("Location:./reformas.php");
+                header("Location:./ElegirRol.php");
             } else {
                 if ($roles[$i] == 1) {
-                    header("Location:./fdg.php");
+                    header("Location:./reformas.php");
                 } else {
                     if ($roles[$i] == 2) {
                         header("Location:./menu.php");
@@ -54,12 +54,6 @@ if (isset($_REQUEST['Registrar'])) {
     }
 }
 
-
-
-if (isset($_REQUEST['VolverIndex'])) {
-    header("Location:./index.php");
-}
-
 if (isset($_REQUEST['VolverPassword'])) {
     header("Location:./password.php");
 }
@@ -94,6 +88,41 @@ if (isset($_REQUEST['Enviar'])) {
     header("Location:./enviar.php");
 }
 
+/**
+ * Volver al Login
+ */
 if (isset($_REQUEST['CerrarSesion'])) {
     header("Location:./index.php");
+}
+/**
+ * Te lleva a administracion
+ */
+if (isset($_REQUEST['Administrador'])) {
+    header("Location:./Administracion.php");
+}
+
+/**
+ * Te lleva al menu de usuario
+ */
+if (isset($_REQUEST['Usuario'])) {
+    header("Location:./menu.php");
+}
+/**
+ * Te lleva al menu del Editor
+ */
+if (isset($_REQUEST['Editor'])) {
+    header("Location:./MenuEditor.php");
+}
+
+/**
+ * Este boton es para el menu de usuario, decide si has vuelto desde ElegirRol o desde 
+ *Index,asi, si has iniciado sesion como admin, al hacer clic en volver en el menu
+ *de usuario, te devolvera a elegirRol
+ */
+if (isset($_REQUEST['VolverAlternativo'])) {
+    if ($_SESSION['url'] == 'index.php') {
+        header("Location:./index.php");
+    } else {
+        header("Location:./ElegirRol.php");
+    }
 }

@@ -10,6 +10,10 @@
 </head>
 
 <body class="oriental">
+    <?php
+    session_start();
+    $_SESSION['url'] = 'index.php';
+    ?>
     <main class="container oriental">
         <header class="oriental row centrado">
             <div class="row">
@@ -52,7 +56,7 @@
                     </div>
 
                     <div class=" margen-8 l-col-3 m-col-3 s-col-3">
-                        <a  class='oriental' href="./password.php">Se me ha olvidado...</a>
+                        <a class='oriental' href="./password.php">Se me ha olvidado...</a>
                     </div>
                 </div>
             </form>
