@@ -1,0 +1,47 @@
+/*------------------------------------IMPORTS---------------------------------------*/
+
+@import "reset";
+@import 'colores';
+@import 'rejillas';
+@import 'tipografia';
+@import 'componentes';
+@import 'botones';
+@import 'tablas';
+@import 'imagenes';
+@import 'formulario';
+
+/*----------------------------------CENTRADO------------------------------------------*/
+
+.centrado {
+    text-align: center;
+}
+
+
+/*-------------------------------LINEA SEPARADORA---------------------------------------*/
+
+hr {
+    margin-top: 3rem;
+    margin-bottom: 3.5rem;
+    border-width: 0;
+    border-top: 1px solid #E1E1E1;
+}
+
+/*-------------------------------ROW-CONTAINER---------------------------------------*/
+
+.container:after,
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.separado{
+    padding-top: 3rem;
+  }
+
+  .container {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}

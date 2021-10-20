@@ -1,0 +1,53 @@
+/*-----------------------Rejillas Mixin-------------------------------------*/
+
+
+
+@mixin responsive($dispositivo) {
+    @if $dispositivo==ordenador {
+        @media only screen and (max-width: 1280px) {
+            @content;
+        }
+    }
+    @if $dispositivo==tablet {
+        @media only screen and (max-width: 768px) {
+            @content;
+        }
+    }
+    @if $dispositivo==movil {
+        @media only screen and (max-width: 480px) {
+            @content;
+        }
+    }
+}
+
+$maxColumnas: 12;
+@include responsive(ordenador) {
+    @for $i from 1 through $maxColumnas {
+        .l-col-#{$i} {
+            width: (100% / $maxColumnas)*$i;
+        }
+    }
+}
+
+@include responsive(tablet) {
+    @for $i from 1 through $maxColumnas {
+        .m-col-#{$i} {
+            width: (100% / $maxColumnas)*$i;
+        }
+    }
+}
+
+@include responsive(movil) {
+    @for $i from 1 through $maxColumnas {
+        .s-col-#{$i} {
+            width: (100% / $maxColumnas)*$i;
+        }
+    }
+}
+
+//--------------------MARGENES---------------------------//
+@for $i from 1 through $maxColumnas {
+    .margen-#{$i} {
+        margin-left: (100% / $maxColumnas)*$i;
+    }
+}

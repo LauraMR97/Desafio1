@@ -1,0 +1,72 @@
+/*--------------------------------------FORMULARIOS----------------------------------*/
+form {
+    label{
+        display: block;
+    }
+    &.minimalista {
+        input[type="submit"],
+        input[type="button"] {
+            background-color: $primario;
+            color: $terciario;
+            font-family: monospace;
+            font-size: 1.2em;
+            margin: auto;
+            border-radius: 10px;
+            width: 150px;
+            padding: 16px;
+        }
+        input[type="email"],
+        input[type="number"],
+        input[type="search"],
+        input[type="text"],
+        input[type="tel"],
+        input[type="url"],
+        input[type="password"],
+        textarea,
+        select {
+            font-family: monospace;
+            font-size: 1.2em;
+            margin: auto;
+            border-radius: 10px;
+            width: 150px;
+            padding: 16px;
+        }
+        input[type="checkbox"],
+        input[type="radio"] {
+            display: inline;
+        }
+    }
+    &.oriental {
+        input[type="submit"],
+        input[type="button"] {
+            background-color: $secundarioE2;
+            color: $primario;
+            font-family: monospace;
+            font-size: 1.2em;
+            margin: auto;
+            width: 150px;
+            padding: 16px;
+        }
+        input[type="email"],
+        input[type="number"],
+        input[type="search"],
+        input[type="text"],
+        input[type="tel"],
+        input[type="url"],
+        input[type="password"],
+        textarea,
+        select {
+            background-color: $secundarioE2;
+            color: $primario;
+            font-family: monospace;
+            font-size: 1.2em;
+            margin: auto;
+            width: 150px;
+            padding: 16px;
+        }
+        input[type="checkbox"],
+        input[type="radio"] {
+            display: inline;
+        }
+    }
+}

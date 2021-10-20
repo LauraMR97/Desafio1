@@ -1,0 +1,37 @@
+/*-----------------------Botones-------------------------------*/
+
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+    &.fantasia {
+        display: inline-block;
+        height: 3rem;
+        width: 5rem;
+        color: $secundarioE;
+        text-decoration: dotted;
+        font-size: 1rem;
+        box-sizing: border-box;
+        border-radius: 1em 1em 1em 1em;
+        border: 1px solid #eb94d0;
+        background-image: linear-gradient(to bottom, #eb94d0, #2079b0);
+        &:hover {
+            background-image: linear-gradient(to bottom, #2079b0, #eb94d0);
+        }
+    }
+    &.gotico {
+        display: inline-block;
+        height: 3rem;
+        width: 5rem;
+        color: $secundarioE;
+        text-decoration: none;
+        font-size: 1rem;
+        box-sizing: border-box;
+        border: 1px solid $cuartoE;
+        box-shadow: 10px 10px 10px $primario;
+        background-image: linear-gradient(to right, $primario, $cuartoE);
+        &:hover {
+            background-image: linear-gradient(to right, $cuarto, $primario);
+        }
+    }
+}

@@ -1,0 +1,55 @@
+/*-----------------------Tipos de letras-------------------------------------*/
+
+
+/*----------------------------H Y P -----------------------------------------*/
+
+$size: 0.1rem;
+$talla: 3.6rem;
+@for $i from 1 through 6 {
+    h#{$i} {
+        font-size: $talla;
+        font-family: 'Franklin Gothic Medium';
+        $talla: $talla - 0.60;
+    }
+}
+
+p {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1rem;
+}
+
+
+/*-----------------------Enlaces-------------------------------------*/
+
+a {
+    &.gamer{
+        color: $cuarto;
+        font-family: monospace;
+        text-decoration: none;
+        font-size: 1rem;
+        border-radius: 1em 1em 1em 1em;
+        padding: 12px;
+        &:hover {
+            color: aqua;
+        }
+        &:visited {
+            color: rgb(20, 23, 220);
+        }
+    }
+
+    &.oriental{
+        color: $primario2;
+        font-family: monospace;
+        text-decoration: none;
+        font-size: 1rem;
+        border-radius: 1em 1em 1em 1em;
+        padding: 12px;
+        &:hover {
+            color:$primarioE2;
+        }
+        &:visited {
+            color: $terciarioE2;
+        }
+    }
+ 
+}

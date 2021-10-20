@@ -1,0 +1,33 @@
+/*-----------------------Tablas-------------------------------*/
+
+table {
+    width: 100%;
+    &.oscuro {
+        background: linear-gradient(to bottom, #2079b0, #eb94d0);
+        border-collapse: separate;
+        border-spacing: 5px;
+        color: $terciario;
+        td,
+        th {
+            padding: 0.1em;
+            background: $terciario;
+            color: $primario;
+            width: 25%;
+        }
+    }
+    &.sinLineas {
+        border: 1px solid #999;
+        text-align: left;
+        margin: 0 0 1em 0;
+        caption-side: top;
+        td,
+        th {
+            padding: 0.1em;
+            border-bottom: 1px solid #999;
+            width: 25%;
+        }
+        th {
+            font-weight: bold;
+        }
+    }
+}

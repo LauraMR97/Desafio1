@@ -1,0 +1,75 @@
+
+body{
+    &.minimalista{
+        background-image: url("../IMAGENES/indexGamer.jpg");
+        background-color: #cccccc;
+    }
+
+    &.oriental{
+        background-image: url("../IMAGENES/indexOriental.jpg");
+        background-color:$secundarioE2;
+    }
+   
+}
+
+main{
+    &.minimalista{
+        background-color:$terciario;
+    }
+
+    &.oriental{
+        background-color:$secundarioE2;
+    }
+   
+}
+nav {
+    &.vertical a {
+        font-size: 1.5rem;
+        width: 7rem;
+        display: block;
+        padding: 12px;
+        text-decoration: none;
+        background-color: $primario;
+        color: $terciario;
+        border: solid $cuarto;
+        &:hover {
+            color: $cuartoE;
+            width: 8rem;
+        }
+    }
+    &.horizontal a {
+        font-size: 1.5rem;
+        display: inline;
+        text-decoration: none;
+        background-color: $primario;
+        color: $terciario;
+        border: solid $cuarto;
+        &:hover {
+            color: $cuartoE;
+        }
+    }
+}
+
+header {
+    &.minimalista {
+        background-color: $primario;
+        padding: 3em;
+        color: $terciario;
+    }
+    &.oriental {
+        background-color: $primario2;
+        padding: 2em;
+    }
+}
+
+footer {
+    &.minimalista {
+        background-color: $primario;
+        padding: 3em;
+        color: $terciario;
+    }
+    &.oriental {
+        background-color: $primario2;
+        padding: 2em;
+    }
+}

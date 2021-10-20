@@ -1,0 +1,17 @@
+/*-----------------------Imagen Responsive-------------------------------------*/
+
+.imagenResponsive {
+    height: auto;
+    width: 100%;
+}
+
+
+/*-----------------------Imagen Articulos-------------------------------------*/
+
+article {
+    img {
+        .reportaje {
+            float: left;
+        }
+    }
+}

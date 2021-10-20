@@ -1,0 +1,21 @@
+El administrador puede elegir el rol de editor
+EL administrador puede crear editores
+Se envia un mensaje cuando se active a un usuario
+Sala de espera al meter un codigo de partida
+Añadir al entidad relaccion una tabla HIstorial
+Añadir a la entidad relacion una tabla Ranking
+
+
+Tablas:
+Persona
+Rol
+Mensaje
+Pregunta
+Respuesta
+Sala
+Equipo
+Historial
+Adjunto
+
+El ranking se hara con una select de aciertos
+
