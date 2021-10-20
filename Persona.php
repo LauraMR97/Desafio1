@@ -20,6 +20,27 @@ class Persona
         $this->victorias = 0;
     }
 
+    public function setFoto($foto){
+        $this->foto=$foto;
+    }
+
+    public function getNombre(){
+       return $this->nombre;
+    }
+
+    public function getPassword(){
+        return $this->password;
+     }
+
+     public function getEmail(){
+        return $this->correo;
+     }
+
+
+     public function getFoto(){
+        return $this->foto;
+     }
+
     public function __toString()
     {
         $string = '';

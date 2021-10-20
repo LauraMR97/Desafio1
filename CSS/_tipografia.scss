@@ -22,7 +22,7 @@ p {
 /*-----------------------Enlaces-------------------------------------*/
 
 a {
-    &.gamer{
+    &.gamer {
         color: $cuarto;
         font-family: monospace;
         text-decoration: none;
@@ -36,8 +36,7 @@ a {
             color: rgb(20, 23, 220);
         }
     }
-
-    &.oriental{
+    &.oriental {
         color: $primario2;
         font-family: monospace;
         text-decoration: none;
@@ -45,11 +44,10 @@ a {
         border-radius: 1em 1em 1em 1em;
         padding: 12px;
         &:hover {
-            color:$primarioE2;
+            color: $primarioE2;
         }
         &:visited {
             color: $terciarioE2;
         }
     }
- 
 }

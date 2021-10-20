@@ -26,6 +26,7 @@ hr {
     border-top: 1px solid #E1E1E1;
 }
 
+
 /*-------------------------------ROW-CONTAINER---------------------------------------*/
 
 .container:after,
@@ -34,11 +35,16 @@ hr {
     display: table;
     clear: both;
 }
-.separado{
-    padding-top: 3rem;
-  }
 
-  .container {
+.separado {
+    padding-top: 2rem;
+}
+
+.separadoPequeño {
+    padding-top: 1rem;
+}
+
+.container {
     position: relative;
     width: 100%;
     max-width: 1000px;

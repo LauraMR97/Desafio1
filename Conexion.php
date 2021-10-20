@@ -14,13 +14,13 @@ class Conexion
     }
 
     /*--------------------------------------------------------------*/
-   /* public static function addPersona($p)
+    public static function addPersona($p)
     {
         self::abrirConexion();
-        $query = "INSERT INTO persona (nombre, contraseña, correo,id) VALUES (?,?,?,?)";
+        $query = "INSERT INTO persona (nombre, contraseña, correo, foto) VALUES (?,?,?,?,?)";
         $stmt = self::$conexion->prepare($query);
 
-        $stmt->bind_param("sssi", $p->getNomUsuario(), $p->getContrasenia(), $p->getEmail(), $p->getNumIdent());
+        $stmt->bind_param("ssss", $p->getNombre(), $p->getPassword(), $p->getEmail(), $p->getFoto());
         $stmt->execute();
 
         $result = $stmt->get_result();
@@ -34,7 +34,7 @@ class Conexion
         }
         $stmt->close();
         self::cerrarConexion();
-    }*/
+    }
 
     /*--------------------------------------------------------------*/
    /* public static function delPersona($correo)

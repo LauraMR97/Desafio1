@@ -37,28 +37,28 @@
                 </div>
 
                 <div class="row">
-                    <div class="margen-5 l-col-3 m-col-3 s-col-3">
+                    <div class="margen-5 l-col-3 m-col-3 s-col-3 separadoPequeño">
                         <label>Email:</label>
                         <input type="text" value="" name="Email" placeholder="Inserta tu Email">
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="margen-5 l-col-3 m-col-3 s-col-3">
+                    <div class="margen-5 l-col-3 m-col-3 s-col-3 separadoPequeño">
                         <label>Contraseña:</label>
                         <input type="text" value="" name="Password" placeholder="Inserta tu Contraseña">
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="margen-5 l-col-3 m-col-3 s-col-3">
+                    <div class="margen-5 l-col-3 m-col-3 s-col-3 separadoPequeño">
                         <label>Confirmar Contraseña:</label>
                         <input type="text" value="" name="PasswordRepeat" placeholder="Inserta tu Contraseña de nuevo">
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="margen-5 l-col-3 m-col-3 s-col-3">
+                    <div class="margen-5 l-col-3 m-col-3 s-col-3 separadoPequeño">
                         <label>Foto(opcional):</label>
                         <input type="file" value="" name="Foto">
                     </div>
@@ -69,7 +69,7 @@
                         <input type="submit" value="Registrar" name="Registrar">
                     </div>
                     <div class=" margen-6 l-col-2 m-col-2 s-col-2 ">
-                        <input type="submit" value="Volver" name="Volver">
+                        <input type="submit" value="Volver" name="VolverIndex">
                     </div>
                 </div>
             </form>
