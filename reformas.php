@@ -8,5 +8,9 @@
 </head>
 <body>
     <h1>ESTAMOS DE REFORMAS, VUELVA PRONTO</h1>
+
+    <form action="controlador.php" method="POST" class="oriental">
+        <input type="submit" value="Volver" name="CerrarSesion">
+    </form>
 </body>
 </html>

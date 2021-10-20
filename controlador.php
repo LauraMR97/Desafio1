@@ -126,3 +126,11 @@ if (isset($_REQUEST['VolverAlternativo'])) {
         header("Location:./ElegirRol.php");
     }
 }
+
+if(isset ($_REQUEST['Estadisticas'])){
+    header("Location:./reformas.php");
+}
+
+if(isset ($_REQUEST['GestionPreguntas'])){
+    header("Location:./reformas.php");
+}
