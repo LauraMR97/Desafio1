@@ -17,7 +17,7 @@ if (isset($_REQUEST['Aceptar'])) {
                 header("Location:./ElegirRol.php");
             } else {
                 if ($roles[$i] == 1) {
-                    header("Location:./reformas.php");
+                    header("Location:./MenuEditor.php");
                 } else {
                     if ($roles[$i] == 2) {
                         header("Location:./menu.php");
@@ -125,4 +125,12 @@ if (isset($_REQUEST['VolverAlternativo'])) {
     } else {
         header("Location:./ElegirRol.php");
     }
+}
+
+if(isset ($_REQUEST['Estadisticas'])){
+    header("Location:./reformas.php");
+}
+
+if(isset ($_REQUEST['GestionPreguntas'])){
+    header("Location:./reformas.php");
 }
