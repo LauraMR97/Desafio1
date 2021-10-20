@@ -30,19 +30,6 @@
       "assignedTo": {
         "name": "Laura"
       },
-      "creation_time": "2021-10-20T07:28:04.578Z",
-      "description": {
-        "content": "Es el menu que tiene el administrador cuando inicia sesion, en el que puede elegir con que rol quiere continuar",
-        "mime": "text/markdown"
-      },
-      "id": "7",
-      "references": [],
-      "title": "ElegirRol"
-    },
-    {
-      "assignedTo": {
-        "name": "Laura"
-      },
       "creation_time": "2021-10-20T07:29:45.410Z",
       "description": {
         "content": "Es el menu que se mostrara cuando un editor inicie sesion",
@@ -58,14 +45,14 @@
       "assignedTo": {
         "name": "Laura"
       },
-      "creation_time": "2021-10-20T07:27:30.049Z",
+      "creation_time": "2021-10-20T07:28:04.578Z",
       "description": {
-        "content": "Es el menu que tiene el usuario cuando inicia sesion",
+        "content": "Es el menu que tiene el administrador cuando inicia sesion, en el que puede elegir con que rol quiere continuar",
         "mime": "text/markdown"
       },
-      "id": "6",
+      "id": "7",
       "references": [],
-      "title": "Menu.html"
+      "title": "ElegirRol"
     }
   ],
   "testing": [],
@@ -95,6 +82,19 @@
       "id": "2",
       "references": [],
       "title": "index.html"
+    },
+    {
+      "assignedTo": {
+        "name": "Laura"
+      },
+      "creation_time": "2021-10-20T07:27:30.049Z",
+      "description": {
+        "content": "Es el menu que tiene el usuario cuando inicia sesion",
+        "mime": "text/markdown"
+      },
+      "id": "6",
+      "references": [],
+      "title": "Menu.html"
     },
     {
       "assignedTo": {

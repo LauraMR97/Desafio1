@@ -14,13 +14,14 @@ class Conexion
     }
 
     /*--------------------------------------------------------------*/
-    public static function addPersona($p)
+    public static function addPersona($p, $rol)
     {
         self::abrirConexion();
-        $query = "INSERT INTO persona (nombre, contraseña, correo, foto) VALUES (?,?,?,?,?)";
+        $query = "INSERT INTO persona (nombre, correo, password, foto, prestigio, aciertos, victorias) VALUES (?,?,?,?,?,?,?)";
+        $query2 = "INSERT INTO rol_persona (id_rol, correo) VALUES (?,?)";
         $stmt = self::$conexion->prepare($query);
 
-        $stmt->bind_param("ssss", $p->getNombre(), $p->getPassword(), $p->getEmail(), $p->getFoto());
+        $stmt->bind_param("sssssii", $p->getNombre(), $p->getEmail(), $p->getPassword(), $p->getFoto(), $p->getPrestigio(), $p->getAciertos(), $p->getVictorias());
         $stmt->execute();
 
         $result = $stmt->get_result();
@@ -33,11 +34,27 @@ class Conexion
             Bitacora::guardarArchivo($mensaje);
         }
         $stmt->close();
+
+        $stmt = self::$conexion->prepare($query2);
+        $stmt->bind_param("is", $rol, $p->getEmail());
+        $stmt->execute();
+
+
+        if (mysqli_query(self::$conexion, $query2)) {
+            $mensaje = 'Registro insertado con éxito' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            Bitacora::guardarArchivo($mensaje);
+        } else {
+            $mensaje = "Error al insertar: " . mysqli_error(self::$conexion) . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            Bitacora::guardarArchivo($mensaje);
+        }
+
+
+        $stmt->close();
         self::cerrarConexion();
     }
 
     /*--------------------------------------------------------------*/
-   /* public static function delPersona($correo)
+    /* public static function delPersona($correo)
     {
         self::abrirConexion();
         $query = "DELETE FROM persona WHERE correo = ? ";
@@ -67,6 +84,7 @@ class Conexion
         self::abrirConexion();
 
         $query = "SELECT * FROM persona WHERE correo like ? AND password like ?";
+
         $stmt = self::$conexion->prepare($query);
 
         $stmt->bind_param("ss", $correo, $cont);
@@ -77,7 +95,7 @@ class Conexion
 
         if ($result) {
             while ($fila = mysqli_fetch_array($result)) {
-                $per = new persona($fila["nombre"], $fila["contraseña"], $fila["correo"], $fila["id"]);
+                $per = new Persona($fila["nombre"], $fila["correo"], $fila["password"]);
             }
         }
 
@@ -87,64 +105,64 @@ class Conexion
         return $per;
     }
 
-      /*--------------------------------------------------------------*/
+    /*--------------------------------------------------------------*/
 
-      public static function verRol($correo)
-      {
-          $rol = array();
-          $i=0;
-  
-          self::abrirConexion();
-  
-          $query = "SELECT id_rol FROM rol_persona WHERE correo like ?";
-          $stmt = self::$conexion->prepare($query);
-  
-          $stmt->bind_param("s", $correo);
-          $stmt->execute();
-  
-          $result = $stmt->get_result();
-  
-  
-          if ($result) {
-              while ($fila = mysqli_fetch_array($result)) {
+    public static function verRol($correo)
+    {
+        $rol = array();
+        $i = 0;
+
+        self::abrirConexion();
+
+        $query = "SELECT id_rol FROM rol_persona WHERE correo like ?";
+        $stmt = self::$conexion->prepare($query);
+
+        $stmt->bind_param("s", $correo);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+
+        if ($result) {
+            while ($fila = mysqli_fetch_array($result)) {
                 $rol[$i] = $fila["id_rol"];
                 $i++;
-              }
-          }
-  
-          $stmt->close();
-          self::cerrarConexion();
-  
-          return $rol;
-      }
-      /*--------------------------------------------------------------*/
+            }
+        }
 
-      public static function buscarPersonaPorCorreo($correo)
-      {
-          $per = null;
-  
-          self::abrirConexion();
-  
-          $query = "SELECT * FROM persona WHERE correo like ?";
-          $stmt = self::$conexion->prepare($query);
-  
-          $stmt->bind_param("s", $correo);
-          $stmt->execute();
-  
-          $result = $stmt->get_result();
-  
-  
-          if ($result) {
-              while ($fila = mysqli_fetch_array($result)) {
-                  $per = new persona($fila["nombre"], $fila["correo"], $fila["password"]);
-              }
-          }
-  
-          $stmt->close();
-          self::cerrarConexion();
-  
-          return $per;
-      }
+        $stmt->close();
+        self::cerrarConexion();
+
+        return $rol;
+    }
+    /*--------------------------------------------------------------*/
+
+    public static function buscarPersonaPorCorreo($correo)
+    {
+        $per = null;
+
+        self::abrirConexion();
+
+        $query = "SELECT * FROM persona WHERE correo like ?";
+        $stmt = self::$conexion->prepare($query);
+
+        $stmt->bind_param("s", $correo);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+
+        if ($result) {
+            while ($fila = mysqli_fetch_array($result)) {
+                $per = new Persona($fila["nombre"], $fila["correo"], $fila["password"]);
+            }
+        }
+
+        $stmt->close();
+        self::cerrarConexion();
+
+        return $per;
+    }
 
     /*--------------------------------------------------------------*/
     public static function editarPersona($perNu, $perAnt)
@@ -153,7 +171,7 @@ class Conexion
         $query = "UPDATE persona SET nombre = ? ,correo = ? ,password= ? WHERE correo LIKE ? ";
         $stmt = self::$conexion->prepare($query);
 
-        $stmt->bind_param("ssss", $perNu->getNombre(),$perNu->getEmail(), $perNu->getPassword(), $perAnt->getEmail());
+        $stmt->bind_param("ssss", $perNu->getNombre(), $perNu->getEmail(), $perNu->getPassword(), $perAnt->getEmail());
         $stmt->execute();
 
         $result = $stmt->get_result();
@@ -171,7 +189,7 @@ class Conexion
 
     /*--------------------------------------------------------------*/
 
-   /* public static function ArrayDePersonas()
+    /* public static function ArrayDePersonas()
     {
         $array = array();
 
