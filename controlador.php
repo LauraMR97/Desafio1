@@ -61,3 +61,39 @@ else{
 if($_REQUEST['VolverIndex']){
     header("Location:./index.php");
 }
+
+if($_REQUEST['VolverPassword']){
+    header("Location:./password.php");
+}
+
+if($_REQUEST['Enviar']){
+    $email=$_REQUEST['correoDest'];
+    $perAnt=Conexion::buscarPersonaPorCorreo($email);
+    if ($perAnt != null) {
+        $alea = rand(0, 3);
+        $_SESSION['newPassword'] = '';
+
+        switch ($alea) {
+            case 0:
+                $_SESSION['newPassword'] = 'sdfdsfgs';
+                break;
+            case 1:
+                $_SESSION['newPassword'] = 'jdsnfusdnfsu';
+                break;
+            case 2:
+                $_SESSION['newPassword'] = 'fednfjsifs';
+                break;
+            case 3:
+                $_SESSION['newPassword'] = 'iaushfgd';
+                break;
+        }
+    }
+    $perNew = new Persona($perAnt->getNombre(),$perAnt->getEmail(),sha1($_SESSION['newPassword']));
+    Conexion::editarPersona($perNew, $perAnt);
+
+    header("Location:./enviar.php");
+}
+
+if($_REQUEST['CerrarSesion']){
+    header("Location:./index.php");
+}

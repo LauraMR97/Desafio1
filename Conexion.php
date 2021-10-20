@@ -119,7 +119,7 @@ class Conexion
       }
       /*--------------------------------------------------------------*/
 
-     /* public static function buscarPersonaPorCorreo($correo)
+      public static function buscarPersonaPorCorreo($correo)
       {
           $per = null;
   
@@ -136,7 +136,7 @@ class Conexion
   
           if ($result) {
               while ($fila = mysqli_fetch_array($result)) {
-                  $per = new persona($fila["nombre"], $fila["contraseña"], $fila["correo"], $fila["id"]);
+                  $per = new persona($fila["nombre"], $fila["correo"], $fila["password"]);
               }
           }
   
@@ -147,13 +147,13 @@ class Conexion
       }
 
     /*--------------------------------------------------------------*/
-   /* public static function editarPersona($perNu, $perAnt)
+    public static function editarPersona($perNu, $perAnt)
     {
         self::abrirConexion();
-        $query = "UPDATE persona SET nombre = ? ,contraseña = ? ,correo= ? ,id= ? WHERE correo LIKE ? ";
+        $query = "UPDATE persona SET nombre = ? ,correo = ? ,password= ? WHERE correo LIKE ? ";
         $stmt = self::$conexion->prepare($query);
 
-        $stmt->bind_param("sssis", $perNu->getNomUsuario(), $perNu->getContrasenia(), $perNu->getEmail(), $perNu->getNumIdent(), $perAnt->getEmail());
+        $stmt->bind_param("ssss", $perNu->getNombre(),$perNu->getEmail(), $perNu->getPassword(), $perAnt->getEmail());
         $stmt->execute();
 
         $result = $stmt->get_result();
