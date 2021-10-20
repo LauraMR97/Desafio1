@@ -3,6 +3,9 @@ require_once './Persona.php';
 require_once './Conexion.php';
 session_start();
 
+/**
+ * Me permite acceder a mi cuenta de usuario segun sea Admin, User o Editor
+ */
 if (isset($_REQUEST['Aceptar'])) {
     $email = $_REQUEST['Email'];
     $password = sha1($_REQUEST['Password']);
@@ -27,10 +30,16 @@ if (isset($_REQUEST['Aceptar'])) {
         }
     }
 }
+/**
+ * Me permite acceder a Registro.php
+ */
 if (isset($_REQUEST['Registrarse'])) {
     header("Location:./registro.php");
 }
 
+/**
+ * Me permite registrar un usuario Estandar
+ */
 if (isset($_REQUEST['Registrar'])) {
     $nombre = $_REQUEST['Nombre'];
     $email = $_REQUEST['Email'];
@@ -53,7 +62,9 @@ if (isset($_REQUEST['Registrar'])) {
         header("Location:./error.php");
     }
 }
-
+/**
+ * Me permite volver desde enviar.php a password.php
+ */
 if (isset($_REQUEST['VolverPassword'])) {
     header("Location:./password.php");
 }
