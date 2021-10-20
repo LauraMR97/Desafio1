@@ -1,0 +1,126 @@
+{
+  "todo": [
+    {
+      "assignedTo": {
+        "name": "Laura"
+      },
+      "creation_time": "2021-10-20T07:29:12.146Z",
+      "description": {
+        "content": "Es la pagina donde el administrador vera a todos los usuarios registrados y decidira si puede añadir mas, editar , borrar, activar o desactivar",
+        "mime": "text/markdown"
+      },
+      "id": "9",
+      "references": [],
+      "title": "Administracion.html"
+    },
+    {
+      "assignedTo": {
+        "name": "Laura"
+      },
+      "creation_time": "2021-10-20T07:28:31.081Z",
+      "description": {
+        "content": "Es la pagina de edicion donde el admin editara a sus usuarios",
+        "mime": "text/markdown"
+      },
+      "id": "8",
+      "references": [],
+      "title": "editar.html"
+    },
+    {
+      "assignedTo": {
+        "name": "Laura"
+      },
+      "creation_time": "2021-10-20T07:28:04.578Z",
+      "description": {
+        "content": "Es el menu que tiene el administrador cuando inicia sesion, en el que puede elegir con que rol quiere continuar",
+        "mime": "text/markdown"
+      },
+      "id": "7",
+      "references": [],
+      "title": "ElegirRol"
+    },
+    {
+      "assignedTo": {
+        "name": "Laura"
+      },
+      "creation_time": "2021-10-20T07:27:06.073Z",
+      "description": {
+        "content": "Es la pagina que me mostrara que mi mensaje ha sido enviado y que me permitira volver",
+        "mime": "text/markdown"
+      },
+      "id": "5",
+      "references": [],
+      "title": "Enviar.html"
+    },
+    {
+      "assignedTo": {
+        "name": "Laura"
+      },
+      "creation_time": "2021-10-20T07:27:30.049Z",
+      "description": {
+        "content": "Es el menu que tiene el usuario cuando inicia sesion",
+        "mime": "text/markdown"
+      },
+      "id": "6",
+      "references": [],
+      "title": "Menu.html"
+    },
+    {
+      "assignedTo": {
+        "name": "Laura"
+      },
+      "creation_time": "2021-10-20T07:29:45.410Z",
+      "description": {
+        "content": "Es el menu que se mostrara cuando un editor inicie sesion",
+        "mime": "text/markdown"
+      },
+      "id": "10",
+      "references": [],
+      "title": "MenuEditor.html"
+    },
+    {
+      "assignedTo": {
+        "name": "Laura"
+      },
+      "creation_time": "2021-10-20T07:26:14.960Z",
+      "description": {
+        "content": "Es la pagina que me permitira recuperar mi cuenta a traves de un mensaje de correo electronico",
+        "mime": "text/markdown"
+      },
+      "id": "4",
+      "references": [],
+      "title": "password.html"
+    }
+  ],
+  "in-progress": [
+    {
+      "assignedTo": {
+        "name": "Laura"
+      },
+      "creation_time": "2021-10-20T07:24:39.218Z",
+      "description": {
+        "content": "Es el registro de usuarios",
+        "mime": "text/markdown"
+      },
+      "id": "3",
+      "references": [],
+      "title": "Registro"
+    }
+  ],
+  "testing": [],
+  "done": [
+    {
+      "assignedTo": {
+        "name": "Laura"
+      },
+      "creation_time": "2021-10-20T07:23:44.698Z",
+      "description": {
+        "content": "Es el login de mi pagina web\n",
+        "mime": "text/markdown"
+      },
+      "id": "2",
+      "references": [],
+      "title": "index.html"
+    }
+  ]
+}

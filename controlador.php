@@ -27,6 +27,6 @@ if ($_REQUEST['Aceptar']) {
     }
 }
 
-if($_REQUEST['Registrarse']){
-    header("Location:./reformas.php");
+if($_REQUEST['Registrar']){
+    header("Location:./registro.php");
 }
