@@ -5,16 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elegir Rol </title>
+    <title>Menu Editor</title>
     <link rel="stylesheet" type="text/css" href="./CSS/general.css">
 </head>
 
 <body class="oriental">
-
-    <?php
-    session_start();
-    $_SESSION['url'] = 'ElegirRol.php';
-    ?>
 
     <main class="container oriental">
         <header class="oriental row centrado">
@@ -30,30 +25,24 @@
 
         <section class="row">
 
-            <div class=" margen-5 l-col-12 m-col-12 s-col-12 separado">
-                <h3>Elegir Rol:</h3>
+            <div class=" margen-4 l-col-12 m-col-12 s-col-12 separado">
+                <h3>Menú Editor:</h3>
             </div>
 
             <form action="controlador.php" method="POST" class="oriental">
                 <div class="row">
                     <div class="margen-5 l-col-2 m-col-2 s-col-2 separado">
-                        <input type="submit" value="Administrador" name="Administrador">
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class=" margen-5 l-col-2 m-col-2 s-col-2 separadoPequeño">
-                        <input type="submit" value="Usuario" name="Usuario">
+                        <input type="submit" value="Preguntas" name="GestionPreguntas">
                     </div>
                 </div>
                 <div class="row">
                     <div class=" margen-5 l-col-2 m-col-2 s-col-2 separadoPequeño">
-                        <input type="submit" value="Editor" name="Editor">
+                        <input type="submit" value="Estadisticas" name="Estadisticas">
                     </div>
                 </div>
                 <div class="row">
                     <div class=" margen-5 l-col-2 m-col-2 s-col-2 separadoPequeño">
-                        <input type="submit" value="Volver" name="CerrarSesion">
+                        <input type="submit" value="Volver" name="VolverAlternativo">
                     </div>
                 </div>
             </form>

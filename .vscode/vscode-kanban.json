@@ -4,19 +4,6 @@
       "assignedTo": {
         "name": "Laura"
       },
-      "creation_time": "2021-10-20T07:29:12.146Z",
-      "description": {
-        "content": "Es la pagina donde el administrador vera a todos los usuarios registrados y decidira si puede añadir mas, editar , borrar, activar o desactivar",
-        "mime": "text/markdown"
-      },
-      "id": "9",
-      "references": [],
-      "title": "Administracion.html"
-    },
-    {
-      "assignedTo": {
-        "name": "Laura"
-      },
       "creation_time": "2021-10-20T07:28:31.081Z",
       "description": {
         "content": "Es la pagina de edicion donde el admin editara a sus usuarios",
@@ -25,22 +12,25 @@
       "id": "8",
       "references": [],
       "title": "editar.html"
-    },
+    }
+  ],
+  "in-progress": [
     {
       "assignedTo": {
         "name": "Laura"
       },
-      "creation_time": "2021-10-20T07:29:45.410Z",
+      "creation_time": "2021-10-20T07:29:12.146Z",
       "description": {
-        "content": "Es el menu que se mostrara cuando un editor inicie sesion",
+        "content": "Es la pagina donde el administrador vera a todos los usuarios registrados y decidira si puede añadir mas, editar , borrar, activar o desactivar",
         "mime": "text/markdown"
       },
-      "id": "10",
+      "id": "9",
       "references": [],
-      "title": "MenuEditor.html"
+      "title": "Administracion.html"
     }
   ],
-  "in-progress": [
+  "testing": [],
+  "done": [
     {
       "assignedTo": {
         "name": "Laura"
@@ -53,10 +43,7 @@
       "id": "7",
       "references": [],
       "title": "ElegirRol"
-    }
-  ],
-  "testing": [],
-  "done": [
+    },
     {
       "assignedTo": {
         "name": "Laura"
@@ -95,6 +82,19 @@
       "id": "6",
       "references": [],
       "title": "Menu.html"
+    },
+    {
+      "assignedTo": {
+        "name": "Laura"
+      },
+      "creation_time": "2021-10-20T07:29:45.410Z",
+      "description": {
+        "content": "Es el menu que se mostrara cuando un editor inicie sesion",
+        "mime": "text/markdown"
+      },
+      "id": "10",
+      "references": [],
+      "title": "MenuEditor.html"
     },
     {
       "assignedTo": {
