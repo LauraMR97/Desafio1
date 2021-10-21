@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" type="text/css" href="./CSS/general.css">
@@ -15,22 +14,22 @@
     $_SESSION['url'] = 'index.php';
     ?>
     <main class="container oriental">
-        <header class="oriental row">
+    <header class="row oriental">
             <div class="row">
                 <div class="l-col-12 m-col-12 s-col-12">
-                    <h1 class='centrado'>ESCAPE WEB</h1>
+                    <h1>ESCAPE WEB</h1>
                 </div>
-            </div>  
+            </div>
             <div class="row">
                 <div class="l-col-12 m-col-12 s-col-12">
-                    <h4 class='centrado'>Tu pagina de scape room</h4>
+                    <h4>Tu pagina de scape room</h4>
                 </div>
             </div>
         </header>
 
         <section class="row">
         <div class="row">
-            <div class=" margen-5 l-col-12 m-col-12 s-col-12 separado">
+            <div class="l-col-12 m-col-12 s-col-12 separado">
                 <h2>Login:</h2>
             </div>
         </div>

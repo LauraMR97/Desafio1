@@ -51,25 +51,27 @@ nav {
 }
 
 header {
-    &.minimalista {
+    &.gamer {
         background-color: $primario;
-        padding: 3em;
+        padding: 3rem;
         color: $terciario;
+        text-align: center;
     }
     &.oriental {
         background-color: $primario2;
-        padding: 2em;
+        padding: 2rem;
+        text-align: center;
     }
 }
 
 footer {
     &.minimalista {
         background-color: $primario;
-        padding: 3em;
+        height: 5rem;
         color: $terciario;
     }
     &.oriental {
         background-color: $primario2;
-        padding: 2em;
+        height: 5rem;
     }
 }

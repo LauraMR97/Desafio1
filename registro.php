@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro</title>
     <link rel="stylesheet" type="text/css" href="./CSS/general.css">
@@ -11,13 +10,15 @@
 
 <body class="oriental">
     <main class="container oriental">
-        <header class="oriental row centrado">
+    <header class="row oriental">
             <div class="row">
                 <div class="l-col-12 m-col-12 s-col-12">
                     <h1>ESCAPE WEB</h1>
                 </div>
+            </div>
+            <div class="row">
                 <div class="l-col-12 m-col-12 s-col-12">
-                    <h5>Tu pagina de scape room</h5>
+                    <h4>Tu pagina de scape room</h4>
                 </div>
             </div>
         </header>
@@ -65,10 +66,10 @@
                 </div>
 
                 <div class="row">
-                    <div class="margen-4 l-col-2 m-col-2 s-col-2 separado">
+                    <div class="l-col-2 m-col-2 s-col-2">
                         <input type="submit" value="Registrar" name="Registrar">
                     </div>
-                    <div class=" margen-6 l-col-2 m-col-2 s-col-2 ">
+                    <div class="l-col-2 m-col-2 s-col-2 ">
                         <input type="submit" value="Volver" name="CerrarSesion">
                     </div>
                 </div>
@@ -76,7 +77,7 @@
         </section>
         <footer class=" oriental row">
             <div class="l-col-12 m-col-12 s-col-12">
-                <h5>Email: EscapeRoom@juegos.com</h5>
+                <h4>Email: EscapeRoom@juegos.com</h4>
             </div>
         </footer>
     </main>

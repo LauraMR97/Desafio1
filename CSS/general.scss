@@ -16,6 +16,10 @@
     text-align: center;
 }
 
+.centrandoElementos{
+    margin-left: auto;
+    margin-right: auto;
+  }
 
 /*-------------------------------LINEA SEPARADORA---------------------------------------*/
 
@@ -30,11 +34,13 @@ hr {
 /*-------------------------------ROW-CONTAINER---------------------------------------*/
 
 .container:after,
-.row:after {
+.row:after,
+.u-cf {
     content: "";
     display: table;
     clear: both;
 }
+
 
 .separado {
     padding-top: 2rem;

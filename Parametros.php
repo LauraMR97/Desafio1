@@ -2,7 +2,7 @@
 class Parametros
 {
     public static $url = 'localhost';
-    public static $bbdd = 'scapeweb';
+    public static $bbdd = 'escapeweb';
     public static $usuario = 'LauraM';
     public static $password = 'Chubaca2021';
 
