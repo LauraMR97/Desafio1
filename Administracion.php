@@ -63,8 +63,10 @@
             ?>
                     <form action="controlador.php" method="POST" class="oriental">
                         <div class="row">
-                            <div class=" margen-1 l-col-12 m-col-12 s-col-12">
+                            <div class=" margen-1 l-col-3 m-col-3 s-col-3">
                                 Nombre:<input type='text' value='<?php echo $persona->getNombre(); ?>' name='nombre' disabled>
+                            </div>
+                            <div class="l-col-3 m-col-3 s-col-3 separado">
                                 Email:<input type='text' value='<?php echo $persona->getEmail(); ?>' name='email' disabled>
                             </div>
                         </div>
@@ -78,13 +80,26 @@
                     <form action="controlador.php" method="POST" class="oriental">
 
                         <div class="row">
-                            <div class=" margen-1 l-col-12 m-col-12 s-col-12 separado">
-                                Nombre:<input type='text' value='<?php echo $persona->getNombre(); ?>' name='nombre'>
-                                Email:<input type='text' value='<?php echo $persona->getEmail(); ?>' name='email'>
+                            <div class=" margen-1 l-col-3 m-col-3 s-col-3 separado">
 
-                                <button type="submit" name='X'><img src="./ICONOS/eliminar.jpg.png" class="tamaño"></button>
-                                <button type="submit" name='E'><img src="./ICONOS/edit.jpg.png" class="tamaño"></button>
+                                Nombre:<input type='text' value='<?php echo $persona->getNombre(); ?>' name='nombre'>
                             </div>
+                            <div class="l-col-3 m-col-3 s-col-3 separado">
+                                Email:<input type='text' value='<?php echo $persona->getEmail(); ?>' name='email'>
+                            </div>
+                            <div class="l-col-1 m-col-1 s-col-1 separado">
+                                <button type="submit" name='X'><img src="./ICONOS/eliminar.jpg" class="tamaño"></button>
+                            </div>
+                            <div class="l-col-1 m-col-1 s-col-1 separado">
+                                <button type="submit" name='E'><img src="./ICONOS/edit.png" class="tamaño"></button>
+                            </div>
+                            <div class="l-col-1 m-col-1 s-col-1 separado">
+                                <button type="submit" name='Activar'><img src="./ICONOS/up.png" class="tamaño"></button>
+                            </div>
+                            <div class="l-col-1 m-col-1 s-col-1 separado">
+                                <button type="submit" name='Desactivar'><img src="./ICONOS/down.png" class="tamaño"></button>
+                            </div>
+                        </div>
                         </div>
                     </form>
             <?php
@@ -93,17 +108,22 @@
             ?>
             <form action="controlador.php" method="POST" class="oriental">
                 <div class="row">
-                    <div class=" margen-3 l-col-3 m-col-3 s-col-3 separado">
-                        <button type="submit" name='ADD'><img src="./ICONOS/add.jpg.png" class="tamaño"></button>
+                    <div class=" margen-2 l-col-2 m-col-2 s-col-2 separado">
+                        <button type="submit" name='Aniadir'><img src="./ICONOS/add.png" class="tamaño"></button>
+                    </div>
+                    <div class="l-col-2 m-col-2 s-col-2 separado">
                         <input type="submit" value="Cerrar Sesion" name="CerrarSesion">
+                    </div>
+                    <div class="l-col-2 m-col-2 s-col-2 separado">
                         <input type="submit" value="Volver" name="VolverRol">
                     </div>
+                </div>
                 </div>
             </form>
 
             <footer class=" oriental row">
                 <div class="l-col-12 m-col-12 s-col-12">
-                    <h5>Email: EscapeRoom@juegos.com</h5>
+                    <h4>Email: EscapeRoom@juegos.com</h4>
                 </div>
             </footer>
         </section>

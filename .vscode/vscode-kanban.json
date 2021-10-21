@@ -1,47 +1,6 @@
 {
-  "todo": [
-    {
-      "assignedTo": {
-        "name": "Laura"
-      },
-      "creation_time": "2021-10-21T12:19:05.650Z",
-      "description": {
-        "content": "Pagina que permite al admin añadir Editores, Administradores y Usuarios",
-        "mime": "text/markdown"
-      },
-      "id": "11",
-      "references": [],
-      "title": "addAdministracion.php"
-    }
-  ],
-  "in-progress": [
-    {
-      "assignedTo": {
-        "name": "Laura"
-      },
-      "creation_time": "2021-10-20T07:28:31.081Z",
-      "description": {
-        "content": "Es la pagina de edicion donde el admin editara a sus usuarios",
-        "mime": "text/markdown"
-      },
-      "id": "8",
-      "references": [],
-      "title": "editar.html"
-    },
-    {
-      "assignedTo": {
-        "name": "Laura"
-      },
-      "creation_time": "2021-10-21T12:19:45.401Z",
-      "description": {
-        "content": "Muestra el Ranking de puntos general de los usuarios",
-        "mime": "text/markdown"
-      },
-      "id": "12",
-      "references": [],
-      "title": "Ranking.php"
-    }
-  ],
+  "todo": [],
+  "in-progress": [],
   "testing": [],
   "done": [
     {
@@ -82,6 +41,19 @@
       "id": "5",
       "references": [],
       "title": "Enviar.html"
+    },
+    {
+      "assignedTo": {
+        "name": "Laura"
+      },
+      "creation_time": "2021-10-20T07:28:31.081Z",
+      "description": {
+        "content": "Es la pagina de edicion donde el admin editara a sus usuarios y los creara",
+        "mime": "text/markdown"
+      },
+      "id": "8",
+      "references": [],
+      "title": "Gestion.php"
     },
     {
       "assignedTo": {
@@ -134,6 +106,19 @@
       "id": "4",
       "references": [],
       "title": "password.html"
+    },
+    {
+      "assignedTo": {
+        "name": "Laura"
+      },
+      "creation_time": "2021-10-21T12:19:45.401Z",
+      "description": {
+        "content": "Muestra el Ranking de puntos general de los usuarios",
+        "mime": "text/markdown"
+      },
+      "id": "12",
+      "references": [],
+      "title": "Ranking.php"
     },
     {
       "assignedTo": {
