@@ -156,7 +156,7 @@
                         <input type="submit" value="Volver" name="VolverPassword">
                     </div>
                     <div class=" margen-6 l-col-2 m-col-2 s-col-2 ">
-                        <input type="submit" value="Cerrar Sesion" name="CerrarSesion">
+                        <input type="submit" value="Volver Login" name="CerrarSesion">
                     </div>
                 </div>
             </form>

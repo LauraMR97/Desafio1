@@ -14,47 +14,53 @@ class Conexion
     }
 
     /*--------------------------------------------------------------*/
-    public static function addPersona($p, $rol)
+    public static function addPersona($p, $rol,$password)
     {
         self::abrirConexion();
-        $query = "INSERT INTO persona (nombre, correo, password, foto, prestigio, aciertos, victorias) VALUES (?,?,?,?,?,?,?)";
-        $query2 = "INSERT INTO rol_persona (id_rol, correo) VALUES (?,?)";
+        $query = "INSERT INTO persona (nombre, correo, password, foto, prestigio, aciertos, victorias,activo) VALUES (?,?,?,?,?,?,?,?)";
         $stmt = self::$conexion->prepare($query);
 
-        $stmt->bind_param("sssssii", $p->getNombre(), $p->getEmail(), $p->getPassword(), $p->getFoto(), $p->getPrestigio(), $p->getAciertos(), $p->getVictorias());
-        $stmt->execute();
-
-        $result = $stmt->get_result();
-
-        if (mysqli_query(self::$conexion, $query)) {
+        $stmt->bind_param("sssssiii", $p->getNombre(), $p->getEmail(), $password, $p->getFoto(), $p->getPrestigio(), $p->getAciertos(),$p->getActivo(), $p->getVictorias());
+     
+     
+        if ($stmt->execute()) {
             $mensaje = 'Registro insertado con éxito' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
-            Bitacora::guardarArchivo($mensaje);
+           // Bitacora::guardarArchivo($mensaje);
         } else {
             $mensaje = "Error al insertar: " . mysqli_error(self::$conexion) . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
-            Bitacora::guardarArchivo($mensaje);
+            //Bitacora::guardarArchivo($mensaje);
         }
         $stmt->close();
+        self::cerrarConexion();
 
-        $stmt = self::$conexion->prepare($query2);
+        self::actualizarRolPersona($p,$rol);
+    }
+
+    /*--------------------------------------------------------------*/
+
+    public static function actualizarRolPersona($p,$rol){
+
+        self::abrirConexion();
+        $query = "INSERT INTO rol_persona (id_rol, correo) VALUES (?,?)";
+        $stmt = self::$conexion->prepare($query);
         $stmt->bind_param("is", $rol, $p->getEmail());
-        $stmt->execute();
-
-
-        if (mysqli_query(self::$conexion, $query2)) {
-            $mensaje = 'Registro insertado con éxito' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
-            Bitacora::guardarArchivo($mensaje);
-        } else {
+      
+            
+        if (!$stmt->execute()) {
             $mensaje = "Error al insertar: " . mysqli_error(self::$conexion) . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
-            Bitacora::guardarArchivo($mensaje);
+           // Bitacora::guardarArchivo($mensaje);
+        } else {
+            $mensaje = 'Registro insertado con éxito' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+           // Bitacora::guardarArchivo($mensaje);
         }
 
 
         $stmt->close();
         self::cerrarConexion();
-    }
 
-    /*--------------------------------------------------------------*/
-    /* public static function delPersona($correo)
+    }
+    /*----------------------------------------------------------------------*/
+     public static function delPersona($correo)
     {
         self::abrirConexion();
         $query = "DELETE FROM persona WHERE correo = ? ";
@@ -67,16 +73,38 @@ class Conexion
 
         if (mysqli_query(self::$conexion, $query)) {
             $mensaje = 'Registro eliminado con éxito' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
-            Bitacora::guardarArchivo($mensaje);
+           // Bitacora::guardarArchivo($mensaje);
         } else {
             $mensaje = 'Error al eliminar' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
-            Bitacora::guardarArchivo($mensaje);
+           // Bitacora::guardarArchivo($mensaje);
         }
         $stmt->close();
         self::cerrarConexion();
-    }*/
+        self::borrarRolPersona($correo);
+    }
     /*--------------------------------------------------------------*/
+public static function borrarRolPersona($correo){
 
+    self::abrirConexion();
+    $query = "DELETE FROM rol_persona WHERE correo = ? ";
+    $stmt = self::$conexion->prepare($query);
+
+    $stmt->bind_param("s", $correo);
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+
+    if (mysqli_query(self::$conexion, $query)) {
+        $mensaje = 'Registro eliminado con éxito' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+       // Bitacora::guardarArchivo($mensaje);
+    } else {
+        $mensaje = 'Error al eliminar' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+       // Bitacora::guardarArchivo($mensaje);
+    }
+    $stmt->close();
+    self::cerrarConexion();
+}
+     /*-------------------------------------------------------------------------*/
     public static function buscarPersona($correo, $cont)
     {
         $per = null;
@@ -95,7 +123,8 @@ class Conexion
 
         if ($result) {
             while ($fila = mysqli_fetch_array($result)) {
-                $per = new Persona($fila["nombre"], $fila["correo"], $fila["password"]);
+                $per = new Persona($fila["nombre"], $fila["correo"]);
+                $per->setPassword($fila["password"]);
             }
         }
 
@@ -154,7 +183,8 @@ class Conexion
 
         if ($result) {
             while ($fila = mysqli_fetch_array($result)) {
-                $per = new Persona($fila["nombre"], $fila["correo"], $fila["password"]);
+                $per = new Persona($fila["nombre"], $fila["correo"]);
+                $per->setPassword($fila["password"]);
             }
         }
 
@@ -178,10 +208,10 @@ class Conexion
 
         if (mysqli_query(self::$conexion, $query)) {
             $mensaje = 'Registro editado con éxito' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
-            Bitacora::guardarArchivo($mensaje);
+            //Bitacora::guardarArchivo($mensaje);
         } else {
             $mensaje = 'Error al editar' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
-            Bitacora::guardarArchivo($mensaje);
+            //Bitacora::guardarArchivo($mensaje);
         }
         $stmt->close();
         self::cerrarConexion();
@@ -189,7 +219,7 @@ class Conexion
 
     /*--------------------------------------------------------------*/
 
-    /* public static function ArrayDePersonas()
+     public static function ArrayDePersonas()
     {
         $array = array();
 
@@ -197,11 +227,17 @@ class Conexion
 
         $query = "SELECT * FROM persona";
 
-        $resultado = mysqli_query(self::$conexion, $query);
+        $resultado = self::$conexion->query($query);
 
         if ($resultado) {
             while ($fila = mysqli_fetch_array($resultado)) {
-                $per = new persona($fila["nombre"], $fila["contraseña"], $fila["correo"], $fila["id"]);
+                $per = new Persona($fila["nombre"], $fila["correo"]);
+                $per->setPassword($fila['password']);
+                $per->setFoto($fila['foto']);
+                $per->setPrestigio($fila['prestigio']);
+                $per->setAciertos($fila['aciertos']);
+                $per->setVictoria($fila['victorias']);
+                $per->setActivo($fila['activo']);
                 $array[] = $per;
             }
         }
