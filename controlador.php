@@ -14,7 +14,7 @@ if (isset($_REQUEST['Aceptar'])) {
     $usu = Conexion::buscarPersona($email, $password);
 
     if ($usu != null) {
-        $_SESSION['per']=$usu;
+        $_SESSION['per'] = $usu;
         $roles = Conexion::verRol($email);
         for ($i = 0; $i < count($roles); $i++) {
             if ($roles[$i] == 0) {
@@ -46,7 +46,7 @@ if (isset($_REQUEST['Registrar'])) {
     $email = $_REQUEST['Email'];
     $passwrd = sha1($_REQUEST['Password']);
     $passwrdConfirm = sha1($_REQUEST['PasswordRepeat']);
-   // $url = './PERFILES/' . $nombre . '.jpg';
+    // $url = './PERFILES/' . $nombre . '.jpg';
     //$foto=$_FILES['Foto'][$url];
 
     if ($passwrd == $passwrdConfirm) {
@@ -56,7 +56,7 @@ if (isset($_REQUEST['Registrar'])) {
         //}
         //else{
         //$persona= new Persona($nombre,$email,$passwrd);
-        Conexion::addPersona($persona, 2,$passwrd);
+        Conexion::addPersona($persona, 2, $passwrd);
         header("Location:./menu.php");
     } else {
         $_SESSION['mensaje'] = 'Las constraseñas son distintas';
@@ -134,27 +134,38 @@ if (isset($_REQUEST['Editor'])) {
  *de usuario, te devolvera a elegirRol
  */
 if (isset($_REQUEST['VolverAlternativo'])) {
+
     if ($_SESSION['url'] == 'index.php') {
         header("Location:./index.php");
     } else {
-        header("Location:./ElegirRol.php");
+        if ($_SESSION['url'] == 'ElegirRol.php') {
+            header("Location:./ElegirRol.php");
+        }
     }
 }
 
-if(isset ($_REQUEST['Estadisticas'])){
+if (isset($_REQUEST['Estadisticas'])) {
     header("Location:./reformas.php");
 }
 
-if(isset ($_REQUEST['GestionPreguntas'])){
+if (isset($_REQUEST['GestionPreguntas'])) {
     header("Location:./reformas.php");
 }
 
-if(isset ($_REQUEST['VolverRol'])){
+if (isset($_REQUEST['VolverRol'])) {
     header("Location:./ElegirRol.php");
 }
 
-if(isset($_REQUEST['X'])){
-    $correo=$_REQUEST['email'];
+if (isset($_REQUEST['X'])) {
+    $correo = $_REQUEST['email'];
     Conexion::delPersona($correo);
     header("Location:./Administracion.php");
+}
+
+if (isset($_REQUEST['Ranking'])) {
+    header("Location:./Ranking.php");
+}
+
+if (isset($_REQUEST['VolverMenu'])) {
+    header("Location:./menu.php");
 }

@@ -12,19 +12,6 @@
       "id": "11",
       "references": [],
       "title": "addAdministracion.php"
-    },
-    {
-      "assignedTo": {
-        "name": "Laura"
-      },
-      "creation_time": "2021-10-21T12:19:45.401Z",
-      "description": {
-        "content": "Muestra el Ranking de puntos general de los usuarios",
-        "mime": "text/markdown"
-      },
-      "id": "12",
-      "references": [],
-      "title": "Ranking.php"
     }
   ],
   "in-progress": [
@@ -40,6 +27,19 @@
       "id": "8",
       "references": [],
       "title": "editar.html"
+    },
+    {
+      "assignedTo": {
+        "name": "Laura"
+      },
+      "creation_time": "2021-10-21T12:19:45.401Z",
+      "description": {
+        "content": "Muestra el Ranking de puntos general de los usuarios",
+        "mime": "text/markdown"
+      },
+      "id": "12",
+      "references": [],
+      "title": "Ranking.php"
     }
   ],
   "testing": [],
