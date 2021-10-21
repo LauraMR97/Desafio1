@@ -162,6 +162,11 @@ if (isset($_REQUEST['X'])) {
     header("Location:./Administracion.php");
 }
 
+if (isset($_REQUEST['E'])) {
+    header("Location:./Gestion.php");
+}
+
+
 if (isset($_REQUEST['Ranking'])) {
     header("Location:./Ranking.php");
 }
