@@ -247,6 +247,37 @@ public static function borrarRolPersona($correo){
 
         return $array;
     }
+
+  /*--------------------------------------------------------------*/
+
+  public static function PersonasOrdenadasPorAciertos()
+  {
+      $array = array();
+
+      self::abrirConexion();
+
+      $query = "SELECT * FROM persona ORDER BY aciertos DESC";
+
+      $resultado = self::$conexion->query($query);
+
+      if ($resultado) {
+          while ($fila = mysqli_fetch_array($resultado)) {
+              $per = new Persona($fila["nombre"], $fila["correo"]);
+              $per->setPassword($fila['password']);
+              $per->setFoto($fila['foto']);
+              $per->setPrestigio($fila['prestigio']);
+              $per->setAciertos($fila['aciertos']);
+              $per->setVictoria($fila['victorias']);
+              $per->setActivo($fila['activo']);
+              $array[] = $per;
+          }
+      }
+      mysqli_free_result($resultado);
+
+      self::cerrarConexion();
+
+      return $array;
+  }
     /*--------------------------------------------------------------*/
     public static function cerrarConexion()
     {

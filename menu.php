@@ -9,6 +9,9 @@
     <link rel="stylesheet" type="text/css" href="./CSS/general.css">
 </head>
 <body class="oriental">
+    <?php
+    session_start();
+    ?>
     <main class="container oriental">
         <header class="oriental row centrado">
             <div class="row">
