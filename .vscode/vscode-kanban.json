@@ -1,20 +1,6 @@
 {
   "todo": [],
-  "in-progress": [
-    {
-      "assignedTo": {
-        "name": "Laura"
-      },
-      "creation_time": "2021-10-20T07:28:31.081Z",
-      "description": {
-        "content": "Es la pagina de edicion donde el admin editara a sus usuarios y los creara",
-        "mime": "text/markdown"
-      },
-      "id": "8",
-      "references": [],
-      "title": "Gestion.php"
-    }
-  ],
+  "in-progress": [],
   "testing": [],
   "done": [
     {
@@ -55,6 +41,19 @@
       "id": "5",
       "references": [],
       "title": "Enviar.html"
+    },
+    {
+      "assignedTo": {
+        "name": "Laura"
+      },
+      "creation_time": "2021-10-20T07:28:31.081Z",
+      "description": {
+        "content": "Es la pagina de edicion donde el admin editara a sus usuarios y los creara",
+        "mime": "text/markdown"
+      },
+      "id": "8",
+      "references": [],
+      "title": "Gestion.php"
     },
     {
       "assignedTo": {
