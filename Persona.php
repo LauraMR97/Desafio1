@@ -8,22 +8,44 @@ class Persona
     private $prestigio;
     private $aciertos;
     private $victorias;
+    private $activo;
 
-    public function __construct($nombre, $correo, $password)
+    public function __construct($nombre, $correo)
     {
         $this->nombre = $nombre;
         $this->correo = $correo;
-        $this->password = $password;
+        $this->password = '';
         $this->foto = './PERFILES/usuario.jpg';
         $this->prestigio = 'madera';
         $this->aciertos = 0;
         $this->victorias = 0;
+        $this->activo =false;
     }
 
     public function setFoto($foto){
         $this->foto=$foto;
     }
 
+    public function setActivo($act){
+      $this->activo=$act;
+  }
+
+  public function setPassword($password){
+   $this->password=$password;
+}
+
+  public function setPrestigio($prestigio){
+   $this->prestigio=$prestigio;
+}
+
+public function setAciertos($aciertos){
+   $this->aciertos=$aciertos;
+}
+
+public function setVictoria($victoria){
+   $this->victoria=$victoria;
+}
+  
     public function getNombre(){
        return $this->nombre;
     }
@@ -35,7 +57,9 @@ class Persona
      public function getEmail(){
         return $this->correo;
      }
-
+     public function getActivo(){
+      return $this->activo;
+   }
      public function getPrestigio(){
         return $this->prestigio;
      }

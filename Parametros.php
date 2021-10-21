@@ -8,7 +8,7 @@ class Parametros
 
     public static  $TablaPersonas = "persona";
     public static  $TablaRoles = "rol";
-    public static  $TablaRolesPersonas = "rol_usuario";
+    public static  $TablaRolesPersonas = "rol_persona";
 
 
     /*--------------Bitacora----------------------*/
