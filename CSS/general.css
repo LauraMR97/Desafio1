@@ -142,6 +142,45 @@ table {
 /*-----------------------Colores Principales Normales-------------------------------------*/
 /*-----------------------Colores Principales Encendidos-------------------------------------*/
 /*-----------------------Rejillas Mixin-------------------------------------*/
+@media only screen and (max-width: 2000px) {
+  .xl-col-1 {
+    width: 8.33333%;
+  }
+  .xl-col-2 {
+    width: 16.66667%;
+  }
+  .xl-col-3 {
+    width: 25%;
+  }
+  .xl-col-4 {
+    width: 33.33333%;
+  }
+  .xl-col-5 {
+    width: 41.66667%;
+  }
+  .xl-col-6 {
+    width: 50%;
+  }
+  .xl-col-7 {
+    width: 58.33333%;
+  }
+  .xl-col-8 {
+    width: 66.66667%;
+  }
+  .xl-col-9 {
+    width: 75%;
+  }
+  .xl-col-10 {
+    width: 83.33333%;
+  }
+  .xl-col-11 {
+    width: 91.66667%;
+  }
+  .xl-col-12 {
+    width: 100%;
+  }
+}
+
 @media only screen and (max-width: 1280px) {
   .l-col-1 {
     width: 8.33333%;
@@ -319,31 +358,37 @@ table {
 h1 {
   font-size: 3rem;
   font-family: 'Franklin Gothic Medium';
+  text-align: center;
 }
 
 h2 {
   font-size: 2.4rem;
   font-family: 'Franklin Gothic Medium';
+  text-align: center;
 }
 
 h3 {
   font-size: 1.8rem;
   font-family: 'Franklin Gothic Medium';
+  text-align: center;
 }
 
 h4 {
   font-size: 1.2rem;
   font-family: 'Franklin Gothic Medium';
+  text-align: center;
 }
 
 h5 {
   font-size: 0.6rem;
   font-family: 'Franklin Gothic Medium';
+  text-align: center;
 }
 
 h6 {
   font-size: 0rem;
   font-family: 'Franklin Gothic Medium';
+  text-align: center;
 }
 
 p {
