@@ -16,8 +16,6 @@
     <main class="container gamer">
         <header class="row gamer">
 
-            <div class="xl-col-12 l-col-12 m-col-12 s-col-12">
-                <h1>ESCAPE WEB</h1>
                 <h4>Tu pagina de scape room</h4>
             </div>
         </header>
