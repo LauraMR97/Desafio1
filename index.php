@@ -8,13 +8,13 @@
     <link rel="stylesheet" type="text/css" href="./CSS/general.css">
 </head>
 
-<body class="oriental">
+<body class="gamer">
     <?php
     session_start();
     $_SESSION['url'] = 'index.php';
     ?>
-    <main class="container oriental">
-    <header class="row oriental">
+    <main class="container gamer">
+    <header class="row gamer">
             <div class="row">
                 <div class="l-col-12 m-col-12 s-col-12">
                     <h1>ESCAPE WEB</h1>
@@ -34,7 +34,7 @@
             </div>
         </div>
 
-            <form action="controlador.php" method="POST" class="oriental">
+            <form action="controlador.php" method="POST" class="gamer">
                 <div class="row">
                         <label class="l-col-3 m-col-3 s-col-3 ">Email:</label>
                         <input class=" l-col-3 m-col-3 s-col-3 " type="text" value="" name="Email" placeholder="Inserta tu Email" require>
@@ -55,12 +55,12 @@
 
                 <div class="row">
                 <div class=" l-col-12 m-col-12 s-col-12">
-                        <a class='oriental' href="./password.php">Se me ha olvidado la contraseña...</a>
+                        <a class='gamer' href="./password.php">Se me ha olvidado la contraseña...</a>
                     </div>
                     <div class="row">
             </form>
         </section>
-        <footer class=" oriental row">
+        <footer class=" gamer row">
             <div class="l-col-12 m-col-12 s-col-12">
                 <h4>Email: EscapeRoom@juegos.com</h4>
             </div>

@@ -1,27 +1,23 @@
-
-body{
-    &.minimalista{
+body {
+    &.gamer {
         background-image: url("../IMAGENES/indexGamer.jpg");
         background-color: #cccccc;
     }
-
-    &.oriental{
+    &.oriental {
         background-image: url("../IMAGENES/indexOriental.jpg");
-        background-color:$secundarioE2;
+        background-color: $secundarioE2;
     }
-   
 }
 
-main{
-    &.minimalista{
-        background-color:$terciario;
+main {
+    &.gamer {
+        background-color: $terciario;
     }
-
-    &.oriental{
-        background-color:$secundarioE2;
+    &.oriental {
+        background-color: $secundarioE2;
     }
-   
 }
+
 nav {
     &.vertical a {
         font-size: 1.5rem;
@@ -65,7 +61,7 @@ header {
 }
 
 footer {
-    &.minimalista {
+    &.gamer {
         background-color: $primario;
         height: 5rem;
         color: $terciario;
