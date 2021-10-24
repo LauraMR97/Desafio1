@@ -12,6 +12,7 @@
 <body class="oriental">
     <?php
     require_once 'Persona.php';
+    require_once 'Pregunta.php';
     require_once 'Conexion.php';
     session_start();
     $preguntas = Conexion::ArrayDePreguntas();
@@ -25,49 +26,85 @@
         </header>
         <section class='row'>
 
-            <form name="formulario" action="Administracion.php" method="POST" class="oriental">
+            <form name="formulario" action="Preguntas.php" method="POST" class="oriental">
                 <div class="row">
-                    <div class="xl-col-3 l-col-3 m-col-3 s-col-3 separado">
+                    <div class="xl-col-12 l-col-12 m-col-12 s-col-12 separado margen-3">
                         <input type="text" name="parametroBuscado" placeholder="Inserta un nombre o email" value="">
-                    </div>
 
-                    <div class="xl-col-2 l-col-2 m-col-2 s-col-2 separado">
-                        <input type="submit" value="Buscar" name="Buscar">
-                    </div>
-
-                    <div class="xl-col-2 l-col-2 m-col-2 s-col-2 separado">
-                        <input type="submit" value="Ver Todas" name="Todos">
-                    </div>
+                        <input type="submit" value="Buscar" name="BuscarPreg">
+                
+                        <input type="submit" value="Ver Todas" name="TodasPreg">
+        
                 </div>
             </form>
 
             <?php
-            foreach ($preguntas as $pregunta) {
+            if (isset($_REQUEST['BuscarPreg'])) {
+                foreach ($preguntas as $pregunta) {
+                    if ($_REQUEST['parametroBuscado'] == $pregunta->getCreador()) {
             ?>
-                <form action="controlador.php" method="POST" class="oriental">
+                        <form action="controlador.php" method="POST" class="oriental">
 
-                    <div class="row">
-                        <div class="xl-col-12 l-col-12 m-col-12 s-col-12 separado">
-                            Pregunta:<input type='text' value='<?php echo $pregunta; ?>' name='nombre'>
-                            Respuesta:<input type='text' value='<?php echo $pregunta; ?>' name='email'>
-                            <button type="submit" name='X'><img src="./ICONOS/eliminar.jpg" class="tamaño"></button>
-                            <button type="submit" name='E'><img src="./ICONOS/edit.png" class="tamaño"></button>
-                        </div>
-                    </div>
-                </form>
-            <?php
+                            <div class="row">
+                                <div class="xl-col-12 l-col-12 m-col-12 s-col-12 separado">
+                                    Pregunta:<input type='text' value='<?php echo $pregunta->getDescripcion() ?>' name='desc'>
+                                    Respuesta:<input type='text' value='<?php echo $pregunta->getRespuesta(); ?>' name='resp'>
+                                    Creador:<input type='text' value='<?php echo $pregunta->getCreador(); ?>' name='creador' disabled>
+
+                                    <button type="submit" name='XPreg'><img src="./ICONOS/eliminar.jpg" class="tamaño"></button>
+                                    <button type="submit" name='EPreg'><img src="./ICONOS/edit.png" class="tamaño"></button>
+                                </div>
+                            </div>
+                        </form>
+                    <?php
+                    }
+                }
             }
+            if (isset($_REQUEST['TodasPreg'])) {
+                foreach ($preguntas as $pregunta) {
+                    ?>
+                    <form action="controlador.php" method="POST" class="oriental">
 
+                        <div class="row">
+                            <div class="xl-col-12 l-col-12 m-col-12 s-col-12 separado">
+                                Pregunta:<input type='text' value='<?php echo $pregunta->getDescripcion() ?>' name='desc'>
+                                Respuesta:<input type='text' value='<?php echo $pregunta->getRespuesta(); ?>' name='resp'>
+                                Creador:<input type='text' value='<?php echo $pregunta->getCreador(); ?>' name='creador' disabled>
+
+                                <button type="submit" name='XPreg'><img src="./ICONOS/eliminar.jpg" class="tamaño"></button>
+                                <button type="submit" name='EPreg'><img src="./ICONOS/edit.png" class="tamaño"></button>
+                            </div>
+                        </div>
+                    </form>
+                <?php
+                }
+            }
+            if (!isset($_REQUEST['BuscarPreg']) && !isset($_REQUEST['TodasPreg'])) {
+                foreach ($preguntas as $pregunta) {
+                ?>
+                    <form action="controlador.php" method="POST" class="oriental">
+
+                        <div class="row">
+                            <div class="xl-col-12 l-col-12 m-col-12 s-col-12 separado">
+                                Pregunta:<input type='text' value='<?php echo $pregunta->getDescripcion() ?>' name='desc'>
+                                Respuesta:<input type='text' value='<?php echo $pregunta->getRespuesta(); ?>' name='resp'>
+                                Creador:<input type='text' value='<?php echo $pregunta->getCreador(); ?>' name='creador' disabled>
+
+                                <button type="submit" name='XPreg'><img src="./ICONOS/eliminar.jpg" class="tamaño"></button>
+                                <button type="submit" name='EPreg'><img src="./ICONOS/edit.png" class="tamaño"></button>
+                            </div>
+                        </div>
+                    </form>
+            <?php
+                }
+            }
             ?>
             <form action="controlador.php" method="POST" class="oriental">
                 <div class="row">
-                    <div class=" margen-2 xl-col-2 l-col-2 m-col-2 s-col-2 separado">
-                        <button type="submit" name='Aniadir'><img src="./ICONOS/addPregunta.png" class="tamaño"></button>
-                    </div>
-                    <div class="xl-col-2 l-col-2 m-col-2 s-col-2 separado">
+                    <div class="margen-4 xl-col-12 l-col-12 m-col-12 s-col-12 separado">
+                        <button type="submit" name='AniadirPreg'><img src="./ICONOS/addPregunta.png" class="tamaño"></button>
                         <input type="submit" value="Cerrar Sesion" name="CerrarSesion">
-                    </div>
-                    <div class="xl-col-2 l-col-2 m-col-2 s-col-2 separado">
+
                         <input type="submit" value="Volver" name="VolverMenuEditor">
                     </div>
                 </div>

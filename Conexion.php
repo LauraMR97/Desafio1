@@ -99,6 +99,45 @@ class Conexion
         $stmt->close();
         self::cerrarConexion();
     }
+       /*----------------------------------------------------------------------*/
+       public static function delPreg($desc)
+       {
+           self::abrirConexion();
+           $query = "DELETE FROM pregunta WHERE descripcion = ? ";
+           $stmt = self::$conexion->prepare($query);
+   
+           $stmt->bind_param("s", $desc);
+   
+           if ($stmt->execute()) {
+               $mensaje = 'Registro eliminado con éxito' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+               // Bitacora::guardarArchivo($mensaje);
+           } else {
+               $mensaje = 'Error al eliminar' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+               // Bitacora::guardarArchivo($mensaje);
+           }
+           $stmt->close();
+           self::cerrarConexion();
+       }
+
+          /*----------------------------------------------------------------------*/
+          public static function delResp($desc)
+          {
+              self::abrirConexion();
+              $query = "DELETE FROM respuesta WHERE descripcionR = ? ";
+              $stmt = self::$conexion->prepare($query);
+      
+              $stmt->bind_param("s", $desc);
+      
+              if ($stmt->execute()) {
+                  $mensaje = 'Registro eliminado con éxito' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+                  // Bitacora::guardarArchivo($mensaje);
+              } else {
+                  $mensaje = 'Error al eliminar' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+                  // Bitacora::guardarArchivo($mensaje);
+              }
+              $stmt->close();
+              self::cerrarConexion();
+          }
     /*-------------------------------------------------------------------------*/
     public static function buscarPersona($correo, $cont)
     {
@@ -284,13 +323,15 @@ class Conexion
 
         self::abrirConexion();
 
-        $query = "SELECT * FROM pregunta";
+        $query = "SELECT pregunta.descripcion,pregunta.correo,respuesta.descripcionR FROM pregunta JOIN preg_resp
+        ON preg_resp.Id_pregunta=pregunta.Id_pregunta JOIN respuesta ON respuesta.id_respuesta=preg_resp.id_respuesta";
 
         $resultado = self::$conexion->query($query);
 
         if ($resultado) {
             while ($fila = mysqli_fetch_array($resultado)) {
-                $array[] = $fila['descripcion'];
+                $pregunta = new Pregunta($fila['descripcionR'], $fila['descripcion'],$fila['correo']);
+                $array[] = $pregunta;
             }
         }
         mysqli_free_result($resultado);
@@ -331,13 +372,13 @@ class Conexion
     }
 
     /*--------------------------------------------------------------*/
-    public static function GestionActivacionPersona($valor,$correo)
+    public static function GestionActivacionPersona($valor, $correo)
     {
         self::abrirConexion();
         $query = "UPDATE persona SET activo = ? WHERE correo LIKE ? ";
         $stmt = self::$conexion->prepare($query);
 
-        $stmt->bind_param("is",$valor,$correo);
+        $stmt->bind_param("is", $valor, $correo);
 
         if ($stmt->execute()) {
             $mensaje = 'Registro editado con éxito' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
@@ -348,7 +389,6 @@ class Conexion
         }
         $stmt->close();
         self::cerrarConexion();
-
     }
     /*--------------------------------------------------------------*/
     public static function cerrarConexion()
