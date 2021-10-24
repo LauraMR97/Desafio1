@@ -126,25 +126,18 @@
 //        mail($destino, $titulo, $mensaje, $cabeceras);
 //        echo "El correo ha sido enviado.";
         ?>
-    <main class="container oriental">
-        <header class="oriental row centrado">
-            <div class="row">
-                <div class="l-col-12 m-col-12 s-col-12">
-                    <h1>ESCAPE WEB</h1>
-                </div>
-                <div class="l-col-12 m-col-12 s-col-12">
-                    <h5>Tu pagina de scape room</h5>
-                </div>
+       <main class="container oriental">
+        <header class="row oriental">
+                <h1>Escape Web</h1>
+                <h4>Tu pagina de scape room</h4>
             </div>
         </header>
 
         <section class="row">
 
-            <div class=" margen-5 l-col-12 m-col-12 s-col-12 separado">
+            <div class="xl-col-12 l-col-12 m-col-12 s-col-12 separado">
                 <h3>Recupera tu cuenta:</h3>
             </div>
-
-           
                 <div class="row">
                     <div class="margen-5 l-col-3 m-col-3 s-col-3 separadoPequeño">
                        <p>Mensaje enviado</p>
@@ -152,18 +145,18 @@
                 </div>
                 <form action="controlador.php" method="POST" class="oriental">
                 <div class="row">
-                    <div class="margen-4 l-col-2 m-col-2 s-col-2 separado">
+                    <div class="margen-4 l-col-2 m-col-2 s-col-2 ">
                         <input type="submit" value="Volver" name="VolverPassword">
                     </div>
-                    <div class=" margen-6 l-col-2 m-col-2 s-col-2 ">
+                    <div class="l-col-2 m-col-2 s-col-2 ">
                         <input type="submit" value="Volver Login" name="CerrarSesion">
                     </div>
                 </div>
             </form>
         </section>
         <footer class=" oriental row">
-            <div class="l-col-12 m-col-12 s-col-12">
-                <h5>Email: EscapeRoom@juegos.com</h5>
+            <div class="xl-col-12 l-col-12 m-col-12 s-col-12">
+                <p>Email: EscapeRoom@juegos.com</p>
             </div>
         </footer>
     </main>

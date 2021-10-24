@@ -19,32 +19,24 @@
     $perLoggeada = $_SESSION['per'];
     ?>
     <main class="container oriental">
-        <header class="oriental row">
-            <div class="row">
-                <div class="l-col-12 m-col-12 s-col-12">
-                    <h1>ESCAPE WEB</h1>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="l-col-12 m-col-12 s-col-12">
-                    <h4>Tu pagina de scape room</h4>
-                </div>
+        <header class="row oriental">
+            <h1>Escape Web</h1>
+            <h4>Tu pagina de scape room</h4>
             </div>
         </header>
         <section class='row'>
 
             <form name="formulario" action="Administracion.php" method="POST" class="oriental">
                 <div class="row">
-                    <div class="l-col-12 m-col-12 s-col-12 separado">
+                    <div class="xl-col-3 l-col-3 m-col-3 s-col-3 separado">
                         <input type="text" name="parametroBuscado" placeholder="Inserta un nombre o email" value="">
                     </div>
-            
-                    <div class="l-col-12 m-col-12 s-col-12 separado">
+
+                    <div class="xl-col-2 l-col-2 m-col-2 s-col-2 separado">
                         <input type="submit" value="Buscar" name="Buscar">
                     </div>
 
-                    <div class="l-col-12 m-col-12 s-col-12 separado">
+                    <div class="xl-col-2 l-col-2 m-col-2 s-col-2 separado">
                         <input type="submit" value="Ver Todos" name="Todos">
                     </div>
                 </div>
@@ -54,69 +46,77 @@
             if (isset($_REQUEST['Buscar'])) {
                 $valor = $_POST['parametroBuscado'];
                 foreach ($users as $persona) {
-                    if($valor==$persona->getNombre() || $valor==$persona->getEmail()){
-                    if ($perLoggeada->getEmail() == $persona->getEmail()) {
-                ?>
-                        <form action="controlador.php" method="POST" class="oriental">
-                            <div class="row">
-                                <div class=" margen-1 l-col-3 m-col-3 s-col-3">
-                                    Nombre:<input type='text' value='<?php echo $persona->getNombre(); ?>' name='nombre' disabled>
+                    if ($valor == $persona->getNombre() || $valor == $persona->getEmail()) {
+                        if ($perLoggeada->getEmail() == $persona->getEmail()) {
+            ?>
+                            <form action="controlador.php" method="POST" class="oriental">
+                                <div class="row">
+                                    <div class=" xl-col-3 l-col-3 m-col-3 s-col-3">
+                                        Nombre:<input type='text' value='<?php echo $persona->getNombre(); ?>' name='nombre' disabled>
+                                    </div>
+                                    <div class="xl-col-3 l-col-3 m-col-3 s-col-3 separado">
+                                        Email:<input type='text' value='<?php echo $persona->getEmail(); ?>' name='email' disabled>
+                                    </div>
+                                    <div class="xl-col-3 l-col-3 m-col-3 s-col-3 separado">
+                                        Activo:<input type='text' value='<?php echo $persona->getActivo(); ?>' name='email' disabled>
+                                    </div>
                                 </div>
-                                <div class="l-col-3 m-col-3 s-col-3 separado">
-                                    Email:<input type='text' value='<?php echo $persona->getEmail(); ?>' name='email' disabled>
-                                </div>
-                            </div>
-                        </form>
-                    <?php
-                    } else {
-                        //CRUD DE LOS DEMÁS USUARIOS
-                    ?>
+                            </form>
                         <?php
+                        } else {
+                            //CRUD DE LOS DEMÁS USUARIOS
                         ?>
-                        <form action="controlador.php" method="POST" class="oriental">
-    
-                            <div class="row">
-                                <div class=" margen-1 l-col-3 m-col-3 s-col-3 separado">
-    
-                                    Nombre:<input type='text' value='<?php echo $persona->getNombre(); ?>' name='nombre'>
+                            <?php
+                            ?>
+                            <form action="controlador.php" method="POST" class="oriental">
+
+                                <div class="row">
+                                    <div class=" xl-col-3 l-col-3 m-col-3 s-col-3 separado">
+
+                                        Nombre:<input type='text' value='<?php echo $persona->getNombre(); ?>' name='nombre'>
+                                    </div>
+                                    <div class="xl-col-3 l-col-3 m-col-3 s-col-3 separado">
+                                        Email:<input type='text' value='<?php echo $persona->getEmail(); ?>' name='email'>
+                                    </div>
+                                    <div class="xl-col-3 l-col-3 m-col-3 s-col-3 separado">
+                                        Activo:<input type='text' value='<?php echo $persona->getActivo(); ?>' name='email' disabled>
+                                    </div>
+                                    <div class="xl-col-1 l-col-1 m-col-1 s-col-1 separado">
+                                        <button type="submit" name='X'><img src="./ICONOS/eliminar.jpg" class="tamaño"></button>
+                                    </div>
+                                    <div class="xl-col-1 l-col-1 m-col-1 s-col-1 separado">
+                                        <button type="submit" name='E'><img src="./ICONOS/edit.png" class="tamaño"></button>
+                                    </div>
+                                    <div class="xl-col-1 l-col-1 m-col-1 s-col-1 separado">
+                                        <button type="submit" name='Activar'><img src="./ICONOS/up.png" class="tamaño"></button>
+                                    </div>
+                                    <div class="xl-col-1 l-col-1 m-col-1 s-col-1 separado">
+                                        <button type="submit" name='Desactivar'><img src="./ICONOS/down.png" class="tamaño"></button>
+                                    </div>
                                 </div>
-                                <div class="l-col-3 m-col-3 s-col-3 separado">
-                                    Email:<input type='text' value='<?php echo $persona->getEmail(); ?>' name='email'>
                                 </div>
-                                <div class="l-col-1 m-col-1 s-col-1 separado">
-                                    <button type="submit" name='X'><img src="./ICONOS/eliminar.jpg" class="tamaño"></button>
-                                </div>
-                                <div class="l-col-1 m-col-1 s-col-1 separado">
-                                    <button type="submit" name='E'><img src="./ICONOS/edit.png" class="tamaño"></button>
-                                </div>
-                                <div class="l-col-1 m-col-1 s-col-1 separado">
-                                    <button type="submit" name='Activar'><img src="./ICONOS/up.png" class="tamaño"></button>
-                                </div>
-                                <div class="l-col-1 m-col-1 s-col-1 separado">
-                                    <button type="submit" name='Desactivar'><img src="./ICONOS/down.png" class="tamaño"></button>
-                                </div>
-                            </div>
-                            </div>
-                        </form>
-                <?php
+                            </form>
+            <?php
+                        }
                     }
                 }
-                }
-                
             }
             ?>
             <?php
-            if (isset($_REQUEST['Todos'])){
+            if (isset($_REQUEST['Todos'])) {
                 foreach ($users as $persona) {
                     if ($perLoggeada->getEmail() == $persona->getEmail()) {
-                ?>
+            ?>
                         <form action="controlador.php" method="POST" class="oriental">
                             <div class="row">
-                                <div class=" margen-1 l-col-3 m-col-3 s-col-3">
+                                <div class=" xl-col-3 l-col-3 m-col-3 s-col-3 separado">
                                     Nombre:<input type='text' value='<?php echo $persona->getNombre(); ?>' name='nombre' disabled>
                                 </div>
-                                <div class="l-col-3 m-col-3 s-col-3 separado">
+                                <div class="xl-col-3 l-col-3 m-col-3 s-col-3 separado">
                                     Email:<input type='text' value='<?php echo $persona->getEmail(); ?>' name='email' disabled>
+                                </div>
+                                <div class="xl-col-3 l-col-3 m-col-3 s-col-3 separado">
+                                    Activo:<input type='text' value='<?php echo $persona->getActivo(); ?>' name='email' disabled>
                                 </div>
                             </div>
                         </form>
@@ -124,49 +124,102 @@
                     } else {
                         //CRUD DE LOS DEMÁS USUARIOS
                     ?>
-                        <?php
-                        ?>
                         <form action="controlador.php" method="POST" class="oriental">
-    
+
                             <div class="row">
-                                <div class=" margen-1 l-col-3 m-col-3 s-col-3 separado">
-    
+                                <div class="xl-col-3 l-col-3 m-col-3 s-col-3 separado">
+
                                     Nombre:<input type='text' value='<?php echo $persona->getNombre(); ?>' name='nombre'>
                                 </div>
-                                <div class="l-col-3 m-col-3 s-col-3 separado">
+                                <div class="xl-col-3 l-col-3 m-col-3 s-col-3 separado">
                                     Email:<input type='text' value='<?php echo $persona->getEmail(); ?>' name='email'>
                                 </div>
-                                <div class="l-col-1 m-col-1 s-col-1 separado">
+                                <div class="xl-col-3 l-col-3 m-col-3 s-col-3 separado">
+                                    Activo:<input type='text' value='<?php echo $persona->getActivo(); ?>' name='email' disabled>
+                                </div>
+                                <div class="xl-col-1 l-col-1 m-col-1 s-col-1 separado">
                                     <button type="submit" name='X'><img src="./ICONOS/eliminar.jpg" class="tamaño"></button>
                                 </div>
-                                <div class="l-col-1 m-col-1 s-col-1 separado">
+                                <div class="xl-col-1 l-col-1 m-col-1 s-col-1 separado">
                                     <button type="submit" name='E'><img src="./ICONOS/edit.png" class="tamaño"></button>
                                 </div>
-                                <div class="l-col-1 m-col-1 s-col-1 separado">
+                                <div class="xl-col-1 l-col-1 m-col-1 s-col-1 separado">
                                     <button type="submit" name='Activar'><img src="./ICONOS/up.png" class="tamaño"></button>
                                 </div>
-                                <div class="l-col-1 m-col-1 s-col-1 separado">
+                                <div class="xl-col-1 l-col-1 m-col-1 s-col-1 separado">
                                     <button type="submit" name='Desactivar'><img src="./ICONOS/down.png" class="tamaño"></button>
                                 </div>
                             </div>
                             </div>
                         </form>
-                <?php
+                    <?php
+                    }
+                }
+            }
+
+            if (!isset($_REQUEST['Todos']) && !isset($_REQUEST['Buscar'])) {
+                foreach ($users as $persona) {
+                    if ($perLoggeada->getEmail() == $persona->getEmail()) {
+                    ?>
+                        <form action="controlador.php" method="POST" class="oriental">
+                            <div class="row">
+                                <div class=" xl-col-3 l-col-3 m-col-3 s-col-3 separado">
+                                    Nombre:<input type='text' value='<?php echo $persona->getNombre(); ?>' name='nombre' disabled>
+                                </div>
+                                <div class="xl-col-3 l-col-3 m-col-3 s-col-3 separado">
+                                    Email:<input type='text' value='<?php echo $persona->getEmail(); ?>' name='email' disabled>
+                                </div>
+                                <div class="xl-col-3 l-col-3 m-col-3 s-col-3 separado">
+                                    Activo:<input type='text' value='<?php echo $persona->getActivo(); ?>' name='email' disabled>
+                                </div>
+                            </div>
+                        </form>
+                    <?php
+                    } else {
+                        //CRUD DE LOS DEMÁS USUARIOS
+                    ?>
+                        <form action="controlador.php" method="POST" class="oriental">
+
+                            <div class="row">
+                                <div class="xl-col-3 l-col-3 m-col-3 s-col-3 separado">
+
+                                    Nombre:<input type='text' value='<?php echo $persona->getNombre(); ?>' name='nombre'>
+                                </div>
+                                <div class="xl-col-3 l-col-3 m-col-3 s-col-3 separado">
+                                    Email:<input type='text' value='<?php echo $persona->getEmail(); ?>' name='email'>
+                                </div>
+                                <div class="xl-col-3 l-col-3 m-col-3 s-col-3 separado">
+                                    Activo:<input type='text' value='<?php echo $persona->getActivo(); ?>' name='email' disabled>
+                                </div>
+                                <div class="xl-col-1 l-col-1 m-col-1 s-col-1 separado">
+                                    <button type="submit" name='X'><img src="./ICONOS/eliminar.jpg" class="tamaño"></button>
+                                </div>
+                                <div class="xl-col-1 l-col-1 m-col-1 s-col-1 separado">
+                                    <button type="submit" name='E'><img src="./ICONOS/edit.png" class="tamaño"></button>
+                                </div>
+                                <div class="xl-col-1 l-col-1 m-col-1 s-col-1 separado">
+                                    <button type="submit" name='Activar'><img src="./ICONOS/up.png" class="tamaño"></button>
+                                </div>
+                                <div class="xl-col-1 l-col-1 m-col-1 s-col-1 separado">
+                                    <button type="submit" name='Desactivar'><img src="./ICONOS/down.png" class="tamaño"></button>
+                                </div>
+                            </div>
+                            </div>
+                        </form>
+            <?php
                     }
                 }
             }
             ?>
-
-           
             <form action="controlador.php" method="POST" class="oriental">
                 <div class="row">
-                    <div class=" margen-2 l-col-2 m-col-2 s-col-2 separado">
+                    <div class=" margen-2 xl-col-2 l-col-2 m-col-2 s-col-2 separado">
                         <button type="submit" name='Aniadir'><img src="./ICONOS/add.png" class="tamaño"></button>
                     </div>
-                    <div class="l-col-2 m-col-2 s-col-2 separado">
+                    <div class="xl-col-2 l-col-2 m-col-2 s-col-2 separado">
                         <input type="submit" value="Cerrar Sesion" name="CerrarSesion">
                     </div>
-                    <div class="l-col-2 m-col-2 s-col-2 separado">
+                    <div class="xl-col-2 l-col-2 m-col-2 s-col-2 separado">
                         <input type="submit" value="Volver" name="VolverRol">
                     </div>
                 </div>
@@ -174,10 +227,10 @@
             </form>
 
             <footer class=" oriental row">
-                <div class="l-col-12 m-col-12 s-col-12">
-                    <h4>Email: EscapeRoom@juegos.com</h4>
-                </div>
-            </footer>
+            <div class="xl-col-12 l-col-12 m-col-12 s-col-12">
+                <p>Email: EscapeRoom@juegos.com</p>
+            </div>
+        </footer>
         </section>
     </main>
 
