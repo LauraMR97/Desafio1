@@ -25,7 +25,7 @@
 
         <section class="row">
 
-            <div class=" margen-5 xl-col-12 l-col-12 m-col-12 s-col-12 separado">
+            <div class="xl-col-12 l-col-12 m-col-12 s-col-12 separado">
                 <h3>Elegir Rol:</h3>
             </div>
 

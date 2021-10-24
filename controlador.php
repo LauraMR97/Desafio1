@@ -276,3 +276,11 @@ if (isset($_REQUEST['Estadisticas'])) {
 if (isset($_REQUEST['GestionPreguntas'])) {
     header("Location:./Preguntas.php");
 }
+
+if (isset($_REQUEST['Historial'])) {
+    header("Location:./reformas.php");
+}
+
+if (isset($_REQUEST['Jugar'])) {
+    header("Location:./reformas.php");
+}
