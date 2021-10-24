@@ -142,6 +142,55 @@ table {
 /*-----------------------Colores Principales Normales-------------------------------------*/
 /*-----------------------Colores Principales Encendidos-------------------------------------*/
 /*-----------------------Rejillas Mixin-------------------------------------*/
+@media only screen and (max-width: 2000px) {
+  .xl-col-1 {
+    width: 8.3333333333%;
+  }
+
+  .xl-col-2 {
+    width: 16.6666666667%;
+  }
+
+  .xl-col-3 {
+    width: 25%;
+  }
+
+  .xl-col-4 {
+    width: 33.3333333333%;
+  }
+
+  .xl-col-5 {
+    width: 41.6666666667%;
+  }
+
+  .xl-col-6 {
+    width: 50%;
+  }
+
+  .xl-col-7 {
+    width: 58.3333333333%;
+  }
+
+  .xl-col-8 {
+    width: 66.6666666667%;
+  }
+
+  .xl-col-9 {
+    width: 75%;
+  }
+
+  .xl-col-10 {
+    width: 83.3333333333%;
+  }
+
+  .xl-col-11 {
+    width: 91.6666666667%;
+  }
+
+  .xl-col-12 {
+    width: 100%;
+  }
+}
 @media only screen and (max-width: 1280px) {
   .l-col-1 {
     width: 8.3333333333%;
@@ -348,31 +397,37 @@ table {
 h1 {
   font-size: 3rem;
   font-family: "Franklin Gothic Medium";
+  text-align: center;
 }
 
 h2 {
   font-size: 2.4rem;
   font-family: "Franklin Gothic Medium";
+  text-align: center;
 }
 
 h3 {
   font-size: 1.8rem;
   font-family: "Franklin Gothic Medium";
+  text-align: center;
 }
 
 h4 {
   font-size: 1.2rem;
   font-family: "Franklin Gothic Medium";
+  text-align: center;
 }
 
 h5 {
   font-size: 0.6rem;
   font-family: "Franklin Gothic Medium";
+  text-align: center;
 }
 
 h6 {
   font-size: 0rem;
   font-family: "Franklin Gothic Medium";
+  text-align: center;
 }
 
 p {
@@ -410,7 +465,7 @@ a.oriental:visited {
   color: rgba(0, 0, 0, 0.144);
 }
 
-body.minimalista {
+body.gamer {
   background-image: url("../IMAGENES/indexGamer.jpg");
   background-color: #cccccc;
 }
@@ -419,7 +474,7 @@ body.oriental {
   background-color: #fff;
 }
 
-main.minimalista {
+main.gamer {
   background-color: #fff;
 }
 main.oriental {
@@ -464,7 +519,7 @@ header.oriental {
   text-align: center;
 }
 
-footer.minimalista {
+footer.gamer {
   background-color: #000000;
   height: 5rem;
   color: #fff;
@@ -475,10 +530,10 @@ footer.oriental {
 }
 
 /*-----------------------Botones-------------------------------*/
-button.fantasia,
-input[type=submit].fantasia,
-input[type=reset].fantasia,
-input[type=button].fantasia {
+button.oriental,
+input[type=submit].oriental,
+input[type=reset].oriental,
+input[type=button].oriental {
   display: inline-block;
   height: 3rem;
   width: 5rem;
@@ -489,18 +544,18 @@ input[type=button].fantasia {
   box-sizing: border-box;
   border-radius: 1em 1em 1em 1em;
   border: 1px solid #eb94d0;
-  background-image: linear-gradient(to bottom, #eb94d0, #2079b0);
+  background-image: linear-gradient(to bottom, #b8031b, #020202);
 }
-button.fantasia:hover,
-input[type=submit].fantasia:hover,
-input[type=reset].fantasia:hover,
-input[type=button].fantasia:hover {
-  background-image: linear-gradient(to bottom, #2079b0, #eb94d0);
+button.oriental:hover,
+input[type=submit].oriental:hover,
+input[type=reset].oriental:hover,
+input[type=button].oriental:hover {
+  background-image: linear-gradient(to bottom, #e96375, #020202);
 }
-button.gotico,
-input[type=submit].gotico,
-input[type=reset].gotico,
-input[type=button].gotico {
+button.gamer,
+input[type=submit].gamer,
+input[type=reset].gamer,
+input[type=button].gamer {
   display: inline-block;
   height: 3rem;
   width: 5rem;
@@ -512,10 +567,10 @@ input[type=button].gotico {
   box-shadow: 10px 10px 10px #000000;
   background-image: linear-gradient(to right, #000000, #8016be);
 }
-button.gotico:hover,
-input[type=submit].gotico:hover,
-input[type=reset].gotico:hover,
-input[type=button].gotico:hover {
+button.gamer:hover,
+input[type=submit].gamer:hover,
+input[type=reset].gamer:hover,
+input[type=button].gamer:hover {
   background-image: linear-gradient(to right, #8016be8a, #000000);
 }
 
@@ -559,8 +614,8 @@ table.gamer th {
 }
 
 .tamaño {
-  height: 3rem;
-  width: 3rem;
+  height: 2rem;
+  width: 2rem;
 }
 
 /*-----------------------Imagen Articulos-------------------------------------*/
@@ -572,35 +627,35 @@ article img .reportaje {
 form label {
   display: block;
 }
-form.minimalista input[type=submit],
-form.minimalista input[type=button] {
+form.gamer input[type=submit],
+form.gamer input[type=button] {
   background-color: #000000;
   color: #fff;
-  font-family: monospace;
+  font-family: serif;
   font-size: 1.2em;
   margin: auto;
   border-radius: 10px;
   width: 150px;
   padding: 16px;
 }
-form.minimalista input[type=email],
-form.minimalista input[type=number],
-form.minimalista input[type=search],
-form.minimalista input[type=text],
-form.minimalista input[type=tel],
-form.minimalista input[type=url],
-form.minimalista input[type=password],
-form.minimalista textarea,
-form.minimalista select {
-  font-family: monospace;
+form.gamer input[type=email],
+form.gamer input[type=number],
+form.gamer input[type=search],
+form.gamer input[type=text],
+form.gamer input[type=tel],
+form.gamer input[type=url],
+form.gamer input[type=password],
+form.gamer textarea,
+form.gamer select {
+  font-family: serif;
   font-size: 1.2em;
   margin: auto;
   border-radius: 10px;
   width: 150px;
   padding: 16px;
 }
-form.minimalista input[type=checkbox],
-form.minimalista input[type=radio] {
+form.gamer input[type=checkbox],
+form.gamer input[type=radio] {
   display: inline;
 }
 form.oriental input[type=submit],

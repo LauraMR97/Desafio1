@@ -9,23 +9,16 @@
 </head>
 
 <body class="oriental">
-    <main class="container oriental">
-    <header class="row oriental">
-            <div class="row">
-                <div class="l-col-12 m-col-12 s-col-12">
-                    <h1>ESCAPE WEB</h1>
-                </div>
-            </div>
-            <div class="row">
-                <div class="l-col-12 m-col-12 s-col-12">
-                    <h4>Tu pagina de scape room</h4>
-                </div>
+<main class="container oriental">
+        <header class="row oriental">
+                <h1>Escape Web</h1>
+                <h4>Tu pagina de scape room</h4>
             </div>
         </header>
 
         <section class="row">
 
-            <div class=" margen-5 l-col-12 m-col-12 s-col-12 separado">
+            <div class="xl-col-12 l-col-12 m-col-12 s-col-12 separado">
                 <h3>Registro:</h3>
             </div>
 
@@ -76,8 +69,8 @@
             </form>
         </section>
         <footer class=" oriental row">
-            <div class="l-col-12 m-col-12 s-col-12">
-                <h4>Email: EscapeRoom@juegos.com</h4>
+            <div class="xl-col-12 l-col-12 m-col-12 s-col-12">
+                <p>Email: EscapeRoom@juegos.com</p>
             </div>
         </footer>
     </main>

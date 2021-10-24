@@ -4,7 +4,7 @@ button,
 input[type="submit"],
 input[type="reset"],
 input[type="button"] {
-    &.fantasia {
+    &.oriental {
         display: inline-block;
         height: 3rem;
         width: 5rem;
@@ -14,12 +14,12 @@ input[type="button"] {
         box-sizing: border-box;
         border-radius: 1em 1em 1em 1em;
         border: 1px solid #eb94d0;
-        background-image: linear-gradient(to bottom, #eb94d0, #2079b0);
+        background-image: linear-gradient(to bottom, $primario2, $terciario2);
         &:hover {
-            background-image: linear-gradient(to bottom, #2079b0, #eb94d0);
+            background-image: linear-gradient(to bottom, $primarioE2, $terciario2);
         }
     }
-    &.gotico {
+    &.gamer {
         display: inline-block;
         height: 3rem;
         width: 5rem;
