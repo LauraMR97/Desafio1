@@ -274,5 +274,5 @@ if (isset($_REQUEST['Estadisticas'])) {
  * Ir al crud de preguntas y respuestas
  */
 if (isset($_REQUEST['GestionPreguntas'])) {
-    header("Location:./reformas.php");
+    header("Location:./Preguntas.php");
 }

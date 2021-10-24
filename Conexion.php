@@ -278,6 +278,29 @@ class Conexion
 
     /*--------------------------------------------------------------*/
 
+    public static function ArrayDePreguntas()
+    {
+        $array = array();
+
+        self::abrirConexion();
+
+        $query = "SELECT * FROM pregunta";
+
+        $resultado = self::$conexion->query($query);
+
+        if ($resultado) {
+            while ($fila = mysqli_fetch_array($resultado)) {
+                $array[] = $fila['descripcion'];
+            }
+        }
+        mysqli_free_result($resultado);
+
+        self::cerrarConexion();
+
+        return $array;
+    }
+    /*--------------------------------------------------------------*/
+
     public static function PersonasOrdenadasPorAciertos()
     {
         $array = array();
