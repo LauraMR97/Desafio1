@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reformas</title>
 </head>
-<body>
+<body background="./IMAGENES/reformas.jpg">
     <h1>ESTAMOS DE REFORMAS, VUELVA PRONTO</h1>
 
     <form action="controlador.php" method="POST" class="oriental">

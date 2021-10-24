@@ -18,13 +18,13 @@ if (isset($_REQUEST['Aceptar'])) {
         $roles = Conexion::verRol($email);
         for ($i = 0; $i < count($roles); $i++) {
             if ($roles[$i] == 0) {
-                header("Location:./ElegirRol.php");
+                header("Location:./MENUS/ElegirRol.php");
             } else {
                 if ($roles[$i] == 1) {
-                    header("Location:./MenuEditor.php");
+                    header("Location:./MENUS/MenuEditor.php");
                 } else {
                     if ($roles[$i] == 2) {
-                        header("Location:./menu.php");
+                        header("Location:./MENUS/menu.php");
                     }
                 }
             }
@@ -132,8 +132,24 @@ if (isset($_REQUEST['Editar'])) {
     Conexion::editarRol($perNew, $rol);
     header("Location:./Administracion.php");
 }
+/*************************************************************************** */
+/****************************GESTION PREGUNTAS****************************** */
+/*************************************************************************** */
+if (isset($_REQUEST['XPreg'])) {
+    $Resp = $_REQUEST['resp'];
+    $Preg = $_REQUEST['desc'];
+    Conexion::delPreg($Preg);
+    Conexion::delResp($Resp);
+    header("Location:./Preguntas.php");
+}
 
+if (isset($_REQUEST['AniadirPreg'])) {
+    header("Location:./reformas.php");
+}
 
+if (isset($_REQUEST['EPreg'])) {
+    header("Location:./reformas.php");
+}
 /*************************************************************************** */
 /****************************ADMINISTRACION********************************* */
 /*************************************************************************** */
@@ -192,7 +208,7 @@ if (isset($_REQUEST['VolverAlternativo'])) {
         header("Location:./index.php");
     } else {
         if ($_SESSION['url'] == 'ElegirRol.php') {
-            header("Location:./ElegirRol.php");
+            header("Location:./MENUS/ElegirRol.php");
         }
     }
 }
@@ -207,14 +223,14 @@ if (isset($_REQUEST['VolverPassword'])) {
  */
 
 if (isset($_REQUEST['VolverRol'])) {
-    header("Location:./ElegirRol.php");
+    header("Location:./MENUS/ElegirRol.php");
 }
 
 /**
  * Volver al menu.php del usuario
  */
 if (isset($_REQUEST['VolverMenu'])) {
-    header("Location:./menu.php");
+    header("Location:./MENUS/menu.php");
 }
 
 /**
@@ -231,6 +247,12 @@ if (isset($_REQUEST['CerrarSesion'])) {
     header("Location:./index.php");
 }
 
+/**
+ * Volver al menu del editor
+ */
+if (isset($_REQUEST['VolverMenuEditor'])) {
+    header("Location:./MENUS/MenuEditor.php");
+}
 /*************************************************************************** */
 /*******************************REDIRECCIONAMIENTO************************* */
 /*************************************************************************** */
@@ -247,13 +269,13 @@ if (isset($_REQUEST['Administrador'])) {
  * Te lleva al menu de usuario
  */
 if (isset($_REQUEST['Usuario'])) {
-    header("Location:./menu.php");
+    header("Location:./MENUS/menu.php");
 }
 /**
  * Te lleva al menu del Editor
  */
 if (isset($_REQUEST['Editor'])) {
-    header("Location:./MenuEditor.php");
+    header("Location:./MENUS/MenuEditor.php");
 }
 
 /**
