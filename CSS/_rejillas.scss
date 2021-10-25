@@ -68,3 +68,21 @@ $maxColumnas: 12;
     box-sizing: border-box;
     padding: 1em;
 }
+
+@for $i from 1 through 5 {
+    .p-#{$i} {
+        padding: $i*1em;
+    }
+    .p-d-#{$i} {
+        padding-right: $i*1em;
+    }
+    .p-i-#{$i} {
+        padding-left: $i*1em;
+    }
+    .p-a-#{$i} {
+        padding-top: $i*1em;
+    }
+    .p-d-#{$i} {
+        padding-bottom: $i*1em;
+    }
+}
