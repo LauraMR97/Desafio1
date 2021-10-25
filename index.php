@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" type="text/css" href="./CSS/general.css">
+    <script src='https://www.google.com/recaptcha/api.js?render=6LdfMfEcAAAAAO5Q2ukW9JjGwfcFrsAr26it8u58'></script>
+    <script src='./ValidacionYCaptcha/Captcha.js'></script>
 </head>
 
 <body class="oriental">
@@ -29,7 +31,6 @@
 
             
             <form action="controlador.php" method="POST" class="oriental">
-
                 <div class="row">
                     <label class=" margen-4 xl-col-1 l-col-1 m-col-1 s-col-1">Email:</label>
                     <input class="xl-col-3 l-col-3 m-col-3 s-col-3" type="text" value="" name="Email" placeholder="Inserta tu Email" require>
@@ -39,6 +40,7 @@
                     <label class="margen-4 xl-col-1 l-col-1 m-col-1 s-col-1">Contraseña:</label>
                     <input class="xl-col-3 l-col-3 m-col-3 s-col-3" type="text" value="" name="Password" placeholder="Inserta tu Contraseña" require>
                 </div>
+                <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
 
                 <div class="row">
                     <div class=" margen-4 xl-col-12 l-col-12 m-col-12 s-col-12 separado">
@@ -51,6 +53,7 @@
                             <a class='oriental' href="./password.php">Se me ha olvidado la contraseña...</a>
                         </div>
                         <div class="row">
+                    
             </form>
         </section>
         <footer class=" oriental row">

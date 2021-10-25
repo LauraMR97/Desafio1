@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recupera tu cuenta</title>
     <link rel="stylesheet" type="text/css" href="./CSS/general.css">
+    <script src='https://www.google.com/recaptcha/api.js?render=6LdfMfEcAAAAAO5Q2ukW9JjGwfcFrsAr26it8u58'></script>
+    <script src='./ValidacionYCaptcha/CaptchaEnviar.js'></script>
 </head>
 
 <body class="oriental">
@@ -24,6 +26,7 @@
             </div>
 
             <form action="controlador.php" method="POST" class="oriental">
+            <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
 
                 <div class="row">
                     <div class="margen-5 l-col-3 m-col-3 s-col-3 separadoPequeño">
