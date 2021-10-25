@@ -27,18 +27,10 @@
         <section class='row'>
 
             <form name="formulario" action="Administracion.php" method="POST" class="oriental">
-                <div class="row">
-                    <div class="xl-col-3 l-col-3 m-col-3 s-col-3 ">
-                        <input type="text" name="parametroBuscado" placeholder="Inserta un nombre o email" value="">
-                    </div>
-
-                    <div class="xl-col-2 l-col-2 m-col-2 s-col-2 ">
-                        <input type="submit" value="Buscar" name="Buscar">
-                    </div>
-
-                    <div class="xl-col-2 l-col-2 m-col-2 s-col-2 ">
-                        <input type="submit" value="Ver Todos" name="Todos">
-                    </div>
+                <div class="row separado">
+                    <input class="xl-col-3 l-col-3 m-col-3 s-col-3" type="text" name="parametroBuscado" placeholder="Inserta un nombre o email" value="">
+                    <input class="xl-col-2 l-col-2 m-col-2 s-col-2" type="submit" value="Buscar" name="Buscar">
+                    <input class="xl-col-2 l-col-2 m-col-2 s-col-2" type="submit" value="Ver Todos" name="Todos">
                 </div>
             </form>
 
@@ -54,7 +46,11 @@
                                     <div class=" xl-col-12 l-col-12 m-col-12 s-col-12">
                                         Nombre:<input type='text' value='<?php echo $persona->getNombre(); ?>' name='nombre' disabled>
                                         Email:<input type='text' value='<?php echo $persona->getEmail(); ?>' name='email' disabled>
-                                        Activo:<input type='text' value='<?php if($persona->getActivo()){ echo 'Si';}else{echo 'No';}?>' name='email' disabled>
+                                        Activo:<input type='text' value='<?php if ($persona->getActivo()) {
+                                                                                echo 'Si';
+                                                                            } else {
+                                                                                echo 'No';
+                                                                            } ?>' name='email' disabled>
                                     </div>
                                 </div>
                             </form>
@@ -73,7 +69,11 @@
 
                                         Email:<input type='text' value='<?php echo $persona->getEmail(); ?>' name='email'>
 
-                                        Activo:<input type='text' value='<?php if($persona->getActivo()){ echo 'Si';}else{echo 'No';}?>' name='email' disabled>
+                                        Activo:<input type='text' value='<?php if ($persona->getActivo()) {
+                                                                                echo 'Si';
+                                                                            } else {
+                                                                                echo 'No';
+                                                                            } ?>' name='email' disabled>
 
                                         <button type="submit" name='X'><img src="./ICONOS/eliminar.jpg" class="tamaño"></button>
 
@@ -106,7 +106,11 @@
 
                                     Email:<input type='text' value='<?php echo $persona->getEmail(); ?>' name='email' disabled>
 
-                                    Activo:<input type='text' value='<?php if($persona->getActivo()){ echo 'Si';}else{echo 'No';}?>' name='email' disabled>
+                                    Activo:<input type='text' value='<?php if ($persona->getActivo()) {
+                                                                            echo 'Si';
+                                                                        } else {
+                                                                            echo 'No';
+                                                                        } ?>' name='email' disabled>
                                 </div>
                             </div>
                         </form>
@@ -122,7 +126,11 @@
 
                                     Email:<input type='text' value='<?php echo $persona->getEmail(); ?>' name='email'>
 
-                                    Activo:<input type='text' value='<?php if($persona->getActivo()){ echo 'Si';}else{echo 'No';}?>' name='email' disabled>
+                                    Activo:<input type='text' value='<?php if ($persona->getActivo()) {
+                                                                            echo 'Si';
+                                                                        } else {
+                                                                            echo 'No';
+                                                                        } ?>' name='email' disabled>
 
                                     <button type="submit" name='X'><img src="./ICONOS/eliminar.jpg" class="tamaño"></button>
 
@@ -146,10 +154,14 @@
                     ?>
                         <form action="controlador.php" method="POST" class="oriental">
                             <div class="row">
-                            <div class=" xl-col-12 l-col-12 m-col-12 s-col-12 ">
+                                <div class=" xl-col-12 l-col-12 m-col-12 s-col-12 ">
                                     Nombre:<input type='text' value='<?php echo $persona->getNombre(); ?>' name='nombre' disabled>
                                     Email:<input type='text' value='<?php echo $persona->getEmail(); ?>' name='email' disabled>
-                                    Activo:<input type='text' value='<?php if($persona->getActivo()){ echo 'Si';}else{echo 'No';}?>' name='email' disabled>
+                                    Activo:<input type='text' value='<?php if ($persona->getActivo()) {
+                                                                            echo 'Si';
+                                                                        } else {
+                                                                            echo 'No';
+                                                                        } ?>' name='email' disabled>
                                 </div>
                             </div>
                         </form>
@@ -160,20 +172,24 @@
                         <form action="controlador.php" method="POST" class="oriental">
 
                             <div class="row">
-                            <div class=" xl-col-12 l-col-12 m-col-12 s-col-12 ">
+                                <div class=" xl-col-12 l-col-12 m-col-12 s-col-12 ">
 
                                     Nombre:<input readonly type='text' value='<?php echo $persona->getNombre(); ?>' name='nombre'>
-                               
+
                                     Email:<input type='text' value='<?php echo $persona->getEmail(); ?>' name='email'>
-                           
-                                    Activo:<input type='text' value='<?php if($persona->getActivo()){ echo 'Si';}else{echo 'No';}?>' name='email' disabled>
-                            
+
+                                    Activo:<input type='text' value='<?php if ($persona->getActivo()) {
+                                                                            echo 'Si';
+                                                                        } else {
+                                                                            echo 'No';
+                                                                        } ?>' name='email' disabled>
+
                                     <button type="submit" name='X'><img src="./ICONOS/eliminar.jpg" class="tamaño"></button>
-                         
+
                                     <button type="submit" name='E'><img src="./ICONOS/edit.png" class="tamaño"></button>
-                        
+
                                     <button type="submit" name='Activar'><img src="./ICONOS/up.png" class="tamaño"></button>
-                           
+
                                     <button type="submit" name='Desactivar'><img src="./ICONOS/down.png" class="tamaño"></button>
                                 </div>
                             </div>

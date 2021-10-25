@@ -35,6 +35,47 @@ class Conexion
 
         self::actualizarRolPersona($p, $rol);
     }
+       /*--------------------------------------------------------------*/
+       public static function addPregunta($desc,$creador)
+       {
+           self::abrirConexion();
+           $query = "INSERT INTO pregunta (descripcion,correo) VALUES (?,?)";
+           $stmt = self::$conexion->prepare($query);
+   
+           $stmt->bind_param("ss", $desc,$creador);
+   
+   
+           if ($stmt->execute()) {
+               $mensaje = 'Registro insertado con éxito' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+               // Bitacora::guardarArchivo($mensaje);
+           } else {
+               $mensaje = "Error al insertar: " . mysqli_error(self::$conexion) . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+               //Bitacora::guardarArchivo($mensaje);
+           }
+           $stmt->close();
+           self::cerrarConexion();
+       }
+     /*--------------------------------------------------------------*/
+     public static function addRespuesta($resp)
+     {
+         self::abrirConexion();
+         $query = "INSERT INTO respuesta (descripcionR) VALUES (?)";
+         $stmt = self::$conexion->prepare($query);
+ 
+         $stmt->bind_param("s", $resp);
+ 
+ 
+         if ($stmt->execute()) {
+             $mensaje = 'Registro insertado con éxito' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+             // Bitacora::guardarArchivo($mensaje);
+         } else {
+             $mensaje = "Error al insertar: " . mysqli_error(self::$conexion) . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+             //Bitacora::guardarArchivo($mensaje);
+         }
+         $stmt->close();
+         self::cerrarConexion();
+     }
+
 
     /*--------------------------------------------------------------*/
 
@@ -99,45 +140,45 @@ class Conexion
         $stmt->close();
         self::cerrarConexion();
     }
-       /*----------------------------------------------------------------------*/
-       public static function delPreg($desc)
-       {
-           self::abrirConexion();
-           $query = "DELETE FROM pregunta WHERE descripcion = ? ";
-           $stmt = self::$conexion->prepare($query);
-   
-           $stmt->bind_param("s", $desc);
-   
-           if ($stmt->execute()) {
-               $mensaje = 'Registro eliminado con éxito' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
-               // Bitacora::guardarArchivo($mensaje);
-           } else {
-               $mensaje = 'Error al eliminar' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
-               // Bitacora::guardarArchivo($mensaje);
-           }
-           $stmt->close();
-           self::cerrarConexion();
-       }
+    /*----------------------------------------------------------------------*/
+    public static function delPreg($desc)
+    {
+        self::abrirConexion();
+        $query = "DELETE FROM pregunta WHERE descripcion = ? ";
+        $stmt = self::$conexion->prepare($query);
 
-          /*----------------------------------------------------------------------*/
-          public static function delResp($desc)
-          {
-              self::abrirConexion();
-              $query = "DELETE FROM respuesta WHERE descripcionR = ? ";
-              $stmt = self::$conexion->prepare($query);
-      
-              $stmt->bind_param("s", $desc);
-      
-              if ($stmt->execute()) {
-                  $mensaje = 'Registro eliminado con éxito' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
-                  // Bitacora::guardarArchivo($mensaje);
-              } else {
-                  $mensaje = 'Error al eliminar' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
-                  // Bitacora::guardarArchivo($mensaje);
-              }
-              $stmt->close();
-              self::cerrarConexion();
-          }
+        $stmt->bind_param("s", $desc);
+
+        if ($stmt->execute()) {
+            $mensaje = 'Registro eliminado con éxito' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            // Bitacora::guardarArchivo($mensaje);
+        } else {
+            $mensaje = 'Error al eliminar' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            // Bitacora::guardarArchivo($mensaje);
+        }
+        $stmt->close();
+        self::cerrarConexion();
+    }
+
+    /*----------------------------------------------------------------------*/
+    public static function delResp($desc)
+    {
+        self::abrirConexion();
+        $query = "DELETE FROM respuesta WHERE descripcionR = ? ";
+        $stmt = self::$conexion->prepare($query);
+
+        $stmt->bind_param("s", $desc);
+
+        if ($stmt->execute()) {
+            $mensaje = 'Registro eliminado con éxito' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            // Bitacora::guardarArchivo($mensaje);
+        } else {
+            $mensaje = 'Error al eliminar' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            // Bitacora::guardarArchivo($mensaje);
+        }
+        $stmt->close();
+        self::cerrarConexion();
+    }
     /*-------------------------------------------------------------------------*/
     public static function buscarPersona($correo, $cont)
     {
@@ -244,7 +285,35 @@ class Conexion
 
         return $per;
     }
+    /*---------------------------------------------------------------------------------*/
+    public static function buscarPreguntaConRespuesta($pregunta)
+    {
+        $pre = null;
 
+        self::abrirConexion();
+
+        $query = "SELECT pregunta.descripcion,pregunta.correo,respuesta.descripcionR FROM pregunta JOIN preg_resp
+    ON preg_resp.Id_pregunta=pregunta.Id_pregunta JOIN respuesta ON respuesta.id_respuesta=preg_resp.id_respuesta WHERE
+     pregunta.descripcion LIKE ?";
+        $stmt = self::$conexion->prepare($query);
+
+        $stmt->bind_param("s", $pregunta);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+
+        if ($result) {
+            while ($fila = mysqli_fetch_array($result)) {
+                $pre = new Pregunta($fila["descripcionR"], $fila["descripcion"], $fila['creador']);
+            }
+        }
+
+        $stmt->close();
+        self::cerrarConexion();
+
+        return $pre;
+    }
     /*--------------------------------------------------------------*/
     public static function editarPersona($perNu, $perAnt)
     {
@@ -330,7 +399,7 @@ class Conexion
 
         if ($resultado) {
             while ($fila = mysqli_fetch_array($resultado)) {
-                $pregunta = new Pregunta($fila['descripcionR'], $fila['descripcion'],$fila['correo']);
+                $pregunta = new Pregunta($fila['descripcionR'], $fila['descripcion'], $fila['correo']);
                 $array[] = $pregunta;
             }
         }
