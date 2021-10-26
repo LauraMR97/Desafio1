@@ -9,15 +9,15 @@
     <link rel="stylesheet" type="text/css" href="../CSS/general.css">
 </head>
 
-<body class="oriental">
+<body class="gamer">
 
     <?php
     session_start();
     $_SESSION['url'] = 'ElegirRol.php';
     ?>
 
-    <main class="container oriental">
-        <header class="row oriental">
+    <main class="container gamer">
+        <header class="row gamer">
             <h1>Escape Web</h1>
             <h4>Tu pagina de scape room</h4>
             </div>
@@ -29,14 +29,8 @@
                 <h3>Elegir Rol:</h3>
             </div>
 
-            <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
-                <div class="row">
-                    <div class="xl-col-12 l-col-12 m-col-12 s-col-12 separado">
-                        <h2>Elegir Rol:</h2>
-                    </div>
-                </div>
-
-                <form action="../controlador.php" method="POST" class="margen-3 xl-col-12 l-col-12 m-col-12 s-col-12 oriental">
+                <form action="../Base_de_datos/controlador.php" method="POST" class="gamer">
+                <div class="row margen-4">
                     <div class="row p-d-1">
                         <input class="xl-col-6 l-col-6 m-col-6 s-col-6" type="submit" value="Administrador" name="Administrador">
                     </div>
@@ -49,10 +43,11 @@
                     <div class="row p-d-1">
                         <input class=" xl-col-6 l-col-6 m-col-6 s-col-6 " type="submit" value="Volver" name="CerrarSesion">
                     </div>
+                </div>
                 </form>
             </div>
         </section>
-        <footer class=" oriental row">
+        <footer class=" gamer row">
             <div class="xl-col-12 l-col-12 m-col-12 s-col-12">
                 <p>Email: EscapeRoom@juegos.com</p>
             </div>

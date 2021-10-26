@@ -14,6 +14,10 @@ form {
             margin: auto;
             border-radius: 10px;
             padding: 16px;
+            background-image: linear-gradient(to right, $primario, $cuartoE);
+            &:hover {
+                background-image: linear-gradient(to right, $cuarto, $primario);
+            }
         }
         input[type="email"],
         input[type="number"],
@@ -44,6 +48,11 @@ form {
             font-size: 1.2em;
             margin: auto;
             padding: 16px;
+            border-radius: 1em 1em 1em 1em;
+            background-image: linear-gradient(to bottom, $secundario2, $primario2);
+            &:hover {
+                background-image: linear-gradient(to bottom, $primarioE2, $secundarioE2);
+            }
         }
         input[type="email"],
         input[type="number"],

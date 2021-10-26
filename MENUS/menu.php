@@ -8,14 +8,15 @@
     <title>Menu Usuario</title>
     <link rel="stylesheet" type="text/css" href="../CSS/general.css">
 </head>
+
 <body class="oriental">
     <?php
     session_start();
     ?>
-      <main class="container oriental">
+    <main class="container oriental">
         <header class="row oriental">
-                <h1>Escape Web</h1>
-                <h4>Tu pagina de scape room</h4>
+            <h1>Escape Web</h1>
+            <h4>Tu pagina de scape room</h4>
             </div>
         </header>
 
@@ -26,25 +27,19 @@
             </div>
 
             <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
-                <div class="row">
-                    <div class="margen-5 l-col-2 m-col-2 s-col-2 separado">
-                        <input type="submit" value="Jugar" name="Jugar">
+                <div class="row margen-4">
+                    <div class="row p-d-1">
+                        <input class="xl-col-6 l-col-6 m-col-6 s-col-6 " type="submit" value="Jugar" name="Jugar">
                     </div>
-                </div>
 
-                <div class="row">
-                    <div class=" margen-5 l-col-2 m-col-2 s-col-2 separadoPequeño">
-                        <input type="submit" value="Historial" name="Historial">
+                    <div class="row p-d-1">
+                        <input class="xl-col-6 l-col-6 m-col-6 s-col-6 " type="submit" value="Historial" name="Historial">
                     </div>
-                </div>
-                <div class="row">
-                    <div class=" margen-5 l-col-2 m-col-2 s-col-2 separadoPequeño">
-                        <input type="submit" value="Ranking" name="Ranking">
+                    <div class="row p-d-1">
+                        <input class="xl-col-6 l-col-6 m-col-6 s-col-6 " type="submit" value="Ranking" name="Ranking">
                     </div>
-                </div>
-                <div class="row">
-                    <div class=" margen-5 l-col-2 m-col-2 s-col-2 separadoPequeño">
-                        <input type="submit" value="Volver" name="VolverAlternativo">
+                    <div class="row p-d-1">
+                        <input class="xl-col-6 l-col-6 m-col-6 s-col-6" type="submit" value="Volver" name="VolverAlternativo">
                     </div>
                 </div>
             </form>

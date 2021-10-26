@@ -1,7 +1,7 @@
 <?php
 include_once "Parametros.php";
 include_once "bitacora.php";
-include_once "Pregunta.php";
+include_once "../Objetos/Pregunta.php";
 class Conexion
 {
 

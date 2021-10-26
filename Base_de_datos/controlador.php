@@ -205,13 +205,13 @@ if (isset($_REQUEST['XPreg'])) {
 
 if (isset($_REQUEST['AniadirPreg'])) {
     $_SESSION['Eleccion'] = 'AniadirPreg';
-    header("Location:./GestionPreguntas.php");
+    header("Location:../Administracion/GestionPreguntas.php");
 }
 
 if (isset($_REQUEST['EPreg'])) {
     $_SESSION['pregunta'] = $_REQUEST['desc'];
     $_SESSION['Eleccion'] = 'EditarPreg';
-    header("Location:./GestionPreguntas.php");
+    header("Location:../Administracion/GestionPreguntas.php");
 }
 
 
@@ -249,7 +249,7 @@ if (isset($_REQUEST['ADDPre'])) {
     Conexion::addOpciones($op2, $idPre);
     Conexion::addOpciones($op3, $idPre);
     Conexion::addOpciones($op4, $idPre);
-    header("Location:./Preguntas.php");
+    header("Location:../Administracion/Preguntas.php");
 }
 /*************************************************************************** */
 /****************************ADMINISTRACION********************************* */
@@ -316,7 +316,7 @@ if (isset($_REQUEST['VolverAlternativo'])) {
 
 
 if (isset($_REQUEST['VolverAPreguntas'])) {
-    header("Location:./Preguntas.php");
+    header("Location:../Administracion/Preguntas.php");
 }
 /**
  * Me permite volver desde enviar.php a password.php

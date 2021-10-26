@@ -70,7 +70,7 @@
                     </div>
 
                     <div class="l-col-2 m-col-2 s-col-2">
-                        <button type="submit" name='ADD'><img src="../ICONOS/add.png" class="tamaño"></button>
+                        <button type="submit" name='ADD'><img src="../ICONOS/addPregunta.png" class="tamaño"></button>
                     </div>
 
 
@@ -136,7 +136,7 @@
                     </div>
 
                     <div class="l-col-2 m-col-2 s-col-2">
-                        <button type="submit" name='ADD' disabled><img src="../ICONOS/add.png" class="tamaño"></button>
+                        <button type="submit" name='ADD' disabled><img src="../ICONOS/addPregunta.png" class="tamaño"></button>
                     </div>
 
 

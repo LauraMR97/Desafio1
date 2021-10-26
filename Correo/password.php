@@ -12,10 +12,10 @@
 </head>
 
 <body class="oriental">
-<main class="container oriental">
+    <main class="container oriental">
         <header class="row oriental">
-                <h1>Escape Web</h1>
-                <h4>Tu pagina de scape room</h4>
+            <h1>Escape Web</h1>
+            <h4>Tu pagina de scape room</h4>
             </div>
         </header>
 
@@ -26,21 +26,18 @@
             </div>
 
             <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
-            <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
 
-                <div class="row">
-                    <div class="margen-5 l-col-3 m-col-3 s-col-3 separadoPequeño">
-                        <label>Email:</label>
-                        <input type="text" value="" name="correoDest" placeholder="Inserta tu Email" require>
-                    </div>
-                </div>
+                <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
 
-                <div class="row">
-                    <div class="margen-4 l-col-2 m-col-2 s-col-2 ">
-                        <input type="submit" value="Enviar" name="Enviar">
+                <div class="row margen-4">
+                    <div class="row p-d-2">
+                        <label class="xl-col-2 l-col-2 m-col-2 s-col-2">Email:</label>
+                        <input class="xl-col-4 l-col-4 m-col-4 s-col-4" type="text" value="" name="correoDest" placeholder="Inserta tu Email" require>
                     </div>
-                    <div class="l-col-2 m-col-2 s-col-2 ">
-                        <input type="submit" value="Volver" name="CerrarSesion">
+
+                    <div class="row p-d-1 p-i-1">
+                        <input class="xl-col-3 l-col-3 m-col-3 s-col-3" type="submit" value="Enviar" name="Enviar">
+                        <input class="xl-col-3 l-col-3 m-col-3 s-col-3" type="submit" value="Volver" name="CerrarSesion">
                     </div>
                 </div>
             </form>
