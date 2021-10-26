@@ -11,7 +11,7 @@
     <script src='../ValidacionYCaptcha/validacionRegistro.js'></script>
 </head>
 
-<body class="oriental">
+<body class="oriental" onload='validacion()'>
 <main class="container oriental">
         <header class="row oriental">
                 <h1>Escape Web</h1>
@@ -30,9 +30,8 @@
                 <div class="row">
                     <div class=" margen-5 l-col-3 m-col-3 s-col-3 separado">
                         <label>Nombre:</label>
-                        <input type="text" value="" id="nombre" name="Nombre" placeholder="Inserta tu Nombre" required>
+                        <input type="text" value="" id="nom" name="Nombre" placeholder="Inserta tu Nombre" required minlength="4" maxlength="8">
                         <span class="error" id="nombreError" aria-live="polite"></span>
-
                     </div>
                 </div>
 
@@ -71,7 +70,7 @@
 
                 <div class="row">
                     <div class="l-col-2 m-col-2 s-col-2">
-                        <input type="submit" value="Registrar" id="Registrar" name="Registrar">
+                        <input type="submit" value="Registrar" id="Registro" name="Registrar">
                     </div>
                     <div class="l-col-2 m-col-2 s-col-2 ">
                         <input type="submit" value="Volver" name="CerrarSesion">

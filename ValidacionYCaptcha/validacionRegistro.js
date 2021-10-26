@@ -3,105 +3,75 @@ function validacion() {
     const email = document.getElementById('mail');
     const pass = document.getElementById('password');
     const passRepeat = document.getElementById('passwordConfirm');
-    const nombre = document.getElementById('nombre');
+    const nombre = document.getElementById('nom');
 
-    const botonRegistrar = document.getElementById('Registrar');
+    const botonRegistrar = document.getElementById('Registro');
 
     const emailError = document.querySelector('#mail + span.error');
     const passwordError = document.getElementById('passwordError');
     const passwordConfirmError = document.getElementById('passwordConfirmError');
     const NombreError = document.getElementById('nombreError');
 
+    const pass1 = document.getElementById('password').value;
+    const pass2 = document.getElementById('passwordConfirm').value;
 
-    email.addEventListener('onblur', function(event) {
-        // Cada vez que el usuario escribe algo, verificamos si
-        // los campos del formulario son válidos.
-
+    email.addEventListener('onblur', function (event) {
         if (email.validity.valid) {
-            // En caso de que haya un mensaje de error visible, si el campo
-            // es válido, eliminamos el mensaje de error.
-            emailError.innerHTML = ''; // Restablece el contenido del mensaje
-            emailError.className = 'error'; // Restablece el estado visual del mensaje
+            emailError.innerHTML = '';
+            emailError.className = 'error';
         } else {
-            // Si todavía hay un error, muestra el error exacto
             showErrorEmail();
         }
     });
 
-    pass.addEventListener('onblur', function(event) {
-        // Cada vez que el usuario escribe algo, verificamos si
-        // los campos del formulario son válidos.
+    pass.addEventListener('onblur', function (event) {
 
         if (pass.validity.valid) {
-            // En caso de que haya un mensaje de error visible, si el campo
-            // es válido, eliminamos el mensaje de error.
             passwordError.innerHTML = ''; // Restablece el contenido del mensaje
             passwordError.className = 'error'; // Restablece el estado visual del mensaje
         } else {
-            // Si todavía hay un error, muestra el error exacto
             showErrorPassword();
         }
     });
 
 
-    passRepeat.addEventListener('onblur', function(event) {
-        // Cada vez que el usuario escribe algo, verificamos si
-        // los campos del formulario son válidos.
-
+    passRepeat.addEventListener('onblur', function (event) {
         if (passRepeat.validity.valid) {
-            // En caso de que haya un mensaje de error visible, si el campo
-            // es válido, eliminamos el mensaje de error.
             passwordConfirmError.innerHTML = ''; // Restablece el contenido del mensaje
             passwordConfirmError.className = 'error'; // Restablece el estado visual del mensaje
         } else {
-            // Si todavía hay un error, muestra el error exacto
-            showErrorPassword();
+            showErrorPasswordRepeat();
         }
     });
 
-    nombre.addEventListener('onblur', function(event) {
-        // Cada vez que el usuario escribe algo, verificamos si
-        // los campos del formulario son válidos.
-
+    nombre.addEventListener('onblur', function (event) {
         if (nombre.validity.valid) {
-            // En caso de que haya un mensaje de error visible, si el campo
-            // es válido, eliminamos el mensaje de error.
             NombreError.innerHTML = ''; // Restablece el contenido del mensaje
             NombreError.className = 'error'; // Restablece el estado visual del mensaje
         } else {
-            // Si todavía hay un error, muestra el error exacto
-            showErrorPassword();
+            showErrorNombre();
         }
     });
 
-    botonRegistrar.addEventListener('click', function(event) {
-        // si el campo de correo electrónico es válido, dejamos que el formulario se envíe
+    botonRegistrar.addEventListener('click', function (event) {
 
         if (!email.validity.valid) {
-            // Si no es así, mostramos un mensaje de error apropiado
             showErrorEmail();
-            // Luego evitamos que se envíe el formulario cancelando el evento
             event.preventDefault();
         }
 
         if (!pass.validity.valid) {
-            // Si no es así, mostramos un mensaje de error apropiado
             showErrorPassword();
-            // Luego evitamos que se envíe el formulario cancelando el evento
             event.preventDefault();
         }
 
         if (!passRepeat.validity.valid) {
-            // Si no es así, mostramos un mensaje de error apropiado
-            showErrorPassword();
-            // Luego evitamos que se envíe el formulario cancelando el evento
+            showErrorPasswordRepeat();
             event.preventDefault();
         }
 
         if (!nombre.validity.valid) {
-            // Si no es así, mostramos un mensaje de error apropiado
-            showErrorPassword();
-            // Luego evitamos que se envíe el formulario cancelando el evento
+            showErrorNombre();
             event.preventDefault();
         }
 
@@ -109,21 +79,12 @@ function validacion() {
 
     function showErrorEmail() {
         if (email.validity.valueMissing) {
-            // Si el campo está vacío
-            // muestra el mensaje de error siguiente.
             emailError.textContent = 'Debe introducir una dirección de correo electrónico.';
         } else if (email.validity.typeMismatch) {
-            // Si el campo no contiene una dirección de correo electrónico
-            // muestra el mensaje de error siguiente.
             emailError.textContent = 'El valor introducido debe ser una dirección de correo electrónico.';
         } else if (email.validity.tooShort) {
-            // Si los datos son demasiado cortos
-            // muestra el mensaje de error siguiente.
             emailError.textContent = 'El correo electrónico debe tener al menos ${ email.minLength } caracteres; ha introducido ${ email.value.length }.';
         }
-
-
-
         // Establece el estilo apropiado
         emailError.className = 'error active';
 
@@ -131,13 +92,40 @@ function validacion() {
 
     function showErrorPassword() {
 
-        console.log('ENtra en error password');
         if (pass.validity.valueMissing) {
-            // Si el campo está vacío
-            // muestra el mensaje de error siguiente.
+
             passwordError.textContent = 'Debe introducir una contraseña.';
+        }
+        else{
+            passwordError.textContent = 'Las contraseñas no son iguales';
+
         }
 
         passwordError.className = 'error active';
     }
+
+    function showErrorPasswordRepeat() {
+
+        if (passRepeat.validity.valueMissing) {
+            passwordConfirmError.textContent = 'Debe repetir la contraseña.';
+        }
+        passwordConfirmError.className = 'error active';
+    }
+
+    function showErrorNombre() {
+
+        if (nombre.validity.valueMissing) {
+            NombreError.textContent = 'Debe introducir un nombre de usuario.';
+        } else if (nombre.validity.tooShort) {
+            NombreError.textContent = 'El nombre debe tener al menos 4 caracteres';
+        } else if (nombre.validity.tooLong) {
+            NombreError.textContent = 'El nombre debe tener como mucho 8 caracteres';
+        }
+
+        NombreError.className = 'error active';
+    }
+
+
 }
+
+
