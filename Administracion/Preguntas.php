@@ -11,9 +11,9 @@
 
 <body class="oriental">
     <?php
-    require_once 'Persona.php';
-    require_once 'Pregunta.php';
-    require_once 'Conexion.php';
+    require_once '../Objetos/Persona.php';
+    require_once '../Objetos/Pregunta.php';
+    require_once '../Base_de_datos/Conexion.php';
     session_start();
     $preguntas = Conexion::ArrayDePreguntas();
     $perLoggeada = $_SESSION['per'];
@@ -43,7 +43,7 @@
                 foreach ($preguntas as $pregunta) {
                     if ($_REQUEST['parametroBuscado'] == $pregunta->getCreador()) {
             ?>
-                        <form action="controlador.php" method="POST" class="oriental">
+                <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
 
                             <div class="row">
                                 <div class="xl-col-12 l-col-12 m-col-12 s-col-12 separado">
@@ -63,7 +63,7 @@
             if (isset($_REQUEST['TodasPreg'])) {
                 foreach ($preguntas as $pregunta) {
                     ?>
-                    <form action="controlador.php" method="POST" class="oriental">
+                <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
 
                         <div class="row">
                             <div class="xl-col-12 l-col-12 m-col-12 s-col-12 separado">
@@ -82,7 +82,7 @@
             if (!isset($_REQUEST['BuscarPreg']) && !isset($_REQUEST['TodasPreg'])) {
                 foreach ($preguntas as $pregunta) {
                 ?>
-                    <form action="controlador.php" method="POST" class="oriental">
+                <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
 
                         <div class="row">
                             <div class="xl-col-12 l-col-12 m-col-12 s-col-12 separado">
@@ -99,7 +99,7 @@
                 }
             }
             ?>
-            <form action="controlador.php" method="POST" class="oriental">
+                <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
                 <div class="row">
                     <div class="margen-4 xl-col-12 l-col-12 m-col-12 s-col-12 separado">
                         <button type="submit" name='AniadirPreg'><img src="./ICONOS/addPregunta.png" class="tamaño"></button>

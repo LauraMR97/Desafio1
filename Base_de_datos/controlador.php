@@ -1,5 +1,5 @@
 <?php
-require_once './Persona.php';
+require_once '../Objetos/Persona.php';
 require_once './Conexion.php';
 session_start();
 
@@ -31,13 +31,13 @@ if (isset($_REQUEST['Aceptar'])) {
         $roles = Conexion::verRol($email);
         for ($i = 0; $i < count($roles); $i++) {
             if ($roles[$i] == 0) {
-                header("Location:./MENUS/ElegirRol.php");
+                header("Location:../MENUS/ElegirRol.php");
             } else {
                 if ($roles[$i] == 1) {
-                    header("Location:./MENUS/MenuEditor.php");
+                    header("Location:../MENUS/MenuEditor.php");
                 } else {
                     if ($roles[$i] == 2) {
-                        header("Location:./MENUS/menu.php");
+                        header("Location:../MENUS/menu.php");
                     }
                 }
             }
@@ -48,7 +48,7 @@ if (isset($_REQUEST['Aceptar'])) {
  * Me permite acceder a Registro.php
  */
 if (isset($_REQUEST['Registrarse'])) {
-    header("Location:./registro.php");
+    header("Location:../Ventanas/registro.php");
 }
 
 /**
@@ -83,10 +83,10 @@ if (isset($_REQUEST['Registrar'])) {
         //else{
         //$persona= new Persona($nombre,$email,$passwrd);
         Conexion::addPersona($persona, 2, $passwrd);
-        header("Location:./MENUS/menu.php");
+        header("Location:../MENUS/menu.php");
     } else {
         $_SESSION['mensaje'] = 'Las constraseñas son distintas';
-        header("Location:./error.php");
+        header("Location:../Error_y_Reformas/error.php");
     }
 }
 
@@ -132,7 +132,7 @@ if (isset($_REQUEST['Enviar'])) {
     $perNew->setPassword(sha1($_SESSION['newPassword']));
     Conexion::editarPersona($perNew, $perAnt);
 
-    header("Location:./enviar.php");
+    header("Location:../Correo/enviar.php");
 }
 
 /*************************************************************************** */
@@ -167,7 +167,7 @@ if (isset($_REQUEST['ADD'])) {
         header("Location:./Administracion.php");
     } else {
         $_SESSION['mensaje'] = 'Las constraseñas son distintas';
-        header("Location:./error.php");
+        header("Location:../Error_y_Reformas/error.php");
     }
 }
 /**
@@ -195,7 +195,7 @@ if (isset($_REQUEST['Editar'])) {
     $perNew = new Persona($nombre, $email);
     Conexion::editarPersonaAdministracion($perNew, $perAnt);
     Conexion::editarRol($perNew, $rol);
-    header("Location:./Administracion.php");
+    header("Location:../Administracion/Administracion.php");
 }
 /*************************************************************************** */
 /****************************GESTION PREGUNTAS****************************** */
@@ -205,15 +205,15 @@ if (isset($_REQUEST['XPreg'])) {
     $Preg = $_REQUEST['desc'];
     Conexion::delPreg($Preg);
     Conexion::delResp($Resp);
-    header("Location:./Preguntas.php");
+    header("Location:../Administracion/Preguntas.php");
 }
 
 if (isset($_REQUEST['AniadirPreg'])) {
-    header("Location:./reformas.php");
+    header("Location:../Error_y_Reformas/reformas.php");
 }
 
 if (isset($_REQUEST['EPreg'])) {
-    header("Location:./reformas.php");
+    header("Location:../Error_y_Reformas/reformas.php");
 }
 /*************************************************************************** */
 /****************************ADMINISTRACION********************************* */
@@ -224,7 +224,7 @@ if (isset($_REQUEST['EPreg'])) {
 if (isset($_REQUEST['X'])) {
     $correo = $_REQUEST['email'];
     Conexion::delPersona($correo);
-    header("Location:./Administracion.php");
+    header("Location:../Administracion/Administracion.php");
 }
 
 /**
@@ -233,12 +233,12 @@ if (isset($_REQUEST['X'])) {
 if (isset($_REQUEST['E'])) {
     $_SESSION['email'] = $_REQUEST['email'];
     $_SESSION['Eleccion'] = 'Editar';
-    header("Location:./Gestion.php");
+    header("Location:../Administracion/Gestion.php");
 }
 
 if (isset($_REQUEST['Aniadir'])) {
     $_SESSION['Eleccion'] = 'Aniadir';
-    header("Location:./Gestion.php");
+    header("Location:../Administracion/Gestion.php");
 }
 
 /**
@@ -247,7 +247,7 @@ if (isset($_REQUEST['Aniadir'])) {
 if (isset($_REQUEST['Activar'])) {
     $_SESSION['email'] = $_REQUEST['email'];
     Conexion::GestionActivacionPersona(1, $_SESSION['email']);
-    header("Location:./Administracion.php");
+    header("Location:../Administracion/Administracion.php");
 }
 /**
  * Esta funcion sirve para desactivar a una persona
@@ -255,7 +255,7 @@ if (isset($_REQUEST['Activar'])) {
 if (isset($_REQUEST['Desactivar'])) {
     $_SESSION['email'] = $_REQUEST['email'];
     Conexion::GestionActivacionPersona(0, $_SESSION['email']);
-    header("Location:./Administracion.php");
+    header("Location:../Administracion/Administracion.php");
 }
 
 
@@ -273,7 +273,7 @@ if (isset($_REQUEST['VolverAlternativo'])) {
         header("Location:./index.php");
     } else {
         if ($_SESSION['url'] == 'ElegirRol.php') {
-            header("Location:./MENUS/ElegirRol.php");
+            header("Location:../MENUS/ElegirRol.php");
         }
     }
 }
@@ -281,28 +281,28 @@ if (isset($_REQUEST['VolverAlternativo'])) {
  * Me permite volver desde enviar.php a password.php
  */
 if (isset($_REQUEST['VolverPassword'])) {
-    header("Location:./password.php");
+    header("Location:../Correo/password.php");
 }
 /**
  * Volver a ElegirRol.php
  */
 
 if (isset($_REQUEST['VolverRol'])) {
-    header("Location:./MENUS/ElegirRol.php");
+    header("Location:../MENUS/ElegirRol.php");
 }
 
 /**
  * Volver al menu.php del usuario
  */
 if (isset($_REQUEST['VolverMenu'])) {
-    header("Location:./MENUS/menu.php");
+    header("Location:../MENUS/menu.php");
 }
 
 /**
  * Volver a Administracion.php desde Gestion.php
  */
 if (isset($_REQUEST['VolverAdministracion'])) {
-    header("Location:./Administracion.php");
+    header("Location:../Administracion/Administracion.php");
 }
 
 /**
@@ -316,7 +316,7 @@ if (isset($_REQUEST['CerrarSesion'])) {
  * Volver al menu del editor
  */
 if (isset($_REQUEST['VolverMenuEditor'])) {
-    header("Location:./MENUS/MenuEditor.php");
+    header("Location:../MENUS/MenuEditor.php");
 }
 /*************************************************************************** */
 /*******************************REDIRECCIONAMIENTO************************* */
@@ -327,47 +327,47 @@ if (isset($_REQUEST['VolverMenuEditor'])) {
  * Te lleva a administracion
  */
 if (isset($_REQUEST['Administrador'])) {
-    header("Location:./Administracion.php");
+    header("Location:../Administracion/Administracion.php");
 }
 
 /**
  * Te lleva al menu de usuario
  */
 if (isset($_REQUEST['Usuario'])) {
-    header("Location:./MENUS/menu.php");
+    header("Location:../MENUS/menu.php");
 }
 /**
  * Te lleva al menu del Editor
  */
 if (isset($_REQUEST['Editor'])) {
-    header("Location:./MENUS/MenuEditor.php");
+    header("Location:../MENUS/MenuEditor.php");
 }
 
 /**
  * Ir a Ranking.php
  */
 if (isset($_REQUEST['Ranking'])) {
-    header("Location:./Ranking.php");
+    header("Location:../Ventanas/Ranking.php");
 }
 
 /**
  * Ir a la pagina de estadisticas
  */
 if (isset($_REQUEST['Estadisticas'])) {
-    header("Location:./reformas.php");
+    header("Location:../Error_y_Reformas/reformas.php");
 }
 
 /**
  * Ir al crud de preguntas y respuestas
  */
 if (isset($_REQUEST['GestionPreguntas'])) {
-    header("Location:./Preguntas.php");
+    header("Location:../Administracion/Preguntas.php");
 }
 
 if (isset($_REQUEST['Historial'])) {
-    header("Location:./reformas.php");
+    header("Location:../Error_y_Reformas/reformas.php");
 }
 
 if (isset($_REQUEST['Jugar'])) {
-    header("Location:./reformas.php");
+    header("Location:../Error_y_Reformas/reformas.php");
 }

@@ -24,7 +24,7 @@
                 <h3>Menú Editor:</h3>
             </div>
 
-            <form action="../controlador.php" method="POST" class="oriental">
+            <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
                 <div class="row">
                     <div class="margen-5 l-col-2 m-col-2 s-col-2 separado">
                         <input type="submit" value="Preguntas" name="GestionPreguntas">

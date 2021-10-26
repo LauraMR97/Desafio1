@@ -24,7 +24,7 @@
                 <h3>Registro:</h3>
             </div>
 
-            <form action="controlador.php" method="POST" class="oriental">
+            <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
             <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
                 <div class="row">
                     <div class=" margen-5 l-col-3 m-col-3 s-col-3 separado">

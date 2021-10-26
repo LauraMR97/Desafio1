@@ -25,7 +25,7 @@
                 <h3>Recupera tu cuenta:</h3>
             </div>
 
-            <form action="controlador.php" method="POST" class="oriental">
+            <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
             <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
 
                 <div class="row">

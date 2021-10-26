@@ -12,8 +12,8 @@
 
 <body class="oriental">
     <?php
-    include_once 'Persona.php';
-    include_once 'Conexion.php';
+    include_once '../Objetos/Persona.php';
+    include_once '../Base_de_datos/Conexion.php';
     session_start();
     ?>
      <main class="container oriental">
@@ -32,7 +32,7 @@
             <?php
             if ($_SESSION['Eleccion'] == 'Aniadir') {
             ?>
-                <form action="controlador.php" method="POST" class="oriental">
+                <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
                 <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
                     <div class="row">
                         <div class=" margen-5 l-col-3 m-col-3 s-col-3 separado">
@@ -90,7 +90,7 @@
             } else {
                 $perAnt = Conexion::buscarPersonaPorCorreo($_SESSION['email']);
             ?>
-                <form action="controlador.php" method="POST" class="oriental">
+                <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
                     <div class="row">
                         <div class=" margen-5 l-col-3 m-col-3 s-col-3 separado">
                             <label>Nombre:</label>

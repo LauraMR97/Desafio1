@@ -48,7 +48,7 @@
                     </div>
                 </div>
 
-            <form action="controlador.php" method="POST" class="oriental">
+                <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
                 <div class="row">
                     <div class=" margen-4 l-col-3 m-col-3 s-col-3 separado">
                         <input type="submit" value="Cerrar Sesion" name="CerrarSesion">

@@ -29,7 +29,7 @@
                 <h3>Elegir Rol:</h3>
             </div>
 
-            <form action="../controlador.php" method="POST" class="xl-col-12 l-col-12 m-col-12 s-col-12  oriental">
+            <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
                 <div class="row">
                     <input class="xl-col-2 l-col-2 m-col-2 s-col-2 " type="submit" value="Administrador" name="Administrador">
                 </div>

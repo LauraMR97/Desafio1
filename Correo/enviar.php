@@ -143,7 +143,7 @@
                        <p>Mensaje enviado</p>
                     </div>
                 </div>
-                <form action="controlador.php" method="POST" class="oriental">
+                <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
                 <div class="row">
                     <div class="margen-4 l-col-2 m-col-2 s-col-2 ">
                         <input type="submit" value="Volver" name="VolverPassword">
