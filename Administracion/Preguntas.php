@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Preguntas</title>
-    <link rel="stylesheet" type="text/css" href="./CSS/general.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/general.css">
 </head>
 
 <body class="oriental">
@@ -51,8 +51,8 @@
                                     Respuesta:<input type='text' value='<?php echo $pregunta->getRespuesta(); ?>' name='resp'>
                                     Creador:<input type='text' value='<?php echo $pregunta->getCreador(); ?>' name='creador' disabled>
 
-                                    <button type="submit" name='XPreg'><img src="./ICONOS/eliminar.jpg" class="tamaño"></button>
-                                    <button type="submit" name='EPreg'><img src="./ICONOS/edit.png" class="tamaño"></button>
+                                    <button type="submit" name='XPreg'><img src="../ICONOS/eliminar.jpg" class="tamaño"></button>
+                                    <button type="submit" name='EPreg'><img src="../ICONOS/edit.png" class="tamaño"></button>
                                 </div>
                             </div>
                         </form>
@@ -71,8 +71,8 @@
                                 Respuesta:<input type='text' value='<?php echo $pregunta->getRespuesta(); ?>' name='resp'>
                                 Creador:<input type='text' value='<?php echo $pregunta->getCreador(); ?>' name='creador' disabled>
 
-                                <button type="submit" name='XPreg'><img src="./ICONOS/eliminar.jpg" class="tamaño"></button>
-                                <button type="submit" name='EPreg'><img src="./ICONOS/edit.png" class="tamaño"></button>
+                                <button type="submit" name='XPreg'><img src="../ICONOS/eliminar.jpg" class="tamaño"></button>
+                                <button type="submit" name='EPreg'><img src="../ICONOS/edit.png" class="tamaño"></button>
                             </div>
                         </div>
                     </form>
@@ -90,8 +90,8 @@
                                 Respuesta:<input type='text' value='<?php echo $pregunta->getRespuesta(); ?>' name='resp'>
                                 Creador:<input type='text' value='<?php echo $pregunta->getCreador(); ?>' name='creador' disabled>
 
-                                <button type="submit" name='XPreg'><img src="./ICONOS/eliminar.jpg" class="tamaño"></button>
-                                <button type="submit" name='EPreg'><img src="./ICONOS/edit.png" class="tamaño"></button>
+                                <button type="submit" name='XPreg'><img src="../ICONOS/eliminar.jpg" class="tamaño"></button>
+                                <button type="submit" name='EPreg'><img src="../ICONOS/edit.png" class="tamaño"></button>
                             </div>
                         </div>
                     </form>
@@ -102,7 +102,7 @@
                 <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
                 <div class="row">
                     <div class="margen-4 xl-col-12 l-col-12 m-col-12 s-col-12 separado">
-                        <button type="submit" name='AniadirPreg'><img src="./ICONOS/addPregunta.png" class="tamaño"></button>
+                        <button type="submit" name='AniadirPreg'><img src="../ICONOS/addPregunta.png" class="tamaño"></button>
                         <input type="submit" value="Cerrar Sesion" name="CerrarSesion">
 
                         <input type="submit" value="Volver" name="VolverMenuEditor">

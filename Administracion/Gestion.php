@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestion</title>
-    <link rel="stylesheet" type="text/css" href="./CSS/general.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/general.css">
     <script src='https://www.google.com/recaptcha/api.js?render=6LdfMfEcAAAAAO5Q2ukW9JjGwfcFrsAr26it8u58'></script>
-    <script src='./ValidacionYCaptcha/CaptchaGestion.js'></script>
+    <script src='../ValidacionYCaptcha/CaptchaGestion.js'></script>
 </head>
 
 <body class="oriental">
@@ -69,11 +69,11 @@
                     </div>
 
                     <div class="l-col-2 m-col-2 s-col-2">
-                        <button type="submit" name='Editar' disabled><img src="./ICONOS/edit.png" class="tamaño"></button>
+                        <button type="submit" name='Editar' disabled><img src="../ICONOS/edit.png" class="tamaño"></button>
                     </div>
 
                     <div class="l-col-2 m-col-2 s-col-2">
-                        <button type="submit" name='ADD'><img src="./ICONOS/add.png" class="tamaño"></button>
+                        <button type="submit" name='ADD'><img src="../ICONOS/add.png" class="tamaño"></button>
                     </div>
 
 
@@ -126,12 +126,12 @@
                     </div>
 
                     <div class="l-col-2 m-col-2 s-col-2">
-                        <button type="submit" name='Editar'><img src="./ICONOS/edit.png" class="tamaño"></button>
+                        <button type="submit" name='Editar'><img src="../ICONOS/edit.png" class="tamaño"></button>
 
                     </div>
 
                     <div class="l-col-2 m-col-2 s-col-2">
-                        <button type="submit" name='ADD' disabled><img src="./ICONOS/add.png" class="tamaño"></button>
+                        <button type="submit" name='ADD' disabled><img src="../ICONOS/add.png" class="tamaño"></button>
                     </div>
 
 

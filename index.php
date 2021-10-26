@@ -55,7 +55,7 @@
         </section>
         <div class="row">
             <div class="xl-col-12 l-col-12 m-col-12 s-col-12">
-                <a class='oriental' href="./password.php">Se me ha olvidado la contraseña...</a>
+                <a class='oriental' href="./Correo/password.php">Se me ha olvidado la contraseña...</a>
             </div>
         </div>
         <footer class=" oriental row">

@@ -224,7 +224,7 @@ if (isset($_REQUEST['EPreg'])) {
 if (isset($_REQUEST['X'])) {
     $correo = $_REQUEST['email'];
     Conexion::delPersona($correo);
-    header("Location:../Administracion/Administracion.php");
+    header("Location:../Administracion/Gestion.php");
 }
 
 /**
@@ -270,7 +270,7 @@ if (isset($_REQUEST['Desactivar'])) {
 if (isset($_REQUEST['VolverAlternativo'])) {
 
     if ($_SESSION['url'] == 'index.php') {
-        header("Location:./index.php");
+        header("Location:../index.php");
     } else {
         if ($_SESSION['url'] == 'ElegirRol.php') {
             header("Location:../MENUS/ElegirRol.php");
@@ -309,7 +309,7 @@ if (isset($_REQUEST['VolverAdministracion'])) {
  * Volver al Login
  */
 if (isset($_REQUEST['CerrarSesion'])) {
-    header("Location:./index.php");
+    header("Location:../index.php");
 }
 
 /**

@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro</title>
-    <link rel="stylesheet" type="text/css" href="./CSS/general.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/general.css">
     <script src='https://www.google.com/recaptcha/api.js?render=6LdfMfEcAAAAAO5Q2ukW9JjGwfcFrsAr26it8u58'></script>
-    <script src='./ValidacionYCaptcha/CaptchaRegistro.js'></script>
+    <script src='../ValidacionYCaptcha/CaptchaRegistro.js'></script>
 </head>
 
 <body class="oriental">
