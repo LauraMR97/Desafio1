@@ -86,19 +86,21 @@
             <?php
             } else {
                 $preAnt = Conexion::buscarPreguntaConRespuesta($_SESSION['pregunta']);
+                $id = Conexion::obtenerIDPregunta($preAnt->getDescripcion());
+                $opciones = Conexion::obtenerArrayDeOpciones($id);
             ?>
                 <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
                     <div class="row">
                         <div class=" margen-5 l-col-3 m-col-3 s-col-3 separado">
                             <label>Pregunta:</label>
-                            <input type="text" value="<?php $preAnt->getDescripcion(); ?>" name="Pregunta" placeholder="Inserta una Pregunta">
+                            <input type="text" value="<?php echo $preAnt->getDescripcion(); ?>" name="Pregunta" placeholder="Inserta una Pregunta">
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="margen-5 l-col-3 m-col-3 s-col-3 separadoPequeño">
                             <label>Opcion 1:</label>
-                            <input type="text" value="" name="Op1" placeholder="Inserta la Opcion 1">
+                            <input type="text" value="<?php echo $opciones[0]; ?>" name="Op1" placeholder="Inserta la Opcion 1">
                             <input type="radio" value="1" name="opcion"><br>
                         </div>
                     </div>
@@ -106,7 +108,7 @@
                     <div class="row">
                         <div class="margen-5 l-col-3 m-col-3 s-col-3 separadoPequeño">
                             <label>Opcion 2:</label>
-                            <input type="text" value="" name="Op2" placeholder="Inserta la Opcion 2">
+                            <input type="text" value="<?php echo $opciones[1]; ?>" name="Op2" placeholder="Inserta la Opcion 2">
                             <input type="radio" value="2" name="opcion"><br>
                         </div>
                     </div>
@@ -114,7 +116,7 @@
                     <div class="row">
                         <div class="margen-5 l-col-3 m-col-3 s-col-3 separadoPequeño">
                             <label>Opcion 3:</label>
-                            <input type="text" value="" name="Op3" placeholder="Inserta la Opcion 3">
+                            <input type="text" value="<?php echo $opciones[2]; ?>" name="Op3" placeholder="Inserta la Opcion 3">
                             <input type="radio" value="3" name="opcion"><br>
                         </div>
                     </div>
@@ -122,7 +124,7 @@
                     <div class="row">
                         <div class="margen-5 l-col-3 m-col-3 s-col-3 separadoPequeño">
                             <label>Opcion 4:</label>
-                            <input type="text" value="" name="Op4" placeholder="Inserta la Opcion 4">
+                            <input type="text" value="<?php echo $opciones[3]; ?>" name="Op4" placeholder="Inserta la Opcion 4">
                             <input type="radio" value="4" name="opcion"><br>
                         </div>
                     </div>

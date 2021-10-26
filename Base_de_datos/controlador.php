@@ -209,7 +209,7 @@ if (isset($_REQUEST['AniadirPreg'])) {
 }
 
 if (isset($_REQUEST['EPreg'])) {
-    $_SESSION['pregunta'] = $_REQUEST['Pregunta'];
+    $_SESSION['pregunta'] = $_REQUEST['desc'];
     $_SESSION['Eleccion'] = 'EditarPreg';
     header("Location:./GestionPreguntas.php");
 }
@@ -224,8 +224,8 @@ if (isset($_REQUEST['ADDPre'])) {
     $op3 = $_REQUEST['Op3'];
     $op4 = $_REQUEST['Op4'];
 
-    Conexion::addPregunta($pregunta,$_SESSION['per']);
-    
+    Conexion::addPregunta($pregunta, $_SESSION['per']);
+
     if ($respuesta == 1) {
         $respuestaCorrecta = $op1;
     } else {
@@ -242,6 +242,13 @@ if (isset($_REQUEST['ADDPre'])) {
         }
     }
     Conexion::addRespuesta($respuestaCorrecta);
+    $idResp = Conexion::obtenerIDRespuesta($respuestaCorrecta);
+    $idPre = Conexion::obtenerIDPregunta($pregunta);
+    Conexion::actualizarPregResp($idResp, $idPre);
+    Conexion::addOpciones($op1, $idPre);
+    Conexion::addOpciones($op2, $idPre);
+    Conexion::addOpciones($op3, $idPre);
+    Conexion::addOpciones($op4, $idPre);
     header("Location:./Preguntas.php");
 }
 /*************************************************************************** */
