@@ -55,6 +55,7 @@
                         </form>
                     </div>
                 </div>
+            </div>
         </section>
         <div class="row">
             <div class="xl-col-12 l-col-12 m-col-12 s-col-12">

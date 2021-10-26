@@ -31,18 +31,26 @@
 
             <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
                 <div class="row">
-                    <input class="xl-col-2 l-col-2 m-col-2 s-col-2 " type="submit" value="Administrador" name="Administrador">
+                    <div class="xl-col-12 l-col-12 m-col-12 s-col-12 separado">
+                        <h2>Elegir Rol:</h2>
+                    </div>
                 </div>
-                <div class="row">
-                    <input class="xl-col-2  l-col-2 m-col-2 s-col-2 " type="submit" value="Usuario" name="Usuario">
-                </div>
-                <div class="row">
-                    <input class="xl-col-2  l-col-2 m-col-2 s-col-2 " type="submit" value="Editor" name="Editor">
-                </div>
-                <div class="row">
-                    <input class=" xl-col-2  l-col-2 m-col-2 s-col-2 " type="submit" value="Volver" name="CerrarSesion">
-                </div>
-            </form>
+
+                <form action="../controlador.php" method="POST" class="margen-3 xl-col-12 l-col-12 m-col-12 s-col-12 oriental">
+                    <div class="row p-d-1">
+                        <input class="xl-col-6 l-col-6 m-col-6 s-col-6" type="submit" value="Administrador" name="Administrador">
+                    </div>
+                    <div class="row p-d-1">
+                        <input class="xl-col-6 l-col-6 m-col-6 s-col-6" type="submit" value="Usuario" name="Usuario">
+                    </div>
+                    <div class="row p-d-1">
+                        <input class="xl-col-6 l-col-6 m-col-6 s-col-6 " type="submit" value="Editor" name="Editor">
+                    </div>
+                    <div class="row p-d-1">
+                        <input class=" xl-col-6 l-col-6 m-col-6 s-col-6 " type="submit" value="Volver" name="CerrarSesion">
+                    </div>
+                </form>
+            </div>
         </section>
         <footer class=" oriental row">
             <div class="xl-col-12 l-col-12 m-col-12 s-col-12">

@@ -27,18 +27,10 @@
         <section class='row'>
 
             <form name="formulario" action="Administracion.php" method="POST" class="oriental">
-                <div class="row">
-                    <div class="xl-col-3 l-col-3 m-col-3 s-col-3 ">
-                        <input type="text" name="parametroBuscado" placeholder="Inserta un nombre o email" value="">
-                    </div>
-
-                    <div class="xl-col-2 l-col-2 m-col-2 s-col-2 ">
-                        <input type="submit" value="Buscar" name="Buscar">
-                    </div>
-
-                    <div class="xl-col-2 l-col-2 m-col-2 s-col-2 ">
-                        <input type="submit" value="Ver Todos" name="Todos">
-                    </div>
+                <div class="row separado">
+                    <input class="xl-col-3 l-col-3 m-col-3 s-col-3" type="text" name="parametroBuscado" placeholder="Inserta un nombre o email" value="">
+                    <input class="xl-col-2 l-col-2 m-col-2 s-col-2" type="submit" value="Buscar" name="Buscar">
+                    <input class="xl-col-2 l-col-2 m-col-2 s-col-2" type="submit" value="Ver Todos" name="Todos">
                 </div>
             </form>
 

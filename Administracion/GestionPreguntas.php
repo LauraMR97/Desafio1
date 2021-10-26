@@ -14,10 +14,10 @@
     include_once '../Base_de_datos/Conexion.php';
     session_start();
     ?>
-     <main class="container oriental">
+    <main class="container oriental">
         <header class="row oriental">
-                <h1>Escape Web</h1>
-                <h4>Tu pagina de scape room</h4>
+            <h1>Escape Web</h1>
+            <h4>Tu pagina de scape room</h4>
             </div>
         </header>
 
@@ -28,36 +28,41 @@
                 <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
                     <div class="row">
                         <div class=" margen-5 l-col-3 m-col-3 s-col-3 separado">
-                            <label>Nombre:</label>
-                            <input type="text" value="" name="Nombre" placeholder="Inserta un Nombre">
-                        </div>
-                        <div class="l-col-3 m-col-3 s-col-3 separado">
-                            <input type="radio" value="0" name="tipousur">Administrador<br>
-                            <input type="radio" value="1" name="tipousur">Editor<br>
-                            <input type="radio" value="2" name="tipousur">Usuario<br>
+                            <label>Pregunta:</label>
+                            <input type="text" value="" name="Pregunta" placeholder="Inserta una Pregunta">
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="margen-5 l-col-3 m-col-3 s-col-3 separadoPequeño">
-                            <label>Email:</label>
-                            <input type="text" value="" name="Email" placeholder="Inserta un Email">
+                            <label>Opcion 1:</label>
+                            <input type="text" value="" name="Op1" placeholder="Inserta la Opcion 1">
+                            <input type="radio" value="1" name="opcion"><br>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="margen-5 l-col-3 m-col-3 s-col-3 separadoPequeño">
-                            <label>Contraseña:</label>
-                            <input type="text" value="" name="Password" placeholder="Inserta una Contraseña">
+                            <label>Opcion 2:</label>
+                            <input type="text" value="" name="Op2" placeholder="Inserta la Opcion 2">
+                            <input type="radio" value="2" name="opcion"><br>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="margen-5 l-col-3 m-col-3 s-col-3 separadoPequeño">
-                            <label>Confirmar Contraseña:</label>
-                            <input type="text" value="" name="PasswordRepeat" placeholder="Inserta la Contraseña de nuevo">
+                            <label>Opcion 3:</label>
+                            <input type="text" value="" name="Op3" placeholder="Inserta la Opcion 3">
+                            <input type="radio" value="3" name="opcion"><br>
                         </div>
+                    </div>
 
+                    <div class="row">
+                        <div class="margen-5 l-col-3 m-col-3 s-col-3 separadoPequeño">
+                            <label>Opcion 4:</label>
+                            <input type="text" value="" name="Op4" placeholder="Inserta la Opcion 4">
+                            <input type="radio" value="4" name="opcion"><br>
+                        </div>
                     </div>
 
                     <div class="l-col-2 m-col-2 s-col-2">
@@ -70,7 +75,7 @@
 
 
                     <div class="l-col-2 m-col-2 s-col-2">
-                        <input type="submit" value="Volver" name="VolverAdministracion">
+                        <input type="submit" value="Volver" name="VolverAPreguntas">
                     </div>
 
                     <div class="l-col-2 m-col-2 s-col-2 ">
@@ -80,42 +85,48 @@
                 </form>
             <?php
             } else {
-                $perAnt = Conexion::buscarPersonaPorCorreo($_SESSION['email']);
+                $preAnt = Conexion::buscarPreguntaConRespuesta($_SESSION['pregunta']);
             ?>
                 <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
                     <div class="row">
                         <div class=" margen-5 l-col-3 m-col-3 s-col-3 separado">
-                            <label>Nombre:</label>
-                            <input type="text" value="<?php echo $perAnt->getNombre() ?>" name="Nombre" placeholder="Inserta un Nombre">
-                        </div>
-                        <div class="l-col-3 m-col-3 s-col-3 separado">
-                            <input type="radio" value="0" name="tipousur">Administrador<br>
-                            <input type="radio" value="1" name="tipousur">Editor<br>
-                            <input type="radio" value="2" name="tipousur">Usuario<br>
+                            <label>Pregunta:</label>
+                            <input type="text" value="<?php $preAnt->getDescripcion(); ?>" name="Pregunta" placeholder="Inserta una Pregunta">
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="margen-5 l-col-3 m-col-3 s-col-3 separadoPequeño">
-                            <label>Email:</label>
-                            <input type="text" value="<?php echo $perAnt->getEmail() ?>" name="Email" placeholder="Inserta un Email">
+                            <label>Opcion 1:</label>
+                            <input type="text" value="" name="Op1" placeholder="Inserta la Opcion 1">
+                            <input type="radio" value="1" name="opcion"><br>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="margen-5 l-col-3 m-col-3 s-col-3 separadoPequeño">
-                            <label>Contraseña:</label>
-                            <input type="text" value="" name="Password" placeholder="Inserta una Contraseña" disabled>
+                            <label>Opcion 2:</label>
+                            <input type="text" value="" name="Op2" placeholder="Inserta la Opcion 2">
+                            <input type="radio" value="2" name="opcion"><br>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="margen-5 l-col-3 m-col-3 s-col-3 separadoPequeño">
-                            <label>Confirmar Contraseña:</label>
-                            <input type="text" value="" name="PasswordRepeat" placeholder="Inserta la Contraseña de nuevo" disabled>
+                            <label>Opcion 3:</label>
+                            <input type="text" value="" name="Op3" placeholder="Inserta la Opcion 3">
+                            <input type="radio" value="3" name="opcion"><br>
                         </div>
-
                     </div>
+
+                    <div class="row">
+                        <div class="margen-5 l-col-3 m-col-3 s-col-3 separadoPequeño">
+                            <label>Opcion 4:</label>
+                            <input type="text" value="" name="Op4" placeholder="Inserta la Opcion 4">
+                            <input type="radio" value="4" name="opcion"><br>
+                        </div>
+                    </div>
+
 
                     <div class="l-col-2 m-col-2 s-col-2">
                         <button type="submit" name='Editar'><img src="../ICONOS/edit.png" class="tamaño"></button>
@@ -128,7 +139,7 @@
 
 
                     <div class="l-col-2 m-col-2 s-col-2">
-                        <input type="submit" value="Volver" name="VolverAdministracion">
+                        <input type="submit" value="Volver" name="VolverAPreguntas">
                     </div>
 
                     <div class="l-col-2 m-col-2 s-col-2 ">
