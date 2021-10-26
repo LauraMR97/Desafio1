@@ -8,9 +8,10 @@
     <link rel="stylesheet" type="text/css" href="./CSS/general.css">
     <script src='https://www.google.com/recaptcha/api.js?render=6LdfMfEcAAAAAO5Q2ukW9JjGwfcFrsAr26it8u58'></script>
     <script src='./ValidacionYCaptcha/Captcha.js'></script>
+    <script src='./ValidacionYCaptcha/validacion.js'></script>
 </head>
 
-<body class="oriental">
+<body class="oriental" onload="validacion()">
     <?php
     session_start();
     $_SESSION['url'] = 'index.php';
@@ -32,21 +33,23 @@
 
                 <div class="row">
                     <div class="xl-col-12 l-col-12 m-col-12 s-col-12">
-                        <form action="./Base_de_datos/controlador.php" method="POST" class="oriental">
+                        <form action="./Base_de_datos/controlador.php" method="POST" class="oriental" novalidate>
                             <div class="row">
                                 <label class="xl-col-6 l-col-6 m-col-6 s-col-6 alignDerecha">Email:</label>
-                                <input class="xl-col-6 l-col-6 m-col-6 s-col-6" type="text" value="" name="Email" placeholder="Inserta tu Email" require>
+                                <input class="xl-col-6 l-col-6 m-col-6 s-col-6" type="email" id="mail" required minlength="8"  value="" name="Email" placeholder="Inserta tu Email" required>
+                                <span class="error" aria-live="polite"></span>
                             </div>
 
                             <div class="row">
                                 <label class="xl-col-6 l-col-6 m-col-6 s-col-6 alignDerecha">Contraseña:</label>
-                                <input class="xl-col-6 l-col-6 m-col-6 s-col-6" type="text" value="" name="Password" placeholder="Inserta tu Contraseña" require>
+                                <input class="xl-col-6 l-col-6 m-col-6 s-col-6" type="text" id="password" value="" name="Password" placeholder="Inserta tu Contraseña" required>
+                                <span  id="passwordError" class="error" aria-live="polite"></span>
                             </div>
                             <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
-
+                            
                             <div class="row p-a-1">
-                                <input class="xl-col-6 l-col-6 m-col-6 s-col-6" type="submit" value="Aceptar" name="Aceptar">
-                                <input class="xl-col-6 l-col-6 m-col-6 s-col-6" type="submit" value="Registrarse" name="Registrarse">
+                                <input class="xl-col-6 l-col-6 m-col-6 s-col-6" type="submit" value="Aceptar" name="Aceptar" id="aceptar">
+                                <input class="xl-col-6 l-col-6 m-col-6 s-col-6" type="submit" value="Registrarse" name="Registrarse" id="registrar">
 
                             </div>
                         </form>

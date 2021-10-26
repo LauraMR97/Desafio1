@@ -19,7 +19,7 @@ if (isset($_REQUEST['Aceptar'])) {
     } else {
         // KO. ERES ROBOT, EJECUTA ESTE CÓDIGO
     }
-/*---------------------------------------------------------------------------------------------*/
+    /*---------------------------------------------------------------------------------------------*/
     $email = $_REQUEST['Email'];
     $password = sha1($_REQUEST['Password']);
     $roles = array();
@@ -55,19 +55,19 @@ if (isset($_REQUEST['Registrarse'])) {
  * Me permite registrar un usuario Estandar
  */
 if (isset($_REQUEST['Registrar'])) {
-     /*---------------------------------------CAPTCHA---------------------------------------*/
-     $recaptcha_url = 'https://www.google.com/recaptcha/api/siteverify';
-     $recaptcha_secret = '6LdfMfEcAAAAAFfwba49VTzhRfD6plZdZZx2RUiH';
-     $recaptcha_response = $_POST['recaptcha_response'];
-     $recaptcha = file_get_contents($recaptcha_url . '?secret=' . $recaptcha_secret . '&response=' . $recaptcha_response);
-     $recaptcha = json_decode($recaptcha);
- 
-     if ($recaptcha->score >= 0.7) {
-         // OK. ERES HUMANO, EJECUTA ESTE CÓDIGO
-     } else {
-         // KO. ERES ROBOT, EJECUTA ESTE CÓDIGO
-     }
- /*---------------------------------------------------------------------------------------------*/
+    /*---------------------------------------CAPTCHA---------------------------------------*/
+    $recaptcha_url = 'https://www.google.com/recaptcha/api/siteverify';
+    $recaptcha_secret = '6LdfMfEcAAAAAFfwba49VTzhRfD6plZdZZx2RUiH';
+    $recaptcha_response = $_POST['recaptcha_response'];
+    $recaptcha = file_get_contents($recaptcha_url . '?secret=' . $recaptcha_secret . '&response=' . $recaptcha_response);
+    $recaptcha = json_decode($recaptcha);
+
+    if ($recaptcha->score >= 0.7) {
+        // OK. ERES HUMANO, EJECUTA ESTE CÓDIGO
+    } else {
+        // KO. ERES ROBOT, EJECUTA ESTE CÓDIGO
+    }
+    /*---------------------------------------------------------------------------------------------*/
     $nombre = $_REQUEST['Nombre'];
     $email = $_REQUEST['Email'];
     $passwrd = sha1($_REQUEST['Password']);
@@ -75,35 +75,30 @@ if (isset($_REQUEST['Registrar'])) {
     // $url = './PERFILES/' . $nombre . '.jpg';
     //$foto=$_FILES['Foto'][$url];
 
-    if ($passwrd == $passwrdConfirm) {
-        //if($foto!=null){
-        $persona = new Persona($nombre, $email);
-        //$persona->setFoto($url);
-        //}
-        //else{
-        //$persona= new Persona($nombre,$email,$passwrd);
-        Conexion::addPersona($persona, 2, $passwrd);
-        header("Location:../MENUS/menu.php");
-    } else {
-        $_SESSION['mensaje'] = 'Las constraseñas son distintas';
-        header("Location:../Error_y_Reformas/error.php");
-    }
+    //if($foto!=null){
+    $persona = new Persona($nombre, $email);
+    //$persona->setFoto($url);
+    //}
+    //else{
+    //$persona= new Persona($nombre,$email,$passwrd);
+    Conexion::addPersona($persona, 2, $passwrd);
+    header("Location:../MENUS/menu.php");
 }
 
 if (isset($_REQUEST['Enviar'])) {
-     /*---------------------------------------CAPTCHA---------------------------------------*/
-     $recaptcha_url = 'https://www.google.com/recaptcha/api/siteverify';
-     $recaptcha_secret = '6LdfMfEcAAAAAFfwba49VTzhRfD6plZdZZx2RUiH';
-     $recaptcha_response = $_POST['recaptcha_response'];
-     $recaptcha = file_get_contents($recaptcha_url . '?secret=' . $recaptcha_secret . '&response=' . $recaptcha_response);
-     $recaptcha = json_decode($recaptcha);
- 
-     if ($recaptcha->score >= 0.7) {
-         // OK. ERES HUMANO, EJECUTA ESTE CÓDIGO
-     } else {
-         // KO. ERES ROBOT, EJECUTA ESTE CÓDIGO
-     }
- /*---------------------------------------------------------------------------------------------*/
+    /*---------------------------------------CAPTCHA---------------------------------------*/
+    $recaptcha_url = 'https://www.google.com/recaptcha/api/siteverify';
+    $recaptcha_secret = '6LdfMfEcAAAAAFfwba49VTzhRfD6plZdZZx2RUiH';
+    $recaptcha_response = $_POST['recaptcha_response'];
+    $recaptcha = file_get_contents($recaptcha_url . '?secret=' . $recaptcha_secret . '&response=' . $recaptcha_response);
+    $recaptcha = json_decode($recaptcha);
+
+    if ($recaptcha->score >= 0.7) {
+        // OK. ERES HUMANO, EJECUTA ESTE CÓDIGO
+    } else {
+        // KO. ERES ROBOT, EJECUTA ESTE CÓDIGO
+    }
+    /*---------------------------------------------------------------------------------------------*/
     $email = $_REQUEST['correoDest'];
     $perAnt = Conexion::buscarPersonaPorCorreo($email);
 
@@ -142,19 +137,19 @@ if (isset($_REQUEST['Enviar'])) {
  * Añades como administrador a un Usuario,Administrador o Editor
  */
 if (isset($_REQUEST['ADD'])) {
-     /*---------------------------------------CAPTCHA---------------------------------------*/
-     $recaptcha_url = 'https://www.google.com/recaptcha/api/siteverify';
-     $recaptcha_secret = '6LdfMfEcAAAAAFfwba49VTzhRfD6plZdZZx2RUiH';
-     $recaptcha_response = $_POST['recaptcha_response'];
-     $recaptcha = file_get_contents($recaptcha_url . '?secret=' . $recaptcha_secret . '&response=' . $recaptcha_response);
-     $recaptcha = json_decode($recaptcha);
- 
-     if ($recaptcha->score >= 0.7) {
-         // OK. ERES HUMANO, EJECUTA ESTE CÓDIGO
-     } else {
-         // KO. ERES ROBOT, EJECUTA ESTE CÓDIGO
-     }
- /*---------------------------------------------------------------------------------------------*/
+    /*---------------------------------------CAPTCHA---------------------------------------*/
+    $recaptcha_url = 'https://www.google.com/recaptcha/api/siteverify';
+    $recaptcha_secret = '6LdfMfEcAAAAAFfwba49VTzhRfD6plZdZZx2RUiH';
+    $recaptcha_response = $_POST['recaptcha_response'];
+    $recaptcha = file_get_contents($recaptcha_url . '?secret=' . $recaptcha_secret . '&response=' . $recaptcha_response);
+    $recaptcha = json_decode($recaptcha);
+
+    if ($recaptcha->score >= 0.7) {
+        // OK. ERES HUMANO, EJECUTA ESTE CÓDIGO
+    } else {
+        // KO. ERES ROBOT, EJECUTA ESTE CÓDIGO
+    }
+    /*---------------------------------------------------------------------------------------------*/
     $nombre = $_REQUEST['Nombre'];
     $email = $_REQUEST['Email'];
     $passwrd = sha1($_REQUEST['Password']);
@@ -164,7 +159,7 @@ if (isset($_REQUEST['ADD'])) {
     if ($passwrd == $passwrdConfirm) {
         $persona = new Persona($nombre, $email);
         Conexion::addPersona($persona, $rol, $passwrd);
-        header("Location:./Administracion.php");
+        header("Location:../Administracion/Administracion.php");
     } else {
         $_SESSION['mensaje'] = 'Las constraseñas son distintas';
         header("Location:../Error_y_Reformas/error.php");
@@ -174,19 +169,19 @@ if (isset($_REQUEST['ADD'])) {
  * Editas como administrador a cualquier usuario
  */
 if (isset($_REQUEST['Editar'])) {
-     /*---------------------------------------CAPTCHA---------------------------------------*/
-     $recaptcha_url = 'https://www.google.com/recaptcha/api/siteverify';
-     $recaptcha_secret = '6LdfMfEcAAAAAFfwba49VTzhRfD6plZdZZx2RUiH';
-     $recaptcha_response = $_POST['recaptcha_response'];
-     $recaptcha = file_get_contents($recaptcha_url . '?secret=' . $recaptcha_secret . '&response=' . $recaptcha_response);
-     $recaptcha = json_decode($recaptcha);
- 
-     if ($recaptcha->score >= 0.7) {
-         // OK. ERES HUMANO, EJECUTA ESTE CÓDIGO
-     } else {
-         // KO. ERES ROBOT, EJECUTA ESTE CÓDIGO
-     }
- /*---------------------------------------------------------------------------------------------*/
+    /*---------------------------------------CAPTCHA---------------------------------------*/
+    $recaptcha_url = 'https://www.google.com/recaptcha/api/siteverify';
+    $recaptcha_secret = '6LdfMfEcAAAAAFfwba49VTzhRfD6plZdZZx2RUiH';
+    $recaptcha_response = $_POST['recaptcha_response'];
+    $recaptcha = file_get_contents($recaptcha_url . '?secret=' . $recaptcha_secret . '&response=' . $recaptcha_response);
+    $recaptcha = json_decode($recaptcha);
+
+    if ($recaptcha->score >= 0.7) {
+        // OK. ERES HUMANO, EJECUTA ESTE CÓDIGO
+    } else {
+        // KO. ERES ROBOT, EJECUTA ESTE CÓDIGO
+    }
+    /*---------------------------------------------------------------------------------------------*/
     $perAnt = Conexion::buscarPersonaPorCorreo($_SESSION['email']);
     $nombre = $_REQUEST['Nombre'];
     $email = $_REQUEST['Email'];
@@ -224,7 +219,7 @@ if (isset($_REQUEST['EPreg'])) {
 if (isset($_REQUEST['X'])) {
     $correo = $_REQUEST['email'];
     Conexion::delPersona($correo);
-    header("Location:../Administracion/Gestion.php");
+    header("Location:../Administracion/Administracion.php");
 }
 
 /**
