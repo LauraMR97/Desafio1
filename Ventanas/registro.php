@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="../CSS/general.css">
     <script src='https://www.google.com/recaptcha/api.js?render=6LdfMfEcAAAAAO5Q2ukW9JjGwfcFrsAr26it8u58'></script>
     <script src='../ValidacionYCaptcha/CaptchaRegistro.js'></script>
+    <script src='../ValidacionYCaptcha/validacionRegistro.js'></script>
 </head>
 
 <body class="oriental">
@@ -24,33 +25,40 @@
                 <h3>Registro:</h3>
             </div>
 
-            <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
+            <form action="../Base_de_datos/controlador.php" method="POST" class="oriental" novalidate>
             <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
                 <div class="row">
                     <div class=" margen-5 l-col-3 m-col-3 s-col-3 separado">
                         <label>Nombre:</label>
-                        <input type="text" value="" name="Nombre" placeholder="Inserta tu Nombre">
+                        <input type="text" value="" id="nombre" name="Nombre" placeholder="Inserta tu Nombre" required>
+                        <span class="error" id="nombreError" aria-live="polite"></span>
+
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="margen-5 l-col-3 m-col-3 s-col-3 separadoPequeño">
                         <label>Email:</label>
-                        <input type="text" value="" name="Email" placeholder="Inserta tu Email">
+                        <input type="email" id="mail" value="" name="Email" placeholder="Inserta tu Email" required>
+                        <span class="error" aria-live="polite"></span>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="margen-5 l-col-3 m-col-3 s-col-3 separadoPequeño">
                         <label>Contraseña:</label>
-                        <input type="text" value="" name="Password" placeholder="Inserta tu Contraseña">
+                        <input type="text"  id="password" value="" name="Password" placeholder="Inserta tu Contraseña" required>
+                        <span id="passwordError" class="error" aria-live="polite"></span>
+
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="margen-5 l-col-3 m-col-3 s-col-3 separadoPequeño">
                         <label>Confirmar Contraseña:</label>
-                        <input type="text" value="" name="PasswordRepeat" placeholder="Inserta tu Contraseña de nuevo">
+                        <input type="text" id="passwordConfirm" value="" name="PasswordRepeat" placeholder="Inserta tu Contraseña de nuevo" required>
+                        <span class="error" id="passwordConfirmError" aria-live="polite"></span>
+
                     </div>
                 </div>
 
@@ -63,7 +71,7 @@
 
                 <div class="row">
                     <div class="l-col-2 m-col-2 s-col-2">
-                        <input type="submit" value="Registrar" name="Registrar">
+                        <input type="submit" value="Registrar" id="Registrar" name="Registrar">
                     </div>
                     <div class="l-col-2 m-col-2 s-col-2 ">
                         <input type="submit" value="Volver" name="CerrarSesion">
