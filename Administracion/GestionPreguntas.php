@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestion Preguntas</title>
-    <link rel="stylesheet" type="text/css" href="./CSS/general.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/general.css">
 </head>
 
 <body class="oriental">
     <?php
-    include_once 'Persona.php';
-    include_once 'Conexion.php';
+    include_once '../Objetos/Persona.php';
+    include_once '../Base_de_datos/Conexion.php';
     session_start();
     ?>
      <main class="container oriental">
@@ -25,7 +25,7 @@
             <?php
             if ($_SESSION['Eleccion'] == 'AniadirPreg') {
             ?>
-                <form action="controlador.php" method="POST" class="oriental">
+                <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
                     <div class="row">
                         <div class=" margen-5 l-col-3 m-col-3 s-col-3 separado">
                             <label>Nombre:</label>
@@ -61,11 +61,11 @@
                     </div>
 
                     <div class="l-col-2 m-col-2 s-col-2">
-                        <button type="submit" name='Editar' disabled><img src="./ICONOS/edit.png" class="tamaño"></button>
+                        <button type="submit" name='Editar' disabled><img src="../ICONOS/edit.png" class="tamaño"></button>
                     </div>
 
                     <div class="l-col-2 m-col-2 s-col-2">
-                        <button type="submit" name='ADD'><img src="./ICONOS/add.png" class="tamaño"></button>
+                        <button type="submit" name='ADD'><img src="../ICONOS/add.png" class="tamaño"></button>
                     </div>
 
 
@@ -82,7 +82,7 @@
             } else {
                 $perAnt = Conexion::buscarPersonaPorCorreo($_SESSION['email']);
             ?>
-                <form action="controlador.php" method="POST" class="oriental">
+                <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
                     <div class="row">
                         <div class=" margen-5 l-col-3 m-col-3 s-col-3 separado">
                             <label>Nombre:</label>
@@ -118,12 +118,12 @@
                     </div>
 
                     <div class="l-col-2 m-col-2 s-col-2">
-                        <button type="submit" name='Editar'><img src="./ICONOS/edit.png" class="tamaño"></button>
+                        <button type="submit" name='Editar'><img src="../ICONOS/edit.png" class="tamaño"></button>
 
                     </div>
 
                     <div class="l-col-2 m-col-2 s-col-2">
-                        <button type="submit" name='ADD' disabled><img src="./ICONOS/add.png" class="tamaño"></button>
+                        <button type="submit" name='ADD' disabled><img src="../ICONOS/add.png" class="tamaño"></button>
                     </div>
 
 

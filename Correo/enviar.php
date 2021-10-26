@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recupera tu cuenta</title>
-    <link rel="stylesheet" type="text/css" href="./CSS/general.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/general.css">
 </head>
 
 <body class="oriental">
@@ -143,7 +143,7 @@
                        <p>Mensaje enviado</p>
                     </div>
                 </div>
-                <form action="controlador.php" method="POST" class="oriental">
+                <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
                 <div class="row">
                     <div class="margen-4 l-col-2 m-col-2 s-col-2 ">
                         <input type="submit" value="Volver" name="VolverPassword">

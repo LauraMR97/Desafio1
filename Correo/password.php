@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recupera tu cuenta</title>
-    <link rel="stylesheet" type="text/css" href="./CSS/general.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/general.css">
     <script src='https://www.google.com/recaptcha/api.js?render=6LdfMfEcAAAAAO5Q2ukW9JjGwfcFrsAr26it8u58'></script>
     <script src='./ValidacionYCaptcha/CaptchaEnviar.js'></script>
 </head>
@@ -25,7 +25,7 @@
                 <h3>Recupera tu cuenta:</h3>
             </div>
 
-            <form action="controlador.php" method="POST" class="oriental">
+            <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
             <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
 
                 <div class="row">

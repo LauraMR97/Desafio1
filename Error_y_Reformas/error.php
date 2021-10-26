@@ -6,13 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Error</title>
-    <link rel="stylesheet" type="text/css" href="./CSS/general.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/general.css">
 </head>
 
 <body class="oriental">
 
 <?php
-require_once 'controlador.php';
 session_start();
 $url=$_SESSION['url'];
 ?>
@@ -35,7 +34,7 @@ $url=$_SESSION['url'];
                 ?>
             </div>
 
-            <form action="controlador.php" method="POST" class="oriental">
+            <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
                 <div class="row">
                     <div class=" margen-6 l-col-2 m-col-2 s-col-2 separadoPequeño">
                         <input type="submit" value="Volver" name="Volver">
