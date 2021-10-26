@@ -1,7 +1,7 @@
 <?php
 include_once "Parametros.php";
 include_once "bitacora.php";
-
+include_once "Pregunta.php";
 class Conexion
 {
 
@@ -35,50 +35,131 @@ class Conexion
 
         self::actualizarRolPersona($p, $rol);
     }
-       /*--------------------------------------------------------------*/
-       public static function addPregunta($desc,$creador)
-       {
-           self::abrirConexion();
-           $query = "INSERT INTO pregunta (descripcion,correo) VALUES (?,?)";
-           $stmt = self::$conexion->prepare($query);
-   
-           $stmt->bind_param("ss", $desc,$creador);
-   
-   
-           if ($stmt->execute()) {
-               $mensaje = 'Registro insertado con éxito' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
-               // Bitacora::guardarArchivo($mensaje);
-           } else {
-               $mensaje = "Error al insertar: " . mysqli_error(self::$conexion) . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
-               //Bitacora::guardarArchivo($mensaje);
-           }
-           $stmt->close();
-           self::cerrarConexion();
-       }
-     /*--------------------------------------------------------------*/
-     public static function addRespuesta($resp)
-     {
-         self::abrirConexion();
-         $query = "INSERT INTO respuesta (descripcionR) VALUES (?)";
-         $stmt = self::$conexion->prepare($query);
- 
-         $stmt->bind_param("s", $resp);
- 
- 
-         if ($stmt->execute()) {
-             $mensaje = 'Registro insertado con éxito' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
-             // Bitacora::guardarArchivo($mensaje);
-         } else {
-             $mensaje = "Error al insertar: " . mysqli_error(self::$conexion) . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
-             //Bitacora::guardarArchivo($mensaje);
-         }
-         $stmt->close();
-         self::cerrarConexion();
-     }
-
-
     /*--------------------------------------------------------------*/
+    public static function addPregunta($desc, $creador)
+    {
+        self::abrirConexion();
+        $query = "INSERT INTO pregunta (descripcion,correo) VALUES (?,?)";
+        $stmt = self::$conexion->prepare($query);
 
+        $stmt->bind_param("ss", $desc, $creador->getEmail());
+
+        if ($stmt->execute()) {
+            $mensaje = 'Registro insertado con éxito' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            // Bitacora::guardarArchivo($mensaje);
+        } else {
+            $mensaje = "Error al insertar: " . mysqli_error(self::$conexion) . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            //Bitacora::guardarArchivo($mensaje);
+        }
+        $stmt->close();
+        self::cerrarConexion();
+    }
+    /*--------------------------------------------------------------*/
+    public static function addRespuesta($resp)
+    {
+        self::abrirConexion();
+        $query = "INSERT INTO respuesta (descripcionR) VALUES (?)";
+        $stmt = self::$conexion->prepare($query);
+
+        $stmt->bind_param("s", $resp);
+
+
+        if ($stmt->execute()) {
+            $mensaje = 'Registro insertado con éxito' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            // Bitacora::guardarArchivo($mensaje);
+        } else {
+            $mensaje = "Error al insertar: " . mysqli_error(self::$conexion) . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            //Bitacora::guardarArchivo($mensaje);
+        }
+        $stmt->close();
+        self::cerrarConexion();
+    }
+    /*--------------------------------------------------------------*/
+    public static function addOpciones($opcion, $idPre)
+    {
+        self::abrirConexion();
+        $query = "INSERT INTO opciones (descripcion,id_pregunta) VALUES (?,?)";
+        $stmt = self::$conexion->prepare($query);
+
+        $stmt->bind_param("si", $opcion, $idPre);
+
+
+        if ($stmt->execute()) {
+            $mensaje = 'Registro insertado con éxito' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            // Bitacora::guardarArchivo($mensaje);
+        } else {
+            $mensaje = "Error al insertar: " . mysqli_error(self::$conexion) . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            //Bitacora::guardarArchivo($mensaje);
+        }
+        $stmt->close();
+        self::cerrarConexion();
+    }
+    /*--------------------------------------------------------------*/
+    public static function actualizarPregResp($idResp, $idPreg)
+    {
+        self::abrirConexion();
+        $query = "INSERT INTO preg_resp (id_pregunta,id_respuesta) VALUES (?,?)";
+        $stmt = self::$conexion->prepare($query);
+
+        $stmt->bind_param("ii", $idPreg, $idResp);
+
+
+        if ($stmt->execute()) {
+            $mensaje = 'Registro insertado con éxito' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            // Bitacora::guardarArchivo($mensaje);
+        } else {
+            $mensaje = "Error al insertar: " . mysqli_error(self::$conexion) . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            //Bitacora::guardarArchivo($mensaje);
+        }
+        $stmt->close();
+        self::cerrarConexion();
+    }
+
+
+
+    public static function obtenerIDPregunta($pregunta)
+    {
+        $id = null;
+
+        self::abrirConexion();
+
+        $query = "SELECT Id_pregunta FROM pregunta WHERE descripcion LIKE '" . $pregunta . "'";
+
+        $resultado = self::$conexion->query($query);
+
+        if ($resultado) {
+            while ($fila = mysqli_fetch_array($resultado)) {
+                $id = $fila['Id_pregunta'];
+            }
+        }
+        mysqli_free_result($resultado);
+
+        self::cerrarConexion();
+
+        return $id;
+    }
+    public static function obtenerIDRespuesta($respuesta)
+    {
+        $id = null;
+
+        self::abrirConexion();
+
+        $query = "SELECT id_respuesta FROM respuesta WHERE descripcionR LIKE '" . $respuesta . "'";
+
+        $resultado = self::$conexion->query($query);
+
+        if ($resultado) {
+            while ($fila = mysqli_fetch_array($resultado)) {
+                $id = $fila['id_respuesta'];
+            }
+        }
+        mysqli_free_result($resultado);
+
+        self::cerrarConexion();
+
+        return $id;
+    }
+    /*--------------------------------------------------------------*/
     public static function actualizarRolPersona($p, $rol)
     {
 
@@ -305,7 +386,7 @@ class Conexion
 
         if ($result) {
             while ($fila = mysqli_fetch_array($result)) {
-                $pre = new Pregunta($fila["descripcionR"], $fila["descripcion"], $fila['creador']);
+                $pre = new Pregunta($fila["descripcionR"], $fila["descripcion"], $fila['correo']);
             }
         }
 
@@ -313,6 +394,34 @@ class Conexion
         self::cerrarConexion();
 
         return $pre;
+    }
+    /*--------------------------------------------------------------*/
+    public static function obtenerArrayDeOpciones($idPreg)
+    {
+        $array = array();
+
+        self::abrirConexion();
+
+        $query = "SELECT descripcion FROM opciones WHERE id_pregunta LIKE ?";
+        $stmt = self::$conexion->prepare($query);
+
+        $stmt->bind_param("i", $idPreg);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+
+        if ($result) {
+            while ($fila = mysqli_fetch_array($result)) {
+                $opcion = $fila['descripcion'];
+                $array[] = $opcion;
+            }
+        }
+
+        $stmt->close();
+        self::cerrarConexion();
+
+        return $array;
     }
     /*--------------------------------------------------------------*/
     public static function editarPersona($perNu, $perAnt)

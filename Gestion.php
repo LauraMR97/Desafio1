@@ -15,6 +15,7 @@
     include_once 'Persona.php';
     include_once 'Conexion.php';
     session_start();
+    print_r( $_SESSION['per']);
     ?>
      <main class="container oriental">
         <header class="row oriental">
