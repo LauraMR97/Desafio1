@@ -32,7 +32,7 @@
 
                 <div class="row">
                     <div class="xl-col-12 l-col-12 m-col-12 s-col-12">
-                        <form action="controlador.php" method="POST" class="oriental">
+                        <form action="./Base_de_datos/controlador.php" method="POST" class="oriental">
                             <div class="row">
                                 <label class="xl-col-6 l-col-6 m-col-6 s-col-6 alignDerecha">Email:</label>
                                 <input class="xl-col-6 l-col-6 m-col-6 s-col-6" type="text" value="" name="Email" placeholder="Inserta tu Email" require>
