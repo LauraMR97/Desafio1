@@ -8,18 +8,19 @@
     <link rel="stylesheet" type="text/css" href="../CSS/general.css">
     <script src='https://www.google.com/recaptcha/api.js?render=6LdfMfEcAAAAAO5Q2ukW9JjGwfcFrsAr26it8u58'></script>
     <script src='../ValidacionYCaptcha/CaptchaGestion.js'></script>
+    <script src="../ValidacionYCaptcha/validacionRegistro.js"></script>
 </head>
 
-<body class="oriental">
+<body class="oriental" onload="validacion()">
     <?php
     include_once '../Objetos/Persona.php';
     include_once '../Base_de_datos/Conexion.php';
     session_start();
     ?>
-     <main class="container oriental">
+    <main class="container oriental">
         <header class="row oriental">
-                <h1>Escape Web</h1>
-                <h4>Tu pagina de scape room</h4>
+            <h1>Escape Web</h1>
+            <h4>Tu pagina de scape room</h4>
             </div>
         </header>
 
@@ -32,12 +33,13 @@
             <?php
             if ($_SESSION['Eleccion'] == 'Aniadir') {
             ?>
-                <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
-                <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
+                <form action="../Base_de_datos/controlador.php" method="POST" class="oriental" novalidate>
+                    <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
                     <div class="row">
                         <div class=" margen-5 l-col-3 m-col-3 s-col-3 separado">
                             <label>Nombre:</label>
-                            <input type="text" value="" name="Nombre" placeholder="Inserta un Nombre">
+                            <input type="text" value="" id="nom" name="Nombre" placeholder="Inserta un Nombre" required>
+                            <span class="error" id="nombreError" aria-live="polite"></span>
                         </div>
                         <div class="l-col-3 m-col-3 s-col-3 separado">
                             <input type="radio" value="0" name="tipousur">Administrador<br>
@@ -49,21 +51,24 @@
                     <div class="row">
                         <div class="margen-5 l-col-3 m-col-3 s-col-3 separadoPequeño">
                             <label>Email:</label>
-                            <input type="text" value="" name="Email" placeholder="Inserta un Email">
+                            <input type="email" value="" id="mail" name="Email" placeholder="Inserta un Email" required>
+                            <span class="error" aria-live="polite"></span>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="margen-5 l-col-3 m-col-3 s-col-3 separadoPequeño">
                             <label>Contraseña:</label>
-                            <input type="text" value="" name="Password" placeholder="Inserta una Contraseña">
+                            <input type="text" value="" id="password" name="Password" placeholder="Inserta una Contraseña" required>
+                            <span id="passwordError" class="error" aria-live="polite"></span>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="margen-5 l-col-3 m-col-3 s-col-3 separadoPequeño">
                             <label>Confirmar Contraseña:</label>
-                            <input type="text" value="" name="PasswordRepeat" placeholder="Inserta la Contraseña de nuevo">
+                            <input type="text" value="" id="passwordConfirm" name="PasswordRepeat" placeholder="Inserta la Contraseña de nuevo" required>
+                            <span class="error" id="passwordConfirmError" aria-live="polite"></span>
                         </div>
 
                     </div>
@@ -73,7 +78,7 @@
                     </div>
 
                     <div class="l-col-2 m-col-2 s-col-2">
-                        <button type="submit" name='ADD'><img src="../ICONOS/add.png" class="tamaño"></button>
+                        <button type="submit" id="Registro" name='ADD'><img src="../ICONOS/add.png" class="tamaño"></button>
                     </div>
 
 
@@ -90,11 +95,12 @@
             } else {
                 $perAnt = Conexion::buscarPersonaPorCorreo($_SESSION['email']);
             ?>
-                <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
+                <form action="../Base_de_datos/controlador.php" method="POST" class="oriental" novalidate>
                     <div class="row">
                         <div class=" margen-5 l-col-3 m-col-3 s-col-3 separado">
                             <label>Nombre:</label>
-                            <input type="text" value="<?php echo $perAnt->getNombre() ?>" name="Nombre" placeholder="Inserta un Nombre">
+                            <input type="text" id="nom" value="<?php echo $perAnt->getNombre() ?>" name="Nombre" placeholder="Inserta un Nombre" required>
+                            <span class="error" id="nombreError" aria-live="polite"></span>
                         </div>
                         <div class="l-col-3 m-col-3 s-col-3 separado">
                             <input type="radio" value="0" name="tipousur">Administrador<br>
@@ -106,7 +112,8 @@
                     <div class="row">
                         <div class="margen-5 l-col-3 m-col-3 s-col-3 separadoPequeño">
                             <label>Email:</label>
-                            <input type="text" value="<?php echo $perAnt->getEmail() ?>" name="Email" placeholder="Inserta un Email">
+                            <input type="email" id="mail" value="<?php echo $perAnt->getEmail() ?>" name="Email" placeholder="Inserta un Email" required>
+                            <span class="error" aria-live="polite"></span>
                         </div>
                     </div>
 
@@ -126,7 +133,7 @@
                     </div>
 
                     <div class="l-col-2 m-col-2 s-col-2">
-                        <button type="submit" name='Editar'><img src="../ICONOS/edit.png" class="tamaño"></button>
+                        <button type="submit" id="Registro" name='Editar'><img src="../ICONOS/edit.png" class="tamaño"></button>
 
                     </div>
 
