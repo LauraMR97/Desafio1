@@ -53,6 +53,12 @@ form {
             &:hover {
                 background-image: linear-gradient(to bottom, $primarioE2, $secundarioE2);
             }
+            &.botVolver{
+                background-image: linear-gradient(to right, $cuartoE, $primarioE2);
+                &:hover {
+                    background-image: linear-gradient(to bottom, $primarioE2, $cuartoE);
+                }
+            }
         }
         input[type="email"],
         input[type="number"],
