@@ -66,11 +66,11 @@
                     </div>
 
                     <div class="l-col-2 m-col-2 s-col-2">
-                        <button type="submit" name='Editar' disabled><img src="../ICONOS/edit.png" class="tamaño"></button>
+                        <button type="submit" name='EditarPre' disabled><img src="../ICONOS/edit.png" class="tamaño"></button>
                     </div>
 
                     <div class="l-col-2 m-col-2 s-col-2">
-                        <button type="submit" name='ADD'><img src="../ICONOS/addPregunta.png" class="tamaño"></button>
+                        <button type="submit" name='ADDPre'><img src="../ICONOS/addPregunta.png" class="tamaño"></button>
                     </div>
 
 
@@ -136,12 +136,12 @@
 
 
                     <div class="l-col-2 m-col-2 s-col-2">
-                        <button type="submit" name='Editar'><img src="../ICONOS/edit.png" class="tamaño"></button>
+                        <button type="submit" name='EditarPre'><img src="../ICONOS/edit.png" class="tamaño"></button>
 
                     </div>
 
                     <div class="l-col-2 m-col-2 s-col-2">
-                        <button type="submit" name='ADD' disabled><img src="../ICONOS/addPregunta.png" class="tamaño"></button>
+                        <button type="submit" name='ADDPre' disabled><img src="../ICONOS/addPregunta.png" class="tamaño"></button>
                     </div>
 
 
