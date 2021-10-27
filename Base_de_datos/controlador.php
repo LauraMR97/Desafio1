@@ -283,7 +283,7 @@ if (isset($_REQUEST['EditarPre'])) {
     Conexion::editarOpcion($opNew2, $_SESSION['opcionesAnt'][1]);
     Conexion::editarOpcion($opNew3, $_SESSION['opcionesAnt'][2]);
     Conexion::editarOpcion($opNew4, $_SESSION['opcionesAnt'][3]);
-    header("Location:./Preguntas.php");
+    header("Location:../Administracion/Preguntas.php");
 }
 /*************************************************************************** */
 /****************************ADMINISTRACION********************************* */
