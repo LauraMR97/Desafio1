@@ -568,6 +568,94 @@ class Conexion
         $stmt->close();
         self::cerrarConexion();
     }
+
+    /*---------------------------------------------------------------*/
+    public static function obtenerRespuesta($idResp)
+    {
+        $resp = null;
+
+        self::abrirConexion();
+
+        $query = "SELECT descripcionR FROM respuesta WHERE id_respuesta like ?";
+        $stmt = self::$conexion->prepare($query);
+
+        $stmt->bind_param("s", $idResp);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+
+        if ($result) {
+            while ($fila = mysqli_fetch_array($result)) {
+                $resp = $fila['descripcionR'];
+            }
+        }
+
+        $stmt->close();
+        self::cerrarConexion();
+
+        return $resp;
+    }
+
+
+    /*---------------------------------------------------------------*/
+    public static function editarPregunta($preAnt, $preNew)
+    {
+
+        self::abrirConexion();
+        $query = "UPDATE pregunta SET descripcion = ? WHERE descripcion LIKE ?";
+        $stmt = self::$conexion->prepare($query);
+
+        $stmt->bind_param("ss",$preNew, $preAnt);
+
+        if ($stmt->execute()) {
+            $mensaje = 'Registro editado con éxito' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            //Bitacora::guardarArchivo($mensaje);
+        } else {
+            $mensaje = 'Error al editar' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            //Bitacora::guardarArchivo($mensaje);
+        }
+        $stmt->close();
+        self::cerrarConexion();
+    }
+
+    public static function editarRespuesta($resp_Ant, $respuestaNueva)
+    {
+        self::abrirConexion();
+        $query = "UPDATE respuesta SET descripcionR = ? WHERE descripcionR LIKE ?";
+        $stmt = self::$conexion->prepare($query);
+
+        $stmt->bind_param("ss",$respuestaNueva, $resp_Ant);
+
+        if ($stmt->execute()) {
+            $mensaje = 'Registro editado con éxito' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            //Bitacora::guardarArchivo($mensaje);
+        } else {
+            $mensaje = 'Error al editar' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            //Bitacora::guardarArchivo($mensaje);
+        }
+        $stmt->close();
+        self::cerrarConexion();
+    }
+
+    public static function editarOpcion($opNew, $opAnt)
+    {
+        self::abrirConexion();
+        $query = "UPDATE opciones SET descripcion = ? WHERE descripcion LIKE ?";
+        $stmt = self::$conexion->prepare($query);
+
+        $stmt->bind_param("ss",$opNew, $opAnt);
+
+        if ($stmt->execute()) {
+            $mensaje = 'Registro editado con éxito' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            //Bitacora::guardarArchivo($mensaje);
+        } else {
+            $mensaje = 'Error al editar' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            //Bitacora::guardarArchivo($mensaje);
+        }
+        $stmt->close();
+        self::cerrarConexion();  
+    }
     /*--------------------------------------------------------------*/
     public static function cerrarConexion()
     {
