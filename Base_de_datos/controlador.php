@@ -26,22 +26,27 @@ if (isset($_REQUEST['Aceptar'])) {
 
     $usu = Conexion::buscarPersona($email, $password);
 
-    if ($usu != null) {
-        $_SESSION['per'] = $usu;
-        $roles = Conexion::verRol($email);
-        for ($i = 0; $i < count($roles); $i++) {
-            if ($roles[$i] == 0) {
-                header("Location:../MENUS/ElegirRol.php");
-            } else {
-                if ($roles[$i] == 1) {
-                    header("Location:../MENUS/MenuEditor.php");
+    if ($usu->getActivo() != 0) {
+        if ($usu != null) {
+            $_SESSION['per'] = $usu;
+            $roles = Conexion::verRol($email);
+            for ($i = 0; $i < count($roles); $i++) {
+                if ($roles[$i] == 0) {
+                    header("Location:../MENUS/ElegirRol.php");
                 } else {
-                    if ($roles[$i] == 2) {
-                        header("Location:../MENUS/menu.php");
+                    if ($roles[$i] == 1) {
+                        header("Location:../MENUS/MenuEditor.php");
+                    } else {
+                        if ($roles[$i] == 2) {
+                            header("Location:../MENUS/menu.php");
+                        }
                     }
                 }
             }
         }
+    } else {
+        header("Location:../Error_y_Reformas/error.php");
+        $_SESSION['mensaje'] = 'Aun no estas activo en este sitio web';
     }
 }
 /**
@@ -82,7 +87,10 @@ if (isset($_REQUEST['Registrar'])) {
     //else{
     //$persona= new Persona($nombre,$email,$passwrd);
     Conexion::addPersona($persona, 2, $passwrd);
-    header("Location:../Ventanas/registro.php");
+    //-------------------------------Envio de mensaje de confirmacion
+    $_SESSION['correoDest'] = $email;
+    $url = $_SESSION['urlConfirm'] = 'localhost/Desafio1/' . $nombre . '.php';
+    header("Location:../Mensaje_Confirmacion/enviarConfirmacion.php");
 }
 
 if (isset($_REQUEST['Enviar'])) {

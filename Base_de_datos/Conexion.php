@@ -281,6 +281,7 @@ class Conexion
             while ($fila = mysqli_fetch_array($result)) {
                 $per = new Persona($fila["nombre"], $fila["correo"]);
                 $per->setPassword($fila["password"]);
+                $per->setActivo($fila['activo']);
             }
         }
 
