@@ -256,6 +256,40 @@ if (isset($_REQUEST['ADDPre'])) {
     Conexion::addOpciones($op4, $idPre);
     header("Location:./Preguntas.php");
 }
+
+if (isset($_REQUEST['EditarPre'])) {
+    $preNew = $_REQUEST['Pregunta'];
+    $opNew1 = $_REQUEST['Op1'];
+    $opNew2 = $_REQUEST['Op2'];
+    $opNew3 = $_REQUEST['Op3'];
+    $opNew4 = $_REQUEST['Op4'];
+    $respuesta = $_REQUEST['opcion'];
+    $respuestaNueva = '';
+
+    if ($respuesta == 1) {
+        $respuestaNueva = $opNew1;
+    } else {
+        if ($respuesta == 2) {
+            $respuestaNueva = $opNew2;
+        } else {
+            if ($respuesta == 3) {
+                $respuestaNueva = $opNew3;
+            } else {
+                if ($respuesta == 4) {
+                    $respuestaNueva = $opNew4;
+                }
+            }
+        }
+    }
+
+    Conexion::editarPregunta($_SESSION['preAnt']->getDescripcion(), $preNew);
+    Conexion::editarRespuesta($_SESSION['respuestaAnt'], $respuestaNueva);
+    Conexion::editarOpcion($opNew1, $_SESSION['opcionesAnt'][0]);
+    Conexion::editarOpcion($opNew2, $_SESSION['opcionesAnt'][1]);
+    Conexion::editarOpcion($opNew3, $_SESSION['opcionesAnt'][2]);
+    Conexion::editarOpcion($opNew4, $_SESSION['opcionesAnt'][3]);
+    header("Location:./Preguntas.php");
+}
 /*************************************************************************** */
 /****************************ADMINISTRACION********************************* */
 /*************************************************************************** */

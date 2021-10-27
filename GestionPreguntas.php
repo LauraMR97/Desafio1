@@ -86,8 +86,13 @@
             <?php
             } else {
                 $preAnt = Conexion::buscarPreguntaConRespuesta($_SESSION['pregunta']);
-                $id = Conexion::obtenerIDPregunta($preAnt->getDescripcion());
-                $opciones = Conexion::obtenerArrayDeOpciones($id);
+                $_SESSION['preAnt'] = $preAnt;
+                $idPregunta = Conexion::obtenerIDPregunta($preAnt->getDescripcion());
+                $opciones = Conexion::obtenerArrayDeOpciones($idPregunta);
+                $_SESSION['opcionesAnt'] = $opciones;
+                $idRespuesta = Conexion::obtenerIDRespuesta($preAnt->getRespuesta());
+                $respuestaAnt = Conexion::obtenerRespuesta($idRespuesta);
+                $_SESSION['respuestaAnt'] = $respuestaAnt;
             ?>
                 <form action="controlador.php" method="POST" class="oriental">
 
@@ -102,7 +107,7 @@
                         <div class="margen-5 l-col-3 m-col-3 s-col-3 separadoPequeño">
                             <label>Opcion 1:</label>
                             <input type="text" value="<?php echo $opciones[0]; ?>" name="Op1" placeholder="Inserta la Opcion 1">
-                            <input type="radio" value="1" name="opcion"><br>
+                            <input type="radio" value="1" name="opcion" <?php echo $opciones[0] == $respuestaAnt ? ' checked' : ' '; ?>><br>
                         </div>
                     </div>
 
@@ -110,7 +115,7 @@
                         <div class="margen-5 l-col-3 m-col-3 s-col-3 separadoPequeño">
                             <label>Opcion 2:</label>
                             <input type="text" value="<?php echo $opciones[1]; ?>" name="Op2" placeholder="Inserta la Opcion 2">
-                            <input type="radio" value="2" name="opcion"><br>
+                            <input type="radio" value="2" name="opcion" <?php echo $opciones[1] == $respuestaAnt ? ' checked' : ' '; ?>><br>
                         </div>
                     </div>
 
@@ -118,7 +123,7 @@
                         <div class="margen-5 l-col-3 m-col-3 s-col-3 separadoPequeño">
                             <label>Opcion 3:</label>
                             <input type="text" value="<?php echo $opciones[2]; ?>" name="Op3" placeholder="Inserta la Opcion 3">
-                            <input type="radio" value="3" name="opcion"><br>
+                            <input type="radio" value="3" name="opcion" <?php echo $opciones[2] == $respuestaAnt ? ' checked' : ' '; ?>><br>
                         </div>
                     </div>
 
@@ -126,7 +131,7 @@
                         <div class="margen-5 l-col-3 m-col-3 s-col-3 separadoPequeño">
                             <label>Opcion 4:</label>
                             <input type="text" value="<?php echo $opciones[3]; ?>" name="Op4" placeholder="Inserta la Opcion 4">
-                            <input type="radio" value="4" name="opcion"><br>
+                            <input type="radio" value="4" name="opcion" <?php echo $opciones[3] == $respuestaAnt ? ' checked' : ' '; ?>><br>
                         </div>
                     </div>
 
