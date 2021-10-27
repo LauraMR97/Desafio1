@@ -26,19 +26,19 @@
                 <h3>Recupera tu cuenta:</h3>
             </div>
 
-            <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
+            <form action="../Base_de_datos/controlador.php" method="POST" class="oriental" novalidate>
 
                 <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
 
                 <div class="row margen-4">
                     <div class="row p-d-2">
                         <label class="xl-col-2 l-col-2 m-col-2 s-col-2">Email:</label>
-                        <input class="xl-col-4 l-col-4 m-col-4 s-col-4" id="mail" type="text" value="" name="correoDest" placeholder="Inserta tu Email" require>
+                        <input class="xl-col-4 l-col-4 m-col-4 s-col-4" id="mail" type="email" value="" name="correoDest" placeholder="Inserta tu Email" required>
                         <span class="error" aria-live="polite"></span>
                     </div>
 
                     <div class="row p-d-1 p-i-1">
-                        <input class="xl-col-3 l-col-3 m-col-3 s-col-3" type="submit" value="Enviar" name="Enviar">
+                        <input class="xl-col-3 l-col-3 m-col-3 s-col-3" type="submit" value="Enviar" id="send" name="Enviar">
                         <input class="xl-col-3 l-col-3 m-col-3 s-col-3" type="submit" value="Volver" name="CerrarSesion">
                     </div>
                 </div>
