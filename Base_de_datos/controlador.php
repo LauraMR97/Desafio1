@@ -162,7 +162,7 @@ if (isset($_REQUEST['ADD'])) {
     $email = $_REQUEST['Email'];
     $passwrd = sha1($_REQUEST['Password']);
     $passwrdConfirm = sha1($_REQUEST['PasswordRepeat']);
-    $rol = $_REQUEST['tipousur'];
+    $rol[] = $_REQUEST['tipousur'];
 
     if ($passwrd == $passwrdConfirm) {
         $persona = new Persona($nombre, $email);

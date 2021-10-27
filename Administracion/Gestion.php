@@ -42,9 +42,9 @@
                             <span class="error" id="nombreError" aria-live="polite"></span>
                         </div>
                         <div class="l-col-3 m-col-3 s-col-3 separado">
-                            <input type="radio" value="0" name="tipousur">Administrador<br>
-                            <input type="radio" value="1" name="tipousur">Editor<br>
-                            <input type="radio" value="2" name="tipousur">Usuario<br>
+                            <label><input type="checkbox" id="Admin" name="tipousur[]" value="Ad">Administrador</label>
+                            <label><input type="checkbox" id="Edit" name="tipousur[]" value="Ed">Editor</label>
+                            <label><input type="checkbox" id="User" name="tipousur[]" value="Us">Usuario</label>
                         </div>
                     </div>
 
