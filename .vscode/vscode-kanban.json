@@ -4,6 +4,32 @@
       "assignedTo": {
         "name": "LauraMR97"
       },
+      "creation_time": "2021-10-27T20:27:11.257Z",
+      "description": {
+        "content": "Enviar un enlace a una persona que permitira que esta se active y bloquear que alguien no activado entre a su cuenta",
+        "mime": "text/markdown"
+      },
+      "id": "25",
+      "references": [],
+      "title": "Activacion Personas"
+    },
+    {
+      "assignedTo": {
+        "name": "LauraMR97"
+      },
+      "creation_time": "2021-10-27T20:23:29.852Z",
+      "description": {
+        "content": "Sala de carga que aparecera al comenzar una partida, que durara 20 segundos y en la que aparecera una explicacion del juego",
+        "mime": "text/markdown"
+      },
+      "id": "22",
+      "references": [],
+      "title": "Carga.php"
+    },
+    {
+      "assignedTo": {
+        "name": "LauraMR97"
+      },
       "creation_time": "2021-10-27T20:16:50.137Z",
       "description": {
         "content": "La pantalla que nos permitira crear una partida",
@@ -43,27 +69,27 @@
       "assignedTo": {
         "name": "LauraMR97"
       },
-      "creation_time": "2021-10-27T19:14:02.426Z",
-      "details": {
-        "content": "Lograr que funcione la validacion de formularios en editar ",
+      "creation_time": "2021-10-27T20:25:01.640Z",
+      "description": {
+        "content": "Cambiar Radio buttons de Administracion por Checkbox  y mostrar seleccionados los que correspondan al rol de la persona a editar",
         "mime": "text/markdown"
       },
-      "id": "17",
+      "id": "23",
       "references": [],
-      "title": "validacion Formularios Administracion(Editar)"
+      "title": "Solucionar Checkbox Administracion"
     },
     {
       "assignedTo": {
         "name": "LauraMR97"
       },
-      "creation_time": "2021-10-27T20:23:29.852Z",
+      "creation_time": "2021-10-27T20:25:44.221Z",
       "description": {
-        "content": "Sala de carga que aparecera al comenzar una partida, que durara 20 segundos y en la que aparecera una explicacion del juego",
+        "content": "Arreglar la subida de imagenes",
         "mime": "text/markdown"
       },
-      "id": "22",
+      "id": "24",
       "references": [],
-      "title": "Carga.php"
+      "title": "Solucionar la subida de documentos"
     }
   ],
   "in-progress": [
@@ -81,7 +107,21 @@
       "title": "CSS"
     }
   ],
-  "testing": [],
+  "testing": [
+    {
+      "assignedTo": {
+        "name": "LauraMR97"
+      },
+      "creation_time": "2021-10-27T19:14:02.426Z",
+      "details": {
+        "content": "Lograr que funcione la validacion de formularios en editar ",
+        "mime": "text/markdown"
+      },
+      "id": "17",
+      "references": [],
+      "title": "validacion Formularios Administracion(Editar)"
+    }
+  ],
   "done": [
     {
       "assignedTo": {
