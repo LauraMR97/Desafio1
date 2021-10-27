@@ -8,10 +8,11 @@
     <title>Recupera tu cuenta</title>
     <link rel="stylesheet" type="text/css" href="../CSS/general.css">
     <script src='https://www.google.com/recaptcha/api.js?render=6LdfMfEcAAAAAO5Q2ukW9JjGwfcFrsAr26it8u58'></script>
-    <script src='./ValidacionYCaptcha/CaptchaEnviar.js'></script>
+    <script src='../ValidacionYCaptcha/CaptchaEnviar.js'></script>
+    <script src='../ValidacionYCaptcha/validarEmail.js'></script>
 </head>
 
-<body class="oriental">
+<body class="oriental" onload="validacion()">
     <main class="container oriental">
         <header class="row oriental">
             <h1>Escape Web</h1>
@@ -32,7 +33,8 @@
                 <div class="row margen-4">
                     <div class="row p-d-2">
                         <label class="xl-col-2 l-col-2 m-col-2 s-col-2">Email:</label>
-                        <input class="xl-col-4 l-col-4 m-col-4 s-col-4" type="text" value="" name="correoDest" placeholder="Inserta tu Email" require>
+                        <input class="xl-col-4 l-col-4 m-col-4 s-col-4" id="mail" type="text" value="" name="correoDest" placeholder="Inserta tu Email" require>
+                        <span class="error" aria-live="polite"></span>
                     </div>
 
                     <div class="row p-d-1 p-i-1">

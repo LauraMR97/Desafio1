@@ -12,10 +12,10 @@ function validacion() {
     const passwordConfirmError = document.getElementById('passwordConfirmError');
     const NombreError = document.getElementById('nombreError');
 
-    const pass1 = document.getElementById('password').value;
-    const pass2 = document.getElementById('passwordConfirm').value;
 
-    email.addEventListener('onblur', function (event) {
+
+
+    email.addEventListener('onblur', function(event) {
         if (email.validity.valid) {
             emailError.innerHTML = '';
             emailError.className = 'error';
@@ -24,7 +24,7 @@ function validacion() {
         }
     });
 
-    pass.addEventListener('onblur', function (event) {
+    pass.addEventListener('onblur', function(event) {
 
         if (pass.validity.valid) {
             passwordError.innerHTML = ''; // Restablece el contenido del mensaje
@@ -35,7 +35,8 @@ function validacion() {
     });
 
 
-    passRepeat.addEventListener('onblur', function (event) {
+    passRepeat.addEventListener('onblur', function(event) {
+
         if (passRepeat.validity.valid) {
             passwordConfirmError.innerHTML = ''; // Restablece el contenido del mensaje
             passwordConfirmError.className = 'error'; // Restablece el estado visual del mensaje
@@ -44,7 +45,7 @@ function validacion() {
         }
     });
 
-    nombre.addEventListener('onblur', function (event) {
+    nombre.addEventListener('onblur', function(event) {
         if (nombre.validity.valid) {
             NombreError.innerHTML = ''; // Restablece el contenido del mensaje
             NombreError.className = 'error'; // Restablece el estado visual del mensaje
@@ -53,7 +54,12 @@ function validacion() {
         }
     });
 
-    botonRegistrar.addEventListener('click', function (event) {
+    botonRegistrar.addEventListener('click', function(event) {
+        var pass1 = document.getElementById('password').value;
+        var pass2 = document.getElementById('passwordConfirm').value;
+
+        console.log(pass1);
+        console.log(pass2);
 
         if (!email.validity.valid) {
             showErrorEmail();
@@ -65,6 +71,11 @@ function validacion() {
             event.preventDefault();
         }
 
+
+        if (pass1 != pass2) {
+            showErrorPasswordRepeat();
+            event.preventDefault();
+        }
         if (!passRepeat.validity.valid) {
             showErrorPasswordRepeat();
             event.preventDefault();
@@ -95,8 +106,7 @@ function validacion() {
         if (pass.validity.valueMissing) {
 
             passwordError.textContent = 'Debe introducir una contraseña.';
-        }
-        else{
+        } else {
             passwordError.textContent = 'Las contraseñas no son iguales';
 
         }
@@ -108,6 +118,8 @@ function validacion() {
 
         if (passRepeat.validity.valueMissing) {
             passwordConfirmError.textContent = 'Debe repetir la contraseña.';
+        } else {
+            passwordConfirmError.textContent = 'Contraseñas distintas.';
         }
         passwordConfirmError.className = 'error active';
     }
@@ -127,5 +139,3 @@ function validacion() {
 
 
 }
-
-
