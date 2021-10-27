@@ -8,10 +8,11 @@
     <title>Recupera tu cuenta</title>
     <link rel="stylesheet" type="text/css" href="../CSS/general.css">
     <script src='https://www.google.com/recaptcha/api.js?render=6LdfMfEcAAAAAO5Q2ukW9JjGwfcFrsAr26it8u58'></script>
-    <script src='./ValidacionYCaptcha/CaptchaEnviar.js'></script>
+    <script src='../ValidacionYCaptcha/CaptchaEnviar.js'></script>
+    <script src='../ValidacionYCaptcha/validarEmail.js'></script>
 </head>
 
-<body class="oriental">
+<body class="oriental" onload="validacion()">
 <main class="container oriental">
         <header class="row oriental">
                 <h1>Escape Web</h1>
@@ -25,19 +26,20 @@
                 <h3>Recupera tu cuenta:</h3>
             </div>
 
-            <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
+            <form  action="../Base_de_datos/controlador.php" method="POST" class="oriental" novalidate>
             <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
 
                 <div class="row">
                     <div class="margen-5 l-col-3 m-col-3 s-col-3 separadoPequeño">
                         <label>Email:</label>
-                        <input type="text" value="" name="correoDest" placeholder="Inserta tu Email" require>
+                        <input  type="email" id="mail" value="" name="correoDest" placeholder="Inserta tu Email" required>
+                        <span class="error" aria-live="polite"></span>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="margen-4 l-col-2 m-col-2 s-col-2 ">
-                        <input type="submit" value="Enviar" name="Enviar">
+                        <input type="submit" value="Enviar" name="Enviar" id="send">
                     </div>
                     <div class="l-col-2 m-col-2 s-col-2 ">
                         <input type="submit" value="Volver" name="CerrarSesion">

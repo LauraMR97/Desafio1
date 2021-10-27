@@ -82,7 +82,7 @@ if (isset($_REQUEST['Registrar'])) {
     //else{
     //$persona= new Persona($nombre,$email,$passwrd);
     Conexion::addPersona($persona, 2, $passwrd);
-    header("Location:../MENUS/menu.php");
+    header("Location:../Ventanas/registro.php");
 }
 
 if (isset($_REQUEST['Enviar'])) {
