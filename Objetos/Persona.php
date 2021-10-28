@@ -34,6 +34,11 @@ class Persona
       $this->conectado = true;
    }
 
+   public function Desconectar()
+   {
+      $this->conectado = false;
+   }
+
    public function setConectar($conectado)
    {
       $this->conectado = $conectado;

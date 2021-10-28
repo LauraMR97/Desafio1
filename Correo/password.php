@@ -39,7 +39,7 @@
 
                     <div class="row p-d-1 p-i-1">
                         <input class="xl-col-3 l-col-3 m-col-3 s-col-3" type="submit" value="Enviar" id="send" name="Enviar">
-                        <input class="xl-col-3 l-col-3 m-col-3 s-col-3" type="submit" value="Volver" name="CerrarSesion">
+                        <input class="xl-col-3 l-col-3 m-col-3 s-col-3" type="submit" value="Volver" name="VolverLogin">
                     </div>
                 </div>
             </form>
