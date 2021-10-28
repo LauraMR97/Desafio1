@@ -494,6 +494,13 @@ if (isset($_REQUEST['CerrarSesion'])) {
 if (isset($_REQUEST['VolverLogin'])) {
     header("Location:../index.php");
 }
+
+/**
+ * Volver a Juego.php. La pantalla principal donde me puedo unir o crear una partida
+ */
+if (isset($_REQUEST['VolverJuego'])) {
+    header("Location:../Gestion_Juego/Jugar.php");
+}
 /**
  * Volver al menu del editor
  */
@@ -503,13 +510,20 @@ if (isset($_REQUEST['VolverMenuEditor'])) {
 /*************************************************************************** */
 /*******************************REDIRECCIONAMIENTO************************* */
 /*************************************************************************** */
-/**
 
+
+if (isset($_REQUEST['CrearPartida'])) {
+    header("Location:../Gestion_Juego/CrearPartida.php");
+}
 /**
  * Te lleva a administracion
  */
 if (isset($_REQUEST['Administrador'])) {
     header("Location:../Administracion/Administracion.php");
+}
+
+if (isset($_REQUEST['Jugar'])) {
+    header("Location:../Gestion_Juego/Jugar.php");
 }
 
 /**
@@ -555,9 +569,5 @@ if (isset($_REQUEST['GestionPreguntas'])) {
 }
 
 if (isset($_REQUEST['Historial'])) {
-    header("Location:../Error_y_Reformas/reformas.php");
-}
-
-if (isset($_REQUEST['Jugar'])) {
     header("Location:../Error_y_Reformas/reformas.php");
 }
