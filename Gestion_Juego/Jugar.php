@@ -13,7 +13,6 @@
 
     <?php
     session_start();
-    $url = $_SESSION['url'];
     ?>
     <main class="container oriental">
         <header class="row oriental">
@@ -31,7 +30,7 @@
             <div class="row margen-2">
                 <div class="xl-col-12  l-col-12 m-col-12 s-col-12">
                     <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
-                        <input class="xl-col-2 l-col-2 m-col-2 s-col-2" type="submit" value="Crear Partida" name="Crear">
+                        <input class="xl-col-2 l-col-2 m-col-2 s-col-2" type="submit" value="Crear Partida" name="CrearPartida">
                         <input class="xl-col-2 l-col-2 m-col-2 s-col-2" type="submit" value="Unirme" name="UnirmePartida">
                         <input class="xl-col-2 l-col-2 m-col-2 s-col-2" type="text" value="" name="codigo" placeholder="Codigo">
                         <input class="xl-col-2 l-col-2 m-col-2 s-col-2" type="submit" value="Volver" name="VolverMenu">
