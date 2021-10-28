@@ -29,24 +29,23 @@ if (isset($_REQUEST['Aceptar'])) {
     if ($usu->getActivo() != 0) {
         if ($usu != null) {
             $_SESSION['per'] = $usu;
-            $roles = Conexion::verRol($email);
-            for ($i = 0; $i < count($roles); $i++) {
-                if ($roles[$i] == 0) {
-                    header("Location:../MENUS/ElegirRol.php");
+            $rol = Conexion::verRol($email);
+
+            if ((isset($rol[0]) && ($rol[0] == 0)) || (isset($rol[1]) && ($rol[1] == 0)) || (isset($rol[2]) && ($rol[2] == 0))) {
+                header("Location:../MENUS/ElegirRol.php");
+            } else {
+                if ((isset($rol[0]) && ($rol[0] == 1)) || (isset($rol[1]) && ($rol[1] == 1)) || (isset($rol[2]) && ($rol[2] == 1))) {
+                    header("Location:../MENUS/MenuEditor.php");
                 } else {
-                    if ($roles[$i] == 1) {
-                        header("Location:../MENUS/MenuEditor.php");
-                    } else {
-                        if ($roles[$i] == 2) {
-                            header("Location:../MENUS/menu.php");
-                        }
+                    if ((isset($rol[0]) && ($rol[0] == 2)) || (isset($rol[1]) && ($rol[1] == 2)) || (isset($rol[2]) && ($rol[2] == 2))) {
+                        header("Location:../MENUS/menu.php");
                     }
                 }
             }
         }
     } else {
-        header("Location:../Error_y_Reformas/error.php");
         $_SESSION['mensaje'] = 'Aun no estas activo en este sitio web';
+        header("Location:../Error_y_Reformas/error.php");
     }
 }
 /**
@@ -162,16 +161,55 @@ if (isset($_REQUEST['ADD'])) {
     $email = $_REQUEST['Email'];
     $passwrd = sha1($_REQUEST['Password']);
     $passwrdConfirm = sha1($_REQUEST['PasswordRepeat']);
-    $rol[] = $_REQUEST['tipousur'];
+    $rol = $_REQUEST['tipousur'];
 
-    if ($passwrd == $passwrdConfirm) {
-        $persona = new Persona($nombre, $email);
-        Conexion::addPersona($persona, $rol, $passwrd);
-        header("Location:../Administracion/Administracion.php");
+    $persona = new Persona($nombre, $email);
+    Conexion::addPersona($persona, $passwrd);
+
+    if ((isset($rol[0]) && ($rol[0] == 'Ad'))) {
+        Conexion::actualizarRolPersona($persona, 0);
     } else {
-        $_SESSION['mensaje'] = 'Las constraseñas son distintas';
-        header("Location:../Error_y_Reformas/error.php");
+        if ((isset($rol[1]) && ($rol[1] == 'Ad'))) {
+
+            Conexion::actualizarRolPersona($persona, 0);
+        } else {
+            if ((isset($rol[2]) && ($rol[2] == 'Ad'))) {
+
+                Conexion::actualizarRolPersona($persona, 0);
+            }
+        }
     }
+
+    if ((isset($rol[0]) && ($rol[0] == 'Ed'))) {
+        Conexion::actualizarRolPersona($persona, 1);
+    } else {
+        if ((isset($rol[1]) && ($rol[1] == 'Ed'))) {
+
+            Conexion::actualizarRolPersona($persona, 1);
+        } else {
+            if ((isset($rol[2]) && ($rol[2] == 'Ed'))) {
+
+                Conexion::actualizarRolPersona($persona, 1);
+            }
+        }
+    }
+
+    if ((isset($rol[0]) && ($rol[0] == 'Us'))) {
+        Conexion::actualizarRolPersona($persona, 2);
+    } else {
+        if ((isset($rol[1]) && ($rol[1] == 'Us'))) {
+
+            Conexion::actualizarRolPersona($persona, 2);
+        } else {
+            if ((isset($rol[2]) && ($rol[2] == 'Us'))) {
+
+                Conexion::actualizarRolPersona($persona, 2);
+            }
+        }
+    }
+
+
+    header("Location:../Administracion/Administracion.php");
 }
 /**
  * Editas como administrador a cualquier usuario
@@ -195,9 +233,55 @@ if (isset($_REQUEST['Editar'])) {
     $email = $_REQUEST['Email'];
     $rol = $_REQUEST['tipousur'];
 
+
+    Conexion::borrarRolPersona($perAnt->getEmail());
     $perNew = new Persona($nombre, $email);
     Conexion::editarPersonaAdministracion($perNew, $perAnt);
-    Conexion::editarRol($perNew, $rol);
+
+
+    if ((isset($rol[0]) && ($rol[0] == 'Ad'))) {
+        Conexion::actualizarRolPersona($perNew, 0);
+    } else {
+        if ((isset($rol[1]) && ($rol[1] == 'Ad'))) {
+
+            Conexion::actualizarRolPersona($perNew, 0);
+        } else {
+            if ((isset($rol[2]) && ($rol[2] == 'Ad'))) {
+
+                Conexion::actualizarRolPersona($perNew, 0);
+            }
+        }
+    }
+
+    if ((isset($rol[0]) && ($rol[0] == 'Ed'))) {
+        Conexion::actualizarRolPersona($perNew, 1);
+    } else {
+        if ((isset($rol[1]) && ($rol[1] == 'Ed'))) {
+
+            Conexion::actualizarRolPersona($perNew, 1);
+        } else {
+            if ((isset($rol[2]) && ($rol[2] == 'Ed'))) {
+
+                Conexion::actualizarRolPersona($perNew, 1);
+            }
+        }
+    }
+
+    if ((isset($rol[0]) && ($rol[0] == 'Us'))) {
+        Conexion::actualizarRolPersona($perNew, 2);
+    } else {
+        if ((isset($rol[1]) && ($rol[1] == 'Us'))) {
+
+            Conexion::actualizarRolPersona($perNew, 2);
+        } else {
+            if ((isset($rol[2]) && ($rol[2] == 'Us'))) {
+
+                Conexion::actualizarRolPersona($perNew, 2);
+            }
+        }
+    }
+
+
     header("Location:../Administracion/Administracion.php");
 }
 /*************************************************************************** */

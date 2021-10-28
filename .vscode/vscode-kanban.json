@@ -56,19 +56,6 @@
       "assignedTo": {
         "name": "LauraMR97"
       },
-      "creation_time": "2021-10-27T20:25:01.640Z",
-      "description": {
-        "content": "Cambiar Radio buttons de Administracion por Checkbox  y mostrar seleccionados los que correspondan al rol de la persona a editar",
-        "mime": "text/markdown"
-      },
-      "id": "23",
-      "references": [],
-      "title": "Solucionar Checkbox Administracion"
-    },
-    {
-      "assignedTo": {
-        "name": "LauraMR97"
-      },
       "creation_time": "2021-10-27T20:25:44.221Z",
       "description": {
         "content": "Arreglar la subida de imagenes",
@@ -97,14 +84,14 @@
       "assignedTo": {
         "name": "LauraMR97"
       },
-      "creation_time": "2021-10-27T20:27:11.257Z",
+      "creation_time": "2021-10-27T20:25:01.640Z",
       "description": {
-        "content": "Enviar un enlace a una persona que permitira que esta se active y bloquear que alguien no activado entre a su cuenta",
+        "content": "Cambiar Radio buttons de Administracion por Checkbox  y mostrar seleccionados los que correspondan al rol de la persona a editar",
         "mime": "text/markdown"
       },
-      "id": "25",
+      "id": "23",
       "references": [],
-      "title": "Activacion Personas"
+      "title": "Solucionar Checkbox Administracion"
     }
   ],
   "testing": [
@@ -123,6 +110,19 @@
     }
   ],
   "done": [
+    {
+      "assignedTo": {
+        "name": "LauraMR97"
+      },
+      "creation_time": "2021-10-27T20:27:11.257Z",
+      "description": {
+        "content": "Enviar un enlace a una persona que permitira que esta se active y bloquear que alguien no activado entre a su cuenta",
+        "mime": "text/markdown"
+      },
+      "id": "25",
+      "references": [],
+      "title": "Activacion Personas"
+    },
     {
       "assignedTo": {
         "name": "Laura"

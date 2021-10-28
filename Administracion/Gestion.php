@@ -94,6 +94,7 @@
             <?php
             } else {
                 $perAnt = Conexion::buscarPersonaPorCorreo($_SESSION['email']);
+                $rol = Conexion::verRol($perAnt->getEmail());
             ?>
                 <form action="../Base_de_datos/controlador.php" method="POST" class="oriental" novalidate>
                     <div class="row">
@@ -103,9 +104,9 @@
                             <span class="error" id="nombreError" aria-live="polite"></span>
                         </div>
                         <div class="l-col-3 m-col-3 s-col-3 separado">
-                            <input type="radio" value="0" name="tipousur">Administrador<br>
-                            <input type="radio" value="1" name="tipousur">Editor<br>
-                            <input type="radio" value="2" name="tipousur">Usuario<br>
+                            <label><input type="checkbox" id="Admin" name="tipousur[]" <?php echo (isset($rol[0]) && ($rol[0] == 0)) || (isset($rol[1]) && ($rol[1] == 0)) || (isset($rol[2]) && ($rol[2] == 0)) ? ' checked' : ' '; ?> value="Ad">Administrador</label>
+                            <label><input type="checkbox" id="Edit" name="tipousur[]" <?php echo (isset($rol[0]) && ($rol[0] == 1)) || (isset($rol[1]) && ($rol[1] == 1)) || (isset($rol[2]) && ($rol[2] == 1)) ? ' checked' : ' '; ?> value="Ed">Editor</label>
+                            <label><input type="checkbox" id="User" name="tipousur[]" <?php echo (isset($rol[0]) && ($rol[0] == 2)) || (isset($rol[1]) && ($rol[1] == 2)) || (isset($rol[2]) && ($rol[2] == 2)) ? ' checked' : ' '; ?> value="Us">Usuario</label>
                         </div>
                     </div>
 
