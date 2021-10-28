@@ -526,6 +526,14 @@ if (isset($_REQUEST['Editor'])) {
 }
 
 /**
+ * Te lleva a la lista de usuarios
+ */
+if (isset($_REQUEST['Usuarios'])) {
+    header("Location:../Ventanas/Lista.php");
+}
+
+
+/**
  * Ir a Ranking.php
  */
 if (isset($_REQUEST['Ranking'])) {

@@ -50,7 +50,7 @@
             <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
                 <div class="row">
                     <div class=" margen-6 l-col-2 m-col-2 s-col-2 separadoPequeño">
-                        <input type="submit" value="Volver" name="CerrarSesion">
+                        <input type="submit" value="Volver" name="VolverLogin">
                     </div>
                 </div>
             </form>
