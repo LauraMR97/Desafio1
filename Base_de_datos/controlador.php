@@ -89,7 +89,7 @@ if (isset($_REQUEST['Registrar'])) {
     Conexion::addPersona($persona, 2, $passwrd);
     //-------------------------------Envio de mensaje de confirmacion
     $_SESSION['correoDest'] = $email;
-    $url = $_SESSION['urlConfirm'] = 'localhost/Desafio1/' . $nombre . '.php';
+    $_SESSION['urlConfirm'] = 'http://localhost/Desafio1/Mensaje_Confirmacion/confirmacion.php?email=' . $email;
     header("Location:../Mensaje_Confirmacion/enviarConfirmacion.php");
 }
 
