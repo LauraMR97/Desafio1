@@ -281,6 +281,7 @@ class Conexion
             while ($fila = mysqli_fetch_array($result)) {
                 $per = new Persona($fila["nombre"], $fila["correo"]);
                 $per->setPassword($fila["password"]);
+                $per->setActivo($fila['activo']);
             }
         }
 
@@ -352,7 +353,7 @@ class Conexion
         $stmt->execute();
 
         $result = $stmt->get_result();
-
+        $_SESSION['res']=$result;
 
         if ($result) {
             while ($fila = mysqli_fetch_array($result)) {
@@ -606,7 +607,7 @@ class Conexion
         $query = "UPDATE pregunta SET descripcion = ? WHERE descripcion LIKE ?";
         $stmt = self::$conexion->prepare($query);
 
-        $stmt->bind_param("ss",$preNew, $preAnt);
+        $stmt->bind_param("ss", $preNew, $preAnt);
 
         if ($stmt->execute()) {
             $mensaje = 'Registro editado con éxito' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
@@ -625,7 +626,7 @@ class Conexion
         $query = "UPDATE respuesta SET descripcionR = ? WHERE descripcionR LIKE ?";
         $stmt = self::$conexion->prepare($query);
 
-        $stmt->bind_param("ss",$respuestaNueva, $resp_Ant);
+        $stmt->bind_param("ss", $respuestaNueva, $resp_Ant);
 
         if ($stmt->execute()) {
             $mensaje = 'Registro editado con éxito' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
@@ -644,7 +645,7 @@ class Conexion
         $query = "UPDATE opciones SET descripcion = ? WHERE descripcion LIKE ?";
         $stmt = self::$conexion->prepare($query);
 
-        $stmt->bind_param("ss",$opNew, $opAnt);
+        $stmt->bind_param("ss", $opNew, $opAnt);
 
         if ($stmt->execute()) {
             $mensaje = 'Registro editado con éxito' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
@@ -654,7 +655,28 @@ class Conexion
             //Bitacora::guardarArchivo($mensaje);
         }
         $stmt->close();
-        self::cerrarConexion();  
+        self::cerrarConexion();
+    }
+
+    /*-----------------------------------------------------------------------------------*/
+    public static function activarPersona($email)
+    {
+        self::abrirConexion();
+        $query = "UPDATE persona SET activo = 1 WHERE correo LIKE ?";
+        $_SESSION['query']=$query;
+        $stmt = self::$conexion->prepare($query);
+
+        $stmt->bind_param("s", $email);
+
+        if ($stmt->execute()) {
+            $mensaje = 'Registro editado con éxito' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            //Bitacora::guardarArchivo($mensaje);
+        } else {
+            $mensaje = 'Error al editar' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            //Bitacora::guardarArchivo($mensaje);
+        }
+        $stmt->close();
+        self::cerrarConexion();
     }
     /*--------------------------------------------------------------*/
     public static function cerrarConexion()
