@@ -14,7 +14,7 @@ class Conexion
     }
 
     /*--------------------------------------------------------------*/
-    public static function addPersona($p, $rol, $password)
+    public static function addPersona($p, $password)
     {
         self::abrirConexion();
         $query = "INSERT INTO persona (nombre, correo, password, foto, prestigio, aciertos, victorias,activo) VALUES (?,?,?,?,?,?,?,?)";
@@ -33,7 +33,6 @@ class Conexion
         $stmt->close();
         self::cerrarConexion();
 
-        self::actualizarRolPersona($p, $rol);
     }
     /*--------------------------------------------------------------*/
     public static function addPregunta($desc, $creador)
