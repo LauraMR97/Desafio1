@@ -512,6 +512,10 @@ if (isset($_REQUEST['Administrador'])) {
     header("Location:../Administracion/Administracion.php");
 }
 
+if(isset($_REQUEST['Jugar'])){
+    header("Location:../Gestion_Juego/Jugar.php");
+}
+
 /**
  * Te lleva al menu de usuario
  */
@@ -555,9 +559,5 @@ if (isset($_REQUEST['GestionPreguntas'])) {
 }
 
 if (isset($_REQUEST['Historial'])) {
-    header("Location:../Error_y_Reformas/reformas.php");
-}
-
-if (isset($_REQUEST['Jugar'])) {
     header("Location:../Error_y_Reformas/reformas.php");
 }
