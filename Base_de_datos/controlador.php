@@ -85,7 +85,8 @@ if (isset($_REQUEST['Registrar'])) {
     //}
     //else{
     //$persona= new Persona($nombre,$email,$passwrd);
-    Conexion::addPersona($persona, 2, $passwrd);
+    Conexion::addPersona($persona, $passwrd);
+    Conexion::actualizarRolPersona($persona,2);
     //-------------------------------Envio de mensaje de confirmacion
     $_SESSION['correoDest'] = $email;
     $_SESSION['urlConfirm'] = 'http://localhost/Desafio1/Mensaje_Confirmacion/confirmacion.php?email=' . $email;

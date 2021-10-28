@@ -34,6 +34,11 @@ class Persona
       $this->conectado = true;
    }
 
+   public function setConectar($conectado)
+   {
+      $this->conectado = $conectado;
+   }
+
    public function setActivo($act)
    {
       $this->activo = $act;
@@ -104,7 +109,7 @@ class Persona
    {
       $string = '';
 
-      $string = '[Nombre: ' . $this->nombre . ', Contraseña: ' . $this->password . ', Correo: ' . $this->correo . ' ,Prestigio: ' . $this->prestigio . ' ,Aciertos: ' . $this->aciertos . ' ,Victorias: ' . $this->victorias . ']';
+      $string = '[Nombre: ' . $this->nombre . ', Contraseña: ' . $this->password . ', Correo: ' . $this->correo . ' ,Prestigio: ' . $this->prestigio . ' ,Aciertos: ' . $this->aciertos . ' ,Victorias: ' . $this->victorias . ' ,Conectado: ' . $this->conectado . ']';
       return $string;
    }
 }

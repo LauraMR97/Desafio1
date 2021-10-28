@@ -20,7 +20,7 @@ class Conexion
         $query = "INSERT INTO persona (nombre, correo, password, foto, prestigio, aciertos, victorias,activo,conectado) VALUES (?,?,?,?,?,?,?,?,?)";
         $stmt = self::$conexion->prepare($query);
 
-        $stmt->bind_param("sssssiii", $p->getNombre(), $p->getEmail(), $password, $p->getFoto(), $p->getPrestigio(), $p->getAciertos(), $p->getActivo(), $p->getVictorias(),$p->getConectado());
+        $stmt->bind_param("sssssiiii", $p->getNombre(), $p->getEmail(), $password, $p->getFoto(), $p->getPrestigio(), $p->getAciertos(), $p->getActivo(), $p->getVictorias(), $p->getConectado());
 
 
         if ($stmt->execute()) {
@@ -32,7 +32,6 @@ class Conexion
         }
         $stmt->close();
         self::cerrarConexion();
-
     }
     /*--------------------------------------------------------------*/
     public static function addPregunta($desc, $creador)
@@ -281,6 +280,7 @@ class Conexion
                 $per = new Persona($fila["nombre"], $fila["correo"]);
                 $per->setPassword($fila["password"]);
                 $per->setActivo($fila['activo']);
+                $per->setConectar($fila['conectado']);
             }
         }
 
@@ -352,12 +352,13 @@ class Conexion
         $stmt->execute();
 
         $result = $stmt->get_result();
-        $_SESSION['res']=$result;
+        $_SESSION['res'] = $result;
 
         if ($result) {
             while ($fila = mysqli_fetch_array($result)) {
                 $per = new Persona($fila["nombre"], $fila["correo"]);
                 $per->setPassword($fila["password"]);
+                $per->setConectar($fila["conectado"]);
             }
         }
 
@@ -662,7 +663,7 @@ class Conexion
     {
         self::abrirConexion();
         $query = "UPDATE persona SET activo = 1 WHERE correo LIKE ?";
-        $_SESSION['query']=$query;
+        $_SESSION['query'] = $query;
         $stmt = self::$conexion->prepare($query);
 
         $stmt->bind_param("s", $email);
