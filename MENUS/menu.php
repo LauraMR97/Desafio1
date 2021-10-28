@@ -39,7 +39,10 @@
                         <input class="xl-col-6 l-col-6 m-col-6 s-col-6 " type="submit" value="Ranking" name="Ranking">
                     </div>
                     <div class="row p-d-1">
-                        <input class="xl-col-6 l-col-6 m-col-6 s-col-6" type="submit" value="Volver" name="VolverAlternativo">
+                        <input class="xl-col-6 l-col-6 m-col-6 s-col-6" type="submit" value="Lista Usuarios" name="Usuarios">
+                    </div>
+                    <div class="row p-d-1">
+                        <input class="xl-col-6 l-col-6 m-col-6 s-col-6 botVolver" type="submit" value="Volver" name="VolverAlternativo">
                     </div>
                 </div>
             </form>
