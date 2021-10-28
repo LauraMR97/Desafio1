@@ -16,6 +16,9 @@
     text-align: center;
 }
 
+.centrandoElementos{
+    align-items: center;
+  }
 
 /*-------------------------------LINEA SEPARADORA---------------------------------------*/
 
@@ -30,11 +33,13 @@ hr {
 /*-------------------------------ROW-CONTAINER---------------------------------------*/
 
 .container:after,
-.row:after {
+.row:after,
+.u-cf {
     content: "";
     display: table;
     clear: both;
 }
+
 
 .separado {
     padding-top: 2rem;
@@ -44,10 +49,14 @@ hr {
     padding-top: 1rem;
 }
 
+.separadoPequeñoBot {
+    padding-bottom: 1rem;
+}
+
 .container {
     position: relative;
     width: 100%;
-    max-width: 1000px;
+    max-width: 1024px;
     margin: 0 auto;
     box-sizing: border-box;
 }

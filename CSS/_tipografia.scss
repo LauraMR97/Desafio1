@@ -7,9 +7,9 @@ $size: 0.1rem;
 $talla: 3.6rem;
 @for $i from 1 through 6 {
     h#{$i} {
-        font-size: $talla;
+        font-size: $talla - 0.6*$i;
         font-family: 'Franklin Gothic Medium';
-        $talla: $talla - 0.60;
+        text-align: center;
     }
 }
 
@@ -50,4 +50,8 @@ a {
             color: $terciarioE2;
         }
     }
+}
+
+.alignDerecha {
+    text-align: right;
 }

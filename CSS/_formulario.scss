@@ -1,19 +1,23 @@
 /*--------------------------------------FORMULARIOS----------------------------------*/
+
 form {
-    label{
+    label {
         display: block;
     }
-    &.minimalista {
+    &.gamer {
         input[type="submit"],
         input[type="button"] {
             background-color: $primario;
             color: $terciario;
-            font-family: monospace;
+            font-family: serif;
             font-size: 1.2em;
             margin: auto;
             border-radius: 10px;
-            width: 150px;
             padding: 16px;
+            background-image: linear-gradient(to right, $primario, $cuartoE);
+            &:hover {
+                background-image: linear-gradient(to right, $cuarto, $primario);
+            }
         }
         input[type="email"],
         input[type="number"],
@@ -24,11 +28,10 @@ form {
         input[type="password"],
         textarea,
         select {
-            font-family: monospace;
+            font-family: serif;
             font-size: 1.2em;
             margin: auto;
             border-radius: 10px;
-            width: 150px;
             padding: 16px;
         }
         input[type="checkbox"],
@@ -44,8 +47,18 @@ form {
             font-family: monospace;
             font-size: 1.2em;
             margin: auto;
-            width: 150px;
             padding: 16px;
+            border-radius: 1em 1em 1em 1em;
+            background-image: linear-gradient(to bottom, $secundario2, $primario2);
+            &:hover {
+                background-image: linear-gradient(to bottom, $primarioE2, $secundarioE2);
+            }
+            &.botVolver{
+                background-image: linear-gradient(to right, $cuartoE, $primarioE2);
+                &:hover {
+                    background-image: linear-gradient(to bottom, $primarioE2, $cuartoE);
+                }
+            }
         }
         input[type="email"],
         input[type="number"],
@@ -61,7 +74,6 @@ form {
             font-family: monospace;
             font-size: 1.2em;
             margin: auto;
-            width: 150px;
             padding: 16px;
         }
         input[type="checkbox"],
