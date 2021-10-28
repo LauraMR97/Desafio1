@@ -13,6 +13,10 @@
 
     <?php
     session_start();
+    if ($_SESSION['mensaje']) {
+        $mensaje = $_SESSION['mensaje'];
+        echo '<p>'.$mensaje.'<p>';
+    }
     ?>
     <main class="container oriental">
         <header class="row oriental">
@@ -41,8 +45,8 @@
                         </div>
 
                         <div class="row p-a-1">
-                        <span><input type="radio" value="Privada" name="opcion">Privada</span>
-                        <span><input type="radio" value="Publica" name="opcion">Publica</span>
+                            <span><input type="radio" value="Privada" name="opcion">Privada</span>
+                            <span><input type="radio" value="Publica" name="opcion">Publica</span>
                         </div>
 
                         <div class="row p-a-1">
