@@ -29,32 +29,133 @@
             <div class="xl-col-12 l-col-12 m-col-12 s-col-12 separado">
                 <h3>Lista de Usuarios:</h3>
             </div>
-            <div class="row margen-3">
+
+            <?php
+            ?>
+            <div class="row margen-4">
                 <div class="xl-col-12 l-col-12 m-col-12 s-col-12">
-                    <?php
-
-                    foreach ($users as $persona) {
-                    ?>
-                        <div class="xl-col-7 l-col-7 m-col-7 s-col-7">
-                            <table class="oriental">
-                                <tr>
-                                    <td><?php echo $persona->getNombre() ?></td>
-                                    <td><?php echo $persona->getConectado() ?></td>
-                                </tr>
-                            </table>
+                    <form action="Lista.php" method="POST" class="oriental" novalidate>
+                        <div class="row">
+                            <span><input type="radio" value="0" name="opcion">Desconectados</span>
+                            <span><input type="radio" value="1" name="opcion">Conectados</span>
+                            <span><input type="radio" value="2" name="opcion">Todos</span>
                         </div>
-
-                    <?php
-                    }
-                    ?>
-
-                    <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
                         <div class="row p-a-1 p-d-1">
-                            <input class="xl-col-7 l-col-7 m-col-7 s-col-7" type="submit" value="Volver" name="CerrarSesion">
+                            <input class="xl-col-6 l-col-6 m-col-6 s-col-6" type="submit" value="Filtrar" name="Filtro">
                         </div>
                     </form>
                 </div>
             </div>
+
+            <?php
+            if (isset($_REQUEST['Filtro'])) {
+                $estado = $_REQUEST['opcion'];
+
+                if ($estado == 0) {
+            ?>
+                    <div class="row margen-4">
+                        <div class="xl-col-6 l-col-6 m-col-6 s-col-6">
+                            <?php
+                            foreach ($users as $persona) {
+                                if ($persona->getConectado() == 0) {
+                            ?>
+                                    <table class="oriental">
+                                        <tr>
+                                            <td><?php echo '<h4>' . $persona->getNombre() . '</h4>' ?></td>
+                                            <td><?php echo '<img src="../ICONOS/desconectado.png" class="tamaño">' ?></td>
+                                        </tr>
+                                    </table>
+                            <?php
+                                }
+                            }
+                            ?>
+                        </div>
+                    </div>
+                <?php
+                }
+                if ($estado == 1) {
+                ?>
+                    <div class="row margen-4">
+                        <div class="xl-col-6 l-col-6 m-col-6 s-col-6">
+                            <?php
+                            foreach ($users as $persona) {
+                                if ($persona->getConectado() == 1) {
+                            ?>
+                                    <table class="oriental">
+                                        <tr>
+                                            <td><?php echo '<h4>' . $persona->getNombre() . '</h4>' ?></td>
+                                            <td><?php echo '<img src="../ICONOS/conectado.png" class="tamaño">' ?></td>
+                                        </tr>
+                                    </table>
+
+                            <?php
+                                }
+                            }
+                            ?>
+
+                        </div>
+                    </div>
+                <?php
+                }
+                if ($estado == 2) {
+                ?>
+                    <div class="row margen-4">
+                        <div class="xl-col-6 l-col-6 m-col-6 s-col-6">
+                            <?php
+                            foreach ($users as $persona) {
+                            ?>
+                                <table class="oriental">
+                                    <tr>
+                                        <td><?php echo '<h4>' . $persona->getNombre() . '</h4>' ?></td>
+                                        <td><?php if ($persona->getConectado() == 1) {
+                                                echo '<img src="../ICONOS/conectado.png" class="tamaño">';
+                                            } else {
+                                                echo '<img src="../ICONOS/desconectado.png" class="tamaño">';
+                                            } ?></td>
+                                    </tr>
+                                </table>
+                    <?php
+                            }
+                        }
+                    }
+
+                    ?>
+                        </div>
+                    </div>
+
+                    <div class="row margen-4">
+                        <div class="xl-col-6 l-col-6 m-col-6 s-col-6">
+                            <?php
+                            if (!isset($_REQUEST['Filtro'])) {
+                                foreach ($users as $persona) {
+                            ?>
+                                    <table class="oriental">
+                                        <tr>
+                                            <td><?php echo '<h4>' . $persona->getNombre() . '</h4>' ?></td>
+                                            <td><?php if ($persona->getConectado() == 1) {
+                                                    echo '<img src="../ICONOS/conectado.png" class="tamaño">';
+                                                } else {
+                                                    echo '<img src="../ICONOS/desconectado.png" class="tamaño">';
+                                                } ?></td>
+                                        </tr>
+                                    </table>
+                            <?php
+                                }
+                            }
+
+                            ?>
+                        </div>
+                    </div>
+
+                    <div class="row margen-4">
+                        <div class="xl-col-6 l-col-6 m-col-6 s-col-6">
+                            <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
+                                <div class="row p-a-1 p-d-1">
+                                    <input class="xl-col-12 l-col-12 m-col-12 s-col-12" type="submit" value="Volver" name="VolverMenu">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
         </section>
         <footer class=" oriental row">
             <div class="xl-col-12 l-col-12 m-col-12 s-col-12">
