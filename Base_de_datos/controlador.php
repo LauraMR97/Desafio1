@@ -571,3 +571,16 @@ if (isset($_REQUEST['GestionPreguntas'])) {
 if (isset($_REQUEST['Historial'])) {
     header("Location:../Error_y_Reformas/reformas.php");
 }
+
+/*************************************************************************** */
+/****************************GESTION SALA****************************** */
+/*************************************************************************** */
+
+if (isset($_REQUEST['CrearP'])) {
+    $codigo = $_REQUEST['Codigo'];
+    $nombreSala = $_REQUEST['NomSala'];
+    $tipoSala = $_REQUEST['opcion'];
+
+    Conexion::CrearSala($codigo, $nombreSala, $tipoSala);
+    header("Location:../Gestion_Juego/SalaEspera.php");
+}

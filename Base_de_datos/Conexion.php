@@ -723,6 +723,28 @@ class Conexion
         $stmt->close();
         self::cerrarConexion();
     }
+
+    /*--------------------------------------------------------------*/
+    public static function CrearSala($codigo, $nombreSala, $tipoSala)
+    {
+        self::abrirConexion();
+        $query = "INSERT INTO sala (codigo,nombre,tipo) VALUES (?,?,?)";
+        $stmt = self::$conexion->prepare($query);
+        $stmt->bind_param("sss", $codigo, $nombreSala, $tipoSala);
+
+
+        if (!$stmt->execute()) {
+            $mensaje = "Error al insertar: " . mysqli_error(self::$conexion) . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            // Bitacora::guardarArchivo($mensaje);
+        } else {
+            $mensaje = 'Registro insertado con éxito' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            // Bitacora::guardarArchivo($mensaje);
+        }
+
+        $stmt->close();
+        self::cerrarConexion();
+    }
+
     /*--------------------------------------------------------------*/
     public static function cerrarConexion()
     {
