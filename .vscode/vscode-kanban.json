@@ -30,19 +30,6 @@
       "assignedTo": {
         "name": "LauraMR97"
       },
-      "creation_time": "2021-10-27T20:15:26.070Z",
-      "description": {
-        "content": "La pantalla que aparece cuando presionamos el boton jugar desde el menú de usuario",
-        "mime": "text/markdown"
-      },
-      "id": "19",
-      "references": [],
-      "title": "Jugar.html"
-    },
-    {
-      "assignedTo": {
-        "name": "LauraMR97"
-      },
       "creation_time": "2021-10-27T20:16:11.196Z",
       "description": {
         "content": "La sala de espera en la que esperas a que se unan los usuarios",
@@ -84,14 +71,14 @@
       "assignedTo": {
         "name": "LauraMR97"
       },
-      "creation_time": "2021-10-27T20:25:01.640Z",
+      "creation_time": "2021-10-27T20:15:26.070Z",
       "description": {
-        "content": "Cambiar Radio buttons de Administracion por Checkbox  y mostrar seleccionados los que correspondan al rol de la persona a editar",
+        "content": "La pantalla que aparece cuando presionamos el boton jugar desde el menú de usuario",
         "mime": "text/markdown"
       },
-      "id": "23",
+      "id": "19",
       "references": [],
-      "title": "Solucionar Checkbox Administracion"
+      "title": "Jugar.html"
     }
   ],
   "testing": [
@@ -278,6 +265,19 @@
       "id": "3",
       "references": [],
       "title": "Registro"
+    },
+    {
+      "assignedTo": {
+        "name": "LauraMR97"
+      },
+      "creation_time": "2021-10-27T20:25:01.640Z",
+      "description": {
+        "content": "Cambiar Radio buttons de Administracion por Checkbox  y mostrar seleccionados los que correspondan al rol de la persona a editar",
+        "mime": "text/markdown"
+      },
+      "id": "23",
+      "references": [],
+      "title": "Solucionar Checkbox Administracion"
     },
     {
       "assignedTo": {

@@ -17,10 +17,10 @@ class Conexion
     public static function addPersona($p, $password)
     {
         self::abrirConexion();
-        $query = "INSERT INTO persona (nombre, correo, password, foto, prestigio, aciertos, victorias,activo) VALUES (?,?,?,?,?,?,?,?)";
+        $query = "INSERT INTO persona (nombre, correo, password, foto, prestigio, aciertos, victorias,activo,conectado) VALUES (?,?,?,?,?,?,?,?,?)";
         $stmt = self::$conexion->prepare($query);
 
-        $stmt->bind_param("sssssiii", $p->getNombre(), $p->getEmail(), $password, $p->getFoto(), $p->getPrestigio(), $p->getAciertos(), $p->getActivo(), $p->getVictorias());
+        $stmt->bind_param("sssssiii", $p->getNombre(), $p->getEmail(), $password, $p->getFoto(), $p->getPrestigio(), $p->getAciertos(), $p->getActivo(), $p->getVictorias(),$p->getConectado());
 
 
         if ($stmt->execute()) {
