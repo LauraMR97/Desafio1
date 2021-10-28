@@ -484,6 +484,7 @@ class Conexion
                 $per->setAciertos($fila['aciertos']);
                 $per->setVictoria($fila['victorias']);
                 $per->setActivo($fila['activo']);
+                $per->setConectar($fila['conectado']);
                 $array[] = $per;
             }
         }
