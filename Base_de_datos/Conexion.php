@@ -678,6 +678,50 @@ class Conexion
         $stmt->close();
         self::cerrarConexion();
     }
+
+
+    /*--------------------------------------------------------------------------------------*/
+
+    public static function ConectarPersona($email)
+    {
+        self::abrirConexion();
+        $query = "UPDATE persona SET conectado = 1 WHERE correo LIKE ?";
+        $_SESSION['query'] = $query;
+        $stmt = self::$conexion->prepare($query);
+
+        $stmt->bind_param("s", $email);
+
+        if ($stmt->execute()) {
+            $mensaje = 'Registro editado con éxito' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            //Bitacora::guardarArchivo($mensaje);
+        } else {
+            $mensaje = 'Error al editar' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            //Bitacora::guardarArchivo($mensaje);
+        }
+        $stmt->close();
+        self::cerrarConexion();
+    }
+
+    /*-----------------------------------------------------------------------------------------*/
+    public static function DesconectarPersona($email)
+    {
+        self::abrirConexion();
+        $query = "UPDATE persona SET conectado = 0 WHERE correo LIKE ?";
+        $_SESSION['query'] = $query;
+        $stmt = self::$conexion->prepare($query);
+
+        $stmt->bind_param("s", $email);
+
+        if ($stmt->execute()) {
+            $mensaje = 'Registro editado con éxito' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            //Bitacora::guardarArchivo($mensaje);
+        } else {
+            $mensaje = 'Error al editar' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            //Bitacora::guardarArchivo($mensaje);
+        }
+        $stmt->close();
+        self::cerrarConexion();
+    }
     /*--------------------------------------------------------------*/
     public static function cerrarConexion()
     {

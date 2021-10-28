@@ -10,7 +10,7 @@
     <h1>ESTAMOS DE REFORMAS, VUELVA PRONTO</h1>
 
     <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
-        <input type="submit" value="Volver" name="CerrarSesion">
+        <input type="submit" value="Volver" name="VolverLogin">
     </form>
 </body>
 </html>

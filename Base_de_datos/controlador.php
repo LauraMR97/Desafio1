@@ -30,6 +30,8 @@ if (isset($_REQUEST['Aceptar'])) {
         if ($usu != null) {
             $_SESSION['per'] = $usu;
             $rol = Conexion::verRol($email);
+            $usu->Conectar();
+            Conexion::ConectarPersona($email);
 
             if ((isset($rol[0]) && ($rol[0] == 0)) || (isset($rol[1]) && ($rol[1] == 0)) || (isset($rol[2]) && ($rol[2] == 0))) {
                 header("Location:../MENUS/ElegirRol.php");
@@ -86,7 +88,7 @@ if (isset($_REQUEST['Registrar'])) {
     //else{
     //$persona= new Persona($nombre,$email,$passwrd);
     Conexion::addPersona($persona, $passwrd);
-    Conexion::actualizarRolPersona($persona,2);
+    Conexion::actualizarRolPersona($persona, 2);
     //-------------------------------Envio de mensaje de confirmacion
     $_SESSION['correoDest'] = $email;
     $_SESSION['urlConfirm'] = 'http://localhost/Desafio1/Mensaje_Confirmacion/confirmacion.php?email=' . $email;
@@ -433,6 +435,9 @@ if (isset($_REQUEST['Desactivar'])) {
 if (isset($_REQUEST['VolverAlternativo'])) {
 
     if ($_SESSION['url'] == 'index.php') {
+        $per = $_SESSION['per'];
+        $per->Desconectar();
+        Conexion::DesconectarPersona($per->getEmail());
         header("Location:../index.php");
     } else {
         if ($_SESSION['url'] == 'ElegirRol.php') {
@@ -477,9 +482,18 @@ if (isset($_REQUEST['VolverAdministracion'])) {
  * Volver al Login
  */
 if (isset($_REQUEST['CerrarSesion'])) {
+
+    $per = $_SESSION['per'];
+    $per->Desconectar();
+    Conexion::DesconectarPersona($per->getEmail());
+
     header("Location:../index.php");
 }
 
+
+if (isset($_REQUEST['VolverLogin'])) {
+    header("Location:../index.php");
+}
 /**
  * Volver al menu del editor
  */
