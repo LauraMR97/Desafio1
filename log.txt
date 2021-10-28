@@ -1,0 +1,13 @@
+Error al editar 10-20-2021 05:45:13 pm<br>
+Error al editar 10-20-2021 05:49:43 pm<br>
+Error al insertar: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '?,?,?,?,?,?,?)' at line 1 10-20-2021 06:16:29 pm<br>
+Error al insertar: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '?,?)' at line 1 10-20-2021 06:16:29 pm<br>
+Error al insertar: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '?,?,?,?,?,?,?)' at line 1 10-20-2021 06:26:18 pm<br>
+Error al insertar: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '?,?)' at line 1 10-20-2021 06:26:18 pm<br>
+Error al insertar: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '?,?,?,?,?,?,?)' at line 1 10-20-2021 06:28:10 pm<br>
+Error al insertar: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '?,?)' at line 1 10-20-2021 06:28:10 pm<br>
+Error al editar 10-20-2021 07:07:14 pm<br>
+Error al editar 10-20-2021 07:17:31 pm<br>
+Error al editar 10-20-2021 07:21:15 pm<br>
+Error al insertar: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '?,?,?,?,?,?,?)' at line 1 10-20-2021 07:25:18 pm<br>
+Error al insertar: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '?,?)' at line 1 10-20-2021 07:25:18 pm<br>
