@@ -494,6 +494,13 @@ if (isset($_REQUEST['CerrarSesion'])) {
 if (isset($_REQUEST['VolverLogin'])) {
     header("Location:../index.php");
 }
+
+/**
+ * Volver a Juego.php. La pantalla principal donde me puedo unir o crear una partida
+ */
+if (isset($_REQUEST['VolverJuego'])) {
+    header("Location:../Gestion_Juego/Jugar.php");
+}
 /**
  * Volver al menu del editor
  */
@@ -503,13 +510,20 @@ if (isset($_REQUEST['VolverMenuEditor'])) {
 /*************************************************************************** */
 /*******************************REDIRECCIONAMIENTO************************* */
 /*************************************************************************** */
-/**
 
+
+if (isset($_REQUEST['CrearPartida'])) {
+    header("Location:../Gestion_Juego/CrearPartida.php");
+}
 /**
  * Te lleva a administracion
  */
 if (isset($_REQUEST['Administrador'])) {
     header("Location:../Administracion/Administracion.php");
+}
+
+if (isset($_REQUEST['Jugar'])) {
+    header("Location:../Gestion_Juego/Jugar.php");
 }
 
 /**
@@ -524,6 +538,14 @@ if (isset($_REQUEST['Usuario'])) {
 if (isset($_REQUEST['Editor'])) {
     header("Location:../MENUS/MenuEditor.php");
 }
+
+/**
+ * Te lleva a la lista de usuarios
+ */
+if (isset($_REQUEST['Usuarios'])) {
+    header("Location:../Ventanas/Lista.php");
+}
+
 
 /**
  * Ir a Ranking.php
@@ -550,6 +572,34 @@ if (isset($_REQUEST['Historial'])) {
     header("Location:../Error_y_Reformas/reformas.php");
 }
 
-if (isset($_REQUEST['Jugar'])) {
-    header("Location:../Error_y_Reformas/reformas.php");
+/*************************************************************************** */
+/****************************GESTION SALA****************************** */
+/*************************************************************************** */
+
+if (isset($_REQUEST['CrearP'])) {
+    $codigo = $_REQUEST['Codigo'];
+    $nombreSala = $_REQUEST['NomSala'];
+    $tipoSala = $_REQUEST['opcion'];
+
+    $sala = Conexion::BuscarSala($codigo);
+
+    if ($sala == null) {
+        $_SESSION['codSala'] = $codigo;
+        Conexion::CrearSala($codigo, $nombreSala, $tipoSala, 1);
+        header("Location:../Gestion_Juego/SalaEspera.php");
+    } else {
+        $_SESSION['mensaje'] = 'Este codigo de sala ya existe';
+        header("Location:../Gestion_Juego/CrearPartida.php");
+    }
+}
+
+if (isset($_REQUEST['VolverDesdeSalaEspera'])) {
+    $numJugadores = Conexion::verNumeroJugadoresDeSala($_SESSION['codSala']);
+    $numJugadores = $numJugadores - 1;
+    Conexion::modificarNumeroJugadores($_SESSION['codSala'], $numJugadores);
+
+    if ($numJugadores == 0) {
+        header("Location:../Gestion_Juego/Jugar.php");
+        Conexion::DropSala($_SESSION['codSala']);
+    }
 }

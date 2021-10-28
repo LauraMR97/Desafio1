@@ -146,7 +146,7 @@
 
                     <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
                         <div class="row p-d-1">
-                            <input class="xl-col-6 l-col-6 m-col-6 s-col-6 " type="submit" value="Volver Login" name="CerrarSesion">
+                            <input class="xl-col-6 l-col-6 m-col-6 s-col-6 " type="submit" value="Volver Login" name="VolverLogin">
                         </div>
                     </form>
                 </div>

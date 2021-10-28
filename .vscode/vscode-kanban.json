@@ -17,32 +17,6 @@
       "assignedTo": {
         "name": "LauraMR97"
       },
-      "creation_time": "2021-10-27T20:16:50.137Z",
-      "description": {
-        "content": "La pantalla que nos permitira crear una partida",
-        "mime": "text/markdown"
-      },
-      "id": "21",
-      "references": [],
-      "title": "CrearPartida.html"
-    },
-    {
-      "assignedTo": {
-        "name": "LauraMR97"
-      },
-      "creation_time": "2021-10-27T20:16:11.196Z",
-      "description": {
-        "content": "La sala de espera en la que esperas a que se unan los usuarios",
-        "mime": "text/markdown"
-      },
-      "id": "20",
-      "references": [],
-      "title": "SalaEspera.html"
-    },
-    {
-      "assignedTo": {
-        "name": "LauraMR97"
-      },
       "creation_time": "2021-10-27T20:25:44.221Z",
       "description": {
         "content": "Arreglar la subida de imagenes",
@@ -71,14 +45,14 @@
       "assignedTo": {
         "name": "LauraMR97"
       },
-      "creation_time": "2021-10-27T20:15:26.070Z",
+      "creation_time": "2021-10-27T20:16:11.196Z",
       "description": {
-        "content": "La pantalla que aparece cuando presionamos el boton jugar desde el menú de usuario",
+        "content": "La sala de espera en la que esperas a que se unan los usuarios",
         "mime": "text/markdown"
       },
-      "id": "19",
+      "id": "20",
       "references": [],
-      "title": "Jugar.html"
+      "title": "SalaEspera.html"
     }
   ],
   "testing": [
@@ -122,6 +96,19 @@
       "id": "9",
       "references": [],
       "title": "Administracion.html"
+    },
+    {
+      "assignedTo": {
+        "name": "LauraMR97"
+      },
+      "creation_time": "2021-10-27T20:16:50.137Z",
+      "description": {
+        "content": "La pantalla que nos permitira crear una partida",
+        "mime": "text/markdown"
+      },
+      "id": "21",
+      "references": [],
+      "title": "CrearPartida.html"
     },
     {
       "assignedTo": {
@@ -187,6 +174,32 @@
       "id": "2",
       "references": [],
       "title": "index.html"
+    },
+    {
+      "assignedTo": {
+        "name": "LauraMR97"
+      },
+      "creation_time": "2021-10-27T20:15:26.070Z",
+      "description": {
+        "content": "La pantalla que aparece cuando presionamos el boton jugar desde el menú de usuario",
+        "mime": "text/markdown"
+      },
+      "id": "19",
+      "references": [],
+      "title": "Jugar.html"
+    },
+    {
+      "assignedTo": {
+        "name": "Laura"
+      },
+      "creation_time": "2021-10-28T11:42:58.756Z",
+      "description": {
+        "content": "Lista de usuarios conectados",
+        "mime": "text/markdown"
+      },
+      "id": "26",
+      "references": [],
+      "title": "Lista.php"
     },
     {
       "assignedTo": {

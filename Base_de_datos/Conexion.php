@@ -484,6 +484,7 @@ class Conexion
                 $per->setAciertos($fila['aciertos']);
                 $per->setVictoria($fila['victorias']);
                 $per->setActivo($fila['activo']);
+                $per->setConectar($fila['conectado']);
                 $array[] = $per;
             }
         }
@@ -722,6 +723,124 @@ class Conexion
         $stmt->close();
         self::cerrarConexion();
     }
+
+    /*--------------------------------------------------------------*/
+    public static function CrearSala($codigo, $nombreSala, $tipoSala, $num)
+    {
+        self::abrirConexion();
+        $query = "INSERT INTO sala (codigo,nombre,tipo,num_personas) VALUES (?,?,?,?)";
+        $stmt = self::$conexion->prepare($query);
+        $stmt->bind_param("sssi", $codigo, $nombreSala, $tipoSala, $num);
+
+
+        if (!$stmt->execute()) {
+            $mensaje = "Error al insertar: " . mysqli_error(self::$conexion) . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            // Bitacora::guardarArchivo($mensaje);
+        } else {
+            $mensaje = 'Registro insertado con éxito' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            // Bitacora::guardarArchivo($mensaje);
+        }
+
+        $stmt->close();
+        self::cerrarConexion();
+    }
+
+    public static function BuscarSala($codigo)
+    {
+        $sala = null;
+
+        self::abrirConexion();
+
+        $query = "SELECT nombre FROM sala WHERE codigo like ?";
+        $stmt = self::$conexion->prepare($query);
+
+        $stmt->bind_param("s", $codigo);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+
+        if ($result) {
+            while ($fila = mysqli_fetch_array($result)) {
+                $sala = $fila['nombre'];
+            }
+        }
+
+        $stmt->close();
+        self::cerrarConexion();
+
+        return $sala;
+    }
+
+    /*--------------------------------------------------------------*/
+    public static function verNumeroJugadoresDeSala($codigo)
+    {
+        $num  = null;
+
+        self::abrirConexion();
+
+        $query = "SELECT num_personas FROM sala WHERE codigo like ?";
+        $stmt = self::$conexion->prepare($query);
+
+        $stmt->bind_param("s", $codigo);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+
+        if ($result) {
+            while ($fila = mysqli_fetch_array($result)) {
+                $num = $fila['num_personas'];
+            }
+        }
+
+        $stmt->close();
+        self::cerrarConexion();
+
+        return $num;
+    }
+
+    /*--------------------------------------------------------------*/
+    public static function modificarNumeroJugadores($codSala, $numJugadores)
+    {
+        self::abrirConexion();
+        $query = "UPDATE sala SET num_personas = ? WHERE codigo LIKE ?";
+        $_SESSION['query'] = $query;
+        $stmt = self::$conexion->prepare($query);
+
+        $stmt->bind_param("is", $numJugadores, $codSala);
+
+        if ($stmt->execute()) {
+            $mensaje = 'Registro editado con éxito' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            //Bitacora::guardarArchivo($mensaje);
+        } else {
+            $mensaje = 'Error al editar' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            //Bitacora::guardarArchivo($mensaje);
+        }
+        $stmt->close();
+        self::cerrarConexion();
+    }
+
+    /*--------------------------------------------------------------*/
+    public static function DropSala($codSala)
+    {
+        self::abrirConexion();
+        $query = "DELETE FROM sala WHERE codigo = ? ";
+        $stmt = self::$conexion->prepare($query);
+
+        $stmt->bind_param("s", $codSala);
+
+        if ($stmt->execute()) {
+            $mensaje = 'Registro eliminado con éxito' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            // Bitacora::guardarArchivo($mensaje);
+        } else {
+            $mensaje = 'Error al eliminar' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            // Bitacora::guardarArchivo($mensaje);
+        }
+        $stmt->close();
+        self::cerrarConexion();
+    }
+
     /*--------------------------------------------------------------*/
     public static function cerrarConexion()
     {
