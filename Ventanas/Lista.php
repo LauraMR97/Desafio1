@@ -151,7 +151,7 @@
                         <div class="xl-col-6 l-col-6 m-col-6 s-col-6">
                             <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
                                 <div class="row p-a-1 p-d-1">
-                                    <input class="xl-col-12 l-col-12 m-col-12 s-col-12" type="submit" value="Volver" name="VolverMenu">
+                                    <input class="xl-col-12 l-col-12 m-col-12 s-col-12 botVolver" type="submit" value="Volver" name="VolverMenu">
                                 </div>
                             </form>
                         </div>

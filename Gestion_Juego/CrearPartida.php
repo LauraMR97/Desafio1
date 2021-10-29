@@ -57,7 +57,7 @@
 
                             <div class="row p-a-1">
                                 <input class="col-4" type="submit" value="Crear" name="CrearP">
-                                <input class="col-4" type="submit" value="Volver" name="VolverJuego">
+                                <input class="col-4 botVolver" type="submit" value="Volver" name="VolverJuego">
                                 <input class="col-4" type="submit" value="Cerrar Sesion" name="CerrarSesion">
                             </div>
                         </form>

@@ -207,7 +207,7 @@
                     <div class="row p-a-1 p-d-1">
                         <button class="xl-col-2 l-col-2 m-col-2 s-col-2" type="submit" name='Aniadir'><img src="../ICONOS/add.png" class="tamaño"></button>
                         <input class="xl-col-3 l-col-3 m-col-3 s-col-3" type="submit" value="Cerrar Sesion" name="CerrarSesion">
-                        <input class="xl-col-3 l-col-3 m-col-3 s-col-3" type="submit" value="Volver" name="VolverRol">
+                        <input class="xl-col-3 l-col-3 m-col-3 s-col-3 botVolver" type="submit" value="Volver" name="VolverRol">
                     </div>
                 </form>
             </div>

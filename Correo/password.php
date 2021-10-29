@@ -30,16 +30,18 @@
 
                 <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
 
-                <div class="row margen-4">
-                    <div class="row p-d-2">
-                        <label class="xl-col-2 l-col-2 m-col-2 s-col-2">Email:</label>
-                        <input class="xl-col-4 l-col-4 m-col-4 s-col-4" id="mail" type="email" value="" name="correoDest" placeholder="Inserta tu Email" required>
-                        <span class="error" aria-live="polite"></span>
-                    </div>
+                <div class="row">
+                    <div class="col-4 margen-4 s-margen-0 s-col-12">
+                        <div class="row p-d-2">
+                            <label class="col-6">Email:</label>
+                            <input class="col-6" id="mail" type="email" value="" name="correoDest" placeholder="Inserta tu Email" required>
+                            <span class="error" aria-live="polite"></span>
+                        </div>
 
-                    <div class="row p-d-1 p-i-1">
-                        <input class="xl-col-3 l-col-3 m-col-3 s-col-3" type="submit" value="Enviar" id="send" name="Enviar">
-                        <input class="xl-col-3 l-col-3 m-col-3 s-col-3" type="submit" value="Volver" name="VolverLogin">
+                        <div class="row p-d-1 p-i-1">
+                            <input class="col-6" type="submit" value="Enviar" id="send" name="Enviar">
+                            <input class="col-6" type="submit" value="Volver" name="VolverLogin">
+                        </div>
                     </div>
                 </div>
             </form>
