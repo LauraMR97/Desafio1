@@ -842,6 +842,36 @@ class Conexion
     }
 
     /*--------------------------------------------------------------*/
+
+    public static function verSalasPublicas()
+    {
+        $array = array();
+        $tipo = 'Publica';
+
+        self::abrirConexion();
+
+        $query = "SELECT * FROM sala WHERE tipo like ?";
+        $stmt = self::$conexion->prepare($query);
+
+        $stmt->bind_param("s", $tipo);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+
+        if ($result) {
+            while ($fila = mysqli_fetch_array($result)) {
+                $sala = new Sala($fila['codigo'], $fila['nombre'], $fila['tipo'], $fila['num_personas']);
+                $array[] = $sala;
+            }
+        }
+
+        $stmt->close();
+        self::cerrarConexion();
+
+        return $array;
+    }
+    /*--------------------------------------------------------------*/
     public static function cerrarConexion()
     {
         self::$conexion->close();
