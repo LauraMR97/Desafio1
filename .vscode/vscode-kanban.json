@@ -40,19 +40,6 @@
       "id": "15",
       "references": [],
       "title": "CSS"
-    },
-    {
-      "assignedTo": {
-        "name": "LauraMR97"
-      },
-      "creation_time": "2021-10-27T20:15:26.070Z",
-      "description": {
-        "content": "La pantalla que aparece cuando presionamos el boton jugar desde el menú de usuario",
-        "mime": "text/markdown"
-      },
-      "id": "19",
-      "references": [],
-      "title": "Jugar.html"
     }
   ],
   "testing": [
@@ -174,6 +161,19 @@
       "id": "2",
       "references": [],
       "title": "index.html"
+    },
+    {
+      "assignedTo": {
+        "name": "LauraMR97"
+      },
+      "creation_time": "2021-10-27T20:15:26.070Z",
+      "description": {
+        "content": "La pantalla que aparece cuando presionamos el boton jugar desde el menú de usuario",
+        "mime": "text/markdown"
+      },
+      "id": "19",
+      "references": [],
+      "title": "Jugar.html"
     },
     {
       "assignedTo": {

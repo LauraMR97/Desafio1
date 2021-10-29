@@ -38,6 +38,7 @@
                         <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
                             <input class="col-4" type='text' value='<?php echo $sala->getNombre() ?>' name='Nombre'>
                             <input class="col-4" type='text' value='<?php echo $sala->getNumPersonas() . '/5 Personas' ?>' name='Nombre'>
+                            <input class="ocultar" type="texto" value="<?php echo $sala->getCodigo() ?>" name="codigoSecreto">
                             <input class="col-4" type="submit" value="Unirme" name="Unirse">
                         </form>
                     <?php
