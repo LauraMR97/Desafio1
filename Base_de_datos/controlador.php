@@ -571,3 +571,35 @@ if (isset($_REQUEST['GestionPreguntas'])) {
 if (isset($_REQUEST['Historial'])) {
     header("Location:../Error_y_Reformas/reformas.php");
 }
+
+/*************************************************************************** */
+/****************************GESTION SALA****************************** */
+/*************************************************************************** */
+
+if (isset($_REQUEST['CrearP'])) {
+    $codigo = $_REQUEST['Codigo'];
+    $nombreSala = $_REQUEST['NomSala'];
+    $tipoSala = $_REQUEST['opcion'];
+
+    $sala = Conexion::BuscarSala($codigo);
+
+    if ($sala == null) {
+        $_SESSION['codSala'] = $codigo;
+        Conexion::CrearSala($codigo, $nombreSala, $tipoSala, 1);
+        header("Location:../Gestion_Juego/SalaEspera.php");
+    } else {
+        $_SESSION['mensaje'] = 'Este codigo de sala ya existe';
+        header("Location:../Gestion_Juego/CrearPartida.php");
+    }
+}
+
+if (isset($_REQUEST['VolverDesdeSalaEspera'])) {
+    $numJugadores = Conexion::verNumeroJugadoresDeSala($_SESSION['codSala']);
+    $numJugadores = $numJugadores - 1;
+    Conexion::modificarNumeroJugadores($_SESSION['codSala'], $numJugadores);
+
+    if ($numJugadores == 0) {
+        header("Location:../Gestion_Juego/Jugar.php");
+        Conexion::DropSala($_SESSION['codSala']);
+    }
+}

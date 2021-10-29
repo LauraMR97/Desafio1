@@ -46,12 +46,12 @@
                             <div class="row margen-1">
                                 <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
                                     <div class="row p-a-1">
-                                        <label class=" xl-col-1 l-col-1 m-col-1 s-col-1">Nombre:</label>
-                                        <input class=" xl-col-2 l-col-2 m-col-2 s-col-2" type='text' value='<?php echo $persona->getNombre(); ?>' name='nombre' disabled>
-                                        <label class=" xl-col-1 l-col-1 m-col-1 s-col-1">Email:</label>
-                                        <input class="xl-col-2 l-col-2 m-col-2 s-col-2" type='text' value='<?php echo $persona->getEmail(); ?>' name='email' disabled>
-                                        <label class=" xl-col-1 l-col-1 m-col-1 s-col-1">Activo:</label>
-                                        <input class=" xl-col-1 l-col-1 m-col-1 s-col-1" type='text' value='<?php if ($persona->getActivo()) {
+                                        <label class=" xl-col-1 l-col-1 m-col-1 s-col-12">Nombre:</label>
+                                        <input class=" xl-col-2 l-col-2 m-col-2 s-col-12" type='text' value='<?php echo $persona->getNombre(); ?>' name='nombre' disabled>
+                                        <label class=" xl-col-1 l-col-1 m-col-1 s-col-12">Email:</label>
+                                        <input class="xl-col-2 l-col-2 m-col-2 s-col-12" type='text' value='<?php echo $persona->getEmail(); ?>' name='email' disabled>
+                                        <label class=" xl-col-1 l-col-1 m-col-1 s-col-12">Activo:</label>
+                                        <input class=" xl-col-1 l-col-1 m-col-1 s-col-12" type='text' value='<?php if ($persona->getActivo()) {
                                                                                                                 echo 'Si';
                                                                                                             } else {
                                                                                                                 echo 'No';
@@ -70,22 +70,22 @@
 
                                     <div class="row p-a-1">
 
-                                        <label class=" xl-col-1 l-col-1 m-col-1 s-col-1">Nombre:</label>
-                                        <input class=" xl-col-2 l-col-2 m-col-2 s-col-2" type='text' value='<?php echo $persona->getNombre(); ?>' name='nombre'>
-                                        <label class=" xl-col-1 l-col-1 m-col-1 s-col-1">Email:</label>
-                                        <input class=" xl-col-2 l-col-2 m-col-2 s-col-2" type='text' value='<?php echo $persona->getEmail(); ?>' name='email'>
-                                        <label class=" xl-col-1 l-col-1 m-col-1 s-col-1">Activo:</label>
-                                        <input class=" xl-col-1 l-col-1 m-col-1 s-col-1" type='text' value='<?php if ($persona->getActivo()) {
+                                        <label class=" xl-col-1 l-col-1 m-col-1 s-col-12">Nombre:</label>
+                                        <input class=" xl-col-2 l-col-2 m-col-2 s-col-12" type='text' value='<?php echo $persona->getNombre(); ?>' name='nombre'>
+                                        <label class=" xl-col-1 l-col-1 m-col-1 s-col-12">Email:</label>
+                                        <input class=" xl-col-2 l-col-2 m-col-2 s-col-12" type='text' value='<?php echo $persona->getEmail(); ?>' name='email'>
+                                        <label class=" xl-col-1 l-col-1 m-col-1 s-col-12">Activo:</label>
+                                        <input class=" xl-col-1 l-col-1 m-col-1 s-col-12" type='text' value='<?php if ($persona->getActivo()) {
                                                                                                                 echo 'Si';
                                                                                                             } else {
                                                                                                                 echo 'No';
                                                                                                             } ?>' name='email' disabled>
-
+                                        <div class="xl-col-4">
                                         <button type="submit" name='X'><img src="../ICONOS/eliminar.jpg" class="tamaño"></button>
                                         <button type="submit" name='E'><img src="../ICONOS/edit.png" class="tamaño"></button>
                                         <button type="submit" name='Activar'><img src="../ICONOS/up.png" class="tamaño"></button>
                                         <button type="submit" name='Desactivar'><img src="../ICONOS/down.png" class="tamaño"></button>
-
+                                        </div>                                                                            
                                     </div>
                                 </form>
                             </div>
@@ -207,7 +207,7 @@
                     <div class="row p-a-1 p-d-1">
                         <button class="xl-col-2 l-col-2 m-col-2 s-col-2" type="submit" name='Aniadir'><img src="../ICONOS/add.png" class="tamaño"></button>
                         <input class="xl-col-3 l-col-3 m-col-3 s-col-3" type="submit" value="Cerrar Sesion" name="CerrarSesion">
-                        <input class="xl-col-3 l-col-3 m-col-3 s-col-3" type="submit" value="Volver" name="VolverRol">
+                        <input class="xl-col-3 l-col-3 m-col-3 s-col-3 botVolver" type="submit" value="Volver" name="VolverRol">
                     </div>
                 </form>
             </div>

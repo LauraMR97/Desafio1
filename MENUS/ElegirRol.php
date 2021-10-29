@@ -29,22 +29,24 @@
                 <h3>Elegir Rol:</h3>
             </div>
 
-                <form action="../Base_de_datos/controlador.php" method="POST" class="gamer">
-                <div class="row margen-4">
-                    <div class="row p-d-1">
-                        <input class="xl-col-6 l-col-6 m-col-6 s-col-6" type="submit" value="Administrador" name="Administrador">
-                    </div>
-                    <div class="row p-d-1">
-                        <input class="xl-col-6 l-col-6 m-col-6 s-col-6" type="submit" value="Usuario" name="Usuario">
-                    </div>
-                    <div class="row p-d-1">
-                        <input class="xl-col-6 l-col-6 m-col-6 s-col-6 " type="submit" value="Editor" name="Editor">
-                    </div>
-                    <div class="row p-d-1">
-                        <input class=" xl-col-6 l-col-6 m-col-6 s-col-6 " type="submit" value="Volver" name="CerrarSesion">
+            <form action="../Base_de_datos/controlador.php" method="POST" class="gamer">
+                <div class="row">
+                    <div class="col-4 margen-4 s-margen-0 s-col-12">
+                        <div class="row p-d-1">
+                            <input class="col-12" type="submit" value="Administrador" name="Administrador">
+                        </div>
+                        <div class="row p-d-1">
+                            <input class="col-12" type="submit" value="Usuario" name="Usuario">
+                        </div>
+                        <div class="row p-d-1">
+                            <input class="col-12" type="submit" value="Editor" name="Editor">
+                        </div>
+                        <div class="row p-d-1">
+                            <input class="col-12 botVolver" type="submit" value="Volver" name="CerrarSesion">
+                        </div>
                     </div>
                 </div>
-                </form>
+            </form>
             </div>
         </section>
         <footer class=" gamer row">

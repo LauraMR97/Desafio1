@@ -23,19 +23,18 @@
             </div>
         </header>
         <section class='row'>
-
-            <div class="row">
-                <div class="xl-col-12 l-col-12 m-col-12 s-col-12 separado">
-                    <h3>Ranking:</h3>
-                </div>
-            </div>
-            <div class="row margen-4">
+            <div class="col-6 margen-3 s-col-12 s-margen-0">
                 <div class="row">
-                    <div class="xl-col-6 l-col-6 m-col-6 s-col-6 separado">
+                    <div class="xl-col-12 l-col-12 m-col-12 s-col-12 separado">
+                        <h3>Ranking:</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
                         <table class="oriental">
                             <tr>
-                                <td>Nombre:</td>
-                                <td>Puntuacion:</td>
+                                <th>Nombre:</th>
+                                <th>Puntuación:</th>
                             </tr>
                             <?php
                             foreach ($users as $persona) {
@@ -54,19 +53,20 @@
 
                 <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
                     <div class="row p-d-1">
-                        <input class="xl-col-3 l-col-3 m-col-3 s-col-3" type="submit" value="Cerrar Sesion" name="CerrarSesion">
-                        <input class="xl-col-3 l-col-3 m-col-3 s-col-3" type="submit" value="Volver" name="VolverMenu">
+                        <input class="col-6" type="submit" value="Cerrar Sesion" name="CerrarSesion">
+                        <input class="col-6 botVolver" type="submit" value="Volver" name="VolverMenu">
                     </div>
                 </form>
             </div>
-
-            <footer class=" oriental row">
-                <div class="xl-col-12 l-col-12 m-col-12 s-col-12">
-                    <p>Email: EscapeRoom@juegos.com</p>
-                </div>
-            </footer>
         </section>
+        <footer class=" oriental row">
+            <div class="xl-col-12 l-col-12 m-col-12 s-col-12">
+                <p>Email: EscapeRoom@juegos.com</p>
+            </div>
+        </footer>
     </main>
+
+
 
 
 </body>
