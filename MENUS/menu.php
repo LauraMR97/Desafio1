@@ -27,22 +27,24 @@
             </div>
 
             <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
-                <div class="row margen-4">
-                    <div class="row p-d-1">
-                        <input class="xl-col-6 l-col-6 m-col-6 s-col-6 " type="submit" value="Jugar" name="Jugar">
-                    </div>
+                <div class="row">
+                    <div class="col-4 margen-4 s-margen-0 s-col-12">
+                        <div class="row p-d-1">
+                            <input class="col-12" type="submit" value="Jugar" name="Jugar">
+                        </div>
 
-                    <div class="row p-d-1">
-                        <input class="xl-col-6 l-col-6 m-col-6 s-col-6 " type="submit" value="Historial" name="Historial">
-                    </div>
-                    <div class="row p-d-1">
-                        <input class="xl-col-6 l-col-6 m-col-6 s-col-6 " type="submit" value="Ranking" name="Ranking">
-                    </div>
-                    <div class="row p-d-1">
-                        <input class="xl-col-6 l-col-6 m-col-6 s-col-6" type="submit" value="Lista Usuarios" name="Usuarios">
-                    </div>
-                    <div class="row p-d-1">
-                        <input class="xl-col-6 l-col-6 m-col-6 s-col-6 botVolver" type="submit" value="Volver" name="VolverAlternativo">
+                        <div class="row p-d-1">
+                            <input class="col-12" type="submit" value="Historial" name="Historial">
+                        </div>
+                        <div class="row p-d-1">
+                            <input class="col-12" type="submit" value="Ranking" name="Ranking">
+                        </div>
+                        <div class="row p-d-1">
+                            <input class="col-12" type="submit" value="Lista Usuarios" name="Usuarios">
+                        </div>
+                        <div class="row p-d-1">
+                            <input class="col-12 botVolver" type="submit" value="Volver" name="VolverAlternativo">
+                        </div>
                     </div>
                 </div>
             </form>
