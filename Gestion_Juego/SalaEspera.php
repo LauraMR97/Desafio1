@@ -40,7 +40,17 @@
                 <div class="row p-i-2">
                     <div class="xl-col-12  l-col-12 m-col-12 s-col-12">
                         <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
-                            <input class="col-6 s-col-12" type="submit" value="Empezar Ya" name="EmpezarYA">
+                            <?php
+                            if ($numJugadores < 3) {
+                            ?>
+                                <input class="col-6 s-col-12" type="submit" value="Empezar Ya" name="EmpezarYA" disabled>
+                            <?php
+                            } else {
+                            ?>
+                                <input class="col-6 s-col-12" type="submit" value="Empezar Ya" name="EmpezarYA">
+                            <?php
+                            }
+                            ?>
                         </form>
                     </div>
                 </div>
