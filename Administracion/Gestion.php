@@ -144,7 +144,7 @@
 
 
                     <div class="l-col-2 m-col-2 s-col-2">
-                        <input type="submit" value="Volver" name="VolverAdministracion">
+                        <input class="botVolver" type="submit" value="Volver" name="VolverAdministracion">
                     </div>
 
                     <div class="l-col-2 m-col-2 s-col-2 ">

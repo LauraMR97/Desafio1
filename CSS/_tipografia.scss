@@ -8,13 +8,13 @@ $talla: 3.6rem;
 @for $i from 1 through 6 {
     h#{$i} {
         font-size: $talla - 0.6*$i;
-        font-family: 'Franklin Gothic Medium';
+        font-family: 'Garamond';
         text-align: center;
     }
 }
 
 p {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Consolas';
     font-size: 1rem;
 }
 
@@ -54,4 +54,10 @@ a {
 
 .alignDerecha {
     text-align: right;
+}
+
+.linea{
+    text-decoration-line: underline;
+    text-decoration-style:dotted;
+    text-decoration-color: $primarioE;
 }

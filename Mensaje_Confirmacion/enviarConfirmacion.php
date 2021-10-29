@@ -133,23 +133,29 @@
         </header>
 
         <section class="row">
-
-            <div class="xl-col-12 l-col-12 m-col-12 s-col-12 separado">
-                <h3>Mensaje de Confirmacion:</h3>
-            </div>
-            <div class="row margen-4">
+            <div class="col-6 margen-3 s-col-12 s-margen-0">
                 <div class="row">
-                    <div class="xl-col-8 l-col-8 m-col-8 s-col-8">
-                        <p>Un mensaje de confirmacion ha sido enviado a tu correo, Active su
-                            cuenta para poder entrar</p>
+                    <div class="xl-col-12 l-col-12 m-col-12 s-col-12 separado">
+                        <h3>Mensaje de Confirmacion:</h3>
                     </div>
 
-                    <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
-                        <div class="row p-d-1">
-                            <input class="xl-col-6 l-col-6 m-col-6 s-col-6 " type="submit" value="Volver Login" name="VolverLogin">
+
+                    <div class="xl-col-12  l-col-12 m-col-12 s-col-12">
+                        <div class="row">
+                            <div class="col-12">
+                                <p>Un mensaje de confirmacion ha sido enviado a tu correo, Active su
+                                    cuenta para poder entrar</p>
+                            </div>
                         </div>
-                    </form>
+
+                        <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
+                            <div class="row p-d-1">
+                                <input class="col-12 botVolver" type="submit" value="Volver Login" name="VolverLogin">
+                            </div>
+                        </form>
+                    </div>
                 </div>
+            </div>
         </section>
         <footer class=" oriental row">
             <div class="xl-col-12 l-col-12 m-col-12 s-col-12">
