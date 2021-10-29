@@ -62,7 +62,7 @@
                                     <table class="oriental">
                                         <tr>
                                             <td><?php echo '<h4>' . $persona->getNombre() . '</h4>' ?></td>
-                                            <td><?php echo '<img src="../ICONOS/desconectado.png" class="tamaño">' ?></td>
+                                            <td><?php echo '<img src="../ICONOS/Desconectado.png" class="tamaño">' ?></td>
                                         </tr>
                                     </table>
                             <?php
@@ -84,7 +84,7 @@
                                     <table class="oriental">
                                         <tr>
                                             <td><?php echo '<h4>' . $persona->getNombre() . '</h4>' ?></td>
-                                            <td><?php echo '<img src="../ICONOS/conectado.png" class="tamaño">' ?></td>
+                                            <td><?php echo '<img src="../ICONOS/Conectado.png" class="tamaño">' ?></td>
                                         </tr>
                                     </table>
 
@@ -108,9 +108,9 @@
                                     <tr>
                                         <td><?php echo '<h4>' . $persona->getNombre() . '</h4>' ?></td>
                                         <td><?php if ($persona->getConectado() == 1) {
-                                                echo '<img src="../ICONOS/conectado.png" class="tamaño">';
+                                                echo '<img src="../ICONOS/Conectado.png" class="tamaño">';
                                             } else {
-                                                echo '<img src="../ICONOS/desconectado.png" class="tamaño">';
+                                                echo '<img src="../ICONOS/Desconectado.png" class="tamaño">';
                                             } ?></td>
                                     </tr>
                                 </table>
@@ -133,9 +133,9 @@
                                         <tr>
                                             <td><?php echo '<h4>' . $persona->getNombre() . '</h4>' ?></td>
                                             <td><?php if ($persona->getConectado() == 1) {
-                                                    echo '<img src="../ICONOS/conectado.png" class="tamaño">';
+                                                    echo '<img src="../ICONOS/Conectado.png" class="tamaño">';
                                                 } else {
-                                                    echo '<img src="../ICONOS/desconectado.png" class="tamaño">';
+                                                    echo '<img src="../ICONOS/Desconectado.png" class="tamaño">';
                                                 } ?></td>
                                         </tr>
                                     </table>
@@ -151,7 +151,7 @@
                         <div class="xl-col-6 l-col-6 m-col-6 s-col-6">
                             <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
                                 <div class="row p-a-1 p-d-1">
-                                    <input class="xl-col-12 l-col-12 m-col-12 s-col-12" type="submit" value="Volver" name="VolverMenu">
+                                    <input class="xl-col-12 l-col-12 m-col-12 s-col-12 botVolver" type="submit" value="Volver" name="VolverMenu">
                                 </div>
                             </form>
                         </div>

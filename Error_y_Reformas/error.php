@@ -11,14 +11,14 @@
 
 <body class="oriental">
 
-<?php
-session_start();
-$url=$_SESSION['url'];
-?>
-     <main class="container oriental">
+    <?php
+    session_start();
+    $url = $_SESSION['url'];
+    ?>
+    <main class="container oriental">
         <header class="row oriental">
-                <h1>Escape Web</h1>
-                <h4>Tu pagina de scape room</h4>
+            <h1>Escape Web</h1>
+            <h4>Tu pagina de scape room</h4>
             </div>
         </header>
 
@@ -27,20 +27,19 @@ $url=$_SESSION['url'];
             <div class="xl-col-12 l-col-12 m-col-12 s-col-12 separado">
                 <h3>Registro:</h3>
             </div>
-
-            <div class=" margen-5 l-col-12 m-col-12 s-col-12 separado">
-                <?php
-                echo '<p>'.$_SESSION['mensaje'].'</p>';
-                ?>
-            </div>
-
-            <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
-                <div class="row">
-                    <div class=" margen-6 l-col-2 m-col-2 s-col-2 separadoPequeño">
-                        <input type="submit" value="Volver" name="VolverLogin">
-                    </div>
+            <div class="col-6 margen-4 s-col-12 s-margen-0">
+                <div class="xl-col-12 l-col-12 m-col-12 s-col-12 separado">
+                    <?php
+                    echo '<p>' . $_SESSION['mensaje'] . '</p>';
+                    ?>
                 </div>
-            </form>
+
+                <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
+                    <div class="row">
+                        <input class="col-7 s-col-12 botVolver" type="submit" value="Volver" name="CerrarSesion">
+                    </div>
+                </form>
+            </div>
         </section>
         <footer class=" oriental row">
             <div class="xl-col-12 l-col-12 m-col-12 s-col-12">

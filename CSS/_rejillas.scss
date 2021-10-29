@@ -1,5 +1,18 @@
 /*-----------------------Rejillas Mixin-------------------------------------*/
 
+$maxColumnas: 12;
+@for $i from 1 through $maxColumnas {
+    .col-#{$i} {
+        width: (100% / $maxColumnas)*$i;
+    }
+}
+
+@for $i from 0 through $maxColumnas {
+    .margen-#{$i} {
+        margin-left: (100% / $maxColumnas)*$i;
+    }
+}
+
 @mixin responsive($dispositivo) {
     @if $dispositivo==gamer {
         @media only screen and (max-width: 2000px) {
@@ -23,11 +36,15 @@
     }
 }
 
-$maxColumnas: 12;
 @include responsive(gamer) {
     @for $i from 1 through $maxColumnas {
         .xl-col-#{$i} {
             width: (100% / $maxColumnas)*$i;
+        }
+    }
+    @for $i from 0 through $maxColumnas {
+        .xl-margen-#{$i} {
+            margin-left: (100% / $maxColumnas)*$i;
         }
     }
 }
@@ -38,12 +55,22 @@ $maxColumnas: 12;
             width: (100% / $maxColumnas)*$i;
         }
     }
+    @for $i from 0 through $maxColumnas {
+        .l-margen-#{$i} {
+            margin-left: (100% / $maxColumnas)*$i;
+        }
+    }
 }
 
 @include responsive(tablet) {
     @for $i from 1 through $maxColumnas {
         .m-col-#{$i} {
             width: (100% / $maxColumnas)*$i;
+        }
+    }
+    @for $i from 0 through $maxColumnas {
+        .m-margen-#{$i} {
+            margin-left: (100% / $maxColumnas)*$i;
         }
     }
 }
@@ -54,15 +81,14 @@ $maxColumnas: 12;
             width: (100% / $maxColumnas)*$i;
         }
     }
-}
-
-//--------------------MARGENES---------------------------//
-@for $i from 1 through $maxColumnas {
-    .margen-#{$i} {
-        margin-left: (100% / $maxColumnas)*$i;
+    @for $i from 0 through $maxColumnas {
+        .s-margen-#{$i} {
+            margin-left: (100% / $maxColumnas)*$i;
+        }
     }
 }
 
+//--------------------MARGENES---------------------------//
 [class*="col-"] {
     float: left;
     box-sizing: border-box;
