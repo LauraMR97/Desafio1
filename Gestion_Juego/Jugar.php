@@ -12,7 +12,11 @@
 <body class="oriental">
 
     <?php
+    require_once '../Base_de_datos/Conexion.php';
+    require_once '../Objetos/Sala.php';
     session_start();
+    $salas = Conexion::verSalasPublicas();
+
     ?>
     <main class="container oriental">
         <header class="row oriental">
@@ -26,6 +30,18 @@
             <div class="xl-col-12  l-col-12 m-col-12 s-col-12 separado">
                 <h3>Jugar:</h3>
             </div>
+
+            <?php
+            foreach ($salas as $sala) {
+            ?>
+                <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
+                    <input type='text' value='<?php echo $sala->getNombre() ?>' name='Nombre'>
+                    <input type='text' value='<?php echo $sala->getNumPersonas() . '/5 Participantes' ?>' name='Nombre'>
+                    <input type="submit" value="Unirme" name="Unirse">
+                </form>
+            <?php
+            }
+            ?>
 
             <div class="row margen-2">
                 <div class="xl-col-12  l-col-12 m-col-12 s-col-12">
