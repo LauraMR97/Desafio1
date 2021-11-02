@@ -13,10 +13,10 @@
 </head>
 
 <body class="oriental" onload="validacion()">
-<main class="container oriental">
+    <main class="container oriental">
         <header class="row oriental">
-                <h1>Escape Web</h1>
-                <h4>Tu pagina de scape room</h4>
+            <h1>Escape Web</h1>
+            <h4>Tu pagina de scape room</h4>
             </div>
         </header>
 
@@ -26,23 +26,22 @@
                 <h3>Recupera tu cuenta:</h3>
             </div>
 
-            <form  action="../Base_de_datos/controlador.php" method="POST" class="oriental" novalidate>
-            <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
+            <form action="../Base_de_datos/controlador.php" method="POST" class="oriental" novalidate>
+
+                <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
 
                 <div class="row">
-                    <div class="margen-5 l-col-3 m-col-3 s-col-3 separadoPequeño">
-                        <label>Email:</label>
-                        <input  type="email" id="mail" value="" name="correoDest" placeholder="Inserta tu Email" required>
-                        <span class="error" aria-live="polite"></span>
-                    </div>
-                </div>
+                    <div class="col-4 margen-4 s-margen-0 s-col-12">
+                        <div class="row p-d-2">
+                            <label class="col-6">Email:</label>
+                            <input class="col-6" id="mail" type="email" value="" name="correoDest" placeholder="Inserta tu Email" required>
+                            <span class="error" aria-live="polite"></span>
+                        </div>
 
-                <div class="row">
-                    <div class="margen-4 l-col-2 m-col-2 s-col-2 ">
-                        <input type="submit" value="Enviar" name="Enviar" id="send">
-                    </div>
-                    <div class="l-col-2 m-col-2 s-col-2 ">
-                        <input type="submit" value="Volver" name="CerrarSesion">
+                        <div class="row p-d-1 p-i-1">
+                            <input class="col-6" type="submit" value="Enviar" id="send" name="Enviar">
+                            <input class="col-6" type="submit" value="Volver" name="VolverLogin">
+                        </div>
                     </div>
                 </div>
             </form>

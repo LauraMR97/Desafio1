@@ -11,10 +11,10 @@
 
 <body class="oriental">
 
-<main class="container oriental">
+    <main class="container oriental">
         <header class="row oriental">
-                <h1>Escape Web</h1>
-                <h4>Tu pagina de scape room</h4>
+            <h1>Escape Web</h1>
+            <h4>Tu pagina de scape room</h4>
             </div>
         </header>
 
@@ -26,18 +26,16 @@
 
             <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
                 <div class="row">
-                    <div class="margen-5 l-col-2 m-col-2 s-col-2 separado">
-                        <input type="submit" value="Preguntas" name="GestionPreguntas">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class=" margen-5 l-col-2 m-col-2 s-col-2 separadoPequeño">
-                        <input type="submit" value="Estadisticas" name="Estadisticas">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class=" margen-5 l-col-2 m-col-2 s-col-2 separadoPequeño">
-                        <input type="submit" value="Volver" name="VolverAlternativo">
+                    <div class="col-4 margen-4 s-margen-0 s-col-12">
+                        <div class="row p-d-1">
+                            <input class="col-12" type="submit" value="Preguntas" name="GestionPreguntas">
+                        </div>
+                        <div class="row p-d-1">
+                            <input class="col-12" type="submit" value="Estadisticas" name="Estadisticas">
+                        </div>
+                        <div class="row p-d-1">
+                            <input class="col-12 botVolver" type="submit" value="Volver" name="VolverAlternativo">
+                        </div>
                     </div>
                 </div>
             </form>

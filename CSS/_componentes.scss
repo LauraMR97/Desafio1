@@ -48,13 +48,14 @@ nav {
 
 header {
     &.gamer {
-        background-color: $primario;
+        background-color: $quinto;
         padding: 3rem;
         color: $terciario;
         text-align: center;
     }
     &.oriental {
         background-color: $primario2;
+        color: $titulo;
         padding: 2rem;
         text-align: center;
     }
@@ -62,11 +63,12 @@ header {
 
 footer {
     &.gamer {
-        background-color: $primario;
+        background-color:  $quinto;
         height: 5rem;
         color: $terciario;
     }
     &.oriental {
+        color: $secundario2;
         background-color: $primario2;
         height: 5rem;
     }

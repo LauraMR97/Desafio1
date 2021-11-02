@@ -8,14 +8,15 @@
     <title>Menu Usuario</title>
     <link rel="stylesheet" type="text/css" href="../CSS/general.css">
 </head>
+
 <body class="oriental">
     <?php
     session_start();
     ?>
-      <main class="container oriental">
+    <main class="container oriental">
         <header class="row oriental">
-                <h1>Escape Web</h1>
-                <h4>Tu pagina de scape room</h4>
+            <h1>Escape Web</h1>
+            <h4>Tu pagina de scape room</h4>
             </div>
         </header>
 
@@ -27,24 +28,23 @@
 
             <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
                 <div class="row">
-                    <div class="margen-5 l-col-2 m-col-2 s-col-2 separado">
-                        <input type="submit" value="Jugar" name="Jugar">
-                    </div>
-                </div>
+                    <div class="col-4 margen-4 s-margen-0 s-col-12">
+                        <div class="row p-d-1">
+                            <input class="col-12" type="submit" value="Jugar" name="Jugar">
+                        </div>
 
-                <div class="row">
-                    <div class=" margen-5 l-col-2 m-col-2 s-col-2 separadoPequeño">
-                        <input type="submit" value="Historial" name="Historial">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class=" margen-5 l-col-2 m-col-2 s-col-2 separadoPequeño">
-                        <input type="submit" value="Ranking" name="Ranking">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class=" margen-5 l-col-2 m-col-2 s-col-2 separadoPequeño">
-                        <input type="submit" value="Volver" name="VolverAlternativo">
+                        <div class="row p-d-1">
+                            <input class="col-12" type="submit" value="Historial" name="Historial">
+                        </div>
+                        <div class="row p-d-1">
+                            <input class="col-12" type="submit" value="Ranking" name="Ranking">
+                        </div>
+                        <div class="row p-d-1">
+                            <input class="col-12" type="submit" value="Lista Usuarios" name="Usuarios">
+                        </div>
+                        <div class="row p-d-1">
+                            <input class="col-12 botVolver" type="submit" value="Volver" name="VolverAlternativo">
+                        </div>
                     </div>
                 </div>
             </form>

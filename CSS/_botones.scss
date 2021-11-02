@@ -13,7 +13,7 @@ input[type="button"] {
         font-size: 1rem;
         box-sizing: border-box;
         border-radius: 1em 1em 1em 1em;
-        border: 1px solid #eb94d0;
+        border: 1px solid $primario2;
         background-image: linear-gradient(to bottom, $primario2, $terciario2);
         &:hover {
             background-image: linear-gradient(to bottom, $primarioE2, $terciario2);

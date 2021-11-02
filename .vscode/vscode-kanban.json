@@ -4,14 +4,14 @@
       "assignedTo": {
         "name": "LauraMR97"
       },
-      "creation_time": "2021-10-21T22:20:56.215Z",
+      "creation_time": "2021-10-27T20:25:44.221Z",
       "description": {
-        "content": "Conseguir que me funcione la validacion de formularios en Index",
+        "content": "Arreglar la subida de imagenes",
         "mime": "text/markdown"
       },
-      "id": "14",
+      "id": "24",
       "references": [],
-      "title": "Validacion Formularios Index"
+      "title": "Solucionar la subida de documentos"
     }
   ],
   "in-progress": [
@@ -30,20 +30,47 @@
     },
     {
       "assignedTo": {
-        "name": "Laura"
+        "name": "LauraMR97"
       },
-      "creation_time": "2021-10-25T10:06:44.493Z",
+      "creation_time": "2021-10-27T20:23:29.852Z",
       "description": {
-        "content": "Es el Crud de preguntas",
+        "content": "Sala de carga que aparecera al comenzar una partida, que durara 20 segundos y en la que aparecera una explicacion del juego",
         "mime": "text/markdown"
       },
-      "id": "16",
+      "id": "22",
       "references": [],
-      "title": "Preguntas.php"
+      "title": "Carga.php"
     }
   ],
-  "testing": [],
+  "testing": [
+    {
+      "assignedTo": {
+        "name": "LauraMR97"
+      },
+      "creation_time": "2021-10-27T19:14:02.426Z",
+      "details": {
+        "content": "Lograr que funcione la validacion de formularios en editar ",
+        "mime": "text/markdown"
+      },
+      "id": "17",
+      "references": [],
+      "title": "validacion Formularios Administracion(Editar)"
+    }
+  ],
   "done": [
+    {
+      "assignedTo": {
+        "name": "LauraMR97"
+      },
+      "creation_time": "2021-10-27T20:27:11.257Z",
+      "description": {
+        "content": "Enviar un enlace a una persona que permitira que esta se active y bloquear que alguien no activado entre a su cuenta",
+        "mime": "text/markdown"
+      },
+      "id": "25",
+      "references": [],
+      "title": "Activacion Personas"
+    },
     {
       "assignedTo": {
         "name": "Laura"
@@ -56,6 +83,19 @@
       "id": "9",
       "references": [],
       "title": "Administracion.html"
+    },
+    {
+      "assignedTo": {
+        "name": "LauraMR97"
+      },
+      "creation_time": "2021-10-27T20:16:50.137Z",
+      "description": {
+        "content": "La pantalla que nos permitira crear una partida",
+        "mime": "text/markdown"
+      },
+      "id": "21",
+      "references": [],
+      "title": "CrearPartida.html"
     },
     {
       "assignedTo": {
@@ -124,6 +164,32 @@
     },
     {
       "assignedTo": {
+        "name": "LauraMR97"
+      },
+      "creation_time": "2021-10-27T20:15:26.070Z",
+      "description": {
+        "content": "La pantalla que aparece cuando presionamos el boton jugar desde el menú de usuario",
+        "mime": "text/markdown"
+      },
+      "id": "19",
+      "references": [],
+      "title": "Jugar.html"
+    },
+    {
+      "assignedTo": {
+        "name": "Laura"
+      },
+      "creation_time": "2021-10-28T11:42:58.756Z",
+      "description": {
+        "content": "Lista de usuarios conectados",
+        "mime": "text/markdown"
+      },
+      "id": "26",
+      "references": [],
+      "title": "Lista.php"
+    },
+    {
+      "assignedTo": {
         "name": "Laura"
       },
       "creation_time": "2021-10-20T07:27:30.049Z",
@@ -165,6 +231,19 @@
       "assignedTo": {
         "name": "Laura"
       },
+      "creation_time": "2021-10-25T10:06:44.493Z",
+      "description": {
+        "content": "Es el Crud de preguntas",
+        "mime": "text/markdown"
+      },
+      "id": "16",
+      "references": [],
+      "title": "Preguntas.php"
+    },
+    {
+      "assignedTo": {
+        "name": "Laura"
+      },
       "creation_time": "2021-10-21T12:19:45.401Z",
       "description": {
         "content": "Muestra el Ranking de puntos general de los usuarios",
@@ -186,6 +265,58 @@
       "id": "3",
       "references": [],
       "title": "Registro"
+    },
+    {
+      "assignedTo": {
+        "name": "LauraMR97"
+      },
+      "creation_time": "2021-10-27T20:16:11.196Z",
+      "description": {
+        "content": "La sala de espera en la que esperas a que se unan los usuarios",
+        "mime": "text/markdown"
+      },
+      "id": "20",
+      "references": [],
+      "title": "SalaEspera.html"
+    },
+    {
+      "assignedTo": {
+        "name": "LauraMR97"
+      },
+      "creation_time": "2021-10-27T20:25:01.640Z",
+      "description": {
+        "content": "Cambiar Radio buttons de Administracion por Checkbox  y mostrar seleccionados los que correspondan al rol de la persona a editar",
+        "mime": "text/markdown"
+      },
+      "id": "23",
+      "references": [],
+      "title": "Solucionar Checkbox Administracion"
+    },
+    {
+      "assignedTo": {
+        "name": "LauraMR97"
+      },
+      "creation_time": "2021-10-21T22:20:56.215Z",
+      "description": {
+        "content": "Conseguir que me funcione la validacion de formularios en Index",
+        "mime": "text/markdown"
+      },
+      "id": "14",
+      "references": [],
+      "title": "Validacion Formularios Index"
+    },
+    {
+      "assignedTo": {
+        "name": "LauraMR97"
+      },
+      "creation_time": "2021-10-27T19:14:53.336Z",
+      "description": {
+        "content": "Validar todos los formularios de la gestion de preguntas",
+        "mime": "text/markdown"
+      },
+      "id": "18",
+      "references": [],
+      "title": "Validacion Formularios Preguntas"
     }
   ]
 }

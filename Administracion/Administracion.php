@@ -26,21 +26,15 @@
         </header>
         <section class='row'>
 
-            <form name="formulario" action="Administracion.php" method="POST" class="oriental">
-                <div class="row">
-                    <div class="xl-col-3 l-col-3 m-col-3 s-col-3 ">
-                        <input type="text" name="parametroBuscado" placeholder="Inserta un nombre o email" value="">
+            <div class="row p-a-1 margen-4">
+                <form name="formulario" action="Administracion.php" method="POST" class="oriental">
+                    <div class="row">
+                        <input class="xl-col-3 l-col-3 m-col-3 s-col-3" type="text" name="parametroBuscado" placeholder="Inserta un nombre o email" value="">
+                        <input class="xl-col-2 l-col-2 m-col-2 s-col-2" type="submit" value="Buscar" name="Buscar">
+                        <input class="xl-col-2 l-col-2 m-col-2 s-col-2" type="submit" value="Ver Todos" name="Todos">
                     </div>
-
-                    <div class="xl-col-2 l-col-2 m-col-2 s-col-2 ">
-                        <input type="submit" value="Buscar" name="Buscar">
-                    </div>
-
-                    <div class="xl-col-2 l-col-2 m-col-2 s-col-2 ">
-                        <input type="submit" value="Ver Todos" name="Todos">
-                    </div>
-                </div>
-            </form>
+                </form>
+            </div>
 
             <?php
             if (isset($_REQUEST['Buscar'])) {
@@ -49,53 +43,52 @@
                     if ($valor == $persona->getNombre() || $valor == $persona->getEmail()) {
                         if ($perLoggeada->getEmail() == $persona->getEmail()) {
             ?>
-                            <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
-                                <div class="row">
-                                    <div class=" xl-col-12 l-col-12 m-col-12 s-col-12">
-                                        Nombre:<input type='text' value='<?php echo $persona->getNombre(); ?>' name='nombre' disabled>
-                                        Email:<input type='text' value='<?php echo $persona->getEmail(); ?>' name='email' disabled>
-                                        Activo:<input type='text' value='<?php if ($persona->getActivo()) {
-                                                                                echo 'Si';
-                                                                            } else {
-                                                                                echo 'No';
-                                                                            } ?>' name='email' disabled>
+                            <div class="row margen-1">
+                                <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
+                                    <div class="row p-a-1">
+                                        <label class=" xl-col-1 l-col-1 m-col-1 s-col-12">Nombre:</label>
+                                        <input class=" xl-col-2 l-col-2 m-col-2 s-col-12" type='text' value='<?php echo $persona->getNombre(); ?>' name='nombre' disabled>
+                                        <label class=" xl-col-1 l-col-1 m-col-1 s-col-12">Email:</label>
+                                        <input class="xl-col-2 l-col-2 m-col-2 s-col-12" type='text' value='<?php echo $persona->getEmail(); ?>' name='email' disabled>
+                                        <label class=" xl-col-1 l-col-1 m-col-1 s-col-12">Activo:</label>
+                                        <input class=" xl-col-1 l-col-1 m-col-1 s-col-12" type='text' value='<?php if ($persona->getActivo()) {
+                                                                                                                echo 'Si';
+                                                                                                            } else {
+                                                                                                                echo 'No';
+                                                                                                            } ?>' name='email' disabled>
                                     </div>
-                                </div>
-                            </form>
+                                </form>
+                            </div>
                         <?php
                         } else {
                             //CRUD DE LOS DEMÁS USUARIOS
                         ?>
                             <?php
                             ?>
-                            <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
+                            <div class="row margen-1">
+                                <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
 
-                                <div class="row">
-                                    <div class=" xl-col-12 l-col-12 m-col-12 s-col-12 ">
+                                    <div class="row p-a-1">
 
-                                        Nombre:<input type='text' value='<?php echo $persona->getNombre(); ?>' name='nombre'>
-
-                                        Email:<input type='text' value='<?php echo $persona->getEmail(); ?>' name='email'>
-
-                                        Activo:<input type='text' value='<?php if ($persona->getActivo()) {
-                                                                                echo 'Si';
-                                                                            } else {
-                                                                                echo 'No';
-                                                                            } ?>' name='email' disabled>
-
-                                        <button type="submit" name='X'><img src="./ICONOS/eliminar.jpg" class="tamaño"></button>
-
-
-                                        <button type="submit" name='E'><img src="./ICONOS/edit.png" class="tamaño"></button>
-
-
+                                        <label class=" xl-col-1 l-col-1 m-col-1 s-col-12">Nombre:</label>
+                                        <input class=" xl-col-2 l-col-2 m-col-2 s-col-12" type='text' value='<?php echo $persona->getNombre(); ?>' name='nombre'>
+                                        <label class=" xl-col-1 l-col-1 m-col-1 s-col-12">Email:</label>
+                                        <input class=" xl-col-2 l-col-2 m-col-2 s-col-12" type='text' value='<?php echo $persona->getEmail(); ?>' name='email'>
+                                        <label class=" xl-col-1 l-col-1 m-col-1 s-col-12">Activo:</label>
+                                        <input class=" xl-col-1 l-col-1 m-col-1 s-col-12" type='text' value='<?php if ($persona->getActivo()) {
+                                                                                                                echo 'Si';
+                                                                                                            } else {
+                                                                                                                echo 'No';
+                                                                                                            } ?>' name='email' disabled>
+                                        <div class="xl-col-4">
+                                        <button type="submit" name='X'><img src="../ICONOS/eliminar.jpg" class="tamaño"></button>
+                                        <button type="submit" name='E'><img src="../ICONOS/edit.png" class="tamaño"></button>
                                         <button type="submit" name='Activar'><img src="../ICONOS/up.png" class="tamaño"></button>
-
                                         <button type="submit" name='Desactivar'><img src="../ICONOS/down.png" class="tamaño"></button>
+                                        </div>                                                                            
                                     </div>
-                                </div>
-                                </div>
-                            </form>
+                                </form>
+                            </div>
             <?php
                         }
                     }
@@ -107,50 +100,50 @@
                 foreach ($users as $persona) {
                     if ($perLoggeada->getEmail() == $persona->getEmail()) {
             ?>
-                        <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
-                            <div class="row">
-                                <div class=" xl-col-12 l-col-12 m-col-12 s-col-12 ">
-                                    Nombre:<input type='text' value='<?php echo $persona->getNombre(); ?>' name='nombre' disabled>
-
-                                    Email:<input type='text' value='<?php echo $persona->getEmail(); ?>' name='email' disabled>
-
-                                    Activo:<input type='text' value='<?php if ($persona->getActivo()) {
-                                                                            echo 'Si';
-                                                                        } else {
-                                                                            echo 'No';
-                                                                        } ?>' name='email' disabled>
+                        <div class="row margen-1">
+                            <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
+                                <div class="row p-a-1">
+                                    <label class=" xl-col-1 l-col-1 m-col-1 s-col-1">Nombre:</label>
+                                    <input class=" xl-col-2 l-col-2 m-col-2 s-col-2" type='text' value='<?php echo $persona->getNombre(); ?>' name='nombre' disabled>
+                                    <label class=" xl-col-1 l-col-1 m-col-1 s-col-1">Email:</label>
+                                    <input class=" xl-col-2 l-col-2 m-col-2 s-col-2" type='text' value='<?php echo $persona->getEmail(); ?>' name='email' disabled>
+                                    <label class=" xl-col-1 l-col-1 m-col-1 s-col-1">Activo:</label>
+                                    <input class=" xl-col-1 l-col-1 m-col-1 s-col-1" type='text' value='<?php if ($persona->getActivo()) {
+                                                                                                            echo 'Si';
+                                                                                                        } else {
+                                                                                                            echo 'No';
+                                                                                                        } ?>' name='email' disabled>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     <?php
                     } else {
                         //CRUD DE LOS DEMÁS USUARIOS
                     ?>
-                        <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
+                        <div class="row margen-1">
+                            <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
 
-                            <div class="row">
-                                <div class=" xl-col-12 l-col-12 m-col-12 s-col-12 ">
-                                    Nombre:<input type='text' value='<?php echo $persona->getNombre(); ?>' name='nombre'>
+                                <div class="row p-a-1">
 
-                                    Email:<input type='text' value='<?php echo $persona->getEmail(); ?>' name='email'>
-
-                                    Activo:<input type='text' value='<?php if ($persona->getActivo()) {
-                                                                            echo 'Si';
-                                                                        } else {
-                                                                            echo 'No';
-                                                                        } ?>' name='email' disabled>
+                                    <label class=" xl-col-1 l-col-1 m-col-1 s-col-1">Nombre:</label>
+                                    <input class=" xl-col-2 l-col-2 m-col-2 s-col-2" type='text' value='<?php echo $persona->getNombre(); ?>' name='nombre'>
+                                    <label class=" xl-col-1 l-col-1 m-col-1 s-col-1">Email:</label>
+                                    <input class=" xl-col-2 l-col-2 m-col-2 s-col-2" type='text' value='<?php echo $persona->getEmail(); ?>' name='email'>
+                                    <label class=" xl-col-1 l-col-1 m-col-1 s-col-1">Activo:</label>
+                                    <input class=" xl-col-1 l-col-1 m-col-1 s-col-1" type='text' value='<?php if ($persona->getActivo()) {
+                                                                                                            echo 'Si';
+                                                                                                        } else {
+                                                                                                            echo 'No';
+                                                                                                        } ?>' name='email' disabled>
 
                                     <button type="submit" name='X'><img src="../ICONOS/eliminar.jpg" class="tamaño"></button>
-
                                     <button type="submit" name='E'><img src="../ICONOS/edit.png" class="tamaño"></button>
-
                                     <button type="submit" name='Activar'><img src="../ICONOS/up.png" class="tamaño"></button>
-
                                     <button type="submit" name='Desactivar'><img src="../ICONOS/down.png" class="tamaño"></button>
                                 </div>
-                            </div>
-                            </div>
-                        </form>
+
+                            </form>
+                        </div>
                     <?php
                     }
                 }
@@ -160,63 +153,64 @@
                 foreach ($users as $persona) {
                     if ($perLoggeada->getEmail() == $persona->getEmail()) {
                     ?>
-                        <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
-                            <div class="row">
-                                <div class=" xl-col-12 l-col-12 m-col-12 s-col-12 ">
-                                    Nombre:<input type='text' value='<?php echo $persona->getNombre(); ?>' name='nombre' disabled>
-                                    Email:<input type='text' value='<?php echo $persona->getEmail(); ?>' name='email' disabled>
-                                    Activo:<input type='text' value='<?php if ($persona->getActivo()) {
-                                                                            echo 'Si';
-                                                                        } else {
-                                                                            echo 'No';
-                                                                        } ?>' name='email' disabled>
+                        <div class="row margen-1">
+                            <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
+                                <div class="row p-a-1">
+                                    <label class=" xl-col-1 l-col-1 m-col-1 s-col-1">Nombre:</label>
+                                    <input class=" xl-col-2 l-col-2 m-col-2 s-col-2" type='text' value='<?php echo $persona->getNombre(); ?>' name='nombre' disabled>
+                                    <label class=" xl-col-1 l-col-1 m-col-1 s-col-1">Email:</label>
+                                    <input class=" xl-col-2 l-col-2 m-col-2 s-col-2" type='text' value='<?php echo $persona->getEmail(); ?>' name='email' disabled>
+                                    <label class=" xl-col-1 l-col-1 m-col-1 s-col-1">Activo:</label>
+                                    <input class=" xl-col-1 l-col-1 m-col-1 s-col-1" type='text' value='<?php if ($persona->getActivo()) {
+                                                                                                            echo 'Si';
+                                                                                                        } else {
+                                                                                                            echo 'No';
+                                                                                                        } ?>' name='email' disabled>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     <?php
                     } else {
                         //CRUD DE LOS DEMÁS USUARIOS
                     ?>
-                        <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
+                        <div class="row margen-1">
+                            <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
 
-                            <div class="row">
-                                <div class=" xl-col-12 l-col-12 m-col-12 s-col-12 ">
+                                <div class="row p-a-1">
 
-                                    Nombre:<input readonly type='text' value='<?php echo $persona->getNombre(); ?>' name='nombre'>
-
-                                    Email:<input type='text' value='<?php echo $persona->getEmail(); ?>' name='email'>
-
-                                    Activo:<input type='text' value='<?php if ($persona->getActivo()) {
-                                                                            echo 'Si';
-                                                                        } else {
-                                                                            echo 'No';
-                                                                        } ?>' name='email' disabled>
+                                    <label class=" xl-col-1 l-col-1 m-col-1 s-col-1">Nombre:</label>
+                                    <input class=" xl-col-2 l-col-2 m-col-2 s-col-2" type='text' value='<?php echo $persona->getNombre(); ?>' name='nombre'>
+                                    <label class=" xl-col-1 l-col-1 m-col-1 s-col-1">Email:</label>
+                                    <input class=" xl-col-2 l-col-2 m-col-2 s-col-2" type='text' value='<?php echo $persona->getEmail(); ?>' name='email'>
+                                    <label class=" xl-col-1 l-col-1 m-col-1 s-col-1">Activo:</label>
+                                    <input class="xl-col-1 l-col-1 m-col-1 s-col-1" type='text' value='<?php if ($persona->getActivo()) {
+                                                                                                            echo 'Si';
+                                                                                                        } else {
+                                                                                                            echo 'No';
+                                                                                                        } ?>' name='email' disabled>
 
                                     <button type="submit" name='X'><img src="../ICONOS/eliminar.jpg" class="tamaño"></button>
-
                                     <button type="submit" name='E'><img src="../ICONOS/edit.png" class="tamaño"></button>
-
                                     <button type="submit" name='Activar'><img src="../ICONOS/up.png" class="tamaño"></button>
-
                                     <button type="submit" name='Desactivar'><img src="../ICONOS/down.png" class="tamaño"></button>
                                 </div>
-                            </div>
-                            </div>
-                        </form>
+
+                            </form>
+                        </div>
             <?php
                     }
                 }
             }
             ?>
-            <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
-                <div class="row">
-                    <div class="xl-col-12 l-col-12 m-col-12 s-col-12">
-                        <button type="submit" name='Aniadir'><img src="../ICONOS/add.png" class="tamaño"></button>
-                        <input type="submit" value="Cerrar Sesion" name="CerrarSesion">
-                        <input type="submit" value="Volver" name="VolverRol">
+            <div class="row margen-4">
+                <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
+                    <div class="row p-a-1 p-d-1">
+                        <button class="xl-col-2 l-col-2 m-col-2 s-col-2" type="submit" name='Aniadir'><img src="../ICONOS/add.png" class="tamaño"></button>
+                        <input class="xl-col-3 l-col-3 m-col-3 s-col-3" type="submit" value="Cerrar Sesion" name="CerrarSesion">
+                        <input class="xl-col-3 l-col-3 m-col-3 s-col-3 botVolver" type="submit" value="Volver" name="VolverRol">
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
 
             <footer class=" oriental row">
                 <div class="xl-col-12 l-col-12 m-col-12 s-col-12">

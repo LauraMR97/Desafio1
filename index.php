@@ -24,7 +24,7 @@
         </header>
 
         <section class="row">
-            <div class="margen-3 xl-col-6 l-col-6 m-col-6 s-col-6">
+            <div class="xl-margen-3 l-margen-3 m-margen-3 s-margen-0 xl-col-6 l-col-6 m-col-6 s-col-12">
                 <div class="row">
                     <div class="xl-col-12 l-col-12 m-col-12 s-col-12 separado">
                         <h2>Login:</h2>
@@ -39,10 +39,9 @@
                                 <input class="xl-col-6 l-col-6 m-col-6 s-col-6" type="email" id="mail" required minlength="8"  value="" name="Email" placeholder="Inserta tu Email" required>
                                 <span class="error" aria-live="polite"></span>
                             </div>
-
                             <div class="row">
                                 <label class="xl-col-6 l-col-6 m-col-6 s-col-6 alignDerecha">Contraseña:</label>
-                                <input class="xl-col-6 l-col-6 m-col-6 s-col-6" type="text" id="password" value="" name="Password" placeholder="Inserta tu Contraseña" required>
+                                <input class="xl-col-6 l-col-6 m-col-6 s-col-6" type="password" id="password" value="" name="Password" placeholder="Inserta tu Contraseña" required>
                                 <span  id="passwordError" class="error" aria-live="polite"></span>
                             </div>
                             <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
@@ -55,6 +54,7 @@
                         </form>
                     </div>
                 </div>
+            </div>
         </section>
         <div class="row">
             <div class="xl-col-12 l-col-12 m-col-12 s-col-12">

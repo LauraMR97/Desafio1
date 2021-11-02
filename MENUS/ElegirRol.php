@@ -9,15 +9,15 @@
     <link rel="stylesheet" type="text/css" href="../CSS/general.css">
 </head>
 
-<body class="oriental">
+<body class="gamer">
 
     <?php
     session_start();
     $_SESSION['url'] = 'ElegirRol.php';
     ?>
 
-    <main class="container oriental">
-        <header class="row oriental">
+    <main class="container gamer">
+        <header class="row gamer">
             <h1>Escape Web</h1>
             <h4>Tu pagina de scape room</h4>
             </div>
@@ -29,22 +29,27 @@
                 <h3>Elegir Rol:</h3>
             </div>
 
-            <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
+            <form action="../Base_de_datos/controlador.php" method="POST" class="gamer">
                 <div class="row">
-                    <input class="xl-col-2 l-col-2 m-col-2 s-col-2 " type="submit" value="Administrador" name="Administrador">
-                </div>
-                <div class="row">
-                    <input class="xl-col-2  l-col-2 m-col-2 s-col-2 " type="submit" value="Usuario" name="Usuario">
-                </div>
-                <div class="row">
-                    <input class="xl-col-2  l-col-2 m-col-2 s-col-2 " type="submit" value="Editor" name="Editor">
-                </div>
-                <div class="row">
-                    <input class=" xl-col-2  l-col-2 m-col-2 s-col-2 " type="submit" value="Volver" name="CerrarSesion">
+                    <div class="col-4 margen-4 s-margen-0 s-col-12">
+                        <div class="row p-d-1">
+                            <input class="col-12" type="submit" value="Administrador" name="Administrador">
+                        </div>
+                        <div class="row p-d-1">
+                            <input class="col-12" type="submit" value="Usuario" name="Usuario">
+                        </div>
+                        <div class="row p-d-1">
+                            <input class="col-12" type="submit" value="Editor" name="Editor">
+                        </div>
+                        <div class="row p-d-1">
+                            <input class="col-12 botVolver" type="submit" value="Volver" name="CerrarSesion">
+                        </div>
+                    </div>
                 </div>
             </form>
+            </div>
         </section>
-        <footer class=" oriental row">
+        <footer class=" gamer row">
             <div class="xl-col-12 l-col-12 m-col-12 s-col-12">
                 <p>Email: EscapeRoom@juegos.com</p>
             </div>
