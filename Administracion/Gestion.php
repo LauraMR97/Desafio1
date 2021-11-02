@@ -74,7 +74,7 @@
                     </div>
 
                     <div class="l-col-2 m-col-2 s-col-2">
-                        <button type="submit" name='Editar' disabled><img src="../ICONOS/edit.png" class="tamaño"></button>
+                        <button type="submit" name='Editar'disabled><img src="../ICONOS/edit.png" class="tamaño"></button>
                     </div>
 
                     <div class="l-col-2 m-col-2 s-col-2">
@@ -134,7 +134,7 @@
                     </div>
 
                     <div class="l-col-2 m-col-2 s-col-2">
-                        <button type="submit" id="Registro" name='Editar'><img src="../ICONOS/edit.png" class="tamaño"></button>
+                        <button type="submit" id="Edit" name='Editar'><img src="../ICONOS/edit.png" class="tamaño"></button>
 
                     </div>
 

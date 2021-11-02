@@ -1,18 +1,16 @@
 function validacion() {
-
     const email = document.getElementById('mail');
     const pass = document.getElementById('password');
     const passRepeat = document.getElementById('passwordConfirm');
     const nombre = document.getElementById('nom');
 
     const botonRegistrar = document.getElementById('Registro');
+    const botonEditar = document.getElementById('Edit');
 
     const emailError = document.querySelector('#mail + span.error');
     const passwordError = document.getElementById('passwordError');
     const passwordConfirmError = document.getElementById('passwordConfirmError');
     const NombreError = document.getElementById('nombreError');
-
-
 
 
     email.addEventListener('onblur', function(event) {
@@ -27,8 +25,8 @@ function validacion() {
     pass.addEventListener('onblur', function(event) {
 
         if (pass.validity.valid) {
-            passwordError.innerHTML = ''; // Restablece el contenido del mensaje
-            passwordError.className = 'error'; // Restablece el estado visual del mensaje
+            passwordError.innerHTML = '';
+            passwordError.className = 'error';
         } else {
             showErrorPassword();
         }
@@ -38,8 +36,8 @@ function validacion() {
     passRepeat.addEventListener('onblur', function(event) {
 
         if (passRepeat.validity.valid) {
-            passwordConfirmError.innerHTML = ''; // Restablece el contenido del mensaje
-            passwordConfirmError.className = 'error'; // Restablece el estado visual del mensaje
+            passwordConfirmError.innerHTML = '';
+            passwordConfirmError.className = 'error';
         } else {
             showErrorPasswordRepeat();
         }
@@ -54,7 +52,10 @@ function validacion() {
         }
     });
 
-    botonRegistrar.addEventListener('click', function(event) {
+
+
+
+    function validarRegistro(event) {
         var pass1 = document.getElementById('password').value;
         var pass2 = document.getElementById('passwordConfirm').value;
 
@@ -85,8 +86,21 @@ function validacion() {
             showErrorNombre();
             event.preventDefault();
         }
+    }
+    botonRegistrar.addEventListener('click', validarRegistro);
 
-    });
+    function validarEdicion(event) {
+        if (!email.validity.valid) {
+            showErrorEmail();
+            event.preventDefault();
+        }
+
+        if (!nombre.validity.valid) {
+            showErrorNombre();
+            event.preventDefault();
+        }
+    }
+    botonEditar.addEventListener('click', validarEdicion);
 
     function showErrorEmail() {
         if (email.validity.valueMissing) {
