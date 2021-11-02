@@ -290,6 +290,9 @@ if (isset($_REQUEST['Editar'])) {
 /*************************************************************************** */
 /****************************GESTION PREGUNTAS****************************** */
 /*************************************************************************** */
+/**
+ * Elimina una pregunta con la respuesta. Como esta en cascada, elimina las opciones.
+ */
 if (isset($_REQUEST['XPreg'])) {
     $Resp = $_REQUEST['resp'];
     $Preg = $_REQUEST['desc'];
@@ -297,19 +300,30 @@ if (isset($_REQUEST['XPreg'])) {
     Conexion::delResp($Resp);
     header("Location:../Administracion/Preguntas.php");
 }
-
+/**
+ *  La eleccion del crud ha sido Añadir, lo almacenamos en una sesion y 
+ * vamos a GestionPreguntas.php. Para asi, una vez alli, habilitar segun que cosas
+ * segun si le hemos dado a Añadir o a Editar
+ */
 if (isset($_REQUEST['AniadirPreg'])) {
     $_SESSION['Eleccion'] = 'AniadirPreg';
     header("Location:../Administracion/GestionPreguntas.php");
 }
 
+/**
+ *  La eleccion del crud ha sido Editar, lo almacenamos en una sesion y 
+ * vamos a GestionPreguntas.php. Para asi, una vez alli, habilitar segun que cosas
+ * segun si le hemos dado a Añadir o a Editar
+ */
 if (isset($_REQUEST['EPreg'])) {
     $_SESSION['pregunta'] = $_REQUEST['desc'];
     $_SESSION['Eleccion'] = 'EditarPreg';
     header("Location:../Administracion/GestionPreguntas.php");
 }
 
-
+/**
+ * Añadimos una pregunta, respuestas y opciones
+ */
 if (isset($_REQUEST['ADDPre'])) {
     $respuestaCorrecta = '';
     $pregunta = $_REQUEST['Pregunta'];
@@ -347,6 +361,9 @@ if (isset($_REQUEST['ADDPre'])) {
     header("Location:../Administracion/Preguntas.php");
 }
 
+/**
+ * Editamos la pregunta, la respuesta y las opciones
+ */
 if (isset($_REQUEST['EditarPre'])) {
     $preNew = $_REQUEST['Pregunta'];
     $opNew1 = $_REQUEST['Op1'];
@@ -401,6 +418,11 @@ if (isset($_REQUEST['E'])) {
     header("Location:../Administracion/Gestion.php");
 }
 
+/**
+ * La eleccion del crud ha sido Añadir, lo almacenamos en una sesion y 
+ * vamos a Gestion.php. Para asi, una vez alli, habilitar segun que cosas
+ * segun si le hemos dado a Añadir o a Editar
+ */
 if (isset($_REQUEST['Aniadir'])) {
     $_SESSION['Eleccion'] = 'Aniadir';
     header("Location:../Administracion/Gestion.php");
@@ -490,7 +512,9 @@ if (isset($_REQUEST['CerrarSesion'])) {
     header("Location:../index.php");
 }
 
-
+/**
+ * Volver al Login
+ */
 if (isset($_REQUEST['VolverLogin'])) {
     header("Location:../index.php");
 }
@@ -568,6 +592,7 @@ if (isset($_REQUEST['GestionPreguntas'])) {
     header("Location:../Administracion/Preguntas.php");
 }
 
+
 if (isset($_REQUEST['Historial'])) {
     header("Location:../Error_y_Reformas/reformas.php");
 }
@@ -576,6 +601,11 @@ if (isset($_REQUEST['Historial'])) {
 /****************************GESTION SALA****************************** */
 /*************************************************************************** */
 
+/**
+ * Recojo la informacion de la sala, compruebo si esta existe. 
+ * Si existe, me sale un mensaje de error. Si no existe, la crea y me manda a la 
+ * sala de espera.
+ */
 if (isset($_REQUEST['CrearP'])) {
     $codigo = $_REQUEST['Codigo'];
     $nombreSala = $_REQUEST['NomSala'];
@@ -593,6 +623,42 @@ if (isset($_REQUEST['CrearP'])) {
     }
 }
 
+/**
+ * Si pongo un codigo de una sala privada y le doy a unirme , se recoge el codigo,
+ * se comprueba si este existe, si existe miramos el numero de jugadores de esta sala,
+ * le sumamos uno (Por que estamos entrando), modificamos el numero de jugadores y me 
+ * lleva a la sala. Si la sala no existe, me lleva a una pagina de error.
+ */
+if (isset($_REQUEST['UnirmePartida'])) {
+    $codigo = $_REQUEST['codigo'];
+    $sala = Conexion::BuscarSala($codigo);
+
+    if ($sala != null) {
+        $_SESSION['codSala'] = $codigo;
+        $numJugadores = Conexion::verNumeroJugadoresDeSala($_SESSION['codSala']);
+        $numJugadores = $numJugadores + 1;
+        Conexion::modificarNumeroJugadores($_SESSION['codSala'], $numJugadores);
+        header("Location:../Gestion_Juego/SalaEspera.php");
+    } else {
+        $_SESSION['mensaje'] = 'Esta sala no existe';
+        header("Location:../Error_y_Reformas/error.php");
+    }
+}
+if (isset($_REQUEST['Unirse'])) {
+    $cod = $_REQUEST['codigoSecreto'];
+    $_SESSION['codSala'] = $cod;
+    $numJugadores = Conexion::verNumeroJugadoresDeSala($cod);
+    $numJugadores = $numJugadores + 1;
+    Conexion::modificarNumeroJugadores($cod, $numJugadores);
+    header("Location:../Gestion_Juego/SalaEspera.php");
+}
+
+/**
+ * Cuando vuelvo de la sala de espera miro el numero de jugadores que hay, le resto 1
+ * (Por que me voy),modifico el numero de jugadores de la sala de espera.
+ * Si no hay jugadores en esa sala, esta se borra y me lleva a Jugar.php, sino
+ * solo me lleva a Jugar.php
+ */
 if (isset($_REQUEST['VolverDesdeSalaEspera'])) {
     $numJugadores = Conexion::verNumeroJugadoresDeSala($_SESSION['codSala']);
     $numJugadores = $numJugadores - 1;
@@ -601,5 +667,7 @@ if (isset($_REQUEST['VolverDesdeSalaEspera'])) {
     if ($numJugadores == 0) {
         header("Location:../Gestion_Juego/Jugar.php");
         Conexion::DropSala($_SESSION['codSala']);
+    } else {
+        header("Location:../Gestion_Juego/Jugar.php");
     }
 }

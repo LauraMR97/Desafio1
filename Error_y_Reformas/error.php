@@ -36,7 +36,7 @@
 
                 <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
                     <div class="row">
-                        <input class="col-7 s-col-12 botVolver" type="submit" value="Volver" name="VolverLogin">
+                        <input class="col-7 s-col-12 botVolver" type="submit" value="Volver" name="CerrarSesion">
                     </div>
                 </form>
             </div>
