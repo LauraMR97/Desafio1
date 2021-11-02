@@ -90,6 +90,7 @@ function validacion() {
     botonRegistrar.addEventListener('click', validarRegistro);
 
     function validarEdicion(event) {
+        alert('gola');
         if (!email.validity.valid) {
             showErrorEmail();
             event.preventDefault();
