@@ -11,7 +11,7 @@
     <script src="../ValidacionYCaptcha/validacionRegistro.js"></script>
 </head>
 
-<body class="oriental" onload="validacion()">
+<body class="oriental" onload="validarEditar()">
     <?php
     include_once '../Objetos/Persona.php';
     include_once '../Base_de_datos/Conexion.php';
@@ -74,7 +74,7 @@
                     </div>
 
                     <div class="l-col-2 m-col-2 s-col-2">
-                        <button type="submit" name='Editar'disabled><img src="../ICONOS/edit.png" class="tamaño"></button>
+                        <button type="submit" name='Editar' disabled><img src="../ICONOS/edit.png" class="tamaño"></button>
                     </div>
 
                     <div class="l-col-2 m-col-2 s-col-2">
@@ -121,20 +121,20 @@
                     <div class="row">
                         <div class="margen-5 l-col-3 m-col-3 s-col-3 separadoPequeño">
                             <label>Contraseña:</label>
-                            <input type="text" value="" name="Password" placeholder="Inserta una Contraseña" disabled>
+                            <input type="password" value="<?php echo $perAnt->getPassword() ?>" name="Password" placeholder="Inserta una Contraseña" readonly>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="margen-5 l-col-3 m-col-3 s-col-3 separadoPequeño">
                             <label>Confirmar Contraseña:</label>
-                            <input type="text" value="" name="PasswordRepeat" placeholder="Inserta la Contraseña de nuevo" disabled>
+                            <input type="password" value="<?php echo $perAnt->getPassword() ?>" name="PasswordRepeat" placeholder="Inserta la Contraseña de nuevo" readonly>
                         </div>
 
                     </div>
 
                     <div class="l-col-2 m-col-2 s-col-2">
-                        <button type="submit" id="Edit" name='Editar'><img src="../ICONOS/edit.png" class="tamaño"></button>
+                        <button type="submit" id="Edita" name='Editar'><img src="../ICONOS/edit.png" class="tamaño"></button>
 
                     </div>
 
