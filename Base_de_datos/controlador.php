@@ -535,6 +535,9 @@ if (isset($_REQUEST['VolverMenuEditor'])) {
 /*******************************REDIRECCIONAMIENTO************************* */
 /*************************************************************************** */
 
+if (isset($_REQUEST['EmpezarYA'])) {
+    header("Location:../Juego/Carga.php");
+}
 
 if (isset($_REQUEST['CrearPartida'])) {
     header("Location:../Gestion_Juego/CrearPartida.php");
