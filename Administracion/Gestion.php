@@ -25,7 +25,7 @@
         </header>
 
         <section class="row">
-            <div class="col-5 margen-3 s-margen-0 s-col-12">
+            <div class="col-5 margen-4 s-margen-0 s-col-12">
                 <div class="row">
                     <div class="xl-col-12 l-col-12 m-col-12 s-col-12 separado">
                         <h3>Gestion:</h3>
@@ -98,13 +98,13 @@
 
                                 <div class="row p-a-1">
                                     <div class="col-4">
-                                        <input type="checkbox" id="Admin" name="tipousur[]" value="Ad">Admin
+                                        <input type="checkbox" id="Admin" name="tipousur[]" <?php echo (isset($rol[0]) && ($rol[0] == 0)) || (isset($rol[1]) && ($rol[1] == 0)) || (isset($rol[2]) && ($rol[2] == 0)) ? ' checked' : ' '; ?> value="Ad">Admin
                                     </div>
                                     <div class="col-4">
-                                        <input type="checkbox" id="Edit" name="tipousur[]" value="Ed">Editor
+                                        <input type="checkbox" id="Edit" name="tipousur[]" <?php echo (isset($rol[0]) && ($rol[0] == 1)) || (isset($rol[1]) && ($rol[1] == 1)) || (isset($rol[2]) && ($rol[2] == 1)) ? ' checked' : ' '; ?> value="Ed">Editor
                                     </div>
                                     <div class="col-4">
-                                        <input type="checkbox" id="User" name="tipousur[]" value="Us">Usuario
+                                        <input type="checkbox" id="User" name="tipousur[]" <?php echo (isset($rol[0]) && ($rol[0] == 2)) || (isset($rol[1]) && ($rol[1] == 2)) || (isset($rol[2]) && ($rol[2] == 2)) ? ' checked' : ' '; ?> value="Us">Usuario
                                     </div>
                                 </div>
 
