@@ -81,7 +81,9 @@
                 </div>
             </div>
         </section>
-
+        <?php
+        header("refresh:3;url=Jugar.php");
+        ?>
         <footer class=" oriental row">
             <div class="xl-col-12 l-col-12 m-col-12 s-col-12">
                 <p>Email: EscapeRoom@juegos.com</p>
