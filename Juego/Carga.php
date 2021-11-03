@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" type="text/css" href="./CSS/general.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/general.css">
+    <script src="./Carga.js"></script>
 </head>
 
 <body class="oriental" onload="carga()">
@@ -17,7 +18,7 @@
             </div>
         </header>
         <section class="row">
-    <div class="" id='introduccion'></div>
+            <div id='introduccion'></div>
 
         </section>
         <footer class=" oriental row">
