@@ -904,6 +904,17 @@ footer.oriental {
   height: 5rem;
 }
 
+.fondoOriental-a {
+  background-color: #940505;
+  color: #ffffff;
+  border-radius: 1em 1em 1em 1em;
+}
+
+.fondoCarga {
+  background-color: #020202;
+  color: #ffffff;
+}
+
 /*-----------------------Botones-------------------------------*/
 button.oriental,
 input[type=submit].oriental,

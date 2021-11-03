@@ -5,17 +5,23 @@ class Sala
     private $nombre;
     private $tipo;
     private $numPersonas;
-    public function __construct($codigo, $nombre, $tipo, $numPersonas)
+    private $creador;
+    public function __construct($codigo, $nombre, $tipo, $numPersonas,$creador)
     {
         $this->codigo = $codigo;
         $this->nombre = $nombre;
         $this->tipo = $tipo;
         $this->numPersonas = $numPersonas;
+        $this->creador=$creador;
     }
 
     public function getCodigo()
     {
         return $this->codigo;
+    }
+    public function getCreador()
+    {
+        return $this->creador;
     }
     public function getNombre()
     {

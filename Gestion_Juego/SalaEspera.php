@@ -13,9 +13,16 @@
 
     <?php
     require_once '../Base_de_datos/Conexion.php';
+    require_once '../Objetos/Persona.php';
+    require_once '../Objetos/Sala.php';
     session_start();
     $_SESSION['jugadores'] = Conexion::verNumeroJugadoresDeSala($_SESSION['codSala']);
+    $_SESSION['creador'] = Conexion::verCreadorDeSala($_SESSION['codSala']);
     $numJugadores = $_SESSION['jugadores'];
+    $creador =  $_SESSION['creador'];
+    $perLoggeada = $_SESSION['per'];
+    $_SESSION['estado'] = Conexion::verEstado($creador);
+    $estado = $_SESSION['estado'];
     ?>
     <main class="container oriental">
         <header class="row oriental">
@@ -41,14 +48,25 @@
                     <div class="xl-col-12  l-col-12 m-col-12 s-col-12">
                         <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
                             <?php
-                            if ($numJugadores < 3) {
+                            if ($numJugadores < 2) {
                             ?>
                                 <input class="col-6 s-col-12" type="submit" value="Empezar Ya" name="EmpezarYA" disabled>
-                            <?php
+                                <?php
                             } else {
-                            ?>
-                                <input class="col-6 s-col-12" type="submit" value="Empezar Ya" name="EmpezarYA">
+                                if (($numJugadores >= 2) && ($numJugadores <= 5) && ($perLoggeada->getEmail() == $creador)) {
+                                ?>
+                                    <input class="col-6 s-col-12" type="submit" value="Empezar Ya" name="EmpezarYA">
+                                <?php
+
+                                } else {
+                                ?>
+                                    <input class="col-6 s-col-12" type="submit" value="Empezar Ya" name="EmpezarYA" disabled>
                             <?php
+                                }
+                            }
+                            header("refresh:1;url=SalaEspera.php");
+                            if ($estado == 'Activo') {
+                                header("Location:../Juego/Carga.php");
                             }
                             ?>
                         </form>

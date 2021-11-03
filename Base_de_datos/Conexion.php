@@ -725,12 +725,12 @@ class Conexion
     }
 
     /*--------------------------------------------------------------*/
-    public static function CrearSala($codigo, $nombreSala, $tipoSala, $num)
+    public static function CrearSala($codigo, $nombreSala, $tipoSala, $num, $creador)
     {
         self::abrirConexion();
-        $query = "INSERT INTO sala (codigo,nombre,tipo,num_personas) VALUES (?,?,?,?)";
+        $query = "INSERT INTO sala (codigo,nombre,tipo,num_personas,creador) VALUES (?,?,?,?,?)";
         $stmt = self::$conexion->prepare($query);
-        $stmt->bind_param("sssi", $codigo, $nombreSala, $tipoSala, $num);
+        $stmt->bind_param("sssis", $codigo, $nombreSala, $tipoSala, $num, $creador);
 
 
         if (!$stmt->execute()) {
@@ -861,7 +861,7 @@ class Conexion
 
         if ($result) {
             while ($fila = mysqli_fetch_array($result)) {
-                $sala = new Sala($fila['codigo'], $fila['nombre'], $fila['tipo'], $fila['num_personas']);
+                $sala = new Sala($fila['codigo'], $fila['nombre'], $fila['tipo'], $fila['num_personas'], $fila['creador']);
                 $array[] = $sala;
             }
         }
@@ -872,6 +872,233 @@ class Conexion
         return $array;
     }
     /*--------------------------------------------------------------*/
+    public static function verCreadorDeSala($codigo)
+    {
+        $creador  = null;
+
+        self::abrirConexion();
+
+        $query = "SELECT creador FROM sala WHERE codigo like ?";
+        $stmt = self::$conexion->prepare($query);
+
+        $stmt->bind_param("s", $codigo);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+
+        if ($result) {
+            while ($fila = mysqli_fetch_array($result)) {
+                $creador = $fila['creador'];
+            }
+        }
+
+        $stmt->close();
+        self::cerrarConexion();
+
+        return $creador;
+    }
+    /*------------------------------------------------------------------------------------*/
+    public static function CrearEquipo($email)
+    {
+        self::abrirConexion();
+        $llaves = 0;
+        $query = "INSERT INTO equipo (llaves,anfitrion) VALUES (?,?)";
+        $stmt = self::$conexion->prepare($query);
+        $stmt->bind_param("is", $llaves, $email);
+
+
+        if (!$stmt->execute()) {
+            $mensaje = "Error al insertar: " . mysqli_error(self::$conexion) . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            // Bitacora::guardarArchivo($mensaje);
+        } else {
+            $mensaje = 'Registro insertado con éxito' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            // Bitacora::guardarArchivo($mensaje);
+        }
+
+        $stmt->close();
+        self::cerrarConexion();
+    }
+    /*-------------------------------------------------------------------------------*/
+    public static function verCodigo($anfitrion)
+    {
+        $cod  = null;
+
+        self::abrirConexion();
+
+        $query = "SELECT id_equipo FROM equipo WHERE anfitrion like ?";
+        $stmt = self::$conexion->prepare($query);
+
+        $stmt->bind_param("s", $anfitrion);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+
+        if ($result) {
+            while ($fila = mysqli_fetch_array($result)) {
+                $cod = $fila['id_equipo'];
+            }
+        }
+
+        $stmt->close();
+        self::cerrarConexion();
+
+        return $cod;
+    }
+    /*-------------------------------------------------------------------------------*/
+    public static function AddParticipante($persona, $codEquipo)
+    {
+        self::abrirConexion();
+        $query = "INSERT INTO equipo_persona (id_equipo,correo) VALUES (?,?)";
+        $stmt = self::$conexion->prepare($query);
+        $stmt->bind_param("is", $codEquipo, $persona);
+
+
+        if (!$stmt->execute()) {
+            $mensaje = "Error al insertar: " . mysqli_error(self::$conexion) . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            // Bitacora::guardarArchivo($mensaje);
+        } else {
+            $mensaje = 'Registro insertado con éxito' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            // Bitacora::guardarArchivo($mensaje);
+        }
+
+        $stmt->close();
+        self::cerrarConexion();
+    }
+    /*-------------------------------------------------------------------------------*/
+    public static function DropEquipo($codEquipo)
+    {
+        self::abrirConexion();
+        $query = "DELETE FROM equipo WHERE id_equipo = ? ";
+        $stmt = self::$conexion->prepare($query);
+
+        $stmt->bind_param("i", $codEquipo);
+
+        if ($stmt->execute()) {
+            $mensaje = 'Registro eliminado con éxito' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            // Bitacora::guardarArchivo($mensaje);
+        } else {
+            $mensaje = 'Error al eliminar' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            // Bitacora::guardarArchivo($mensaje);
+        }
+        $stmt->close();
+        self::cerrarConexion();
+    }
+    /*-------------------------------------------------------------------------------*/
+
+    public static function quitarPersonaDelEquipo($persona)
+    {
+        self::abrirConexion();
+        $query = "DELETE FROM equipo_persona WHERE correo = ? ";
+        $stmt = self::$conexion->prepare($query);
+
+        $stmt->bind_param("s", $persona);
+
+        if ($stmt->execute()) {
+            $mensaje = 'Registro eliminado con éxito' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            // Bitacora::guardarArchivo($mensaje);
+        } else {
+            $mensaje = 'Error al eliminar' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            // Bitacora::guardarArchivo($mensaje);
+        }
+        $stmt->close();
+        self::cerrarConexion();
+    }
+    /*-------------------------------------------------------------------------------*/
+    public static function CrearPartida($anfitrion)
+    {
+        self::abrirConexion();
+        $resultado = 'nulo';
+        $almirante = 'nadie';
+        $estado = 'nulo';
+        $fecha = date('Y-m-d');
+
+        $query = "INSERT INTO partida (resultado,almirante,estado,fecha,anfitrion) VALUES (?,?,?,?,?)";
+        $stmt = self::$conexion->prepare($query);
+        $stmt->bind_param("sssss", $resultado, $almirante, $estado, $fecha, $anfitrion);
+
+
+        if (!$stmt->execute()) {
+            $mensaje = "Error al insertar: " . mysqli_error(self::$conexion) . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            // Bitacora::guardarArchivo($mensaje);
+        } else {
+            $mensaje = 'Registro insertado con éxito' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            // Bitacora::guardarArchivo($mensaje);
+        }
+
+        $stmt->close();
+        self::cerrarConexion();
+    }
+    /*-------------------------------------------------------------------------------*/
+    /*  public static function DropPartida($email)
+    {
+        self::abrirConexion();
+        $query = "DELETE FROM partida WHERE anfitrion = ?";
+        $stmt = self::$conexion->prepare($query);
+
+        $stmt->bind_param("s", $email);
+
+        if ($stmt->execute()) {
+            $mensaje = 'Registro eliminado con éxito' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            // Bitacora::guardarArchivo($mensaje);
+        } else {
+            $mensaje = 'Error al eliminar' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            // Bitacora::guardarArchivo($mensaje);
+        }
+        $stmt->close();
+        self::cerrarConexion();
+    }*/
+    /*-------------------------------------------------------------------------------*/
+    public static function verEstado($creador)
+    {
+        $estado  = null;
+
+        self::abrirConexion();
+
+        $query = "SELECT estado FROM partida WHERE anfitrion like ?";
+        $stmt = self::$conexion->prepare($query);
+
+        $stmt->bind_param("s", $creador);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+
+        if ($result) {
+            while ($fila = mysqli_fetch_array($result)) {
+                $estado = $fila['estado'];
+            }
+        }
+
+        $stmt->close();
+        self::cerrarConexion();
+
+        return $estado;
+    }
+    /*-------------------------------------------------------------------------------*/
+    public static function ActivarEstadoPartida($email)
+    {
+        self::abrirConexion();
+        $query = "UPDATE partida SET estado = ? WHERE anfitrion LIKE ?";
+        $_SESSION['query'] = $query;
+        $stmt = self::$conexion->prepare($query);
+
+        $newEstado = 'Activo';
+        $stmt->bind_param("ss", $newEstado, $email);
+
+        if ($stmt->execute()) {
+            $mensaje = 'Registro editado con éxito' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            //Bitacora::guardarArchivo($mensaje);
+        } else {
+            $mensaje = 'Error al editar' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            //Bitacora::guardarArchivo($mensaje);
+        }
+        $stmt->close();
+        self::cerrarConexion();
+    }
+    /*-------------------------------------------------------------------------------*/
+
     public static function cerrarConexion()
     {
         self::$conexion->close();
