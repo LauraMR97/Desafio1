@@ -1098,7 +1098,33 @@ class Conexion
         self::cerrarConexion();
     }
     /*-------------------------------------------------------------------------------*/
+    public static function verLlaves($anfitrion)
+    {
+        $cod  = null;
 
+        self::abrirConexion();
+
+        $query = "SELECT id_equipo FROM equipo WHERE anfitrion like ?";
+        $stmt = self::$conexion->prepare($query);
+
+        $stmt->bind_param("s", $anfitrion);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+
+        if ($result) {
+            while ($fila = mysqli_fetch_array($result)) {
+                $cod = $fila['id_equipo'];
+            }
+        }
+
+        $stmt->close();
+        self::cerrarConexion();
+
+        return $cod;
+    }
+    /*-------------------------------------------------------------------------------*/
     public static function cerrarConexion()
     {
         self::$conexion->close();

@@ -14,10 +14,10 @@ function carga() {
         'pero… ¿cómo?</p>';
 
     document.getElementById('foto').innerHTML = '<img src="../IMAGENES/atakebune.png" class="imagenResponsive">';
-    var time = setTimeout(function () { carga() }, 1000);
+    var time = setTimeout(function() { carga() }, 1000);
     document.getElementById('introduccion').innerHTML = time;
     if (time == 30) {
-        window.location.href = '../Error_y_Reformas/reformas.php';
+        window.location.href = 'Enigma.php';
         clearTimeout(time);
     }
 }
