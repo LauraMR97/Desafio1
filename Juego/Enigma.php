@@ -26,6 +26,7 @@
                 <div id="personas"></div>
                 <div id="comprobar"></div>
                 <div id="tiempo"></div>
+                
             </div>
         </section>
         <footer class=" oriental row">
