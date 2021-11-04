@@ -1098,9 +1098,36 @@ class Conexion
         self::cerrarConexion();
     }
     /*-------------------------------------------------------------------------------*/
-    public static function verLlaves($anfitrion)
+    public static function verLlaves($idEq)
     {
-        $cod  = null;
+        $llave  = null;
+
+        self::abrirConexion();
+
+        $query = "SELECT llaves FROM equipo WHERE id_equipo like ?";
+        $stmt = self::$conexion->prepare($query);
+
+        $stmt->bind_param("i", $idEq);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+
+        if ($result) {
+            while ($fila = mysqli_fetch_array($result)) {
+                $llave = $fila['llaves'];
+            }
+        }
+
+        $stmt->close();
+        self::cerrarConexion();
+
+        return json_encode($llave);
+    }
+    /*-------------------------------------------------------------------------------*/
+    public static function verIDEquipo($anfitrion)
+    {
+        $idEq  = null;
 
         self::abrirConexion();
 
@@ -1115,14 +1142,14 @@ class Conexion
 
         if ($result) {
             while ($fila = mysqli_fetch_array($result)) {
-                $cod = $fila['id_equipo'];
+                $idEq = $fila['id_equipo'];
             }
         }
 
         $stmt->close();
         self::cerrarConexion();
 
-        return $cod;
+        return $idEq;
     }
     /*-------------------------------------------------------------------------------*/
     public static function cerrarConexion()
