@@ -67,6 +67,7 @@
                             header("refresh:1;url=SalaEspera.php");
                             if ($estado == 'Activo') {
                                 header("Location:../Juego/Carga.php");
+                                Conexion::DropSala($_SESSION['codSala']);
                             }
                             ?>
                         </form>
