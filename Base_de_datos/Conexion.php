@@ -1131,15 +1131,14 @@ class Conexion
 
         self::abrirConexion();
 
-        $query = "SELECT pregunta.descripcion,pregunta.correo,respuesta.descripcionR FROM pregunta JOIN preg_resp
+        $query = "SELECT pregunta.descripcion,respuesta.descripcionR FROM pregunta JOIN preg_resp
         ON preg_resp.Id_pregunta=pregunta.Id_pregunta JOIN respuesta ON respuesta.id_respuesta=preg_resp.id_respuesta";
 
         $resultado = self::$conexion->query($query);
 
         if ($resultado) {
             while ($fila = mysqli_fetch_array($resultado)) {
-                $pregunta = new Pregunta($fila['descripcionR'], $fila['descripcion'], $fila['correo']);
-                $array[] = (array)$pregunta;
+                $array[] =['pregunta'=> $fila['descripcion'],'respuesta'=>$fila['descripcionR']];
             }
         }
         mysqli_free_result($resultado);
@@ -1208,8 +1207,7 @@ class Conexion
 
         if ($resultado) {
             while ($fila = mysqli_fetch_array($resultado)) {
-               $correo=$fila['correo'];
-                $array[] = (array)$correo;
+                $array[] =['persona'=> $fila['correo']];
             }
         }
         mysqli_free_result($resultado);

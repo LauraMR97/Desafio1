@@ -9,7 +9,7 @@
     <script src="Enigma.js"></script>
 </head>
 
-<body class="oriental" onload="tiempo()">
+<body class="oriental" onload="tiempo();pintarPreguntas()">
 <?php
     require_once '../Base_de_datos/Conexion.php';
     require_once '../Objetos/Pregunta.php';
@@ -21,7 +21,7 @@
     $PersonasEquipo=Conexion::VerPersonasEquipo($idEquipo);
     //$Opciones=Conexion::verOpcionesDePregunta();
     ?>
- <script>cargar('<?php echo $llaves?>','<?php echo $preguntas ?>')</script>
+ <script>cargar('<?php echo $llaves?>','<?php echo $preguntas ?>','<?php echo $numPreguntas ?>','<?php echo $PersonasEquipo ?>')</script>
     <main class="container oriental">
         <header class="row oriental">
             <h1>Escape Web</h1>
