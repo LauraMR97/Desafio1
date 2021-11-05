@@ -1122,7 +1122,52 @@ class Conexion
         $stmt->close();
         self::cerrarConexion();
 
-        return json_encode($llave);
+        return $llave;
+    }
+    /*-------------------------------------------------------------------------------*/
+    public static function VerPregunta()
+    {
+        $array = array();
+
+        self::abrirConexion();
+
+        $query = "SELECT pregunta.descripcion,pregunta.correo,respuesta.descripcionR FROM pregunta JOIN preg_resp
+        ON preg_resp.Id_pregunta=pregunta.Id_pregunta JOIN respuesta ON respuesta.id_respuesta=preg_resp.id_respuesta";
+
+        $resultado = self::$conexion->query($query);
+
+        if ($resultado) {
+            while ($fila = mysqli_fetch_array($resultado)) {
+                $pregunta = new Pregunta($fila['descripcionR'], $fila['descripcion'], $fila['correo']);
+                $array[] = (array)$pregunta;
+            }
+        }
+        mysqli_free_result($resultado);
+
+        self::cerrarConexion();
+
+        return json_encode($array);
+    }
+    /*-------------------------------------------------------------------------------*/
+    public static function ContadorDePreguntasExistentes()
+    {
+        $numero = 0;
+
+        self::abrirConexion();
+
+        $query = "SELECT COUNT(*) AS numPreguntas FROM pregunta";
+        $resultado = self::$conexion->query($query);
+
+        if ($resultado) {
+            while ($fila = mysqli_fetch_array($resultado)) {
+                $numero =$fila['numPreguntas'];
+            }
+        }
+        mysqli_free_result($resultado);
+
+        self::cerrarConexion();
+
+        return $numero;
     }
     /*-------------------------------------------------------------------------------*/
     public static function verIDEquipo($anfitrion)
@@ -1150,6 +1195,28 @@ class Conexion
         self::cerrarConexion();
 
         return $idEq;
+    }
+    /*-------------------------------------------------------------------------------*/
+    public static function VerPersonasEquipo($idEquipo){
+        $array = array();
+
+        self::abrirConexion();
+
+        $query = "SELECT correo FROM equipo_persona WHERE id_equipo = '".$idEquipo."'";
+
+        $resultado = self::$conexion->query($query);
+
+        if ($resultado) {
+            while ($fila = mysqli_fetch_array($resultado)) {
+               $correo=$fila['correo'];
+                $array[] = (array)$correo;
+            }
+        }
+        mysqli_free_result($resultado);
+
+        self::cerrarConexion();
+
+        return json_encode($array);
     }
     /*-------------------------------------------------------------------------------*/
     public static function cerrarConexion()

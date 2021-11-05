@@ -12,11 +12,16 @@
 <body class="oriental" onload="tiempo()">
 <?php
     require_once '../Base_de_datos/Conexion.php';
+    require_once '../Objetos/Pregunta.php';
     session_start();
     $idEquipo = Conexion::verIDEquipo($_SESSION['creador']);
     $llaves = Conexion::verLlaves($idEquipo);
+    $preguntas=Conexion::VerPregunta();
+    $numPreguntas=Conexion::ContadorDePreguntasExistentes();
+    $PersonasEquipo=Conexion::VerPersonasEquipo($idEquipo);
+    //$Opciones=Conexion::verOpcionesDePregunta();
     ?>
- <script>funcionJS('<?php echo $datJSON?>')</script>
+ <script>cargar('<?php echo $llaves?>','<?php echo $preguntas ?>')</script>
     <main class="container oriental">
         <header class="row oriental">
             <h1>Escape Web</h1>
