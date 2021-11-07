@@ -112,9 +112,7 @@ class Conexion
         $stmt->close();
         self::cerrarConexion();
     }
-
-
-
+    /*--------------------------------------------------------------*/
     public static function obtenerIDPregunta($pregunta)
     {
         $id = null;
@@ -1013,6 +1011,7 @@ class Conexion
         $almirante = 'nadie';
         $estado = 'nulo';
         $fecha = date('Y-m-d');
+        $_SESSION['fechaIni'] = $fecha;
 
         $query = "INSERT INTO partida (resultado,almirante,estado,fecha,anfitrion) VALUES (?,?,?,?,?)";
         $stmt = self::$conexion->prepare($query);
@@ -1125,7 +1124,7 @@ class Conexion
         return $llave;
     }
     /*-------------------------------------------------------------------------------*/
-    public static function VerPregunta()
+    /* public static function VerPregunta()
     {
         $array = array();
 
@@ -1146,7 +1145,32 @@ class Conexion
         self::cerrarConexion();
 
         return json_encode($array);
+    }*/
+    /*-------------------------------------------------------------------------------*/
+    public static function VerPregunta()
+    {
+        $array = array();
+
+        self::abrirConexion();
+
+        $query = "SELECT pregunta.descripcion,respuesta.descripcionR,pregunta.correo FROM pregunta JOIN preg_resp
+        ON preg_resp.Id_pregunta=pregunta.Id_pregunta JOIN respuesta ON respuesta.id_respuesta=preg_resp.id_respuesta";
+
+        $resultado = self::$conexion->query($query);
+
+        if ($resultado) {
+            while ($fila = mysqli_fetch_array($resultado)) {
+                $pregunta = new Pregunta($fila['descripcionR'], $fila['descripcion'], $fila['correo']);
+                $array[] = $pregunta;
+            }
+        }
+        mysqli_free_result($resultado);
+
+        self::cerrarConexion();
+
+        return $array;
     }
+
     /*-------------------------------------------------------------------------------*/
     public static function ContadorDePreguntasExistentes()
     {
@@ -1159,7 +1183,7 @@ class Conexion
 
         if ($resultado) {
             while ($fila = mysqli_fetch_array($resultado)) {
-                $numero =$fila['numPreguntas'];
+                $numero = $fila['numPreguntas'];
             }
         }
         mysqli_free_result($resultado);
@@ -1196,18 +1220,19 @@ class Conexion
         return $idEq;
     }
     /*-------------------------------------------------------------------------------*/
-    public static function VerPersonasEquipo($idEquipo){
+    public static function VerPersonasEquipo($idEquipo)
+    {
         $array = array();
 
         self::abrirConexion();
 
-        $query = "SELECT correo FROM equipo_persona WHERE id_equipo = '".$idEquipo."'";
+        $query = "SELECT correo FROM equipo_persona WHERE id_equipo = '" . $idEquipo . "'";
 
         $resultado = self::$conexion->query($query);
 
         if ($resultado) {
             while ($fila = mysqli_fetch_array($resultado)) {
-                $array[] =['persona'=> $fila['correo']];
+                $array[] = ['persona' => $fila['correo']];
             }
         }
         mysqli_free_result($resultado);
@@ -1215,6 +1240,316 @@ class Conexion
         self::cerrarConexion();
 
         return json_encode($array);
+    }
+    /*-------------------------------------------------------------------------------*/
+    public static function verOpcionesDePregunta($idPregunta)
+    {
+        $array = array();
+
+        self::abrirConexion();
+
+        $query = "SELECT descripcion FROM opciones WHERE id_pregunta = '" . $idPregunta . "'";
+
+        $resultado = self::$conexion->query($query);
+
+        if ($resultado) {
+            while ($fila = mysqli_fetch_array($resultado)) {
+                $array[] = ['opcion' => $fila['descripcion']];
+            }
+        }
+        mysqli_free_result($resultado);
+
+        self::cerrarConexion();
+
+        return json_encode($array);
+    }
+    /*-------------------------------------------------------------------------------*/
+    public static function verAnfitrion($idEquipo)
+    {
+        $persona = '';
+
+        self::abrirConexion();
+
+        $query = "SELECT anfitrion FROM equipo WHERE id_equipo like ?";
+        $stmt = self::$conexion->prepare($query);
+
+        $stmt->bind_param("i", $idEquipo);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+
+        if ($result) {
+            while ($fila = mysqli_fetch_array($result)) {
+                $persona = $fila['anfitrion'];
+            }
+        }
+
+        $stmt->close();
+        self::cerrarConexion();
+
+        return $persona;
+    }
+    /*-------------------------------------------------------------------------------*/
+    public static function verAlmirante($Anfitrion)
+    {
+        $persona = '';
+
+        self::abrirConexion();
+
+        $query = "SELECT almirante FROM partida WHERE anfitrion like ?";
+        $stmt = self::$conexion->prepare($query);
+
+        $stmt->bind_param("s", $Anfitrion);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+
+        if ($result) {
+            while ($fila = mysqli_fetch_array($result)) {
+                $persona = $fila['almirante'];
+            }
+        }
+
+        $stmt->close();
+        self::cerrarConexion();
+
+        return $persona;
+    }
+
+    /*-------------------------------------------------------------------------------*/
+    public static function sumarLlave($Anfitrion, $nuevasLlaves)
+    {
+        self::abrirConexion();
+
+        $query = "UPDATE equipo SET llaves = ? WHERE anfitrion LIKE ?";
+        $_SESSION['query'] = $query;
+        $stmt = self::$conexion->prepare($query);
+
+        $stmt->bind_param("is", $nuevasLlaves, $Anfitrion);
+
+        if ($stmt->execute()) {
+            $mensaje = 'Registro editado con éxito' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            //Bitacora::guardarArchivo($mensaje);
+        } else {
+            $mensaje = 'Error al editar' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            //Bitacora::guardarArchivo($mensaje);
+        }
+        $stmt->close();
+        self::cerrarConexion();
+    }
+
+    /*-------------------------------------------------------------------------------*/
+    public static function addPersonaQueContesta($persona, $idEquipo)
+    {
+        self::abrirConexion();
+        $query = "INSERT INTO partida_almirante (correo,id_equipo) VALUES (?,?)";
+        $stmt = self::$conexion->prepare($query);
+        $stmt->bind_param("si", $persona, $idEquipo);
+
+
+        if (!$stmt->execute()) {
+            $mensaje = "Error al insertar: " . mysqli_error(self::$conexion) . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            // Bitacora::guardarArchivo($mensaje);
+        } else {
+            $mensaje = 'Registro insertado con éxito' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            // Bitacora::guardarArchivo($mensaje);
+        }
+
+        $stmt->close();
+        self::cerrarConexion();
+    }
+
+    /*-------------------------------------------------------------------------------*/
+    public static function verPrimeroEnAcertar($idEquipo)
+    {
+        $persona = '';
+
+        self::abrirConexion();
+
+        $query = "SELECT MIN(id_informacion),correo FROM partida_almirante WHERE id_equipo like ?";
+        $stmt = self::$conexion->prepare($query);
+
+        $stmt->bind_param("i", $idEquipo);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+
+        if ($result) {
+            while ($fila = mysqli_fetch_array($result)) {
+                $persona = $fila['correo'];
+            }
+        }
+
+        $stmt->close();
+        self::cerrarConexion();
+
+        return $persona;
+    }
+    /*-------------------------------------------------------------------------------*/
+    public static function AscenderAlmirante($almirante, $anfitrion)
+    {
+        self::abrirConexion();
+
+        $query = "UPDATE partida SET almirante = ? WHERE anfitrion LIKE ?";
+        $_SESSION['query'] = $query;
+        $stmt = self::$conexion->prepare($query);
+
+        $stmt->bind_param("ss", $almirante, $anfitrion);
+
+        if ($stmt->execute()) {
+            $mensaje = 'Registro editado con éxito' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            //Bitacora::guardarArchivo($mensaje);
+        } else {
+            $mensaje = 'Error al editar' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            //Bitacora::guardarArchivo($mensaje);
+        }
+        $stmt->close();
+        self::cerrarConexion();
+    }
+    /*-------------------------------------------------------------------------------*/
+    public static function verAciertos($correo)
+    {
+        $aciertos = '';
+
+        self::abrirConexion();
+
+        $query = "SELECT aciertos FROM persona WHERE correo like ?";
+        $stmt = self::$conexion->prepare($query);
+
+        $stmt->bind_param("s", $correo);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+
+        if ($result) {
+            while ($fila = mysqli_fetch_array($result)) {
+                $aciertos = $fila['aciertos'];
+            }
+        }
+
+        $stmt->close();
+        self::cerrarConexion();
+
+        return $aciertos;
+    }
+    /*-------------------------------------------------------------------------------*/
+    public static function sumarAciertos($correo, $aciertos)
+    {
+        self::abrirConexion();
+
+        $query = "UPDATE persona SET aciertos = ? WHERE correo LIKE ?";
+        $_SESSION['query'] = $query;
+        $stmt = self::$conexion->prepare($query);
+
+        $stmt->bind_param("is", $aciertos, $correo);
+
+        if ($stmt->execute()) {
+            $mensaje = 'Registro editado con éxito' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            //Bitacora::guardarArchivo($mensaje);
+        } else {
+            $mensaje = 'Error al editar' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            //Bitacora::guardarArchivo($mensaje);
+        }
+        $stmt->close();
+        self::cerrarConexion();
+    }
+    /*-------------------------------------------------------------------------------*/
+    public static function Victoria($anfitrion)
+    {
+        self::abrirConexion();
+
+        $resultado = 'Victoria';
+        $_SESSION['resultado'] = $resultado;
+        $query = "UPDATE partida SET resultado = ? WHERE anfitrion LIKE ?";
+        $_SESSION['query'] = $query;
+        $stmt = self::$conexion->prepare($query);
+
+        $stmt->bind_param("ss", $resultado, $anfitrion);
+
+        if ($stmt->execute()) {
+            $mensaje = 'Registro editado con éxito' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            //Bitacora::guardarArchivo($mensaje);
+        } else {
+            $mensaje = 'Error al editar' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            //Bitacora::guardarArchivo($mensaje);
+        }
+        $stmt->close();
+        self::cerrarConexion();
+    }
+    /*-------------------------------------------------------------------------------*/
+    public static function Derrota($anfitrion)
+    {
+        self::abrirConexion();
+
+        $resultado = 'Derrota';
+        $_SESSION['resultado'] = $resultado;
+        $query = "UPDATE partida SET resultado = ? WHERE correo LIKE ?";
+        $_SESSION['query'] = $query;
+        $stmt = self::$conexion->prepare($query);
+
+        $stmt->bind_param("ss", $resultado, $anfitrion);
+
+        if ($stmt->execute()) {
+            $mensaje = 'Registro editado con éxito' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            //Bitacora::guardarArchivo($mensaje);
+        } else {
+            $mensaje = 'Error al editar' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            //Bitacora::guardarArchivo($mensaje);
+        }
+        $stmt->close();
+        self::cerrarConexion();
+    }
+    /*-------------------------------------------------------------------------------*/
+    public static function CrearHistorial($codEquipo, $correo, $fechaFin, $fechaIni, $resultado, $almirante)
+    {
+        self::abrirConexion();
+        $query = "INSERT INTO historial (id_equipo,correo,fechaIni,fechaFin,resultado,almirante) VALUES (?,?,?,?,?,?)";
+        $stmt = self::$conexion->prepare($query);
+        $stmt->bind_param("isssss", $codEquipo, $correo, $fechaIni, $fechaFin, $resultado, $almirante);
+
+
+        if (!$stmt->execute()) {
+            $mensaje = "Error al insertar: " . mysqli_error(self::$conexion) . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            // Bitacora::guardarArchivo($mensaje);
+        } else {
+            $mensaje = 'Registro insertado con éxito' . ' ' . date('m-d-Y h:i:s a', time()) . '<br>';
+            // Bitacora::guardarArchivo($mensaje);
+        }
+
+        $stmt->close();
+        self::cerrarConexion();
+    }
+    /*-------------------------------------------------------------------------------*/
+    public static function PersonasEquipo($idEquipo)
+    {
+        $array = array();
+
+        self::abrirConexion();
+
+        $query = "SELECT correo FROM equipo_persona WHERE id_equipo like ?";
+        $stmt = self::$conexion->prepare($query);
+
+        $stmt->bind_param("i", $idEquipo);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+
+        if ($result) {
+            while ($fila = mysqli_fetch_array($result)) {
+                $persona = $fila['correo'];
+                $array[] = $persona;
+            }
+        }
+
+        $stmt->close();
+        self::cerrarConexion();
+
+        return $array;
     }
     /*-------------------------------------------------------------------------------*/
     public static function cerrarConexion()

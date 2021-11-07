@@ -525,6 +525,23 @@ if (isset($_REQUEST['VolverLogin'])) {
 if (isset($_REQUEST['VolverJuego'])) {
     header("Location:../Gestion_Juego/Jugar.php");
 }
+
+if (isset($_REQUEST['VolverJugar'])) {
+    $fechaFin = date('h:i:s');
+    $fechaIni = $_SESSION['fechaIni'];
+    $idEquipo = Conexion::verIDEquipo($_SESSION['creador']);
+    $personas = Conexion::PersonasEquipo($idEquipo);
+    $PersonasEquipo = '';
+
+    for ($i = 0; $i < count($personas); $i++) {
+        $PersonasEquipo +=$personas[$i].',';
+    }
+    Conexion::CrearHistorial($_SESSION['codEquipo'], $PersonasEquipo, $fechaFin, $fechaIni, $_SESSION['resultado'], $_SESSION['Almirante']);
+    Conexion::DropEquipo($_SESSION['codEquipo']);
+    header("Location:../Gestion_Juego/Jugar.php");
+}
+
+
 /**
  * Volver al menu del editor
  */

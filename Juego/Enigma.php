@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,19 +10,59 @@
     <script src="Enigma.js"></script>
 </head>
 
-<body class="oriental" onload="tiempo();pintarPreguntas()">
-<?php
+<body class="oriental" onload="tiempo();pintar()">
+    <?php
     require_once '../Base_de_datos/Conexion.php';
     require_once '../Objetos/Pregunta.php';
+    require_once '../Objetos/Persona.php';
     session_start();
     $idEquipo = Conexion::verIDEquipo($_SESSION['creador']);
     $llaves = Conexion::verLlaves($idEquipo);
-    $preguntas=Conexion::VerPregunta();
-    $numPreguntas=Conexion::ContadorDePreguntasExistentes();
-    $PersonasEquipo=Conexion::VerPersonasEquipo($idEquipo);
-    //$Opciones=Conexion::verOpcionesDePregunta();
+    $preguntas = Conexion::VerPregunta();
+    $numPreguntas = Conexion::ContadorDePreguntasExistentes();
+    $PersonasEquipo = Conexion::VerPersonasEquipo($idEquipo);
+    $alea = rand(0, $numPreguntas - 1);
+    $preguntaAleatoria = $preguntas[$alea];
+    $idPregunta = Conexion::obtenerIDPregunta($preguntaAleatoria->getDescripcion());
+    $Opciones = Conexion::verOpcionesDePregunta($idPregunta);
+    $Anfitrion = Conexion::verAnfitrion($idEquipo);
+    $Almirante = Conexion::verAlmirante($Anfitrion);
+    $_SESSION['Almirante']=$Almirante;
+    $PerLoggeada = $_SESSION['per'];
+
+    if ($llaves < 5) {
+        if (isset($_REQUEST['verSolucion'])) {
+            $res = $_REQUEST['opcion'];
+            echo $res . '<br>';
+            echo $preguntaAleatoria->getRespuesta() . '<br>';
+            if ($preguntaAleatoria->getRespuesta() == $res) {
+                $llaves = $llaves + 1;
+                Conexion::sumarLlave($Anfitrion, $llaves);
+                Conexion::addPersonaQueContesta($PerLoggeada->getEmail(), $idEquipo);
+                $primeroEnContestar = Conexion::verPrimeroEnAcertar($idEquipo);
+                Conexion::AscenderAlmirante($primeroEnContestar, $Anfitrion);
+                $aciertos = Conexion::VerAciertos($PerLoggeada->getEmail());
+                echo $aciertos;
+                $aciertos = $aciertos + 1;
+                Conexion::SumarAciertos($PerLoggeada->getEmail(), $aciertos);
+            } else {
+                echo 'Fallo';
+            }
+        }
+        if (isset($_REQUEST['AnularPersona'])) {
+        }
+    } else {
+        Conexion::Victoria($Anfitrion);
     ?>
- <script>cargar('<?php echo $llaves?>','<?php echo $preguntas ?>','<?php echo $numPreguntas ?>','<?php echo $PersonasEquipo ?>')</script>
+        <script>
+            ganar();
+        </script>
+    <?php
+    }
+    ?>
+    <script>
+        cargar('<?php echo $llaves ?>', '<?php echo  $preguntaAleatoria->getDescripcion(); ?>', '<?php echo $numPreguntas ?>', '<?php echo $PersonasEquipo ?>', '<?php echo $Opciones ?>', '<?php echo $Almirante ?>', '<?php echo $PerLoggeada->getEmail() ?>')
+    </script>
     <main class="container oriental">
         <header class="row oriental">
             <h1>Escape Web</h1>
@@ -29,13 +70,26 @@
         </header>
 
         <section class="row">
-            <div class="xl-margen-3 l-margen-3 m-margen-3 s-margen-0 xl-col-6 l-col-6 m-col-6 s-col-12">
-                <div id="llaves"></div>
-                <div id="pregunta"></div>
-                <div id="respuesta"></div>
-                <div id="personas"></div>
-                <div id="comprobar"></div>
-                <div id="tiempo"></div>
+            <div class="margen-3 s-margen-0 xl-col-6 l-col-6 m-col-6 s-col-12">
+
+                <div class="row">
+                    <div class="col-6" id="llaves"></div>
+                </div>
+
+                <div class="row p-d-1">
+                    <div class="col-12" id="pregunta"></div>
+                </div>
+
+                <div id="respuestas"></div>
+
+                <div class="row p-a-2">
+                    <div id="personas"></div>
+                </div>
+
+                <div class="row p-a-1">
+                    <div id="tiempo"></div>
+                </div>
+
             </div>
         </section>
 
@@ -46,4 +100,5 @@
         </footer>
     </main>
 </body>
+
 </html>
