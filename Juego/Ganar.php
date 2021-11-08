@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu Editor</title>
+    <title>Ganar</title>
     <link rel="stylesheet" type="text/css" href="../CSS/general.css">
 </head>
 
@@ -21,21 +21,19 @@
         <section class="row">
 
             <div class="xl-col-12 l-col-12 m-col-12 s-col-12 separado">
-                <h3>Menú Editor:</h3>
+                <h3>VICTORIA:</h3>
             </div>
-
-            <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
-                <div class="row">
-                    <div class="col-4 margen-4 s-margen-0 s-col-12">
-                        <div class="row p-d-1">
-                            <input class="col-12" type="submit" value="Preguntas" name="GestionPreguntas">
-                        </div>
-                        <div class="row p-d-1">
-                            <input class="col-12 botVolver" type="submit" value="Volver" name="VolverAlternativo">
-                        </div>
-                    </div>
+            <div class="col-6 margen-4 s-col-12 s-margen-0">
+                <div class="xl-col-12 l-col-12 m-col-12 s-col-12 separado">
+                    <p>HABEIS GANADO!! FELICIDADES</p>
                 </div>
-            </form>
+
+                <form action="../Base_de_datos/controlador.php" method="POST" class="oriental">
+                    <div class="row">
+                        <input class="col-7 s-col-12 botVolver" type="submit" value="Volver" name="VolverJugar">
+                    </div>
+                </form>
+            </div>
         </section>
         <footer class=" oriental row">
             <div class="xl-col-12 l-col-12 m-col-12 s-col-12">
