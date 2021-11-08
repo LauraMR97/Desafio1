@@ -50,7 +50,6 @@ function perder() {
 }
 
 function pintarOpciones() {
-    console.log(opciones);
     var datos = "";
     var NumOpcion = 0;
 
@@ -69,19 +68,16 @@ function pintarOpciones() {
     datos += '</form>';
 
 
-    console.log(datos);
     document.getElementById('respuestas').innerHTML = datos;
 }
 
 function pintarPreguntas() {
-    console.log(pregunta);
     var datos = "";
     datos += "<h3>" + pregunta + "</h3>";
     document.getElementById('pregunta').innerHTML = datos;
 }
 
 function pintarEquipo() {
-    console.log(equipo);
     var datos = "";
 
 
@@ -107,7 +103,6 @@ function pintarEquipo() {
 
 
 function pintarLlaves() {
-    console.log(llaves);
     document.getElementById('llaves').innerHTML = '<p class="linea">llaves: ' + llaves + '</p>';
 }
 

@@ -38,7 +38,7 @@ function cargar(historial_PHP) {
     datos += "</table>";
     datos += "</div>";
     datos += "</div>"
-    console.log(datos);
+
     /*FORMULARIO*/
     datos += '<form action="../Base_de_datos/controlador.php" method="POST" class="oriental">';
     datos += '<div class="row p-d-1">';
