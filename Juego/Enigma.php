@@ -29,8 +29,8 @@
     $Almirante = Conexion::verAlmirante($Anfitrion);
     $_SESSION['Almirante'] = $Almirante;
     $PerLoggeada = $_SESSION['per'];
-   $_SESSION['contestada']=false;
-
+    $_SESSION['contestada'] = false;
+    $estadoPartida=Conexion::verEstadoPartida($Anfitrion);
     if ($llaves < 4) {
         if (isset($_REQUEST['verSolucion'])) {
             $res = $_REQUEST['opcion'];
@@ -49,26 +49,20 @@
             } else {
                 echo 'Fallo';
             }
-            $_SESSION['contestada']=true;
+            $_SESSION['contestada'] = true;
         }
         if (isset($_REQUEST['AnularPersona'])) {
-
         }
-       /* if($_SESSION['contestada']=true){
+       /* if ($_SESSION['contestada'] == true) {
             header("Location:Enigma.php");
-            $_SESSION['contestada']=false;
+            $_SESSION['contestada'] = false;
         }*/
     } else {
         Conexion::Victoria($Anfitrion);
-    ?>
-        <script>
-            ganar();
-        </script>
-    <?php
     }
     ?>
     <script>
-        cargar('<?php echo $llaves ?>', '<?php echo  $preguntaAleatoria->getDescripcion(); ?>', '<?php echo $numPreguntas ?>', '<?php echo $PersonasEquipo ?>', '<?php echo $Opciones ?>', '<?php echo $Almirante ?>', '<?php echo $PerLoggeada->getEmail() ?>');
+        cargar('<?php echo $llaves ?>', '<?php echo  $preguntaAleatoria->getDescripcion(); ?>', '<?php echo $numPreguntas ?>', '<?php echo $PersonasEquipo ?>', '<?php echo $Opciones ?>', '<?php echo $Almirante ?>', '<?php echo $PerLoggeada->getEmail() ?>', '<?php echo $estadoPartida ?>');
     </script>
     <main class="container oriental">
         <header class="row oriental">

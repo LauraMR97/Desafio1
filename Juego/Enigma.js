@@ -5,8 +5,9 @@ var equipo;
 var opciones;
 var almirante;
 var perLoggeada;
+var estadoPartida;
 
-function cargar(llaves_PHP, Preguntas_PHP, numPreguntas_PHP, equipo_PHP, opciones_PHP, almirante_PHP, perLoggeada_PHP) {
+function cargar(llaves_PHP, Preguntas_PHP, numPreguntas_PHP, equipo_PHP, opciones_PHP, almirante_PHP, perLoggeada_PHP,estadoPartida_PHP) {
     llaves = llaves_PHP;
     pregunta = Preguntas_PHP;
     numPreguntas = numPreguntas_PHP;
@@ -14,6 +15,7 @@ function cargar(llaves_PHP, Preguntas_PHP, numPreguntas_PHP, equipo_PHP, opcione
     opciones = JSON.parse(opciones_PHP);
     almirante = almirante_PHP;
     perLoggeada = perLoggeada_PHP;
+    estadoPartida=estadoPartida_PHP;
 }
 
 function tiempo() {
@@ -28,6 +30,7 @@ function tiempo() {
 
 function pintar() {
 
+    if(estadoPartida!='Victoria'){
     if (almirante == perLoggeada) {
         pintarLlaves();
         pintarEquipo();
@@ -39,6 +42,9 @@ function pintar() {
         pintarPreguntas();
         pintarOpciones();
     }
+}else{
+    ganar();
+}
 }
 
 function ganar() {

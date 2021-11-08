@@ -13,7 +13,7 @@
 
     <?php
     session_start();
-    if ($_SESSION['mensaje']) {
+    if (isset($_SESSION['mensaje'])) {
         $mensaje = $_SESSION['mensaje'];
         echo '<p>' . $mensaje . '<p>';
     }

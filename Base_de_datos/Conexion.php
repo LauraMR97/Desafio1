@@ -1574,6 +1574,33 @@ class Conexion
         return json_encode($array);
     }
     /*-------------------------------------------------------------------------------*/
+    public static function verEstadoPartida($Anfitrion)
+    {
+        $estado = '';
+
+        self::abrirConexion();
+
+        $query = "SELECT resultado FROM partida WHERE anfitrion like ?";
+        $stmt = self::$conexion->prepare($query);
+
+        $stmt->bind_param("s", $Anfitrion);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+
+        if ($result) {
+            while ($fila = mysqli_fetch_array($result)) {
+                $estado = $fila['resultado'];
+            }
+        }
+
+        $stmt->close();
+        self::cerrarConexion();
+
+        return $estado;
+    }
+    /*-------------------------------------------------------------------------------*/
     public static function cerrarConexion()
     {
         self::$conexion->close();
