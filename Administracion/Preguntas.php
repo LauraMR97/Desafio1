@@ -47,8 +47,8 @@
 
                             <div class="row">
                                 <div class="xl-col-12 l-col-12 m-col-12 s-col-12 separado">
-                                    Pregunta:<input type='text' value='<?php echo $pregunta->getDescripcion() ?>' name='desc'>
-                                    Respuesta:<input type='text' value='<?php echo $pregunta->getRespuesta(); ?>' name='resp'>
+                                    Pregunta:<input type='text' value='<?php echo $pregunta->getDescripcion() ?>' name='desc' readonly>
+                                    Respuesta:<input type='text' value='<?php echo $pregunta->getRespuesta(); ?>' name='resp' readonly>
                                     Creador:<input type='text' value='<?php echo $pregunta->getCreador(); ?>' name='creador' disabled>
 
                                     <button type="submit" name='XPreg'><img src="../ICONOS/eliminar.jpg" class="tamaño"></button>
@@ -67,8 +67,8 @@
 
                         <div class="row">
                             <div class="xl-col-12 l-col-12 m-col-12 s-col-12 separado">
-                                Pregunta:<input type='text' value='<?php echo $pregunta->getDescripcion() ?>' name='desc'>
-                                Respuesta:<input type='text' value='<?php echo $pregunta->getRespuesta(); ?>' name='resp'>
+                                Pregunta:<input type='text' value='<?php echo $pregunta->getDescripcion() ?>' name='desc' readonly>
+                                Respuesta:<input type='text' value='<?php echo $pregunta->getRespuesta(); ?>' name='resp' readonly>
                                 Creador:<input type='text' value='<?php echo $pregunta->getCreador(); ?>' name='creador' disabled>
 
                                 <button type="submit" name='XPreg'><img src="../ICONOS/eliminar.jpg" class="tamaño"></button>
@@ -86,8 +86,8 @@
 
                         <div class="row">
                             <div class="xl-col-12 l-col-12 m-col-12 s-col-12 separado">
-                                Pregunta:<input type='text' value='<?php echo $pregunta->getDescripcion() ?>' name='desc'>
-                                Respuesta:<input type='text' value='<?php echo $pregunta->getRespuesta(); ?>' name='resp'>
+                                Pregunta:<input type='text' value='<?php echo $pregunta->getDescripcion() ?>' name='desc' readonly>
+                                Respuesta:<input type='text' value='<?php echo $pregunta->getRespuesta(); ?>' name='resp' readonly>
                                 Creador:<input type='text' value='<?php echo $pregunta->getCreador(); ?>' name='creador' disabled>
 
                                 <button type="submit" name='XPreg'><img src="../ICONOS/eliminar.jpg" class="tamaño"></button>

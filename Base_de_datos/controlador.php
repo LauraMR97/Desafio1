@@ -508,9 +508,11 @@ if (isset($_REQUEST['VolverAdministracion'])) {
  */
 if (isset($_REQUEST['CerrarSesion'])) {
 
-    $per = $_SESSION['per'];
-    $per->Desconectar();
-    Conexion::DesconectarPersona($per->getEmail());
+    if ($_SESSION['per'] != null) {
+        $per = $_SESSION['per'];
+        $per->Desconectar();
+        Conexion::DesconectarPersona($per->getEmail());
+    }
 
     header("Location:../index.php");
 }

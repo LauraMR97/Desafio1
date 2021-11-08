@@ -71,9 +71,9 @@
                                     <div class="row p-a-1">
 
                                         <label class=" xl-col-1 l-col-1 m-col-1 s-col-12">Nombre:</label>
-                                        <input class=" xl-col-2 l-col-2 m-col-2 s-col-12" type='text' value='<?php echo $persona->getNombre(); ?>' name='nombre'>
+                                        <input class=" xl-col-2 l-col-2 m-col-2 s-col-12" type='text' value='<?php echo $persona->getNombre(); ?>' name='nombre' readonly>
                                         <label class=" xl-col-1 l-col-1 m-col-1 s-col-12">Email:</label>
-                                        <input class=" xl-col-2 l-col-2 m-col-2 s-col-12" type='text' value='<?php echo $persona->getEmail(); ?>' name='email'>
+                                        <input class=" xl-col-2 l-col-2 m-col-2 s-col-12" type='text' value='<?php echo $persona->getEmail(); ?>' name='email' readonly>
                                         <label class=" xl-col-1 l-col-1 m-col-1 s-col-12">Activo:</label>
                                         <input class=" xl-col-1 l-col-1 m-col-1 s-col-12" type='text' value='<?php if ($persona->getActivo()) {
                                                                                                                 echo 'Si';
@@ -126,9 +126,9 @@
                                 <div class="row p-a-1">
 
                                     <label class=" xl-col-1 l-col-1 m-col-1 s-col-1">Nombre:</label>
-                                    <input class=" xl-col-2 l-col-2 m-col-2 s-col-2" type='text' value='<?php echo $persona->getNombre(); ?>' name='nombre'>
+                                    <input class=" xl-col-2 l-col-2 m-col-2 s-col-2" type='text' value='<?php echo $persona->getNombre(); ?>' name='nombre' readonly>
                                     <label class=" xl-col-1 l-col-1 m-col-1 s-col-1">Email:</label>
-                                    <input class=" xl-col-2 l-col-2 m-col-2 s-col-2" type='text' value='<?php echo $persona->getEmail(); ?>' name='email'>
+                                    <input class=" xl-col-2 l-col-2 m-col-2 s-col-2" type='text' value='<?php echo $persona->getEmail(); ?>' name='email' readonly>
                                     <label class=" xl-col-1 l-col-1 m-col-1 s-col-1">Activo:</label>
                                     <input class=" xl-col-1 l-col-1 m-col-1 s-col-1" type='text' value='<?php if ($persona->getActivo()) {
                                                                                                             echo 'Si';
@@ -179,9 +179,9 @@
                                 <div class="row p-a-1">
 
                                     <label class=" xl-col-1 l-col-1 m-col-1 s-col-1">Nombre:</label>
-                                    <input class=" xl-col-2 l-col-2 m-col-2 s-col-2" type='text' value='<?php echo $persona->getNombre(); ?>' name='nombre'>
+                                    <input class=" xl-col-2 l-col-2 m-col-2 s-col-2" type='text' value='<?php echo $persona->getNombre(); ?>' name='nombre' readonly>
                                     <label class=" xl-col-1 l-col-1 m-col-1 s-col-1">Email:</label>
-                                    <input class=" xl-col-2 l-col-2 m-col-2 s-col-2" type='text' value='<?php echo $persona->getEmail(); ?>' name='email'>
+                                    <input class=" xl-col-2 l-col-2 m-col-2 s-col-2" type='text' value='<?php echo $persona->getEmail(); ?>' name='email' readonly>
                                     <label class=" xl-col-1 l-col-1 m-col-1 s-col-1">Activo:</label>
                                     <input class="xl-col-1 l-col-1 m-col-1 s-col-1" type='text' value='<?php if ($persona->getActivo()) {
                                                                                                             echo 'Si';
