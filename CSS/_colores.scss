@@ -7,6 +7,7 @@ $primario:#000000;
 $secundario:#b8b8b8;
 $terciario: #fff;
 $cuarto: #8016be8a;
+$quinto:#3b0057;
 
 /*-----------------------Colores Principales Encendidos-------------------------------------*/
 
@@ -14,18 +15,23 @@ $primarioE:#555454;
 $secundarioE:#d4d4d4;
 $terciarioE: #fff;
 $cuartoE: #8016be;
-
 /*-----------------------PALETA DE COLORES 2-------------------------------------*/
 
 
 /*-----------------------Colores Principales Normales-------------------------------------*/
 
-$primario2:#b8031b;
+$primario2:#940505;
 $secundario2:#ffffff;
 $terciario2: rgb(2, 2, 2);
+$titulo: #ffffff;
 
 /*-----------------------Colores Principales Encendidos-------------------------------------*/
 
 $primarioE2:#e96375;
 $secundarioE2:#fff;
 $terciarioE2: rgba(0, 0, 0, 0.144);
+$cuartoE: rgba(77, 80, 90, 0.719);
+
+/*-----------------------Colores Principales Encendidos-------------------------------------*/
+$acierto:rgba(11, 209, 21, 0.719);
+$fallo:rgba(209, 11, 11, 0.719);

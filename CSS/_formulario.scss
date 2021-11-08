@@ -1,19 +1,29 @@
 /*--------------------------------------FORMULARIOS----------------------------------*/
+
 form {
-    label{
+    label {
         display: block;
     }
-    &.minimalista {
+    &.gamer {
         input[type="submit"],
         input[type="button"] {
             background-color: $primario;
             color: $terciario;
-            font-family: monospace;
+            font-family: serif;
             font-size: 1.2em;
             margin: auto;
             border-radius: 10px;
-            width: 150px;
             padding: 16px;
+            background-image: linear-gradient(to right, $primario, $cuartoE);
+            &:hover {
+                background-image: linear-gradient(to right, $cuarto, $primario);
+            }
+            &.botVolver{
+                background-image: linear-gradient(to right, $quinto, $cuarto);
+                &:hover {
+                    background-image: linear-gradient(to bottom, $cuarto, $primario);
+                }
+            }
         }
         input[type="email"],
         input[type="number"],
@@ -24,11 +34,10 @@ form {
         input[type="password"],
         textarea,
         select {
-            font-family: monospace;
+            font-family: serif;
             font-size: 1.2em;
             margin: auto;
             border-radius: 10px;
-            width: 150px;
             padding: 16px;
         }
         input[type="checkbox"],
@@ -40,12 +49,23 @@ form {
         input[type="submit"],
         input[type="button"] {
             background-color: $secundarioE2;
-            color: $primario;
+            color: $terciarioE;
             font-family: monospace;
             font-size: 1.2em;
             margin: auto;
-            width: 150px;
             padding: 16px;
+            border-radius: 1em 1em 1em 1em;
+            background-image: linear-gradient(to bottom,  $terciario2, $cuartoE);
+            &:hover {
+                background-image: linear-gradient(to bottom, $cuartoE, $terciario2);
+            }
+            &.botVolver{
+                color: $titulo;
+                background-image: linear-gradient(to right, $primario2, $secundario2);
+                &:hover {
+                    background-image: linear-gradient(to bottom, $secundario2, $primario2);
+                }
+            }
         }
         input[type="email"],
         input[type="number"],
@@ -61,7 +81,6 @@ form {
             font-family: monospace;
             font-size: 1.2em;
             margin: auto;
-            width: 150px;
             padding: 16px;
         }
         input[type="checkbox"],

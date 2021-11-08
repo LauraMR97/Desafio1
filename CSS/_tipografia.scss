@@ -7,14 +7,14 @@ $size: 0.1rem;
 $talla: 3.6rem;
 @for $i from 1 through 6 {
     h#{$i} {
-        font-size: $talla;
-        font-family: 'Franklin Gothic Medium';
-        $talla: $talla - 0.60;
+        font-size: $talla - 0.6*$i;
+        font-family: 'Garamond';
+        text-align: center;
     }
 }
 
 p {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Consolas';
     font-size: 1rem;
 }
 
@@ -22,7 +22,7 @@ p {
 /*-----------------------Enlaces-------------------------------------*/
 
 a {
-    &.gamer{
+    &.gamer {
         color: $cuarto;
         font-family: monospace;
         text-decoration: none;
@@ -36,8 +36,7 @@ a {
             color: rgb(20, 23, 220);
         }
     }
-
-    &.oriental{
+    &.oriental {
         color: $primario2;
         font-family: monospace;
         text-decoration: none;
@@ -45,11 +44,20 @@ a {
         border-radius: 1em 1em 1em 1em;
         padding: 12px;
         &:hover {
-            color:$primarioE2;
+            color: $primarioE2;
         }
         &:visited {
             color: $terciarioE2;
         }
     }
- 
+}
+
+.alignDerecha {
+    text-align: right;
+}
+
+.linea{
+    text-decoration-line: underline;
+    text-decoration-style:dotted;
+    text-decoration-color: $primarioE;
 }
