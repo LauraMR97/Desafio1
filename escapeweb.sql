@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 4.9.5deb2
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 08-11-2021 a las 07:24:23
--- Versión del servidor: 10.4.19-MariaDB
--- Versión de PHP: 8.0.6
+-- Host: localhost:3306
+-- Generation Time: Nov 08, 2021 at 01:40 PM
+-- Server version: 8.0.27-0ubuntu0.20.04.1
+-- PHP Version: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,69 +19,75 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `escapeweb`
+-- Database: `escapeweb`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `equipo`
+-- Table structure for table `equipo`
 --
 
 CREATE TABLE `equipo` (
-  `id_equipo` int(11) NOT NULL,
-  `llaves` int(11) NOT NULL,
+  `id_equipo` int NOT NULL,
+  `llaves` int NOT NULL,
   `anfitrion` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `equipo_persona`
+-- Table structure for table `equipo_persona`
 --
 
 CREATE TABLE `equipo_persona` (
-  `id_equipo` int(11) NOT NULL,
+  `id_equipo` int NOT NULL,
   `correo` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `historial`
+-- Table structure for table `historial`
 --
 
 CREATE TABLE `historial` (
-  `id_historial` int(10) NOT NULL,
-  `id_equipo` int(11) NOT NULL,
+  `id_historial` int NOT NULL,
+  `id_equipo` int NOT NULL,
   `correo` varchar(200) NOT NULL,
   `fechaIni` varchar(30) NOT NULL,
   `fechaFin` varchar(30) NOT NULL,
   `resultado` varchar(15) NOT NULL,
   `almirante` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Volcado de datos para la tabla `historial`
+-- Dumping data for table `historial`
 --
 
 INSERT INTO `historial` (`id_historial`, `id_equipo`, `correo`, `fechaIni`, `fechaFin`, `resultado`, `almirante`) VALUES
-(5, 44, 'david@gmail.com,m@gmail.com,', '05:50:48', '05:52:22', 'Victoria', 'david@gmail.com');
+(5, 44, 'david@gmail.com,m@gmail.com,', '05:50:48', '05:52:22', 'Victoria', 'david@gmail.com'),
+(10, 56, 'david@gmail.com,m@gmail.com,', '10:24:06', '10:41:40', 'Victoria', 'm@gmail.com'),
+(11, 57, 'david@gmail.com,m@gmail.com,', '10:25:58', '10:41:41', 'Victoria', 'm@gmail.com'),
+(12, 57, 'david@gmail.com,m@gmail.com,', '10:25:58', '11:05:15', 'Victoria', 'david@gmail.com'),
+(13, 58, 'david@gmail.com,m@gmail.com,', '11:00:59', '11:05:16', 'Victoria', 'david@gmail.com'),
+(14, 59, 'david@gmail.com,m@gmail.com,', '01:25:56', '01:27:47', 'Victoria', 'm@gmail.com'),
+(15, 60, 'david@gmail.com,m@gmail.com,', '01:30:40', '01:32:10', 'Victoria', 'david@gmail.com');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `opciones`
+-- Table structure for table `opciones`
 --
 
 CREATE TABLE `opciones` (
-  `id_opcion` int(11) NOT NULL,
+  `id_opcion` int NOT NULL,
   `descripcion` varchar(100) NOT NULL,
-  `id_pregunta` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `id_pregunta` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Volcado de datos para la tabla `opciones`
+-- Dumping data for table `opciones`
 --
 
 INSERT INTO `opciones` (`id_opcion`, `descripcion`, `id_pregunta`) VALUES
@@ -96,45 +103,45 @@ INSERT INTO `opciones` (`id_opcion`, `descripcion`, `id_pregunta`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `partida`
+-- Table structure for table `partida`
 --
 
 CREATE TABLE `partida` (
-  `Id_partida` int(11) NOT NULL,
+  `Id_partida` int NOT NULL,
   `resultado` varchar(15) NOT NULL,
   `almirante` varchar(30) NOT NULL,
   `estado` varchar(20) NOT NULL,
-  `fecha` date NOT NULL,
+  `fecha` varchar(30) NOT NULL,
   `anfitrion` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `partida_almirante`
+-- Table structure for table `partida_almirante`
 --
 
 CREATE TABLE `partida_almirante` (
-  `id_informacion` int(5) NOT NULL,
+  `id_informacion` int NOT NULL,
   `correo` varchar(30) NOT NULL,
-  `id_equipo` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `id_equipo` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `partida_equipo`
+-- Table structure for table `partida_equipo`
 --
 
 CREATE TABLE `partida_equipo` (
-  `id_equipo` int(11) NOT NULL,
-  `Id_partida` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `id_equipo` int NOT NULL,
+  `Id_partida` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `persona`
+-- Table structure for table `persona`
 --
 
 CREATE TABLE `persona` (
@@ -143,39 +150,39 @@ CREATE TABLE `persona` (
   `password` varchar(40) NOT NULL,
   `foto` varchar(30) NOT NULL,
   `prestigio` varchar(20) NOT NULL,
-  `aciertos` int(11) NOT NULL,
-  `victorias` int(11) NOT NULL,
+  `aciertos` int NOT NULL,
+  `victorias` int NOT NULL,
   `activo` tinyint(1) NOT NULL,
   `conectado` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Volcado de datos para la tabla `persona`
+-- Dumping data for table `persona`
 --
 
 INSERT INTO `persona` (`nombre`, `correo`, `password`, `foto`, `prestigio`, `aciertos`, `victorias`, `activo`, `conectado`) VALUES
 ('Alvaro', 'alvaro@gmail.com', '8f39c63d50478f69b087a9696546e72e50cd1967', './PERFILES/usuario.jpg', 'madera', 20, 0, 1, 0),
 ('Daniel', 'daniel@gmail.com', 'bdafc5b89483593871bf6f3e6cb5d87d8eac20d8', './PERFILES/usuario.jpg', 'madera', 0, 0, 1, 0),
-('david', 'david@gmail.com', '269cb45d944e48836d6e92d5f74ea339807882af', './PERFILES/usuario.jpg', 'madera', 93, 0, 1, 1),
+('david', 'david@gmail.com', '269cb45d944e48836d6e92d5f74ea339807882af', './PERFILES/usuario.jpg', 'madera', 106, 0, 1, 0),
 ('Laura', 'laura@gmail.com', '94745df4bd94de756ea5436584fec066fc7898d5', './PERFILES/usuario.jpg', 'madera', 0, 0, 1, 0),
 ('Abril', 'lauramorenoramos97@gmail.com', '84f4b92e9e6c512a65d1fc6e9e9ea6d08fe420b4', './PERFILES/usuario.jpg', 'madera', 0, 0, 0, 0),
-('m', 'm@gmail.com', '6b0d31c0d563223024da45691584643ac78c96e8', './PERFILES/usuario.jpg', 'madera', 41, 0, 1, 0),
-('Miku', 'miku@gmail.com', '8f013fac0d0f685814950bc3ca887532a8f88b4f', './PERFILES/usuario.jpg', 'madera', 0, 0, 1, 0);
+('m', 'm@gmail.com', '6b0d31c0d563223024da45691584643ac78c96e8', './PERFILES/usuario.jpg', 'madera', 45, 0, 1, 0),
+('Miku', 'miku@gmail.com', '8f013fac0d0f685814950bc3ca887532a8f88b4f', './PERFILES/usuario.jpg', 'madera', 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `pregunta`
+-- Table structure for table `pregunta`
 --
 
 CREATE TABLE `pregunta` (
-  `Id_pregunta` int(11) NOT NULL,
+  `Id_pregunta` int NOT NULL,
   `descripcion` varchar(200) NOT NULL,
   `correo` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Volcado de datos para la tabla `pregunta`
+-- Dumping data for table `pregunta`
 --
 
 INSERT INTO `pregunta` (`Id_pregunta`, `descripcion`, `correo`) VALUES
@@ -185,16 +192,16 @@ INSERT INTO `pregunta` (`Id_pregunta`, `descripcion`, `correo`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `preg_resp`
+-- Table structure for table `preg_resp`
 --
 
 CREATE TABLE `preg_resp` (
-  `Id_pregunta` int(11) NOT NULL,
-  `id_respuesta` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `Id_pregunta` int NOT NULL,
+  `id_respuesta` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Volcado de datos para la tabla `preg_resp`
+-- Dumping data for table `preg_resp`
 --
 
 INSERT INTO `preg_resp` (`Id_pregunta`, `id_respuesta`) VALUES
@@ -204,16 +211,16 @@ INSERT INTO `preg_resp` (`Id_pregunta`, `id_respuesta`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `respuesta`
+-- Table structure for table `respuesta`
 --
 
 CREATE TABLE `respuesta` (
-  `id_respuesta` int(11) NOT NULL,
+  `id_respuesta` int NOT NULL,
   `descripcionR` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Volcado de datos para la tabla `respuesta`
+-- Dumping data for table `respuesta`
 --
 
 INSERT INTO `respuesta` (`id_respuesta`, `descripcionR`) VALUES
@@ -223,16 +230,16 @@ INSERT INTO `respuesta` (`id_respuesta`, `descripcionR`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `rol`
+-- Table structure for table `rol`
 --
 
 CREATE TABLE `rol` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `nombre` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Volcado de datos para la tabla `rol`
+-- Dumping data for table `rol`
 --
 
 INSERT INTO `rol` (`id`, `nombre`) VALUES
@@ -243,24 +250,24 @@ INSERT INTO `rol` (`id`, `nombre`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `rol_persona`
+-- Table structure for table `rol_persona`
 --
 
 CREATE TABLE `rol_persona` (
-  `id_rol` int(11) NOT NULL,
+  `id_rol` int NOT NULL,
   `correo` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Volcado de datos para la tabla `rol_persona`
+-- Dumping data for table `rol_persona`
 --
 
 INSERT INTO `rol_persona` (`id_rol`, `correo`) VALUES
+(1, 'alvaro@gmail.com'),
+(2, 'daniel@gmail.com'),
 (0, 'david@gmail.com'),
 (0, 'laura@gmail.com'),
-(1, 'alvaro@gmail.com'),
 (1, 'laura@gmail.com'),
-(2, 'daniel@gmail.com'),
 (2, 'laura@gmail.com'),
 (2, 'lauramorenoramos97@gmail.com'),
 (2, 'm@gmail.com'),
@@ -269,57 +276,57 @@ INSERT INTO `rol_persona` (`id_rol`, `correo`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `sala`
+-- Table structure for table `sala`
 --
 
 CREATE TABLE `sala` (
   `codigo` varchar(20) NOT NULL,
   `nombre` varchar(20) NOT NULL,
   `tipo` varchar(20) NOT NULL,
-  `num_personas` int(11) NOT NULL,
+  `num_personas` int NOT NULL,
   `creador` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `equipo`
+-- Indexes for table `equipo`
 --
 ALTER TABLE `equipo`
   ADD PRIMARY KEY (`id_equipo`),
   ADD KEY `anfitrion` (`anfitrion`);
 
 --
--- Indices de la tabla `equipo_persona`
+-- Indexes for table `equipo_persona`
 --
 ALTER TABLE `equipo_persona`
   ADD PRIMARY KEY (`id_equipo`,`correo`),
   ADD KEY `correo` (`correo`);
 
 --
--- Indices de la tabla `historial`
+-- Indexes for table `historial`
 --
 ALTER TABLE `historial`
   ADD PRIMARY KEY (`id_historial`);
 
 --
--- Indices de la tabla `opciones`
+-- Indexes for table `opciones`
 --
 ALTER TABLE `opciones`
   ADD PRIMARY KEY (`id_opcion`),
   ADD KEY `id_pregunta` (`id_pregunta`);
 
 --
--- Indices de la tabla `partida`
+-- Indexes for table `partida`
 --
 ALTER TABLE `partida`
   ADD PRIMARY KEY (`Id_partida`),
   ADD KEY `anfitrion` (`anfitrion`);
 
 --
--- Indices de la tabla `partida_almirante`
+-- Indexes for table `partida_almirante`
 --
 ALTER TABLE `partida_almirante`
   ADD PRIMARY KEY (`id_informacion`),
@@ -327,20 +334,20 @@ ALTER TABLE `partida_almirante`
   ADD KEY `id_equipo` (`id_equipo`);
 
 --
--- Indices de la tabla `partida_equipo`
+-- Indexes for table `partida_equipo`
 --
 ALTER TABLE `partida_equipo`
   ADD PRIMARY KEY (`id_equipo`,`Id_partida`),
   ADD KEY `Id_partida` (`Id_partida`);
 
 --
--- Indices de la tabla `persona`
+-- Indexes for table `persona`
 --
 ALTER TABLE `persona`
   ADD PRIMARY KEY (`correo`);
 
 --
--- Indices de la tabla `pregunta`
+-- Indexes for table `pregunta`
 --
 ALTER TABLE `pregunta`
   ADD PRIMARY KEY (`Id_pregunta`),
@@ -348,143 +355,143 @@ ALTER TABLE `pregunta`
   ADD KEY `correo` (`correo`);
 
 --
--- Indices de la tabla `preg_resp`
+-- Indexes for table `preg_resp`
 --
 ALTER TABLE `preg_resp`
   ADD PRIMARY KEY (`Id_pregunta`,`id_respuesta`),
   ADD KEY `id_respuesta` (`id_respuesta`);
 
 --
--- Indices de la tabla `respuesta`
+-- Indexes for table `respuesta`
 --
 ALTER TABLE `respuesta`
   ADD PRIMARY KEY (`id_respuesta`);
 
 --
--- Indices de la tabla `rol`
+-- Indexes for table `rol`
 --
 ALTER TABLE `rol`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `rol_persona`
+-- Indexes for table `rol_persona`
 --
 ALTER TABLE `rol_persona`
   ADD PRIMARY KEY (`id_rol`,`correo`),
   ADD KEY `correo` (`correo`);
 
 --
--- Indices de la tabla `sala`
+-- Indexes for table `sala`
 --
 ALTER TABLE `sala`
   ADD PRIMARY KEY (`codigo`),
   ADD KEY `creador` (`creador`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `equipo`
+-- AUTO_INCREMENT for table `equipo`
 --
 ALTER TABLE `equipo`
-  MODIFY `id_equipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id_equipo` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
--- AUTO_INCREMENT de la tabla `historial`
+-- AUTO_INCREMENT for table `historial`
 --
 ALTER TABLE `historial`
-  MODIFY `id_historial` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_historial` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT de la tabla `opciones`
+-- AUTO_INCREMENT for table `opciones`
 --
 ALTER TABLE `opciones`
-  MODIFY `id_opcion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_opcion` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT de la tabla `partida`
+-- AUTO_INCREMENT for table `partida`
 --
 ALTER TABLE `partida`
-  MODIFY `Id_partida` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `Id_partida` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
--- AUTO_INCREMENT de la tabla `partida_almirante`
+-- AUTO_INCREMENT for table `partida_almirante`
 --
 ALTER TABLE `partida_almirante`
-  MODIFY `id_informacion` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+  MODIFY `id_informacion` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
 
 --
--- AUTO_INCREMENT de la tabla `pregunta`
+-- AUTO_INCREMENT for table `pregunta`
 --
 ALTER TABLE `pregunta`
-  MODIFY `Id_pregunta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `Id_pregunta` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT de la tabla `respuesta`
+-- AUTO_INCREMENT for table `respuesta`
 --
 ALTER TABLE `respuesta`
-  MODIFY `id_respuesta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_respuesta` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- Restricciones para tablas volcadas
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `equipo_persona`
+-- Constraints for table `equipo_persona`
 --
 ALTER TABLE `equipo_persona`
   ADD CONSTRAINT `equipo_persona_ibfk_1` FOREIGN KEY (`id_equipo`) REFERENCES `equipo` (`id_equipo`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `equipo_persona_ibfk_2` FOREIGN KEY (`correo`) REFERENCES `persona` (`correo`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `opciones`
+-- Constraints for table `opciones`
 --
 ALTER TABLE `opciones`
   ADD CONSTRAINT `opciones_ibfk_1` FOREIGN KEY (`id_pregunta`) REFERENCES `pregunta` (`Id_pregunta`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `partida`
+-- Constraints for table `partida`
 --
 ALTER TABLE `partida`
   ADD CONSTRAINT `partida_ibfk_1` FOREIGN KEY (`anfitrion`) REFERENCES `equipo` (`anfitrion`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `partida_almirante`
+-- Constraints for table `partida_almirante`
 --
 ALTER TABLE `partida_almirante`
   ADD CONSTRAINT `partida_almirante_ibfk_1` FOREIGN KEY (`correo`) REFERENCES `persona` (`correo`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `partida_almirante_ibfk_2` FOREIGN KEY (`id_equipo`) REFERENCES `equipo` (`id_equipo`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `partida_equipo`
+-- Constraints for table `partida_equipo`
 --
 ALTER TABLE `partida_equipo`
   ADD CONSTRAINT `partida_equipo_ibfk_1` FOREIGN KEY (`Id_partida`) REFERENCES `partida` (`Id_partida`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `partida_equipo_ibfk_2` FOREIGN KEY (`id_equipo`) REFERENCES `equipo` (`id_equipo`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `pregunta`
+-- Constraints for table `pregunta`
 --
 ALTER TABLE `pregunta`
   ADD CONSTRAINT `pregunta_ibfk_1` FOREIGN KEY (`correo`) REFERENCES `persona` (`correo`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `preg_resp`
+-- Constraints for table `preg_resp`
 --
 ALTER TABLE `preg_resp`
   ADD CONSTRAINT `preg_resp_ibfk_1` FOREIGN KEY (`Id_pregunta`) REFERENCES `pregunta` (`Id_pregunta`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `preg_resp_ibfk_2` FOREIGN KEY (`id_respuesta`) REFERENCES `respuesta` (`id_respuesta`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `rol_persona`
+-- Constraints for table `rol_persona`
 --
 ALTER TABLE `rol_persona`
   ADD CONSTRAINT `rol_persona_ibfk_1` FOREIGN KEY (`correo`) REFERENCES `persona` (`correo`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `rol_persona_ibfk_2` FOREIGN KEY (`id_rol`) REFERENCES `rol` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `sala`
+-- Constraints for table `sala`
 --
 ALTER TABLE `sala`
   ADD CONSTRAINT `sala_ibfk_1` FOREIGN KEY (`creador`) REFERENCES `persona` (`correo`) ON DELETE CASCADE ON UPDATE CASCADE;
