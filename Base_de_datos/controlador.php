@@ -525,6 +525,23 @@ if (isset($_REQUEST['VolverLogin'])) {
 if (isset($_REQUEST['VolverJuego'])) {
     header("Location:../Gestion_Juego/Jugar.php");
 }
+
+if (isset($_REQUEST['VolverJugar'])) {
+    $fechaFin = date('h:i:s');
+    $fechaIni = $_SESSION['fechaIni'];
+    $idEquipo = Conexion::verIDEquipo($_SESSION['creador']);
+    $personas = Conexion::PersonasEquipo($idEquipo);
+    $PersonasEquipo = '';
+
+    for ($i = 0; $i < count($personas); $i++) {
+        $PersonasEquipo .=$personas[$i].',';
+    }
+    Conexion::CrearHistorial($_SESSION['codEquipo'], $PersonasEquipo, $fechaFin, $fechaIni, $_SESSION['resultado'], $_SESSION['Almirante']);
+    Conexion::DropEquipo($_SESSION['codEquipo']);
+    header("Location:../Gestion_Juego/Jugar.php");
+}
+
+
 /**
  * Volver al menu del editor
  */
@@ -534,7 +551,6 @@ if (isset($_REQUEST['VolverMenuEditor'])) {
 /*************************************************************************** */
 /*******************************REDIRECCIONAMIENTO************************* */
 /*************************************************************************** */
-
 
 if (isset($_REQUEST['CrearPartida'])) {
     header("Location:../Gestion_Juego/CrearPartida.php");
@@ -594,12 +610,20 @@ if (isset($_REQUEST['GestionPreguntas'])) {
 
 
 if (isset($_REQUEST['Historial'])) {
-    header("Location:../Error_y_Reformas/reformas.php");
+    header("Location:../Ventanas/Historial.php");
 }
 
 /*************************************************************************** */
 /****************************GESTION SALA****************************** */
 /*************************************************************************** */
+
+
+if (isset($_REQUEST['EmpezarYA'])) {
+    $_SESSION['creador'] = Conexion::verCreadorDeSala($_SESSION['codSala']);
+    Conexion::ActivarEstadoPartida($_SESSION['creador']);
+    header("Location:../Juego/Carga.php");
+}
+
 
 /**
  * Recojo la informacion de la sala, compruebo si esta existe. 
@@ -615,7 +639,12 @@ if (isset($_REQUEST['CrearP'])) {
 
     if ($sala == null) {
         $_SESSION['codSala'] = $codigo;
-        Conexion::CrearSala($codigo, $nombreSala, $tipoSala, 1);
+        Conexion::CrearSala($codigo, $nombreSala, $tipoSala, 1, $_SESSION['per']->getEmail());
+        Conexion::CrearEquipo($_SESSION['per']->getEmail());
+        $codEquipo = Conexion::verCodigo($_SESSION['per']->getEmail());
+        Conexion::AddParticipante($_SESSION['per']->getEmail(), $codEquipo);
+        $_SESSION['codEquipo'] = $codEquipo;
+        Conexion::CrearPartida($_SESSION['per']->getEmail());
         header("Location:../Gestion_Juego/SalaEspera.php");
     } else {
         $_SESSION['mensaje'] = 'Este codigo de sala ya existe';
@@ -627,7 +656,8 @@ if (isset($_REQUEST['CrearP'])) {
  * Si pongo un codigo de una sala privada y le doy a unirme , se recoge el codigo,
  * se comprueba si este existe, si existe miramos el numero de jugadores de esta sala,
  * le sumamos uno (Por que estamos entrando), modificamos el numero de jugadores y me 
- * lleva a la sala. Si la sala no existe, me lleva a una pagina de error.
+ * lleva a la sala. Si la sala no existe, me lleva a una pagina de error Tambien se añade a 
+ * la persona al equipo correspondiente.
  */
 if (isset($_REQUEST['UnirmePartida'])) {
     $codigo = $_REQUEST['codigo'];
@@ -638,6 +668,9 @@ if (isset($_REQUEST['UnirmePartida'])) {
         $numJugadores = Conexion::verNumeroJugadoresDeSala($_SESSION['codSala']);
         $numJugadores = $numJugadores + 1;
         Conexion::modificarNumeroJugadores($_SESSION['codSala'], $numJugadores);
+        $_SESSION['creador'] = Conexion::verCreadorDeSala($_SESSION['codSala']);
+        $codEquipo = Conexion::verCodigo($_SESSION['creador']);
+        Conexion::AddParticipante($_SESSION['per']->getEmail(), $codEquipo);
         header("Location:../Gestion_Juego/SalaEspera.php");
     } else {
         $_SESSION['mensaje'] = 'Esta sala no existe';
@@ -650,6 +683,9 @@ if (isset($_REQUEST['Unirse'])) {
     $numJugadores = Conexion::verNumeroJugadoresDeSala($cod);
     $numJugadores = $numJugadores + 1;
     Conexion::modificarNumeroJugadores($cod, $numJugadores);
+    $_SESSION['creador'] = Conexion::verCreadorDeSala($_SESSION['codSala']);
+    $codEquipo = Conexion::verCodigo($_SESSION['creador']);
+    Conexion::AddParticipante($_SESSION['per']->getEmail(), $codEquipo);
     header("Location:../Gestion_Juego/SalaEspera.php");
 }
 
@@ -663,10 +699,15 @@ if (isset($_REQUEST['VolverDesdeSalaEspera'])) {
     $numJugadores = Conexion::verNumeroJugadoresDeSala($_SESSION['codSala']);
     $numJugadores = $numJugadores - 1;
     Conexion::modificarNumeroJugadores($_SESSION['codSala'], $numJugadores);
+    Conexion::quitarPersonaDelEquipo($_SESSION['per']->getEmail());
 
     if ($numJugadores == 0) {
         header("Location:../Gestion_Juego/Jugar.php");
         Conexion::DropSala($_SESSION['codSala']);
+        Conexion::DropEquipo($_SESSION['codEquipo']);
+        // $creador = Conexion::verCreadorDeSala($_SESSION['codSala']);
+        // Conexion::DropPartida($creador);
+        header("Location:../Gestion_Juego/Jugar.php");
     } else {
         header("Location:../Gestion_Juego/Jugar.php");
     }

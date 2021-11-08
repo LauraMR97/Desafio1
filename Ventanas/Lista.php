@@ -21,7 +21,6 @@
         <header class="row oriental">
             <h1>Escape Web</h1>
             <h4>Tu pagina de scape room</h4>
-            </div>
         </header>
 
         <section class="row">
@@ -142,7 +141,7 @@
                             <?php
                                 }
                             }
-
+                           
                             ?>
                         </div>
                     </div>

@@ -141,6 +141,7 @@ table {
 /*-----------------------PALETA DE COLORES 2-------------------------------------*/
 /*-----------------------Colores Principales Normales-------------------------------------*/
 /*-----------------------Colores Principales Encendidos-------------------------------------*/
+/*-----------------------Colores Principales Encendidos-------------------------------------*/
 /*-----------------------Rejillas Mixin-------------------------------------*/
 .col-1 {
   width: 8.3333333333%;
@@ -904,6 +905,29 @@ footer.oriental {
   height: 5rem;
 }
 
+.fondoOriental-a {
+  background-color: #940505;
+  color: #ffffff;
+  border-radius: 1em 1em 1em 1em;
+}
+
+.fondoOriental-b {
+  background-color: #020202;
+  color: #ffffff;
+  border-radius: 1em 1em 1em 1em;
+}
+
+.fondoOriental-c {
+  background-color: #e96375;
+  color: rgba(0, 0, 0, 0.144);
+  border-radius: 1em 1em 1em 1em;
+}
+
+.fondoCarga {
+  background-color: #020202;
+  color: #ffffff;
+}
+
 /*-----------------------Botones-------------------------------*/
 button.oriental,
 input[type=submit].oriental,
@@ -1137,4 +1161,12 @@ hr {
 
 .ocultar {
   display: none;
+}
+
+.acierto {
+  color: rgba(11, 209, 21, 0.719);
+}
+
+.fallo {
+  color: rgba(209, 11, 11, 0.719);
 }/*# sourceMappingURL=general.css.map */
