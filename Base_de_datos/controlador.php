@@ -26,8 +26,8 @@ if (isset($_REQUEST['Aceptar'])) {
 
     $usu = Conexion::buscarPersona($email, $password);
 
-    if ($usu->getActivo() != 0) {
-        if ($usu != null) {
+    if ($usu != null) {
+        if ($usu->getActivo() != 0) {
             $_SESSION['per'] = $usu;
             $rol = Conexion::verRol($email);
             $usu->Conectar();
@@ -44,9 +44,12 @@ if (isset($_REQUEST['Aceptar'])) {
                     }
                 }
             }
+        } else {
+            $_SESSION['mensaje'] = 'Aun no estas activo en este sitio web';
+            header("Location:../Error_y_Reformas/error.php");
         }
     } else {
-        $_SESSION['mensaje'] = 'Aun no estas activo en este sitio web';
+        $_SESSION['mensaje'] = 'Usuario no registrado';
         header("Location:../Error_y_Reformas/error.php");
     }
 }
@@ -534,7 +537,7 @@ if (isset($_REQUEST['VolverJugar'])) {
     $PersonasEquipo = '';
 
     for ($i = 0; $i < count($personas); $i++) {
-        $PersonasEquipo .=$personas[$i].',';
+        $PersonasEquipo .= $personas[$i] . ',';
     }
     Conexion::CrearHistorial($_SESSION['codEquipo'], $PersonasEquipo, $fechaFin, $fechaIni, $_SESSION['resultado'], $_SESSION['Almirante']);
     Conexion::DropEquipo($_SESSION['codEquipo']);

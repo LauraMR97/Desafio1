@@ -1,0 +1,3 @@
+Administrador: david@gmail.com  ->   pato
+Editor: alvaro@gmail.com 	->   gato
+Usuario: m@gmail.com		->   m

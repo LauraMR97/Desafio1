@@ -5,8 +5,9 @@ var equipo;
 var opciones;
 var almirante;
 var perLoggeada;
+var estadoPartida;
 
-function cargar(llaves_PHP, Preguntas_PHP, numPreguntas_PHP, equipo_PHP, opciones_PHP, almirante_PHP, perLoggeada_PHP) {
+function cargar(llaves_PHP, Preguntas_PHP, numPreguntas_PHP, equipo_PHP, opciones_PHP, almirante_PHP, perLoggeada_PHP,estadoPartida_PHP) {
     llaves = llaves_PHP;
     pregunta = Preguntas_PHP;
     numPreguntas = numPreguntas_PHP;
@@ -14,10 +15,11 @@ function cargar(llaves_PHP, Preguntas_PHP, numPreguntas_PHP, equipo_PHP, opcione
     opciones = JSON.parse(opciones_PHP);
     almirante = almirante_PHP;
     perLoggeada = perLoggeada_PHP;
+    estadoPartida=estadoPartida_PHP;
 }
 
 function tiempo() {
-    var time = setTimeout(function () { tiempo() }, 1000);
+    var time = setTimeout(function() { tiempo() }, 1000);
     document.getElementById('tiempo').innerHTML = "<h3>" + time + "</h3>";
 
     if (time == 60) {
@@ -28,17 +30,21 @@ function tiempo() {
 
 function pintar() {
 
-        if (almirante == perLoggeada) {
-            pintarLlaves();
-            pintarEquipo();
-            pintarPreguntas();
-            pintarOpciones();
-            pintarBoton();
-        } else {
-            pintarLlaves();
-            pintarPreguntas();
-            pintarOpciones();
-        }
+    if(estadoPartida!='Victoria'){
+    if (almirante == perLoggeada) {
+        pintarLlaves();
+        pintarEquipo();
+        pintarPreguntas();
+        pintarOpciones();
+        pintarBoton();
+    } else {
+        pintarLlaves();
+        pintarPreguntas();
+        pintarOpciones();
+    }
+}else{
+    ganar();
+}
 }
 
 function ganar() {
@@ -50,7 +56,6 @@ function perder() {
 }
 
 function pintarOpciones() {
-    console.log(opciones);
     var datos = "";
     var NumOpcion = 0;
 
@@ -69,19 +74,16 @@ function pintarOpciones() {
     datos += '</form>';
 
 
-    console.log(datos);
     document.getElementById('respuestas').innerHTML = datos;
 }
 
 function pintarPreguntas() {
-    console.log(pregunta);
     var datos = "";
     datos += "<h3>" + pregunta + "</h3>";
     document.getElementById('pregunta').innerHTML = datos;
 }
 
 function pintarEquipo() {
-    console.log(equipo);
     var datos = "";
 
 
@@ -107,8 +109,5 @@ function pintarEquipo() {
 
 
 function pintarLlaves() {
-    console.log(llaves);
     document.getElementById('llaves').innerHTML = '<p class="linea">llaves: ' + llaves + '</p>';
 }
-
-
