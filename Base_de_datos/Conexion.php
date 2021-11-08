@@ -1368,7 +1368,7 @@ class Conexion
 
         self::abrirConexion();
 
-        $query = "SELECT MIN(id_informacion),correo FROM partida_almirante WHERE id_equipo like ?";
+        $query = "SELECT MIN(id_informacion),correo FROM partida_almirante WHERE id_equipo like ? GROUP BY id_informacion";
         $stmt = self::$conexion->prepare($query);
 
         $stmt->bind_param("i", $idEquipo);
@@ -1394,7 +1394,7 @@ class Conexion
         self::abrirConexion();
 
         $query = "UPDATE partida SET almirante = ? WHERE anfitrion LIKE ?";
-        $_SESSION['query'] = $query;
+
         $stmt = self::$conexion->prepare($query);
 
         $stmt->bind_param("ss", $almirante, $anfitrion);
@@ -1550,6 +1550,28 @@ class Conexion
         self::cerrarConexion();
 
         return $array;
+    }
+    /*-------------------------------------------------------------------------------*/
+    public static function verHistorial()
+    {
+        $array = array();
+
+        self::abrirConexion();
+
+        $query = "SELECT * FROM historial";
+
+        $resultado = self::$conexion->query($query);
+
+        if ($resultado) {
+            while ($fila = mysqli_fetch_array($resultado)) {
+                $array[] = ['equipo' => $fila['id_equipo'], 'personas' => $fila['correo'], 'fechaIni' => $fila['fechaIni'], 'fechaFin' => $fila['fechaFin'], 'resultado' => $fila['resultado'], 'almirante' => $fila['almirante']];
+            }
+        }
+        mysqli_free_result($resultado);
+
+        self::cerrarConexion();
+
+        return json_encode($array);
     }
     /*-------------------------------------------------------------------------------*/
     public static function cerrarConexion()

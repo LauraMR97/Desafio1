@@ -17,7 +17,7 @@ function carga() {
     var time = setTimeout(function() { carga() }, 1000);
     document.getElementById('introduccion').innerHTML = time;
     if (time == 30) {
-        window.location.href = 'Enigma.php';
+        window.location.href = './Enigma.php';
         clearTimeout(time);
     }
 }

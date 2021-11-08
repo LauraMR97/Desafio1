@@ -27,8 +27,9 @@
     $Opciones = Conexion::verOpcionesDePregunta($idPregunta);
     $Anfitrion = Conexion::verAnfitrion($idEquipo);
     $Almirante = Conexion::verAlmirante($Anfitrion);
-    $_SESSION['Almirante']=$Almirante;
+    $_SESSION['Almirante'] = $Almirante;
     $PerLoggeada = $_SESSION['per'];
+   $_SESSION['contestada']=false;
 
     if ($llaves < 5) {
         if (isset($_REQUEST['verSolucion'])) {
@@ -48,9 +49,15 @@
             } else {
                 echo 'Fallo';
             }
+            $_SESSION['contestada']=true;
         }
         if (isset($_REQUEST['AnularPersona'])) {
+
         }
+       /* if($_SESSION['contestada']=true){
+            header("Location:Enigma.php");
+            $_SESSION['contestada']=false;
+        }*/
     } else {
         Conexion::Victoria($Anfitrion);
     ?>
@@ -61,7 +68,7 @@
     }
     ?>
     <script>
-        cargar('<?php echo $llaves ?>', '<?php echo  $preguntaAleatoria->getDescripcion(); ?>', '<?php echo $numPreguntas ?>', '<?php echo $PersonasEquipo ?>', '<?php echo $Opciones ?>', '<?php echo $Almirante ?>', '<?php echo $PerLoggeada->getEmail() ?>')
+        cargar('<?php echo $llaves ?>', '<?php echo  $preguntaAleatoria->getDescripcion(); ?>', '<?php echo $numPreguntas ?>', '<?php echo $PersonasEquipo ?>', '<?php echo $Opciones ?>', '<?php echo $Almirante ?>', '<?php echo $PerLoggeada->getEmail() ?>');
     </script>
     <main class="container oriental">
         <header class="row oriental">
@@ -99,6 +106,9 @@
             </div>
         </footer>
     </main>
+    <?php
+    header("refresh:60;url=Enigma.php");
+    ?>
 </body>
 
 </html>
