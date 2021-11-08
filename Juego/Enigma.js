@@ -17,7 +17,7 @@ function cargar(llaves_PHP, Preguntas_PHP, numPreguntas_PHP, equipo_PHP, opcione
 }
 
 function tiempo() {
-    var time = setTimeout(function () { tiempo() }, 1000);
+    var time = setTimeout(function() { tiempo() }, 1000);
     document.getElementById('tiempo').innerHTML = "<h3>" + time + "</h3>";
 
     if (time == 60) {
@@ -28,17 +28,17 @@ function tiempo() {
 
 function pintar() {
 
-        if (almirante == perLoggeada) {
-            pintarLlaves();
-            pintarEquipo();
-            pintarPreguntas();
-            pintarOpciones();
-            pintarBoton();
-        } else {
-            pintarLlaves();
-            pintarPreguntas();
-            pintarOpciones();
-        }
+    if (almirante == perLoggeada) {
+        pintarLlaves();
+        pintarEquipo();
+        pintarPreguntas();
+        pintarOpciones();
+        pintarBoton();
+    } else {
+        pintarLlaves();
+        pintarPreguntas();
+        pintarOpciones();
+    }
 }
 
 function ganar() {
@@ -105,5 +105,3 @@ function pintarEquipo() {
 function pintarLlaves() {
     document.getElementById('llaves').innerHTML = '<p class="linea">llaves: ' + llaves + '</p>';
 }
-
-

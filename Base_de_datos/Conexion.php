@@ -1368,7 +1368,7 @@ class Conexion
 
         self::abrirConexion();
 
-        $query = "SELECT MIN(id_informacion),correo FROM partida_almirante WHERE id_equipo like ?";
+        $query = "SELECT MIN(id_informacion),correo FROM partida_almirante WHERE id_equipo like ? GROUP BY id_informacion";
         $stmt = self::$conexion->prepare($query);
 
         $stmt->bind_param("i", $idEquipo);
@@ -1394,7 +1394,7 @@ class Conexion
         self::abrirConexion();
 
         $query = "UPDATE partida SET almirante = ? WHERE anfitrion LIKE ?";
-        $_SESSION['query'] = $query;
+
         $stmt = self::$conexion->prepare($query);
 
         $stmt->bind_param("ss", $almirante, $anfitrion);
