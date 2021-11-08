@@ -61,7 +61,7 @@
     }
     ?>
     <script>
-        cargar('<?php echo $llaves ?>', '<?php echo  $preguntaAleatoria->getDescripcion(); ?>', '<?php echo $numPreguntas ?>', '<?php echo $PersonasEquipo ?>', '<?php echo $Opciones ?>', '<?php echo $Almirante ?>', '<?php echo $PerLoggeada->getEmail() ?>')
+        cargar('<?php echo $llaves ?>', '<?php echo  $preguntaAleatoria->getDescripcion(); ?>', '<?php echo $numPreguntas ?>', '<?php echo $PersonasEquipo ?>', '<?php echo $Opciones ?>', '<?php echo $Almirante ?>', '<?php echo $PerLoggeada->getEmail() ?>');
     </script>
     <main class="container oriental">
         <header class="row oriental">

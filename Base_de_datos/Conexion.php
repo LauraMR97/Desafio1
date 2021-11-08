@@ -1552,6 +1552,28 @@ class Conexion
         return $array;
     }
     /*-------------------------------------------------------------------------------*/
+    public static function verHistorial()
+    {
+        $array = array();
+
+        self::abrirConexion();
+
+        $query = "SELECT * FROM historial";
+
+        $resultado = self::$conexion->query($query);
+
+        if ($resultado) {
+            while ($fila = mysqli_fetch_array($resultado)) {
+                $array[] = ['equipo' => $fila['id_equipo'], 'personas' => $fila['correo'], 'fechaIni' => $fila['fechaIni'], 'fechaFin' => $fila['fechaFin'], 'resultado' => $fila['resultado'], 'almirante' => $fila['almirante']];
+            }
+        }
+        mysqli_free_result($resultado);
+
+        self::cerrarConexion();
+
+        return json_encode($array);
+    }
+    /*-------------------------------------------------------------------------------*/
     public static function cerrarConexion()
     {
         self::$conexion->close();
