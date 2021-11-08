@@ -610,7 +610,7 @@ if (isset($_REQUEST['GestionPreguntas'])) {
 
 
 if (isset($_REQUEST['Historial'])) {
-    header("Location:../Error_y_Reformas/reformas.php");
+    header("Location:../Ventanas/Historial.php");
 }
 
 /*************************************************************************** */
