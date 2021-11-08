@@ -31,7 +31,7 @@
     $PerLoggeada = $_SESSION['per'];
    $_SESSION['contestada']=false;
 
-    if ($llaves < 5) {
+    if ($llaves < 4) {
         if (isset($_REQUEST['verSolucion'])) {
             $res = $_REQUEST['opcion'];
             echo $res . '<br>';

@@ -16,7 +16,7 @@ function carga() {
     document.getElementById('foto').innerHTML = '<img src="../IMAGENES/atakebune.png" class="imagenResponsive">';
     var time = setTimeout(function() { carga() }, 1000);
     document.getElementById('introduccion').innerHTML = time;
-    if (time == 30) {
+    if (time == 10) {
         window.location.href = './Enigma.php';
         clearTimeout(time);
     }

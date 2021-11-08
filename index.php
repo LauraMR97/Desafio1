@@ -36,7 +36,7 @@
                             <div class="row">
                                 <label class="xl-col-6 l-col-6 m-col-6 s-col-6 alignDerecha">Email:</label>
                                 <input class="xl-col-6 l-col-6 m-col-6 s-col-6" type="email" id="mail" required minlength="8"  value="" name="Email" placeholder="Inserta tu Email" required>
-                                <span class="error" aria-live="polite"></span>
+                                <span class="error fondoOriental-a" aria-live="polite"></span>
                             </div>
                             <div class="row">
                                 <label class="xl-col-6 l-col-6 m-col-6 s-col-6 alignDerecha">Contraseña:</label>
