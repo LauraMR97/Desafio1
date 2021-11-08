@@ -534,7 +534,7 @@ if (isset($_REQUEST['VolverJugar'])) {
     $PersonasEquipo = '';
 
     for ($i = 0; $i < count($personas); $i++) {
-        $PersonasEquipo +=$personas[$i].',';
+        $PersonasEquipo .=$personas[$i].',';
     }
     Conexion::CrearHistorial($_SESSION['codEquipo'], $PersonasEquipo, $fechaFin, $fechaIni, $_SESSION['resultado'], $_SESSION['Almirante']);
     Conexion::DropEquipo($_SESSION['codEquipo']);

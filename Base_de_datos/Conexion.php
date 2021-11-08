@@ -1010,7 +1010,7 @@ class Conexion
         $resultado = 'nulo';
         $almirante = 'nadie';
         $estado = 'nulo';
-        $fecha = date('Y-m-d');
+        $fecha = date('h:i:s');
         $_SESSION['fechaIni'] = $fecha;
 
         $query = "INSERT INTO partida (resultado,almirante,estado,fecha,anfitrion) VALUES (?,?,?,?,?)";

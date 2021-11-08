@@ -31,9 +31,6 @@
                             <input class="col-12" type="submit" value="Preguntas" name="GestionPreguntas">
                         </div>
                         <div class="row p-d-1">
-                            <input class="col-12" type="submit" value="Estadisticas" name="Estadisticas">
-                        </div>
-                        <div class="row p-d-1">
                             <input class="col-12 botVolver" type="submit" value="Volver" name="VolverAlternativo">
                         </div>
                     </div>
