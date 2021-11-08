@@ -27,10 +27,10 @@
     $Opciones = Conexion::verOpcionesDePregunta($idPregunta);
     $Anfitrion = Conexion::verAnfitrion($idEquipo);
     $Almirante = Conexion::verAlmirante($Anfitrion);
-    $_SESSION['Almirante']=$Almirante;
+    $_SESSION['Almirante'] = $Almirante;
     $PerLoggeada = $_SESSION['per'];
 
-    if ($llaves < 5) {
+    if ($llaves < 4) {
         if (isset($_REQUEST['verSolucion'])) {
             $res = $_REQUEST['opcion'];
             echo $res . '<br>';
@@ -50,6 +50,7 @@
             }
         }
         if (isset($_REQUEST['AnularPersona'])) {
+
         }
     } else {
         Conexion::Victoria($Anfitrion);
@@ -99,6 +100,9 @@
             </div>
         </footer>
     </main>
+    <?php
+    header("refresh:60;url=Enigma.php");
+    ?>
 </body>
 
 </html>
