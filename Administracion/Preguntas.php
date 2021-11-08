@@ -22,10 +22,8 @@
         <header class="row oriental">
             <h1>Escape Web</h1>
             <h4>Tu pagina de scape room</h4>
-            </div>
         </header>
         <section class='row'>
-
             <form name="formulario" action="Preguntas.php" method="POST" class="oriental">
                 <div class="row">
                     <div class="xl-col-12 l-col-12 m-col-12 s-col-12 separado margen-3">
@@ -118,8 +116,6 @@
             </footer>
         </section>
     </main>
-
-
 </body>
 
 </html>
