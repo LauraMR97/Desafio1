@@ -31,32 +31,27 @@
     $PerLoggeada = $_SESSION['per'];
     $_SESSION['contestada'] = false;
     $estadoPartida=Conexion::verEstadoPartida($Anfitrion);
+
     if ($llaves < 4) {
         if (isset($_REQUEST['verSolucion'])) {
             $res = $_REQUEST['opcion'];
-            echo $res . '<br>';
-            echo $preguntaAleatoria->getRespuesta() . '<br>';
-            if ($preguntaAleatoria->getRespuesta() == $res) {
+            $idResp=Conexion::obtenerIDRespuesta($res);
+            $respuesta = Conexion::obtenerRespuesta($idResp);
+            if ($respuesta == $res) {
                 $llaves = $llaves + 1;
                 Conexion::sumarLlave($Anfitrion, $llaves);
                 Conexion::addPersonaQueContesta($PerLoggeada->getEmail(), $idEquipo);
                 $primeroEnContestar = Conexion::verPrimeroEnAcertar($idEquipo);
                 Conexion::AscenderAlmirante($primeroEnContestar, $Anfitrion);
                 $aciertos = Conexion::VerAciertos($PerLoggeada->getEmail());
-                echo $aciertos;
                 $aciertos = $aciertos + 1;
                 Conexion::SumarAciertos($PerLoggeada->getEmail(), $aciertos);
             } else {
                 echo 'Fallo';
             }
-            $_SESSION['contestada'] = true;
         }
         if (isset($_REQUEST['AnularPersona'])) {
         }
-       /* if ($_SESSION['contestada'] == true) {
-            header("Location:Enigma.php");
-            $_SESSION['contestada'] = false;
-        }*/
     } else {
         Conexion::Victoria($Anfitrion);
     }

@@ -23,7 +23,7 @@
             <h4>Tu pagina de scape room</h4>
         </header>
         <section class='row'>
-            <div class="xl-margen-3 l-margen-3 m-margen-3 s-margen-0 xl-col-6 l-col-6 m-col-6 s-col-12">
+            <div class="xl-col-12 l-col-12 m-col-12 s-col-12">
 
                 <div id="historial"></div>
                 <script>
